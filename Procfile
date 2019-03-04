@@ -1,1 +1,1 @@
-web: python manage.py runserver 0.0.0.0:5000
+web: python AIM_GAMES_PLATAFORM/AIM_GAMES_PLATAFORM/manage.py runserver 
