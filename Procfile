@@ -1,0 +1,1 @@
+web: python AIM_GAMES_PLATAFORM/manage.py runserver 
