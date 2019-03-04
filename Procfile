@@ -1,1 +1,1 @@
-web: python AIM_GAMES_PLATAFORM/AIM_GAMES_PLATAFORM/manage.py runserver 
+web: python AIM_GAMES_PLATAFORM/manage.py runserver 
