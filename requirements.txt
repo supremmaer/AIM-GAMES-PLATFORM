@@ -1,1 +1,3 @@
+django-heroku
 Django==2.1.7
+gunicorn 
