@@ -3,10 +3,16 @@
   <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{% static 'js/materialize.min.js' %}"></script>
       
+    <div class="carousel">
+    <a class="carousel-item" href="#one!"><img src="https://i.imgur.com/dUhoQv7.jpg"></a>
+    <a class="carousel-item" href="#two!"><img src="https://pbs.twimg.com/media/DuFCM6cWoAA1eOP.jpg"></a>
+    <a class="carousel-item" href="#three!"><img src="https://pbs.twimg.com/media/DvNwFShW0Ag-c_U.jpg"></a>
+  </div>
 <div class="card-panel center teal lighten-2"><h5>BIENVENIDO A ACME ICARO II, <b>Corchuelo Rules Edition</b></h5></div>
 <div class="row">
     <div class="col s12 m6">
@@ -32,3 +38,4 @@
          </div>
     </div>
 </div>
+<script>M.AutoInit();</script>
