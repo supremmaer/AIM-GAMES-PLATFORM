@@ -111,7 +111,7 @@ class Thread(models.Model):
     description = models.TextField(blank=False)
     tags = models.ManyToManyField(Tag)
     pics = models.ManyToManyField(URL)
-    attachedFiles = models.ManyToManyField(URL)
+    attachedFiles = models.ManyToManyField(URL, related_name="attachedFile")
 
 class Response(models.Model):
     thread = models.OneToOneField(Thread, on_delete=models.CASCADE)
