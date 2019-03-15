@@ -259,4 +259,8 @@ fabric.properties
 ### Python Patch ###
 .venv/
 
-# End of https://www.gitignore.io/api/django,python,pycharm
+### VisualStudioCode ###
+.vscode/*
+
+
+# End of https://www.gitignore.io/api/django,python,pycharm,visualstudiocode
