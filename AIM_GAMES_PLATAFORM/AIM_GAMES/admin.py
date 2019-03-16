@@ -16,5 +16,7 @@ admin.site.register(JobOffer)
 admin.site.register(Valoration)
 admin.site.register(Thread)
 admin.site.register(Response)
+admin.site.register(Freelancer)
+
 
 # Register your models here.
