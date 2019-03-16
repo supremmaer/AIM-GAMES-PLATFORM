@@ -9,9 +9,10 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 class Tag(models.Model):
     title = models.TextField(max_length=20, primary_key=True, blank=False)
 
+
 class GraphicEngine(models.Model):
     title = models.TextField(max_length=50, primary_key=True, blank=False)
- 
+
 
 # Misc
 
@@ -68,7 +69,8 @@ class Formation(models.Model):
 
 class GraphicEngineExperience(models.Model):
     freelancer = models.ForeignKey(Freelancer, on_delete=models.CASCADE)
-    graphicEngine = models.OneToOneField(GraphicEngine, on_delete=models.CASCADE)
+    graphicEngine = models.OneToOneField(
+        GraphicEngine, on_delete=models.CASCADE)
     graphicExperience = models.IntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(100)])
 
@@ -80,7 +82,7 @@ class HTML5Showcase(models.Model):
 
 class Aptitude(models.Model):
     freelancer = models.ForeignKey(Freelancer, on_delete=models.CASCADE)
-    aptitude = models.TextField(max_length=30, blank= False)
+    aptitude = models.TextField(max_length=30, blank=False)
 
 
 class Link(models.Model):
@@ -100,9 +102,11 @@ class JobOffer(models.Model):
     description = models.TextField(max_length=10000, blank=False)
     images = models.TextField(blank=False)
 
+
 class Valoration(models.Model):
     score = models.IntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(5)])
+
 
 class Thread(models.Model):
     business = models.OneToOneField(Business, on_delete=models.CASCADE)
@@ -110,12 +114,12 @@ class Thread(models.Model):
     title = models.TextField(max_length=100, blank=False)
     description = models.TextField(blank=False)
     tags = models.ManyToManyField(Tag)
-    pics = models.ManyToManyField(URL)
+    pics = models.ManyToManyField(URL, related_name="pic")
     attachedFiles = models.ManyToManyField(URL, related_name="attachedFile")
+
 
 class Response(models.Model):
     thread = models.OneToOneField(Thread, on_delete=models.CASCADE)
     title = models.TextField(max_length=100, blank=False)
     description = models.TextField(blank=False)
     pics = models.ManyToManyField(URL)
-
