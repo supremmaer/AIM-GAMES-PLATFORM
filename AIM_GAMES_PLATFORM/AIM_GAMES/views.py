@@ -19,11 +19,19 @@ def pagarPaypal(request):
         'business': settings.PAYPAL_RECEIVER_EMAIL ,
         'amount': '71',
         'item_name': 'Subscripcion AIM-GAMES',
-        'invoice': ' Pago de AIM-GAMES',
-        'currency_code': 'USD',
+        'currency_code': 'EUR',
         'notify_url': 'http://{}{}'.format(host, reverse('paypal-ipn')),
         'return_url': 'http://{}{}'.format(host, reverse('payment_done')),
         'cancel_return': 'http://{}{}'.format(host, reverse('payment_canceled')),
         }
     form = PayPalPaymentsForm(initial=paypal_dict)
     return render(request, 'pagarPaypal.html', {'form': form })
+
+    
+def payment_done(request):
+    #esto es como el controlador/servicios
+    return render(request, 'payment_done.html')
+
+def payment_canceled(request):
+    #esto es como el controlador/servicios
+    return render(request, 'payment_canceled.html')
