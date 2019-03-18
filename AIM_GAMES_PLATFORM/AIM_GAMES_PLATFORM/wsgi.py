@@ -1,5 +1,5 @@
 """
-WSGI config for AIM_GAMES_PLATAFORM project.
+WSGI config for AIM_GAMES_PLATFORM project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'AIM_GAMES_PLATAFORM.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'AIM_GAMES_PLATFORM.settings')
 
 application = get_wsgi_application()
