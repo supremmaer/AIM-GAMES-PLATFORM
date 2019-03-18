@@ -17,9 +17,9 @@ def pagarPaypal(request):
     host = request.get_host()
     paypal_dict = {
         'business': settings.PAYPAL_RECEIVER_EMAIL ,
-        'amount': '100',
-        'item_name': 'Item_Name_xyz',
-        'invoice': ' Test Payment Invoice',
+        'amount': '71',
+        'item_name': 'Subscripcion AIM-GAMES',
+        'invoice': ' Pago de AIM-GAMES',
         'currency_code': 'USD',
         'notify_url': 'http://{}{}'.format(host, reverse('paypal-ipn')),
         'return_url': 'http://{}{}'.format(host, reverse('payment_done')),
