@@ -1,0 +1,31 @@
+{% load staticfiles %}
+<head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="{% static 'js/materialize.min.js' %}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="row">
+    <div class="col s12 m7">
+      <div class="card">
+        <div class="card-image">
+          <img src="https://img00.deviantart.net/a6a9/i/2015/116/4/5/the_10_dollar_bill_on_ms_paint_by_ownerfate-d4h3a9m.jpg">
+          <span class="card-title" style="color:black">Proceso de pago...</span>
+        </div>
+        <div class="card-content">
+          <p>Aim-games necesita dinero para alimentar a sus patitos, por favor pague o MORIRAN :(</p>
+        </div>
+        <div class="card-action center">
+              {{ form.render }}
+
+        </div>
+      </div>
+    </div>
+  </div>
+            </body>

@@ -14,12 +14,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from AIM_GAMES.views import *
+from django.views.generic import TemplateView
 
 #Aqui ponemos las rutas
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
+    path('paypal', include('paypal.standard.ipn.urls')),
+    path('pagar_paypal', pagarPaypal, name='pagarPaypal' ),
+    path('payment_done', TemplateView.as_view(template_name= "pets/payment_done.html"), name='payment_done'),
+    path('payment_canceled', TemplateView.as_view(template_name= "pets/payment_canceled.html"), name='payment_canceled')
 
 ]

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'paypal.standard.ipn',
     'AIM_GAMES.apps.AimGamesConfig',
 ]
 
@@ -116,6 +117,9 @@ USE_L10N = True
 
 USE_TZ = True
 
+#paypal
+PAYPAL_RECEIVER_EMAIL = 'correofalso102@yahoo.es'
+PAYPAL_TEST = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
