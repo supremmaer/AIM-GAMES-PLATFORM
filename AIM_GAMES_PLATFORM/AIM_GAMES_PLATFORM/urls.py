@@ -24,7 +24,7 @@ urlpatterns = [
     path('', index, name='index'),
     path('paypal', include('paypal.standard.ipn.urls')),
     path('pagar_paypal', pagarPaypal, name='pagarPaypal' ),
-    path('payment_done', TemplateView.as_view(template_name= "pets/payment_done.html"), name='payment_done'),
-    path('payment_canceled', TemplateView.as_view(template_name= "pets/payment_canceled.html"), name='payment_canceled')
+    path('payment_done', payment_done, name='payment_done'),
+    path('payment_canceled', payment_canceled, name='payment_canceled')
 
 ]
