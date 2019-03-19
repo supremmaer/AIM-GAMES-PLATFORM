@@ -70,7 +70,7 @@ class Formation(models.Model):
 class GraphicEngineExperience(models.Model):
     freelancer = models.ForeignKey(Freelancer, on_delete=models.CASCADE)
     graphicEngine = models.ManyToManyField(
-        GraphicEngine, on_delete=models.CASCADE)
+        GraphicEngine)
     graphicExperience = models.IntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(100)])
 
