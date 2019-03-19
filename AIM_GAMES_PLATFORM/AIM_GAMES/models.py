@@ -40,7 +40,7 @@ class Profile(models.Model):
 
 class Freelancer(models.Model):
     profile = models.OneToOneField(Profile, on_delete=models.CASCADE)
-    procession = models.TextField(max_length=100)
+    profession = models.TextField(max_length=100)
 
 
 class Business(models.Model):
