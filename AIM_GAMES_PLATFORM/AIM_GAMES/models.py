@@ -70,7 +70,7 @@ class Formation(models.Model):
 class GraphicEngineExperience(models.Model):
     freelancer = models.ForeignKey(Freelancer, on_delete=models.CASCADE)
     graphicEngine = models.ManyToManyField(
-        GraphicEngine, on_delete=models.CASCADE)
+        GraphicEngine)
     graphicExperience = models.IntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(100)])
 
@@ -119,6 +119,7 @@ class Thread(models.Model):
 
 
 class Response(models.Model):
+    business = models.ForeignKey(Business, on_delete=models.CASCADE)
     thread = models.ForeignKey(Thread, on_delete=models.CASCADE)
     title = models.TextField(max_length=100, blank=False)
     description = models.TextField(blank=False)
