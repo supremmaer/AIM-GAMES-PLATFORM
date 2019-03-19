@@ -69,7 +69,7 @@ class Formation(models.Model):
 
 class GraphicEngineExperience(models.Model):
     freelancer = models.ForeignKey(Freelancer, on_delete=models.CASCADE)
-    graphicEngine = models.OneToOneField(
+    graphicEngine = models.ManyToManyField(
         GraphicEngine, on_delete=models.CASCADE)
     graphicExperience = models.IntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(100)])
@@ -93,7 +93,7 @@ class Link(models.Model):
 
 
 class JobOffer(models.Model):
-    business = models.OneToOneField(Business, on_delete=models.CASCADE)
+    business = models.ForeignKey(Business, on_delete=models.CASCADE)
     position = models.TextField(max_length=100, blank=False)
     experienceRequired = models.TextField(max_length=100, blank=False)
     schedule = models.TextField(max_length=100, blank=False)
@@ -109,8 +109,8 @@ class Valoration(models.Model):
 
 
 class Thread(models.Model):
-    business = models.OneToOneField(Business, on_delete=models.CASCADE)
-    valoration = models.OneToOneField(Valoration, on_delete=models.CASCADE)
+    business = models.ForeignKey(Business, on_delete=models.CASCADE)
+    valoration = models.ForeignKey(Valoration, on_delete=models.CASCADE)
     title = models.TextField(max_length=100, blank=False)
     description = models.TextField(blank=False)
     tags = models.ManyToManyField(Tag)
@@ -119,7 +119,7 @@ class Thread(models.Model):
 
 
 class Response(models.Model):
-    thread = models.OneToOneField(Thread, on_delete=models.CASCADE)
+    thread = models.ForeignKey(Thread, on_delete=models.CASCADE)
     title = models.TextField(max_length=100, blank=False)
     description = models.TextField(blank=False)
     pics = models.ManyToManyField(URL)
