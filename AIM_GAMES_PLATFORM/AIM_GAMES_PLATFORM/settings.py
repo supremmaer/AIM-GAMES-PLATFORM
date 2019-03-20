@@ -134,4 +134,4 @@ django_heroku.settings(locals())
 
 # Login
 LOGIN_REDIRECT_URL = '/loginRedir'
-LOGOUT_REDIRECT_URL = ''
+LOGOUT_REDIRECT_URL = '/accounts/login'

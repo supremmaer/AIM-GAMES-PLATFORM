@@ -29,7 +29,7 @@ urlpatterns = [
     path('payment_canceled', payment_canceled, name='payment_canceled'),
     path('loginRedir',loginRedir),
     path('accounts/login/', auth_views.LoginView.as_view(template_name='accounts/login.html')),
-    path("logout/", auth_views.auth_logout, name="logout"),
+    path("logout/", auth_views.LogoutView.as_view(),{'next_page': settings.LOGOUT_REDIRECT_URL}, name="logout"),
     # path('accounts/login/',LoginView.as_view(template_name='accounts/login.html')),
     path('signup',signup,name='signup')
 
