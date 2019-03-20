@@ -6,5 +6,4 @@ psycopg2
 django-paypal
 pyparsing
 pydot
-dot
 pygraphviz
