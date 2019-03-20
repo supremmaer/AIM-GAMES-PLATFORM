@@ -8,6 +8,12 @@
     <!-- Compiled and minified JavaScript -->
     <script src="{% static 'js/materialize.min.js' %}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .inputErr{
+         border-bottom: 1px solid red !important;
+         box-shadow: 0 1px 0 0 red !important
+        }
+    </style>
 </head>
 
 <body>
@@ -17,17 +23,19 @@
         <img class="responsive-img" src="https://i.imgur.com/z3V1Sbc.png">
         <h2 class="center">Log in</h2>
 
-        <form class="" action="login" target="_self" method="post">
+        <form class="" action="login" target="_self" method="post">{% csrf_token %}
             <div class="card">
-                <div class="card-content center">
+                <div class="card-content ">
                     <div class="row">
                         <div class="input-field col s12">
-                            <input placeholder="" id="user" type="text" class="validate">
-                            <label for="user">User:</label>
+                            <span class="red-text">{{ form.user.errors }}</span>
+                            <input placeholder="" id="{{form.user.id_for_label}}" type="text" class="validate {% if form.user.errors %}inputErr{% endif %}">
+                            <label for="{{form.user.id_for_label}}" class="">User:</label>
                         </div>
                         <div class="input-field col s12">
-                            <input placeholder="" id="pass" type="password" class="validate">
-                            <label for="pass">Password:</label>
+                            <span class="red-text">{{ form.password.errors }}</span>
+                            <input placeholder="" id="{{ form.password.id_for_label}}" type="password" class="validate {% if form.user.errors %}inputErr{% endif %}">
+                            <label for="{{ form.password.id_for_label}}">Password:</label>
                         </div>
                     </div>
                 </div>

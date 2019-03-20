@@ -7,6 +7,8 @@ from paypal.standard.forms import PayPalPaymentsForm
 # Create your views here.
 from django.http import HttpResponse
 
+from .forms import SignupForm, LoginForm
+
 
 def index(request):
     # esto es como el controlador/servicios
@@ -16,7 +18,7 @@ def index(request):
 def pagarPaypal(request):
     host = request.get_host()
     paypal_dict = {
-        'business': settings.PAYPAL_RECEIVER_EMAIL ,
+        'business': settings.PAYPAL_RECEIVER_EMAIL,
         'amount': '71',
         'item_name': 'Subscripcion AIM-GAMES',
         'currency_code': 'EUR',
@@ -39,12 +41,27 @@ def payment_canceled(request):
 
 
 def login(request):
-    return render(request, 'login/login.html')
+    if request.method == 'POST':
+        # Do things
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            res = render(request, 'login/loged.html')
+        else:
+            res = render(request, 'login/login.html', {'form': form})
+    else:
+        form = LoginForm()
+        res = render(request, 'login/login.html', {'form': form})
+    return res;
+
 
 def signup(request):
-
-    if request.GET.get('b') == "1":
-        context = {'type': "business"}
+    if request.method == 'POST':
+        # Do things
+        form = SignupForm(request.POST)
     else:
-        context = {'type': "user"}
-    return render(request, 'signup/signup.html',context)
+        if request.GET.get('b') == "1":
+            context = {'type': "business"}
+        else:
+            context = {'type': "user"}
+    return render(request, 'signup/signup.html', context)
+
