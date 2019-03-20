@@ -11,13 +11,31 @@
 </head>  
   
 <body>  
-<h1>{{ thread.title }}</h1> <h3>{{ thread.business }}</h3>  
-<p>{{ thread.description }}</p>>  
-<p>{{ thread.valoration }}</p>  
+<h1>Detalles del Hilo</h1>    
+<h3>{{ thread.title }}</h3> 
+<p><b>Empresa:</b> {{ thread.business }}</p>  
+<p>{{ thread.description }}</p>  
+<p><b>Valoración:</b> {{ thread.valoration.score }}</p>  
 <ul>  
 {% for response in responses %}  
     <li><b>{{ response.title }}</b><br><p>{{response.description}}</p></li>  
 {% endfor %}  
-</ul>  
-  
+</ul> 
+
+<p><b>Tags:</b>
+{% for tag in thread.tags.all %}
+{{tag.title}}</p>
+{% endfor %}  
+<br>
+
+<b>Imágenes:</b>
+{% for pic in thread.pics.all %}
+<a href="{{pic.title}}">Imagen</a>
+{% endfor %}  
+<br>
+
+<b>Archivos Adicionales:</b>
+{% for file in thread.attachedFiles.all %}
+<a href="{{file.title}}">Archivo</a>
+{% endfor %}  
 </body>
