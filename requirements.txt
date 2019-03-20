@@ -3,3 +3,6 @@ Django==2.1.7
 gunicorn 
 psycopg2
 django-paypal
+django_extensions
+pyparsing
+pydot
