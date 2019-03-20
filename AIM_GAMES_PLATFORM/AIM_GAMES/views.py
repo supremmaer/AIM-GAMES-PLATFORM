@@ -3,33 +3,13 @@ from django.conf import settings
 from django.urls import reverse
 from django.shortcuts import render, get_object_or_404
 from paypal.standard.forms import PayPalPaymentsForm
+from django.shortcuts import redirect
 
 # Create your views here.
 from django.http import HttpResponse
 
 from .forms import SignupForm
-from .models import Profile
 
-##LOGIN VIEW
-from django.conf import settings
-# Avoid shadowing the login() and logout() views below.
-from django.contrib.auth import (
-    REDIRECT_FIELD_NAME, login as auth_login
-)
-from django.contrib.auth.forms import (
-    AuthenticationForm
-)
-from django.contrib.sites.shortcuts import get_current_site
-from django.http import HttpResponseRedirect
-from django.shortcuts import resolve_url
-from django.utils.decorators import method_decorator
-from django.utils.http import is_safe_url
-from django.views.decorators.cache import never_cache
-from django.views.decorators.csrf import csrf_protect
-from django.views.decorators.debug import sensitive_post_parameters
-from django.views.generic.edit import FormView
-
-##END OF LOGIN VIEW
 
 def index(request):
     # esto es como el controlador/servicios
@@ -60,26 +40,15 @@ def payment_canceled(request):
     # esto es como el controlador/servicios
     return render(request, 'payment_canceled.html')
 
-'''
-def login(request):
-    if request.method == 'POST':
-        # Do things
-        print(str(request.POST))
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            print('Valid form: '+str(form.cleaned_data))
-            user = authenticate(request, username=form.cleaned_data.get('user'), password=form.cleaned_data.get('password'))
-            res = render(request, 'login/login.html', {'form': form,'usuario':user})
-        else:
-            print('Invalid form: '+str(form.cleaned_data))
-            res = render(request, 'login/login.html', {'form': form})
+
+def loginRedir(request):
+    if request.user.is_superuser:
+        res = redirect('admin/')
     else:
-        print('New form')
-        form = LoginForm()
-        res = render(request, 'login/login.html', {'form': form})
+        res = redirect('accounts/login/')
     return res;
 
-'''
+
 def signup(request):
     if request.method == 'POST':
         # Do things

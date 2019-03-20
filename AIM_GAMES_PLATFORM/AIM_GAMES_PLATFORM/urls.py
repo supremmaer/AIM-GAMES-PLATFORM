@@ -27,8 +27,9 @@ urlpatterns = [
     path('pagar_paypal', pagarPaypal, name='pagarPaypal' ),
     path('payment_done', payment_done, name='payment_done'),
     path('payment_canceled', payment_canceled, name='payment_canceled'),
-    # path('login',login,name='login'),
+    path('loginRedir',loginRedir),
     path('accounts/login/', auth_views.LoginView.as_view(template_name='accounts/login.html')),
+    path("logout/", auth_views.auth_logout, name="logout"),
     # path('accounts/login/',LoginView.as_view(template_name='accounts/login.html')),
     path('signup',signup,name='signup')
 

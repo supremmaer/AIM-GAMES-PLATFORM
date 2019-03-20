@@ -25,6 +25,7 @@
         {% if request.user.is_authenticated %}
         Loged
         {{request.user.username}}
+        <p><a href="{% url 'logout' %}">logout</a></p>
         {% else %}
         NotLoged
         {% endif %}
