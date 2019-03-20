@@ -5,8 +5,6 @@ gunicorn
 psycopg2
 django-paypal
 pyparsing
-<<<<<<< HEAD
 pydot
 dot
-=======
->>>>>>> a318becc7407517db3c22d1897f4ec54c029c0d1
+pygraphviz
