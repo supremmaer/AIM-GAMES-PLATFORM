@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 from AIM_GAMES.views import *
 from django.views.generic import TemplateView
+from django.contrib.auth import views as auth_views
 
 #Aqui ponemos las rutas
 urlpatterns = [
@@ -25,6 +26,12 @@ urlpatterns = [
     path('paypal', include('paypal.standard.ipn.urls')),
     path('pagar_paypal', pagarPaypal, name='pagarPaypal' ),
     path('payment_done', payment_done, name='payment_done'),
-    path('payment_canceled', payment_canceled, name='payment_canceled')
+    path('payment_canceled', payment_canceled, name='payment_canceled'),
+    path('loginRedir',loginRedir),
+    path('accounts/login/', auth_views.LoginView.as_view(template_name='accounts/login.html')),
+    path("logout/", auth_views.LogoutView.as_view(),{'next_page': settings.LOGOUT_REDIRECT_URL}, name="logout"),
+    # path('accounts/login/',LoginView.as_view(template_name='accounts/login.html')),
+    path('signup',signup,name='signup'),
+    path('thread/detail/<int:thread_id>',threadDetail, name='threadDetail')
 
 ]
