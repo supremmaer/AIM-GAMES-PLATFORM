@@ -31,6 +31,7 @@ urlpatterns = [
     path('accounts/login/', auth_views.LoginView.as_view(template_name='accounts/login.html')),
     path("logout/", auth_views.LogoutView.as_view(),{'next_page': settings.LOGOUT_REDIRECT_URL}, name="logout"),
     # path('accounts/login/',LoginView.as_view(template_name='accounts/login.html')),
-    path('signup',signup,name='signup')
+    path('signup',signup,name='signup'),
+    path('thread/detail/<int:thread_id>',threadDetail, name='threadDetail')
 
 ]

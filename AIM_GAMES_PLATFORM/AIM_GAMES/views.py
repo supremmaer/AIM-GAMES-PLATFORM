@@ -9,6 +9,7 @@ from django.shortcuts import redirect
 from django.http import HttpResponse
 
 from .forms import SignupForm
+from .models import Thread, Response
 
 
 def index(request):
@@ -60,4 +61,7 @@ def signup(request):
             context = {'type': "user"}
     return render(request, 'signup/signup.html', context)
 
-
+def threadDetail(request, thread_id):
+        thread = get_object_or_404(Thread, pk=thread_id)
+       # responses = Response.objects.filter(Response_thread_title=thread_title)
+        return render(request, 'threadDetail.html',{'thread':thread})

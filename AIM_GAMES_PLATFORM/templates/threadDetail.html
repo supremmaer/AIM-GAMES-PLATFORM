@@ -1,0 +1,23 @@
+{% load staticfiles %}  
+<head>  
+    <!-- Compiled and minified CSS -->  
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">  
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">  
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+  
+    <!-- Compiled and minified JavaScript -->  
+    <script src="{% static 'js/materialize.min.js' %}"></script>  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+</head>  
+  
+<body>  
+<h1>{{ thread.title }}</h1> <h3>{{ thread.business }}</h3>  
+<p>{{ thread.description }}</p>>  
+<p>{{ thread.valoration }}</p>  
+<ul>  
+{% for response in responses %}  
+    <li><b>{{ response.title }}</b><br><p>{{response.description}}</p></li>  
+{% endfor %}  
+</ul>  
+  
+</body>
