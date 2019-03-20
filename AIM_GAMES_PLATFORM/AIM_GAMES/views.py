@@ -8,10 +8,10 @@ from paypal.standard.forms import PayPalPaymentsForm
 from django.http import HttpResponse
 
 
-
 def index(request):
-    #esto es como el controlador/servicios
+    # esto es como el controlador/servicios
     return render(request, 'index.html')
+
 
 def pagarPaypal(request):
     host = request.get_host()
@@ -29,9 +29,22 @@ def pagarPaypal(request):
 
     
 def payment_done(request):
-    #esto es como el controlador/servicios
+    # esto es como el controlador/servicios
     return render(request, 'payment_done.html')
 
+
 def payment_canceled(request):
-    #esto es como el controlador/servicios
+    # esto es como el controlador/servicios
     return render(request, 'payment_canceled.html')
+
+
+def login(request):
+    return render(request, 'login/login.html')
+
+def signup(request):
+
+    if request.GET.get('b') == "1":
+        context = {'type': "business"}
+    else:
+        context = {'type': "user"}
+    return render(request, 'signup/signup.html',context)
