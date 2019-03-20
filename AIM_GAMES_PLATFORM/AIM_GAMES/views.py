@@ -8,6 +8,8 @@ from paypal.standard.forms import PayPalPaymentsForm
 from django.http import HttpResponse
 
 from .forms import SignupForm, LoginForm
+from .models import Profile
+from django.contrib.auth import authenticate
 
 
 def index(request):
@@ -43,12 +45,17 @@ def payment_canceled(request):
 def login(request):
     if request.method == 'POST':
         # Do things
+        print(str(request.POST))
         form = LoginForm(request.POST)
         if form.is_valid():
-            res = render(request, 'login/loged.html')
+            print('Valid form: '+str(form.cleaned_data))
+            user = authenticate(username=form.cleaned_data.get('user'), password=form.cleaned_data.get('password'))
+            res = render(request, 'login/login.html', {'form': form,'usuario':user})
         else:
+            print('Invalid form: '+str(form.cleaned_data))
             res = render(request, 'login/login.html', {'form': form})
     else:
+        print('New form')
         form = LoginForm()
         res = render(request, 'login/login.html', {'form': form})
     return res;
