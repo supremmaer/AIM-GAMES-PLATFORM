@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 from AIM_GAMES.views import *
 from django.views.generic import TemplateView
+from django.contrib.auth import views as auth_views
 
 #Aqui ponemos las rutas
 urlpatterns = [
@@ -26,7 +27,9 @@ urlpatterns = [
     path('pagar_paypal', pagarPaypal, name='pagarPaypal' ),
     path('payment_done', payment_done, name='payment_done'),
     path('payment_canceled', payment_canceled, name='payment_canceled'),
-    path('login',login,name='login'),
+    # path('login',login,name='login'),
+    path('accounts/login/', auth_views.LoginView.as_view(template_name='accounts/login.html')),
+    # path('accounts/login/',LoginView.as_view(template_name='accounts/login.html')),
     path('signup',signup,name='signup')
 
 ]
