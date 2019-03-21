@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.urls import reverse
 
 # Create your models here.
 # System objects
@@ -41,6 +42,9 @@ class Profile(models.Model):
 class Freelancer(models.Model):
     profile = models.OneToOneField(Profile, on_delete=models.CASCADE)
     profession = models.TextField(max_length=100)
+
+    def get_absolute_url(self):
+        return reverse('signupFreelancer', kwargs={'pk': self.pk})
 
 
 class Business(models.Model):

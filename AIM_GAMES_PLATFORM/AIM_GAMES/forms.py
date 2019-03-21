@@ -1,13 +1,40 @@
-from django import forms
-from django.contrib.auth import authenticate, get_user_model
-from django.utils.text import capfirst
-
-import unicodedata
-
-UserModel = get_user_model()
+from django.forms import ModelForm, forms
+from AIM_GAMES.models import Freelancer, Business, Profile
 
 
-class SignupForm(forms.Form):
-    # TODO
-    user = forms.CharField(label='Your user', max_length=100)
+class FreelancerForm(ModelForm):
+    # TODO Lógica
+    class Meta:
+        model = Freelancer
+        exclude = ()
 
+    def __init__(self, *args, **kwargs):
+        super(FreelancerForm, self).__init__(*args, **kwargs)
+        self.fields['profile'].required = False
+        data = kwargs.get('data')
+        # 'prefix' parameter required if in a modelFormset
+        self.profile_form = ProfileForm(instance=self.instance and self.instance.profile, prefix=self.prefix, data=data)
+
+    def clean(self):
+        if not self.profile_form.is_valid():
+            raise forms.ValidationError("Profile not valid")
+
+    def save(self, commit=True):
+        obj = super(FreelancerForm, self).save(commit=commit)
+        obj.profile = self.profile_form.save()
+        obj.save()
+
+
+
+class BusinessForm(forms.Form):
+    # TODO Lógica
+    class Meta:
+        model = Business
+        exclude = ()
+
+
+class ProfileForm(ModelForm):
+    # TODO Lógica
+    class Meta:
+        model = Profile
+        exclude = ()
