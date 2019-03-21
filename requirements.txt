@@ -1,5 +1,6 @@
 pydot
 graphviz
+gprof2dot
 pyparsing
 django-extensions
 psycopg2
