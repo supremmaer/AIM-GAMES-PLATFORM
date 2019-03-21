@@ -3,4 +3,8 @@ gunicorn
 django-heroku
 Django==2.1.7
 django-paypal
+pyparsing
+pydot
+django_extensions
+
 

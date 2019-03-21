@@ -18,7 +18,6 @@ from django.urls import path,include
 from AIM_GAMES.views import *
 from django.views.generic import TemplateView
 from django.contrib.auth import views as auth_views
-from django.conf.urls.static import static
 
 #Aqui ponemos las rutas
 urlpatterns = [
@@ -34,5 +33,8 @@ urlpatterns = [
     path('freelancer/create/',FreelancerCreate.as_view(),name='signupFreelancer'),
     path('business/create/',BusinessCreate.as_view(),name='signupBusiness'),
     path('thread/detail/<int:thread_id>',threadDetail, name='threadDetail'),
+<<<<<<< HEAD
+=======
     #static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+>>>>>>> 9d55c93abb173d25bffa7b53e94f858520f43d26
 ]

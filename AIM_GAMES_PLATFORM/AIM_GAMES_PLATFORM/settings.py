@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'paypal.standard.ipn',
     'AIM_GAMES.apps.AimGamesConfig',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
