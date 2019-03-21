@@ -1,11 +1,10 @@
 from django.forms import ModelForm, forms, CharField, EmailField
 from django.contrib.auth.forms import UserCreationForm
-from AIM_GAMES.models import Freelancer, Business, Profile
+from AIM_GAMES.models import Freelancer, Business, Profile, Thread
 from django.contrib.auth.models import User
 
 
 class BusinessForm(ModelForm):
-    # TODO Testear salvado
     class Meta:
         model = Business
         exclude = ()
@@ -90,3 +89,8 @@ class UserForm(UserCreationForm):
         model = User
         fields = ['username']
 
+
+class ThreadForm(ModelForm):
+    class Meta:
+        model = Thread
+        exclude = ()
