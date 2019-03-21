@@ -1,5 +1,5 @@
 pydot
-graphviz
+pygraphviz
 gprof2dot
 pyparsing
 django-extensions
