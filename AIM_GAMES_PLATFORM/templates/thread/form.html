@@ -8,6 +8,12 @@
     <!-- Compiled and minified JavaScript -->
     <script src="{% static 'js/materialize.min.js' %}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.chips');
+        var instances = M.Chips.init(elems, options);
+        });
+    </script>
 </head>
 
 <body>
@@ -17,9 +23,11 @@
             {% csrf_token %}
             {{form.errors}}
             {{form.non_field_errors}}
+            <div class="chips chips-autocomplete"></div>
+            <input class="input">
             {{ form }}
 
-            <input type="submit" value="Submit">
+            <!--<input type="submit" value="Submit">-->
         </form>
     </div>
 </div>
