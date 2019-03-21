@@ -24,15 +24,30 @@ class FreelancerForm(ModelForm):
     def save(self, commit=True):
         obj = super(FreelancerForm, self).save(commit=commit)
         obj.profile = self.profile_form.save()
-        obj.save()
+        return obj.save()
 
 
-
-class BusinessForm(forms.Form):
-    # TODO Lógica
+class BusinessForm(ModelForm):
+    # TODO Testear salvado
     class Meta:
         model = Business
         exclude = ()
+
+    def __init__(self, *args, **kwargs):
+        super(BusinessForm, self).__init__(*args, **kwargs)
+        self.fields['profile'].required = False
+        data = kwargs.get('data')
+        # 'prefix' parameter required if in a modelFormset
+        self.profile_form = ProfileForm(instance=self.instance, prefix=self.prefix, data=data)
+
+    def clean(self):
+        if not self.profile_form.is_valid():
+            raise forms.ValidationError("Profile not valid")
+
+    def save(self, commit=True):
+        obj = super(BusinessForm, self).save(commit=commit)
+        obj.profile = self.profile_form.save()
+        return obj.save()
 
 
 class ProfileForm(ModelForm):
@@ -55,7 +70,7 @@ class ProfileForm(ModelForm):
     def save(self, commit=True):
         obj = super(ProfileForm, self).save(commit=commit)
         obj.user = self.user_form.save()
-        obj.save()
+        return obj.save()
 
 
 class UserForm(UserCreationForm):

@@ -30,8 +30,7 @@ urlpatterns = [
     path('loginRedir',loginRedir),
     path('accounts/login/', auth_views.LoginView.as_view(template_name='accounts/login.html')),
     path("logout/", auth_views.LogoutView.as_view(),{'next_page': settings.LOGOUT_REDIRECT_URL}, name="logout"),
-    # path('accounts/login/',LoginView.as_view(template_name='accounts/login.html')),
-    path('freelancer/add/',FreelancerView.as_view(),name='signupFreelancer'),
+    path('freelancer/add/',FreelancerCreate.as_view(),name='signupFreelancer'),
+    path('business/add/',BusinessCreate.as_view(),name='signupBusiness'),
     path('thread/detail/<int:thread_id>',threadDetail, name='threadDetail')
-
 ]

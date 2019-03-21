@@ -6,7 +6,7 @@ from paypal.standard.forms import PayPalPaymentsForm
 from django.shortcuts import redirect
 from django.views.generic import FormView, CreateView
 from .models import Freelancer, Business, Thread, Response
-from .forms import FreelancerForm
+from .forms import FreelancerForm, BusinessForm
 
 
 def index(request):
@@ -58,10 +58,32 @@ class FreelancerView(FormView):
         return super().form_valid(form)
 
 
-class FreelancerCreate(CreateView):
+class BusinessView(FormView):
+    template_name = 'accounts/signup.html'
+    form_class = BusinessForm
 
-    model = Freelancer
-    fields = ['profile','profession']
+    def form_valid(self, form):
+        # This method is called when valid form data has been POSTed.
+        # It should return an HttpResponse.
+
+        return super().form_valid(form)
+
+
+class FreelancerCreate(CreateView):
+    form_class = FreelancerForm
+    template_name = 'accounts/signup.html'
+    success_url = '/accounts/login'
+
+
+class BusinessCreate(CreateView):
+    form_class = BusinessForm
+    template_name = 'accounts/signup.html'
+    success_url = '/accounts/login'
+
+    def get_context_data(self, **kwargs):
+        context = super(BusinessCreate,self).get_context_data(**kwargs)
+        context['type'] = 'business'
+        return context
 
 
 # def signup(request):
