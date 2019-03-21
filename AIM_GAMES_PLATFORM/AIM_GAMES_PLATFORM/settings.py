@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'paypal.standard.ipn',
     'AIM_GAMES.apps.AimGamesConfig',
-    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -142,6 +141,3 @@ GRAPH_MODELS = {
 # Login
 LOGIN_REDIRECT_URL = '/loginRedir'
 LOGOUT_REDIRECT_URL = '/accounts/login'
-
-# Static
-STATIC_URL = '/static/'
