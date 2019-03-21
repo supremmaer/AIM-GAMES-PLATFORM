@@ -18,6 +18,7 @@ from django.urls import path,include
 from AIM_GAMES.views import *
 from django.views.generic import TemplateView
 from django.contrib.auth import views as auth_views
+from django.conf.urls.static import static
 
 #Aqui ponemos las rutas
 urlpatterns = [
@@ -32,6 +33,6 @@ urlpatterns = [
     path("logout/", auth_views.LogoutView.as_view(),{'next_page': settings.LOGOUT_REDIRECT_URL}, name="logout"),
     # path('accounts/login/',LoginView.as_view(template_name='accounts/login.html')),
     path('freelancer/add/',FreelancerView.as_view(),name='signupFreelancer'),
-    path('thread/detail/<int:thread_id>',threadDetail, name='threadDetail')
-
+    path('thread/detail/<int:thread_id>',threadDetail, name='threadDetail'),
+    static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 ]
