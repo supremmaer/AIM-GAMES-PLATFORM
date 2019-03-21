@@ -54,7 +54,7 @@ class FreelancerView(FormView):
     def form_valid(self, form):
         # This method is called when valid form data has been POSTed.
         # It should return an HttpResponse.
-
+        print('form_valid')
         return super().form_valid(form)
 
 
@@ -73,6 +73,13 @@ class FreelancerCreate(CreateView):
     form_class = FreelancerForm
     template_name = 'accounts/signup.html'
     success_url = '/accounts/login'
+
+    def form_valid(self, form):
+        # This method is called when valid form data has been POSTed.
+        # It should return an HttpResponse.
+        print('form_valid')
+
+        return super().form_valid(form)
 
 
 class BusinessCreate(CreateView):
