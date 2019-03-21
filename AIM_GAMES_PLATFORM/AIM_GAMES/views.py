@@ -44,7 +44,7 @@ def loginRedir(request):
         res = redirect('admin/')
     else:
         res = redirect('accounts/login/')
-    return res;
+    return res
 
 
 class FreelancerView(FormView):
@@ -106,6 +106,6 @@ class BusinessCreate(CreateView):
 
 def threadDetail(request, thread_id):
         thread = get_object_or_404(Thread, pk=thread_id)
-       # responses = Response.objects.filter(Response_thread_title=thread_title)
-        return render(request, 'threadDetail.html',{'thread':thread})
+        responses = Response.objects.select_related('thread').get(id=thread_id)
+        return render(request, 'threadDetail.html',{'thread':thread,'responses:':responses})
 
