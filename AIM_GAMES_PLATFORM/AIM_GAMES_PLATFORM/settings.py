@@ -142,3 +142,6 @@ GRAPH_MODELS = {
 # Login
 LOGIN_REDIRECT_URL = '/loginRedir'
 LOGOUT_REDIRECT_URL = '/accounts/login'
+
+# Static
+STATIC_URL = '/static/'
