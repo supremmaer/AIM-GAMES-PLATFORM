@@ -2,6 +2,10 @@ Corred esto para instalar lo que hace falta
 
 pip install -r requirements.txt
 
+Instalad graphviz: https://graphviz.gitlab.io/_pages/Download/Download_windows.html 
+
+Aseguraos de que está añadido al path C:\Program Files (x86)\Graphviz2.38\bin
+
 SIEMPRE que se modifique algo del modelo ejecutáis esta linea para actualizar el diagrama y hacer el commit con el diagrama cambiado
 
 python AIM_GAMES_PLATFORM/manage.py graph_models --pydot -a -g -o model.png
