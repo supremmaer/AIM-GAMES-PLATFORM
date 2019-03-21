@@ -18,9 +18,11 @@
         {% else %}
          <h2>Sign up as Business</h2>
         {% endif %}
-        <form class="" action="register" target="_self" method="post">
+        <form method="POST">
             {% csrf_token %}
-            {{ form.profile_form.user_form }}
+            {{form.errors}}
+            {{form.non_field_errors}}
+            {{ form.profile_form.user_form}}
             {{ form.profile_form }}
             {{ form }}
 

@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.urls import reverse
+from django.contrib.auth.hashers import make_password
 
 # Create your models here.
 # System objects
@@ -45,6 +46,10 @@ class Freelancer(models.Model):
 
     def get_absolute_url(self):
         return reverse('signupFreelancer', kwargs={'pk': self.pk})
+
+    def set_password(self, raw_password):
+        self.password = make_password(raw_password)
+        self._password = raw_password
 
 
 class Business(models.Model):
