@@ -1,5 +1,6 @@
 pydot
 pyparsing
+django-extensions
 psycopg2
 gunicorn 
 django-heroku
