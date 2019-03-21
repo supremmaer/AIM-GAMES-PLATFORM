@@ -4,12 +4,9 @@ from django.urls import reverse
 from django.shortcuts import render, get_object_or_404
 from paypal.standard.forms import PayPalPaymentsForm
 from django.shortcuts import redirect
-
-# Create your views here.
-from django.http import HttpResponse
-
-from .forms import SignupForm
-from .models import Thread, Response
+from django.views.generic import FormView, CreateView
+from .models import Freelancer, Business, Thread, Response
+from .forms import FreelancerForm
 
 
 def index(request):
@@ -50,18 +47,36 @@ def loginRedir(request):
     return res;
 
 
-def signup(request):
-    if request.method == 'POST':
-        # Do things
-        form = SignupForm(request.POST)
-    else:
-        if request.GET.get('b') == "1":
-            context = {'type': "business"}
-        else:
-            context = {'type': "user"}
-    return render(request, 'signup/signup.html', context)
+class FreelancerView(FormView):
+    template_name = 'accounts/signup.html'
+    form_class = FreelancerForm
+
+    def form_valid(self, form):
+        # This method is called when valid form data has been POSTed.
+        # It should return an HttpResponse.
+
+        return super().form_valid(form)
+
+
+class FreelancerCreate(CreateView):
+
+    model = Freelancer
+    fields = ['profile','profession']
+
+
+# def signup(request):
+#     if request.method == 'POST':
+#         # Do things
+#         form = SignupForm(request.POST)
+#     else:
+#         if request.GET.get('b') == "1":
+#             context = {'type': "business"}
+#         else:
+#             context = {'type': "user"}
+#     return render(request, 'signup/signup.html', context)
 
 def threadDetail(request, thread_id):
         thread = get_object_or_404(Thread, pk=thread_id)
        # responses = Response.objects.filter(Response_thread_title=thread_title)
         return render(request, 'threadDetail.html',{'thread':thread})
+
