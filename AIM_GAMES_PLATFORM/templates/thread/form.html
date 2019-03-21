@@ -10,25 +10,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.chips');
-        var instances = M.Chips.init(elems, options);
-        });
+            var elems = document.querySelectorAll('.chips');
+            var instances = M.Chips.init(elems, options);
+          });
     </script>
 </head>
 
 <body>
 <div class="row">
     <div class="col s12 l6 m10 offset-m1 offset-l3">
-        <form method="POST">
-            {% csrf_token %}
-            {{form.errors}}
-            {{form.non_field_errors}}
-            <div class="chips chips-autocomplete"></div>
-            <input class="input">
-            {{ form }}
+         <div class="chips chips-autocomplete input-field">
 
-            <!--<input type="submit" value="Submit">-->
-        </form>
+            </div>
+        <!--<form method="POST">-->
+            <!--{% csrf_token %}-->
+            <!--{{form.errors}}-->
+            <!--{{form.non_field_errors}}-->
+
+            <!--{{ form }}-->
+
+            <!--&lt;!&ndash;<input type="submit" value="Submit">&ndash;&gt;-->
+        <!--</form>-->
     </div>
 </div>
 
