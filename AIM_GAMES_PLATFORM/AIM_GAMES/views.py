@@ -119,8 +119,8 @@ class ThreadCreate(CreateView):
         # This method is called before the view es generate and add the context
         # It should return the context
 
-        context = super(ThreadCreate,self).get_context_data(**kwargs)
-        
+        context = super(ThreadCreate, self).get_context_data(**kwargs)
+
         return context
 
 
