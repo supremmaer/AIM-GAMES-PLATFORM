@@ -52,6 +52,7 @@ class FreelancerForm(ModelForm):
         obj = super(FreelancerForm, self).save(commit=commit)
         obj.profile = self.profile_form.save()
         obj.save()
+        return obj
 
 
 class ProfileForm(ModelForm):
@@ -78,7 +79,9 @@ class ProfileForm(ModelForm):
         print('save: ProfileForm')
         obj = super(ProfileForm, self).save(commit=commit)
         obj.user = self.user_form.save()
-        return obj.save()
+        obj.save()
+        return obj
+
 
 class UserForm(UserCreationForm):
     # TODO Testear salvado
