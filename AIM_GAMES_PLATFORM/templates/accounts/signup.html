@@ -20,6 +20,7 @@
         {% endif %}
         <form class="" action="register" target="_self" method="post">
             {% csrf_token %}
+            {{ form.profile_form.user_form }}
             {{ form.profile_form }}
             {{ form }}
 
