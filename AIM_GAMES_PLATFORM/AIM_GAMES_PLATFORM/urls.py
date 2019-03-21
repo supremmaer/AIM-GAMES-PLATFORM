@@ -35,4 +35,5 @@ urlpatterns = [
     path('thread/create/',ThreadCreate.as_view(),name='threadCreate'),
     path('thread/detail/<int:thread_id>',threadDetail, name='threadDetail'),
     #static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('freelancer/detail/<int:id>',freelancerDetail, name='freelancerDetail'),
 ]

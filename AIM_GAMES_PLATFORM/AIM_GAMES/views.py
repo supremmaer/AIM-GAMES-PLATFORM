@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from paypal.standard.forms import PayPalPaymentsForm
 from django.shortcuts import redirect
 from django.views.generic import FormView, CreateView
-from .models import Freelancer, Business, Thread, Response
+from .models import Freelancer, Business, Thread, Response, Link
 from .forms import FreelancerForm, BusinessForm, ThreadForm
 
 
@@ -128,4 +128,10 @@ def threadDetail(request, thread_id):
         thread = get_object_or_404(Thread, pk=thread_id)
         responses = Response.objects.select_related('thread').get(id=thread_id)
         return render(request, 'threadDetail.html', {'thread': thread, 'responses:': responses})
+
+def freelancerDetail(request, id):
+        freelancer = get_object_or_404(Freelancer, pk=id)
+        #links = Link.objects.select_related('freelancer').get(id=id)
+        links = freelancer.link_set.all()
+        return render(request, 'freelancer/detail.html', {'freelancer': freelancer,'links':links})
 
