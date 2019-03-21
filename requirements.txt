@@ -1,5 +1,11 @@
+pydot
+graphviz
+gprof2dot
+pyparsing
+django-extensions
+psycopg2
+gunicorn 
 django-heroku
 Django==2.1.7
-gunicorn 
-psycopg2
 django-paypal
+

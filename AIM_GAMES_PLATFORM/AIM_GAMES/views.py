@@ -5,12 +5,8 @@ from django.shortcuts import render, get_object_or_404
 from paypal.standard.forms import PayPalPaymentsForm
 from django.shortcuts import redirect
 from django.views.generic import FormView, CreateView
-from AIM_GAMES.models import Freelancer, Business
-
-# Create your views here.
-from django.http import HttpResponse
-
-from .forms import FreelancerForm, BusinessForm
+from .models import Freelancer, Business, Thread, Response
+from .forms import FreelancerForm
 
 
 def index(request):
@@ -79,4 +75,8 @@ class FreelancerCreate(CreateView):
 #             context = {'type': "user"}
 #     return render(request, 'signup/signup.html', context)
 
+def threadDetail(request, thread_id):
+        thread = get_object_or_404(Thread, pk=thread_id)
+       # responses = Response.objects.filter(Response_thread_title=thread_title)
+        return render(request, 'threadDetail.html',{'thread':thread})
 
