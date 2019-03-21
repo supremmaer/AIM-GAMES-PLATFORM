@@ -1,0 +1,8 @@
+Corred esto para instalar lo que hace falta
+
+pip install -r requirements.txt
+
+SIEMPRE que se modifique algo del modelo ejecutáis esta linea para actualizar el diagrama y hacer el commit con el diagrama cambiado
+
+python AIM_GAMES_PLATFORM/manage.py graph_models --pydot -a -g -o model.png
+
