@@ -1,5 +1,3 @@
-release: python AIM_GAMES_PLATFORM/manage.py graph_models --pydot -a -g -o model.png
-
 release: python AIM_GAMES_PLATFORM/manage.py makemigrations
 
 release: python AIM_GAMES_PLATFORM/manage.py migrate
