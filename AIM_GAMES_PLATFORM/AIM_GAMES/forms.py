@@ -15,20 +15,22 @@ class BusinessForm(ModelForm):
         self.fields['profile'].required = False
         data = kwargs.get('data')
         # 'prefix' parameter required if in a modelFormset
-        self.profile_form = ProfileForm(instance=self.instance, prefix=self.prefix, data=data)
+        self.instance.profile = Profile()
+        self.profile_form = ProfileForm(instance=self.instance and self.instance.profile, prefix=self.prefix, data=data)
 
     def clean(self):
         if not self.profile_form.is_valid():
             raise forms.ValidationError(self.profile_form.errors)
 
-    def save(self, commit=True):
+    def save(self, commit=False):
+        print('save: BusinessForm')
         obj = super(BusinessForm, self).save(commit=commit)
         obj.profile = self.profile_form.save()
-        return obj.save()
+        obj.save()
+        return obj
 
 
 class FreelancerForm(ModelForm):
-    # TODO Testear salvado
     class Meta:
         model = Freelancer
         exclude = ()
@@ -56,7 +58,6 @@ class FreelancerForm(ModelForm):
 
 
 class ProfileForm(ModelForm):
-    # TODO Testear salvado
     class Meta:
         model = Profile
         exclude = ()
@@ -84,19 +85,8 @@ class ProfileForm(ModelForm):
 
 
 class UserForm(UserCreationForm):
-    # TODO Testear salvado
 
     class Meta:
         model = User
         fields = ['username']
-
-    # def __init__(self, *args, **kwargs):
-    #     print('__init__ UserForm')
-    #     super(UserForm, self).__init__(*args, **kwargs)
-
-    # def save(self, commit=False):
-    #     print('save: UserForm')
-    #     obj = super(UserForm, self).save(commit=commit)
-    #     return obj
-
 
