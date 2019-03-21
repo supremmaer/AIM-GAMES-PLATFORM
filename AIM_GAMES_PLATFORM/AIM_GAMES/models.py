@@ -9,10 +9,14 @@ from django.urls import reverse
 
 class Tag(models.Model):
     title = models.TextField(max_length=20, primary_key=True, blank=False)
+    def __str__(self):
+        return self.title
 
 
 class GraphicEngine(models.Model):
     title = models.TextField(max_length=50, primary_key=True, blank=False)
+    def __str__(self):
+        return self.title
 
 
 # Misc
@@ -20,6 +24,9 @@ class GraphicEngine(models.Model):
 
 class URL(models.Model):
     title = models.URLField()
+    def __str__(self):
+        return self.title
+
 
 # Profile class. Attributes regarding all users of the system go here
 
@@ -35,6 +42,9 @@ class Profile(models.Model):
     dateOfBirth = models.DateTimeField(null=False)
     phoneNumber = models.TextField(max_length=20, blank=False)
     photo = models.URLField()
+    def __str__(self):
+        return self.name
+
 
 # Types of users
 
@@ -42,6 +52,8 @@ class Profile(models.Model):
 class Freelancer(models.Model):
     profile = models.OneToOneField(Profile, on_delete=models.CASCADE)
     profession = models.TextField(max_length=100)
+    def __str__(self):
+        return self.profile.email
 
     def get_absolute_url(self):
         return reverse('signupFreelancer', kwargs={'pk': self.pk})
@@ -49,6 +61,8 @@ class Freelancer(models.Model):
 
 class Business(models.Model):
     profile = models.OneToOneField(Profile, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.profile.email
 
 # Freelancer objects
 
@@ -120,7 +134,8 @@ class Thread(models.Model):
     tags = models.ManyToManyField(Tag)
     pics = models.ManyToManyField(URL, related_name="pic")
     attachedFiles = models.ManyToManyField(URL, related_name="attachedFile")
-
+    def __str__(self):
+        return self.title
 
 class Response(models.Model):
     business = models.ForeignKey(Business, on_delete=models.CASCADE)
@@ -128,3 +143,5 @@ class Response(models.Model):
     title = models.TextField(max_length=100, blank=False)
     description = models.TextField(blank=False)
     pics = models.ManyToManyField(URL)
+    def __str__(self):
+        return self.title
