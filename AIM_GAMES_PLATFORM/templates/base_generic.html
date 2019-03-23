@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  {% block title %}<title>AIM Games Platform</title>{% endblock %}
+  
+<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<style> 
+  body {
+  background-color: whitesmoke;
+  }
+  nav{
+  background-color:	#ff5c54;
+  }
+  #slide_out{
+  background-color: #ff5c54;
+  }
+ 
+</style>
+</head>
+
+
+<body>
+
+    <nav>
+        <div class="nav-wrapper">
+
+            <div class="container">
+                <a href="#" class="brand-logo" id="logotipo" >AIM Games</a>
+                <a href="#" class="sidenav-trigger" data-target="slide_out"><i class="material-icons">menu</i></a>
+                <ul class="hide-on-med-and-down right">
+                    <li class="active"><a>Página Principal</a></li>
+                    <li><a>Servicios</a></li>
+                    <li><a>Sobre Nosotros</a></li>
+                    <li><a>Contáctanos</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+    </nav>
+
+        <ul class="sidenav" id="slide_out">
+            <li class="active"><a>Página Principal</a></li>
+            <li><a>Servicios</a></li>
+            <li><a>Sobre Nosotros</a></li>
+            <li><a>Contáctanos</a></li>
+        </ul>
+
+        
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        const slide_menu = document.querySelectorAll(".sidenav");
+        M.Sidenav.init(slide_menu,{});
+    </script>
+  {% block content %}<!-- default content text (typically empty) -->{% endblock %}
+</body>
+</html>
