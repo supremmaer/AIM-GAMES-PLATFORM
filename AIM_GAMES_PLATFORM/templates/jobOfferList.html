@@ -1,0 +1,35 @@
+{% load staticfiles %}  
+<head>  
+    <!-- Compiled and minified CSS -->  
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">  
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">  
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+  
+    <!-- Compiled and minified JavaScript -->  
+    <script src="{% static 'js/materialize.min.js' %}"></script>  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+</head>  
+  
+<body class="container">
+    <div class="col s12">  
+        <h3 class=>Mensajes del foro</h3>    
+        <h5>Empresa: {{businessThread.profile.name }}</h5>   
+        <form action="/thread/business/list/{{businessThread.id}}">
+            <div class="input-field">
+            <input id="search" name="search" type="search" >
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+            </div>
+        </form>
+    </div>
+    <div class="col s12">
+        <div class="collection">
+            {% for thread in threads %}
+                <a href="/thread/detail/{{ thread.id}}" class="collection-item">{{ thread.title }}   &nbsp;&nbsp;&nbsp;&nbsp;  <i class="tiny material-icons">star</i> {{ thread.valoration.score }}</a>
+            {% endfor %}
+        </div>
+        <div class="right">
+            <a href="#!" class="btn waves-effect waves-light">Crear hilo</a>
+        </div>
+    </div>
+</body>

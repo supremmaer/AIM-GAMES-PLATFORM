@@ -6,7 +6,7 @@ from django.shortcuts import render, get_list_or_404
 from paypal.standard.forms import PayPalPaymentsForm
 from django.shortcuts import redirect
 from django.views.generic import FormView, CreateView
-from .models import Freelancer, Business, Thread, Response, Link
+from .models import Freelancer, Business, Thread, Response, Link, JobOffer
 from .forms import FreelancerForm, BusinessForm, ThreadForm
 
 
@@ -144,4 +144,13 @@ def threadList(request, business_id):
         q=Thread.objects.filter(business=business_id)
     threads= get_list_or_404(q)
     businessThread= get_object_or_404(Business,pk=business_id)
-    return render(request, 'threadList.html',{'threads':threads,'businessThread':businessThread})   
+    return render(request, 'threadList.html',{'threads':threads,'businessThread':businessThread}) 
+
+def jobOfferList(request):
+    if(request.GET.__contains__('search')):
+        search=request.GET.get('search')
+        q=JobOffer.objects.filter(business__profile__name__icontains=search)
+    else:
+        q=JobOffer.objects.all()
+    jobOffers= get_list_or_404(q)
+    return render(request, 'jobOfferList.html',{'jobOffers':jobOffers}) 
