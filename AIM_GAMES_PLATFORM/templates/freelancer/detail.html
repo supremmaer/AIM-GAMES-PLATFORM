@@ -1,0 +1,44 @@
+{% extends "base_generic.html" %}
+{% block content %}
+  
+<body>  
+<h1>Detalles del Freelancer</h1>    
+<h3>{{ freelancer.profile.name }}</h3> 
+
+<b>Links:</b>
+  {% for link in links %}
+  <p>{{link.url}}</p>
+  {% endfor %}  
+  <br>
+  <!-- {{link}} -->
+<!-- <p><b>Empresa:</b> {{ thread.business }}</p>  
+<p>{{ thread.description }}</p>  
+<p><b>Valoración:</b> {{ thread.valoration.score }}</p>  
+
+
+<p><b>Tags:</b>
+{% for tag in thread.tags.all %}
+{{tag.title}}</p>
+{% endfor %}  
+<br>
+
+<b>Imágenes:</b>
+{% for pic in thread.pics.all %}
+<a href="{{pic.title}}">Imagen</a>
+{% endfor %}  
+<br>
+
+<b>Archivos Adicionales:</b>
+{% for file in thread.attachedFiles.all %}
+<a href="{{file.title}}">Archivo</a>
+{% endfor %}  
+<br>
+
+<b>Respuestas:</b>
+
+    {% for response in responses %}  
+      <b>{{ response.title }}</b><br><p>{{response.description}}</p></li>  
+    {% endfor %}   -->
+    
+</body>
+{% endblock %}

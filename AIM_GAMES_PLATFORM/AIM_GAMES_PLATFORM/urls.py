@@ -27,11 +27,14 @@ urlpatterns = [
     path('pagar_paypal', pagarPaypal, name='pagarPaypal' ),
     path('payment_done', payment_done, name='payment_done'),
     path('payment_canceled', payment_canceled, name='payment_canceled'),
-    path('loginRedir',loginRedir),
+    path('login_redir',login_redir),
     path('accounts/login/', auth_views.LoginView.as_view(template_name='accounts/login.html')),
     path("logout/", auth_views.LogoutView.as_view(),{'next_page': settings.LOGOUT_REDIRECT_URL}, name="logout"),
     path('freelancer/create/',FreelancerCreate.as_view(),name='signupFreelancer'),
     path('business/create/',BusinessCreate.as_view(),name='signupBusiness'),
+    path('thread/create/',ThreadCreate.as_view(),name='threadCreate'),
     path('thread/detail/<int:thread_id>',threadDetail, name='threadDetail'),
+    path('thread/business/list/<int:business_id>', threadList, name='threadList'),
     #static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('freelancer/detail/<int:id>',freelancerDetail, name='freelancerDetail'),
 ]

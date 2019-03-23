@@ -1,16 +1,7 @@
-{% load staticfiles %}
-<head>
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="{% static 'js/materialize.min.js' %}"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
+{% extends "base_generic.html" %}
+{% block content %}
 <body>
 Clase de prueba para coprobar si ha sido logeado
 
 </body>
+{% endblock %}
