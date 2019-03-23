@@ -33,5 +33,6 @@ urlpatterns = [
     path('freelancer/create/',FreelancerCreate.as_view(),name='signupFreelancer'),
     path('business/create/',BusinessCreate.as_view(),name='signupBusiness'),
     path('thread/detail/<int:thread_id>',threadDetail, name='threadDetail'),
+    path('thread/business/list/<int:business_id>', threadList, name='threadList'),
     #static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 ]

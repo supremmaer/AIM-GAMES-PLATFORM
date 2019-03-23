@@ -2,9 +2,10 @@
 from django.conf import settings
 from django.urls import reverse
 from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_list_or_404
 from paypal.standard.forms import PayPalPaymentsForm
 from django.shortcuts import redirect
-from django.views.generic import FormView, CreateView
+from django.views.generic import FormView, CreateView, ListView
 from .models import Freelancer, Business, Thread, Response
 from .forms import FreelancerForm, BusinessForm
 
@@ -109,3 +110,12 @@ def threadDetail(request, thread_id):
        # responses = Response.objects.filter(Response_thread_title=thread_title)
         return render(request, 'threadDetail.html',{'thread':thread})
 
+def threadList(request, business_id):
+    if(request.GET.__contains__('search')):
+        search=request.GET.get('search')
+        q=Thread.objects.filter(business=business_id).filter(business__profile__name__icontains=search)
+    else:
+        q=Thread.objects.filter(business=business_id)
+    threads= get_list_or_404(q)
+    businessThread= get_object_or_404(Business,pk=business_id)
+    return render(request, 'threadList.html',{'threads':threads,'businessThread':businessThread})   
