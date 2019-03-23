@@ -1,0 +1,60 @@
+{% load staticfiles %}
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="{% static 'js/materialize.min.js' %}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+
+          $('.chips').chips();
+  $('.chips-initial').chips({
+    data: [{
+      tag: 'Apple',
+    }, {
+      tag: 'Microsoft',
+    }, {
+      tag: 'Google',
+    }],
+  });
+  $('.chips-placeholder').chips({
+    placeholder: 'Enter a tag',
+    secondaryPlaceholder: '+Tag',
+  });
+  $('.chips-autocomplete').chips({
+    autocompleteOptions: {
+      data: {
+        'Apple': null,
+        'Microsoft': null,
+        'Google': null
+      },
+      limit: Infinity,
+      minLength: 1
+    }
+  });
+    </script>
+</head>
+
+<body>
+<div id ="test" class="chips chips-placeholder"></div>
+<div class="row">
+
+        <!--<form method="POST">-->
+            <!--{% csrf_token %}-->
+            <!--{{form.errors}}-->
+            <!--{{form.non_field_errors}}-->
+
+            <!--{{ form }}-->
+
+            <!--&lt;!&ndash;<input type="submit" value="Submit">&ndash;&gt;-->
+        <!--</form>-->
+    </div>
+</div>
+<script>M.AutoInit();</script>
+</body>

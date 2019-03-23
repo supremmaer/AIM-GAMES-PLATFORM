@@ -1,11 +1,10 @@
-from django.forms import ModelForm, forms, CharField, EmailField
+from django.forms import ModelForm, forms, CharField, EmailField, ModelMultipleChoiceField,CheckboxSelectMultiple
 from django.contrib.auth.forms import UserCreationForm
-from AIM_GAMES.models import Freelancer, Business, Profile
+from AIM_GAMES.models import Freelancer, Business, Profile, Thread, Tag
 from django.contrib.auth.models import User
 
 
 class BusinessForm(ModelForm):
-    # TODO Testear salvado
     class Meta:
         model = Business
         exclude = ()
@@ -15,20 +14,22 @@ class BusinessForm(ModelForm):
         self.fields['profile'].required = False
         data = kwargs.get('data')
         # 'prefix' parameter required if in a modelFormset
-        self.profile_form = ProfileForm(instance=self.instance, prefix=self.prefix, data=data)
+        self.instance.profile = Profile()
+        self.profile_form = ProfileForm(instance=self.instance and self.instance.profile, prefix=self.prefix, data=data)
 
     def clean(self):
         if not self.profile_form.is_valid():
             raise forms.ValidationError(self.profile_form.errors)
 
-    def save(self, commit=True):
+    def save(self, commit=False):
+        print('save: BusinessForm')
         obj = super(BusinessForm, self).save(commit=commit)
         obj.profile = self.profile_form.save()
-        return obj.save()
+        obj.save()
+        return obj
 
 
 class FreelancerForm(ModelForm):
-    # TODO Testear salvado
     class Meta:
         model = Freelancer
         exclude = ()
@@ -56,7 +57,6 @@ class FreelancerForm(ModelForm):
 
 
 class ProfileForm(ModelForm):
-    # TODO Testear salvado
     class Meta:
         model = Profile
         exclude = ()
@@ -84,19 +84,29 @@ class ProfileForm(ModelForm):
 
 
 class UserForm(UserCreationForm):
-    # TODO Testear salvado
-
     class Meta:
         model = User
         fields = ['username']
 
-    # def __init__(self, *args, **kwargs):
-    #     print('__init__ UserForm')
-    #     super(UserForm, self).__init__(*args, **kwargs)
 
-    # def save(self, commit=False):
-    #     print('save: UserForm')
-    #     obj = super(UserForm, self).save(commit=commit)
-    #     return obj
+class ThreadForm(ModelForm):
+    # Representing the many to many related field in Thread
+    tags = ModelMultipleChoiceField(widget=CheckboxSelectMultiple, queryset=Tag.objects.all())
 
+    class Meta:
+        model = Thread
+        exclude = ('business', 'valoration')
+
+    def __init__(self, *args, **kwargs):
+        print('__init__ ThreadForm')
+        # Only in case we build the form from an instance
+        # (otherwise, 'tags' list should be empty)
+        if kwargs.get('instance'):
+            # We get the 'initial' keyword argument or initialize it
+            # as a dict if it didn't exist.
+            initial = kwargs.setdefault('initial', {})
+            # The widget for a ModelMultipleChoiceField expects
+            # a list of primary key for the selected data.
+            initial['toppings'] = [t.pk for t in kwargs['instance'].tag_set.all()]
+        super(ThreadForm, self).__init__(*args, **kwargs)
 

@@ -5,9 +5,9 @@ from django.shortcuts import render, get_object_or_404
 from django.shortcuts import render, get_list_or_404
 from paypal.standard.forms import PayPalPaymentsForm
 from django.shortcuts import redirect
-from django.views.generic import FormView, CreateView, ListView
-from .models import Freelancer, Business, Thread, Response
-from .forms import FreelancerForm, BusinessForm
+from django.views.generic import FormView, CreateView
+from .models import Freelancer, Business, Thread, Response, Link
+from .forms import FreelancerForm, BusinessForm, ThreadForm
 
 
 def index(request):
@@ -40,12 +40,12 @@ def payment_canceled(request):
     return render(request, 'payment_canceled.html')
 
 
-def loginRedir(request):
+def login_redir(request):
     if request.user.is_superuser:
         res = redirect('admin/')
     else:
         res = redirect('accounts/login/')
-    return res;
+    return res
 
 
 class FreelancerView(FormView):
@@ -78,7 +78,7 @@ class FreelancerCreate(CreateView):
     def form_valid(self, form):
         # This method is called when valid form data has been POSTed.
         # It should return an HttpResponse.
-        print('form_valid')
+        print('FreelancerCreate: form_valid')
 
         return super().form_valid(form)
 
@@ -88,27 +88,53 @@ class BusinessCreate(CreateView):
     template_name = 'accounts/signup.html'
     success_url = '/accounts/login'
 
+    def form_valid(self, form):
+        # This method is called when valid form data has been POSTed.
+        # It should return an HttpResponse.
+        print('BusinessCreate: form_valid')
+
+        return super().form_valid(form)
+
     def get_context_data(self, **kwargs):
+        # This method is called before the view es generate and add the context
+        # It should return the context
+
         context = super(BusinessCreate,self).get_context_data(**kwargs)
         context['type'] = 'business'
         return context
 
 
-# def signup(request):
-#     if request.method == 'POST':
-#         # Do things
-#         form = SignupForm(request.POST)
-#     else:
-#         if request.GET.get('b') == "1":
-#             context = {'type': "business"}
-#         else:
-#             context = {'type': "user"}
-#     return render(request, 'signup/signup.html', context)
+class ThreadCreate(CreateView):
+    form_class = ThreadForm
+    template_name = 'thread/form.html'
+    success_url = '/accounts/login'
+
+    def form_valid(self, form):
+        # This method is called when valid form data has been POSTed.
+        # It should return an HttpResponse.
+        print('ThreadCreate: form_valid')
+
+        return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        # This method is called before the view es generate and add the context
+        # It should return the context
+
+        context = super(ThreadCreate, self).get_context_data(**kwargs)
+
+        return context
+
 
 def threadDetail(request, thread_id):
         thread = get_object_or_404(Thread, pk=thread_id)
-       # responses = Response.objects.filter(Response_thread_title=thread_title)
-        return render(request, 'threadDetail.html',{'thread':thread})
+        responses = thread.response_set.all()
+        return render(request, 'threadDetail.html', {'thread': thread, 'responses:': responses})
+
+def freelancerDetail(request, id):
+        freelancer = get_object_or_404(Freelancer, pk=id)
+        #links = Link.objects.select_related('freelancer').get(id=id)
+        links = freelancer.link_set.all()
+        return render(request, 'freelancer/detail.html', {'freelancer': freelancer,'links':links})
 
 def threadList(request, business_id):
     if(request.GET.__contains__('search')):

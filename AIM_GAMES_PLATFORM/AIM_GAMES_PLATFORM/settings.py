@@ -140,5 +140,5 @@ GRAPH_MODELS = {
   'group_models': True,
 }
 # Login
-LOGIN_REDIRECT_URL = '/loginRedir'
+LOGIN_REDIRECT_URL = '/login_redir'
 LOGOUT_REDIRECT_URL = '/accounts/login'
