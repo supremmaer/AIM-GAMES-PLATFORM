@@ -44,7 +44,7 @@ def loginRedir(request):
         res = redirect('admin/')
     else:
         res = redirect('accounts/login/')
-    return res;
+    return res
 
 
 class FreelancerView(FormView):

@@ -70,10 +70,11 @@ class Business(models.Model):
         return self.profile.email
 
 # Freelancer objects
-
+class Curriculum(models.Model):
+    freelancer = models.OneToOneField(Freelancer, on_delete=models.CASCADE)
 
 class ProfessionalExperience(models.Model):
-    freelancer = models.ForeignKey(Freelancer, on_delete=models.CASCADE)
+    curriculum = models.ForeignKey(Curriculum, on_delete=models.CASCADE)
     center = models.TextField(max_length=50, blank=False)
     formation = models.TextField(max_length=100, blank=False)
     startDate = models.DateTimeField(null=False)
@@ -82,7 +83,7 @@ class ProfessionalExperience(models.Model):
 
 
 class Formation(models.Model):
-    freelancer = models.ForeignKey(Freelancer, on_delete=models.CASCADE)
+    curriculum = models.ForeignKey(Curriculum, on_delete=models.CASCADE)
     center = models.TextField(max_length=50, blank=False)
     formation = models.TextField(max_length=100, blank=False)
     startDate = models.DateTimeField(null=False)
@@ -91,7 +92,7 @@ class Formation(models.Model):
 
 
 class GraphicEngineExperience(models.Model):
-    freelancer = models.ForeignKey(Freelancer, on_delete=models.CASCADE)
+    curriculum = models.ForeignKey(Curriculum, on_delete=models.CASCADE)
     graphicEngine = models.ManyToManyField(
         GraphicEngine)
     graphicExperience = models.IntegerField(
@@ -99,17 +100,17 @@ class GraphicEngineExperience(models.Model):
 
 
 class HTML5Showcase(models.Model):
-    freelancer = models.OneToOneField(Freelancer, on_delete=models.CASCADE)
+    curriculum = models.ForeignKey(Curriculum, on_delete=models.CASCADE)
     embedCode = models.TextField()
 
 
 class Aptitude(models.Model):
-    freelancer = models.ForeignKey(Freelancer, on_delete=models.CASCADE)
+    curriculum = models.ForeignKey(Curriculum, on_delete=models.CASCADE)
     aptitude = models.TextField(max_length=30, blank=False)
 
 
 class Link(models.Model):
-    freelancer = models.ForeignKey(Freelancer, on_delete=models.CASCADE)
+    curriculum = models.ForeignKey(Curriculum, on_delete=models.CASCADE)
     url = models.URLField(blank=False)
 
 # Business objects
