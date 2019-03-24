@@ -2,11 +2,13 @@
 from django.conf import settings
 from django.urls import reverse
 from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_list_or_404
 from paypal.standard.forms import PayPalPaymentsForm
 from django.shortcuts import redirect
 from django.views.generic import FormView, CreateView
-from .models import Freelancer, Business, Thread, Response, Link
+from .models import Freelancer, Business, Thread, Response, Link, JobOffer
 from .forms import FreelancerForm, BusinessForm, ThreadForm
+from django.db.models import Q
 
 
 def index(request):
@@ -135,3 +137,25 @@ def freelancerDetail(request, id):
         links = freelancer.link_set.all()
         return render(request, 'freelancer/detail.html', {'freelancer': freelancer,'links':links})
 
+def threadList(request, business_id):
+    if(request.GET.__contains__('search')):
+        search=request.GET.get('search')
+        q=Thread.objects.filter(business=business_id).filter(business__profile__name__icontains=search)
+    else:
+        q=Thread.objects.filter(business=business_id)
+    threads= get_list_or_404(q)
+    businessThread= get_object_or_404(Business,pk=business_id)
+    return render(request, 'threadList.html',{'threads':threads,'businessThread':businessThread}) 
+
+def jobOfferList(request):
+    if(request.GET.__contains__('search')):
+        search=request.GET.get('search')
+        q=JobOffer.objects.filter( Q(business__profile__name__icontains=search)|
+        Q(position__icontains=search)|
+        Q(experienceRequired__icontains=search)|
+        Q(ubication__icontains=search)|
+        Q(description__icontains=search))
+    else:
+        q=JobOffer.objects.all()
+    jobOffers= get_list_or_404(q)
+    return render(request, 'jobOfferList.html',{'jobOffers':jobOffers}) 
