@@ -1,20 +1,10 @@
-{% load staticfiles %}  
-<head>  
-    <!-- Compiled and minified CSS -->  
-    <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">  
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">  
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+{% extends "base_generic.html" %}
+{% block content %} 
   
-    <!-- Compiled and minified JavaScript -->  
-    <script src="{% static 'js/materialize.min.js' %}"></script>  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-</head>  
-  
-<body class="container">
+<body>
     <div class="col s12">  
-        <h3 class=>Mensajes del foro</h3>    
-        <h5>Empresa: {{businessThread.profile.name }}</h5>   
-        <form action="/thread/business/list/{{businessThread.id}}">
+        <h3>Ofertas</h3>      
+        <form action="/joboffer/user/list/">
             <div class="input-field">
             <input id="search" name="search" type="search" >
             <label class="label-icon" for="search"><i class="material-icons">search</i></label>
@@ -23,13 +13,26 @@
         </form>
     </div>
     <div class="col s12">
+        <div class="row">
+            <div class="col s3"><h5>Empresa</h5></div>
+            <div class="col s3"><h5>Salario</h5></div>
+            <div class="col s3"><h5>Horarios</h5></div>
+        </div>
         <div class="collection">
-            {% for thread in threads %}
-                <a href="/thread/detail/{{ thread.id}}" class="collection-item">{{ thread.title }}   &nbsp;&nbsp;&nbsp;&nbsp;  <i class="tiny material-icons">star</i> {{ thread.valoration.score }}</a>
+            {% for jobOffer in jobOffers %}
+            <div class="collection-item">
+                <div class="row">
+                    <div class="col s3">{{ jobOffer.business.profile.name }}</div><div class="col s3">{{ jobOffer.salary}}</div><div class="col s3">{{ jobOffer.schedule}}</div><div class="col s2 offset-s1"><a href="#!" class="btn waves-effect waves-red">Ver</a></div>
+                </div>
+            </div>
             {% endfor %}
         </div>
+        <!--A falta de encontrar una manera mejor, esto permite saber si es un business-->
+        {% if request.user.profession == null %}
         <div class="right">
-            <a href="#!" class="btn waves-effect waves-light">Crear hilo</a>
+            <a href="#!" class="btn waves-effect waves-red">Crear oferta</a>
         </div>
+        {% endif %}
     </div>
 </body>
+{% endblock %}

@@ -8,6 +8,7 @@ from django.shortcuts import redirect
 from django.views.generic import FormView, CreateView
 from .models import Freelancer, Business, Thread, Response, Link, JobOffer
 from .forms import FreelancerForm, BusinessForm, ThreadForm
+from django.db.models import Q
 
 
 def index(request):
@@ -149,7 +150,11 @@ def threadList(request, business_id):
 def jobOfferList(request):
     if(request.GET.__contains__('search')):
         search=request.GET.get('search')
-        q=JobOffer.objects.filter(business__profile__name__icontains=search)
+        q=JobOffer.objects.filter( Q(business__profile__name__icontains=search)|
+        Q(position__icontains=search)|
+        Q(experienceRequired__icontains=search)|
+        Q(ubication__icontains=search)|
+        Q(description__icontains=search))
     else:
         q=JobOffer.objects.all()
     jobOffers= get_list_or_404(q)

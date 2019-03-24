@@ -2,9 +2,9 @@
 {% block content %}
   
   
-<body class="container">
+<body>
     <div class="col s12">  
-        <h3 class=>Mensajes del foro</h3>    
+        <h3>Mensajes del foro</h3>    
         <h5>Empresa: {{businessThread.profile.name }}</h5>   
         <form action="/thread/business/list/{{businessThread.id}}">
             <div class="input-field">
@@ -17,11 +17,11 @@
     <div class="col s12">
         <div class="collection">
             {% for thread in threads %}
-                <a href="/thread/detail/{{ thread.id}}" class="collection-item">{{ thread.title }}   &nbsp;&nbsp;&nbsp;&nbsp;  <i class="tiny material-icons">star</i> {{ thread.valoration.score }}</a>
+                <a href="/thread/detail/{{thread.id}}" class="collection-item">{{ thread.title }}   &nbsp;&nbsp;&nbsp;&nbsp;  <i class="tiny material-icons">star</i> {{ thread.valoration.score }}</a>
             {% endfor %}
         </div>
         <div class="right">
-            <a href="#!" class="btn waves-effect waves-light">Crear hilo</a>
+            <a href="#!" class="btn waves-effect waves-red">Crear hilo</a>
         </div>
     </div>
 </body>
