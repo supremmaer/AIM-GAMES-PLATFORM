@@ -1,7 +1,8 @@
-from django.forms import ModelForm, forms, CharField, EmailField, ModelMultipleChoiceField,CheckboxSelectMultiple
+from django.forms import ModelForm, forms, CharField, EmailField, ModelMultipleChoiceField,CheckboxSelectMultiple, DateField, DateInput
 from django.contrib.auth.forms import UserCreationForm
 from AIM_GAMES.models import Freelancer, Business, Profile, Thread, Tag
 from django.contrib.auth.models import User
+
 
 
 class BusinessForm(ModelForm):
@@ -19,7 +20,7 @@ class BusinessForm(ModelForm):
 
     def clean(self):
         if not self.profile_form.is_valid():
-            raise forms.ValidationError(self.profile_form.errors)
+            raise forms.ValidationError("Profile not valid")
 
     def save(self, commit=False):
         print('save: BusinessForm')
@@ -57,6 +58,8 @@ class FreelancerForm(ModelForm):
 
 
 class ProfileForm(ModelForm):
+    dateOfBirth = DateField(widget=DateInput(attrs={'placeholder': 'MM/DD/YY', 'required': 'required'}))
+
     class Meta:
         model = Profile
         exclude = ()
@@ -105,5 +108,5 @@ class ThreadForm(ModelForm):
 
     def clean(self):
         print('clean: ThreadForm')
-        
+
 

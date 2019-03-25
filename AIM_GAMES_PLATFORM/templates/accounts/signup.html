@@ -45,22 +45,31 @@
 
                             {% if field.id_for_label != "id_user" %}
                             {% if field.widget.input_type == "select" %}
-                             <input placeholder="" id="{{ field.id_for_label }}" type="{{ field.field.widget.input_type }}" class="validate" name="{{ field.html_name }}">
+                             <input placeholder="" id="{{ field.id_for_label }}" type="{{ field.field.widget.input_type }}"
+                                    class="validate" name="{{ field.html_name }}" value="{{ field.value|default_if_none:'' }}">
                             {% else %}
-                             <input placeholder="" id="{{ field.id_for_label }}" type="text" class="validate" name="{{ field.html_name }}">
+                             <input id="{{ field.id_for_label }}" type="text" class="validate" name="{{ field.html_name }}" value="{{ field.value|default_if_none:'MM/DD/YY' }}">
                              {% endif %}
                             <label for="{{ field.id_for_label }}">{{ field.label_tag }}:</label>
                             {% endif %}
                         </div>
                          {% endfor %}
 
+
+                         {% if type != "business" %}
                          {% for field in form.visible_fields %}
                          <span class="red-text">{{ field.errors }}</span>
                         <div class="input-field col s12">
                             <span class="red-text">{{ field.errors }}</span>
-                            <label for="{{ field.id_for_label }}">{{ field.label_tag }}:</label>
+                           {% if field.id_for_label != "id_profile" %}
+
+                             <input placeholder="" id="{{ field.id_for_label }}" type="text" class="validate" name="{{ field.html_name }}" value="{{ field.value|default_if_none:'' }}">
+                             <label for="{{ field.id_for_label }}">{{ field.label_tag }}:</label>
+                            {% endif %}
+
                         </div>
                          {% endfor %}
+                         {%endif%}
                         <!--<div class="input-field col s12">-->
                             <!--<input placeholder="" id="pass" type="password" class="validate">-->
                             <!--<label for="pass">Password:</label>-->
