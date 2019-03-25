@@ -60,7 +60,7 @@ def login_redir(request):
     else:
         prof = Profile.objects.filter(user__pk=request.user.id)
         buss = Business.objects.filter(profile__pk=prof[0].id)
-        if not buss is None:
+        if buss:
             if not buss[0].lastPayment is None:
                 if (buss[0].lastPayment- datetime.now(timezone.utc)).total_seconds() > 31556952:
                     auth.logout(request)

@@ -1,6 +1,17 @@
 {% extends "base_generic.html" %}
 {% block content %}
-
+<head>
+    <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+  crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $.datepicker.setDefaults($.datepicker.regional["en"]);
+$("#datepicker").datepicker();
+});
+    </script>
+</head>
 <body>
 <div class="row">
     <div class="col s12 l6 m10 offset-m1 offset-l3">
@@ -45,22 +56,33 @@
 
                             {% if field.id_for_label != "id_user" %}
                             {% if field.widget.input_type == "select" %}
-                             <input placeholder="" id="{{ field.id_for_label }}" type="{{ field.field.widget.input_type }}" class="validate" name="{{ field.html_name }}">
+                             <input placeholder="" id="{{ field.id_for_label }}" type="{{ field.field.widget.input_type }}"
+                                    class="validate" name="{{ field.html_name }}" value="{{ field.value|default_if_none:'' }}">
+                            {% elif field.id_for_label == "id_dateOfBirth_month" %}
+                             <input id="{{ field.id_for_label }}" type="date" class="validate" name="{{ field.html_name }}" value="{{ field.value}}">
                             {% else %}
-                             <input placeholder="" id="{{ field.id_for_label }}" type="text" class="validate" name="{{ field.html_name }}">
+                             <input id="{{ field.id_for_label }}" type="text" class="validate" name="{{ field.html_name }}" value="{{ field.value|default_if_none:'MM/DD/YY' }}">
                              {% endif %}
                             <label for="{{ field.id_for_label }}">{{ field.label_tag }}:</label>
                             {% endif %}
                         </div>
                          {% endfor %}
 
+
+                         {% if type != "business" %}
                          {% for field in form.visible_fields %}
                          <span class="red-text">{{ field.errors }}</span>
                         <div class="input-field col s12">
                             <span class="red-text">{{ field.errors }}</span>
-                            <label for="{{ field.id_for_label }}">{{ field.label_tag }}:</label>
+                           {% if field.id_for_label != "id_profile" %}
+
+                             <input placeholder="" id="{{ field.id_for_label }}" type="text" class="validate" name="{{ field.html_name }}" value="{{ field.value|default_if_none:'' }}">
+                             <label for="{{ field.id_for_label }}">{{ field.label_tag }}:</label>
+                            {% endif %}
+
                         </div>
                          {% endfor %}
+                         {%endif%}
                         <!--<div class="input-field col s12">-->
                             <!--<input placeholder="" id="pass" type="password" class="validate">-->
                             <!--<label for="pass">Password:</label>-->
