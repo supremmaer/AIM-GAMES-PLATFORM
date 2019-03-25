@@ -2,6 +2,7 @@ from django.forms import ModelForm, forms, CharField, EmailField, ModelMultipleC
 from django.contrib.auth.forms import UserCreationForm
 from AIM_GAMES.models import Freelancer, Business, Profile, Thread, Tag
 from django.contrib.auth.models import User
+from django.contrib.auth.models import Group
 
 
 class BusinessForm(ModelForm):
@@ -25,6 +26,8 @@ class BusinessForm(ModelForm):
         print('save: BusinessForm')
         obj = super(BusinessForm, self).save(commit=commit)
         obj.profile = self.profile_form.save()
+        group = Group.objects.get(name='Business')
+        obj.profile.user.groups.add(group)
         obj.save()
         return obj
 
@@ -52,6 +55,8 @@ class FreelancerForm(ModelForm):
         print('save: FreelancerForm')
         obj = super(FreelancerForm, self).save(commit=commit)
         obj.profile = self.profile_form.save()
+        group = Group.objects.get(name='Freelancer')
+        obj.profile.user.groups.add(group)
         obj.save()
         return obj
 

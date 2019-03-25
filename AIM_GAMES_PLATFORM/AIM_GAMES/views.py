@@ -12,6 +12,7 @@ from django.db.models import Q
 from datetime import datetime, timezone
 from django.contrib import auth
 from django.contrib import sessions
+from django.contrib.auth.models import Group
 
 from django.utils.translation import gettext as _
 from django.utils import translation
