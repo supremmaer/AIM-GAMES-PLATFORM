@@ -173,10 +173,8 @@ def threadList(request, business_id):
         q=Thread.objects.filter(business=business_id).filter(business__profile__name__icontains=search)
     else:
         q=Thread.objects.filter(business=business_id)
-    queryset = _get_queryset(q)
-    queryset2 = _get_queryset(Business)
-    threads= list(queryset)
-    businessThread= queryset2.get(pk=business_id)
+    threads= q
+    businessThread= get_object_or_404(Business,pk=business_id)
     return render(request, 'threadList.html',{'threads':threads,'businessThread':businessThread}) 
 
 def jobOfferList(request):
@@ -189,7 +187,7 @@ def jobOfferList(request):
         Q(description__icontains=search))
     else:
         q=JobOffer.objects.all()
-    jobOffers= get_list_or_404(q)
+    jobOffers= q
     return render(request, 'jobOfferList.html',{'jobOffers':jobOffers}) 
 
 def checkUser(request):
