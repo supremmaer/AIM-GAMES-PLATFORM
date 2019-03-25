@@ -57,6 +57,8 @@ class FreelancerForm(ModelForm):
 
 
 class ProfileForm(ModelForm):
+    dateOfBirth = DateField(widget=SelectDateWidget)
+
     class Meta:
         model = Profile
         exclude = ()

@@ -1,7 +1,16 @@
 {% extends "base_generic.html" %}
 {% block content %}
 <head>
-
+    <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+  crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $.datepicker.setDefaults($.datepicker.regional["en"]);
+$("#datepicker").datepicker();
+});
+    </script>
 </head>
 <body>
 <div class="row">
@@ -50,7 +59,7 @@
                              <input placeholder="" id="{{ field.id_for_label }}" type="{{ field.field.widget.input_type }}"
                                     class="validate" name="{{ field.html_name }}" value="{{ field.value|default_if_none:'' }}">
                             {% elif field.id_for_label == "id_dateOfBirth_month" %}
-                             <input id="{{ field.id_for_label }}" type="date" class="datepciker validate" name="{{ field.html_name }}" value="{{ field.value|default_if_none:'MM/DD/YY' }}">
+                             <input id="{{ field.id_for_label }}" type="date" class="validate" name="{{ field.html_name }}" value="{{ field.value}}">
                             {% else %}
                              <input id="{{ field.id_for_label }}" type="text" class="validate" name="{{ field.html_name }}" value="{{ field.value|default_if_none:'MM/DD/YY' }}">
                              {% endif %}
