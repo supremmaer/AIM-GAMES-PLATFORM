@@ -31,8 +31,8 @@
                  <div class="card-content center">
                      <div class="row">
                          {% for field in form.profile_form.user_form.visible_fields %}
+                         <span class="red-text">{{ field.errors }}</span>
                         <div class="input-field col s12">
-                            <span class="red-text">{{ field.errors }}</span>
                             <!--<input placeholder="" id="{{ field.id_for_label }}" type="text" class="validate">-->
                             {{field}}
                             <label for="{{ field.id_for_label }}">{{ field.label_tag }}:</label>
@@ -40,13 +40,14 @@
                          {% endfor %}
 
                          {% for field in form.profile_form.visible_fields %}
+                         <span class="red-text">{{ field.errors }}</span>
                         <div class="input-field col s12">
-                            <span class="red-text">{{ field.errors }}</span>
+
                             {% if field.id_for_label != "id_user" %}
                             {% if field.widget.input_type == "select" %}
-                             <input placeholder="" id="{{ field.id_for_label }}" type="{{ field.field.widget.input_type }}" class="validate">
+                             <input placeholder="" id="{{ field.id_for_label }}" type="{{ field.field.widget.input_type }}" class="validate" name="{{ field.html_name }}">
                             {% else %}
-                             <input placeholder="" id="{{ field.id_for_label }}" type="text" class="validate">
+                             <input placeholder="" id="{{ field.id_for_label }}" type="text" class="validate" name="{{ field.html_name }}">
                              {% endif %}
                             <label for="{{ field.id_for_label }}">{{ field.label_tag }}:</label>
                             {% endif %}
@@ -54,6 +55,7 @@
                          {% endfor %}
 
                          {% for field in form.visible_fields %}
+                         <span class="red-text">{{ field.errors }}</span>
                         <div class="input-field col s12">
                             <span class="red-text">{{ field.errors }}</span>
                             <label for="{{ field.id_for_label }}">{{ field.label_tag }}:</label>
