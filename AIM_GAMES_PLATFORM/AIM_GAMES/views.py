@@ -6,7 +6,7 @@ from django.shortcuts import render, get_list_or_404
 from paypal.standard.forms import PayPalPaymentsForm
 from django.shortcuts import redirect
 from django.views.generic import FormView, CreateView
-from .models import Freelancer, Business, Thread, Response, Link, JobOffer
+from .models import Freelancer, Business, Thread, Response, Link, JobOffer, Curriculum, Profile
 from .forms import FreelancerForm, BusinessForm, ThreadForm
 from django.db.models import Q
 
@@ -131,11 +131,16 @@ def threadDetail(request, thread_id):
         responses = thread.response_set.all()
         return render(request, 'threadDetail.html', {'thread': thread, 'responses:': responses})
 
-def freelancerDetail(request, id):
-        freelancer = get_object_or_404(Freelancer, pk=id)
-        #links = Link.objects.select_related('freelancer').get(id=id)
-        links = freelancer.link_set.all()
-        return render(request, 'freelancer/detail.html', {'freelancer': freelancer,'links':links})
+def freelancerDetail(request, id):      
+        freelancer = get_object_or_404(Freelancer,pk=id)
+        curriculum = freelancer.curriculum
+        links = curriculum.link_set.all()
+        formation = curriculum.formation_set.all()
+        professionalExperience = curriculum.professionalexperience_set.all()
+        HTML5Showcase = curriculum.html5showcase_set.all()
+        graphicEngineExperience = curriculum.graphicengineexperience_set.all()
+        aptitude = curriculum.aptitude_set.all()
+        return render(request, 'freelancer/detail.html', {'freelancer': freelancer,'links':links,'formations':formation,'professionalExperiences':professionalExperience,'HTML5Showcase':HTML5Showcase,'graphicEngineExperiences':graphicEngineExperience,'aptitudes':aptitude})
 
 def threadList(request, business_id):
     if(request.GET.__contains__('search')):
@@ -159,3 +164,26 @@ def jobOfferList(request):
         q=JobOffer.objects.all()
     jobOffers= get_list_or_404(q)
     return render(request, 'jobOfferList.html',{'jobOffers':jobOffers}) 
+
+def checkUser():
+    freelancer = None
+    business = None
+    if request.user.is_authenticated:
+        user = request.user
+        profile = user.profile
+        print(profile)
+        #profile = Profile.objects.select_related('user').get(id=user.id)
+        try:
+            freelancer = Freelancer.objects.select_related('profile').get(id=profile.freelancer.id)
+        except:
+            print('magic')
+        try:
+            business = Business.objects.select_related('profile').get(id=profile.business.id)
+        except:
+            print('moar magic')
+    if freelancer!=None:
+        return 'freelancer'
+    elif business !=None:
+        return 'bussines'
+    else:
+        return 'none'
