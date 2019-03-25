@@ -28,5 +28,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(revert_migration, apply_migration)
+        migrations.RunPython(apply_migration, revert_migration)
     ]
