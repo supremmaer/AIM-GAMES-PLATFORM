@@ -1,8 +1,7 @@
-from django.forms import ModelForm, forms, CharField, EmailField, ModelMultipleChoiceField,CheckboxSelectMultiple, DateField, DateInput
+from django.forms import ModelForm, forms, CharField, EmailField, ModelMultipleChoiceField,CheckboxSelectMultiple, DateField, DateInput,SelectDateWidget
 from django.contrib.auth.forms import UserCreationForm
 from AIM_GAMES.models import Freelancer, Business, Profile, Thread, Tag
 from django.contrib.auth.models import User
-
 
 
 class BusinessForm(ModelForm):
@@ -58,8 +57,6 @@ class FreelancerForm(ModelForm):
 
 
 class ProfileForm(ModelForm):
-    dateOfBirth = DateField(widget=DateInput(attrs={'placeholder': 'MM/DD/YY', 'required': 'required'}))
-
     class Meta:
         model = Profile
         exclude = ()
