@@ -38,4 +38,5 @@ urlpatterns = [
     path('joboffer/user/list/', jobOfferList, name='jobOfferList'),
     #static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     path('freelancer/detail/<int:id>',freelancerDetail, name='freelancerDetail'),
+    path('setlanguage/<str:language>', setlanguage)
 ]

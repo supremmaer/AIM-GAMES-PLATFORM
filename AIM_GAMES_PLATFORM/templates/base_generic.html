@@ -1,3 +1,4 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -20,6 +21,8 @@
   }
  
 </style>
+<a href="/setlanguage/es-ES" target="_self" class="collection-item">Spanish</a>
+<a href="/setlanguage/en-GB" target="_self" class="collection-item">English</a>
 </head>
 
 
@@ -32,15 +35,16 @@
                 <a href="#" class="brand-logo" id="logotipo" >AIM Games</a>
                 <a href="#" class="sidenav-trigger" data-target="slide_out"><i class="material-icons">menu</i></a>
                 <ul class="hide-on-med-and-down right">
-                    <li class="active"><a>Página Principal</a></li>
-                    <li><a>Servicios</a></li>
-                    <li><a>Sobre Nosotros</a></li>
+
+                    <li class="active"><a>{% trans "mainpage" %}</a></li>
+                    <li><a>{% trans "services" %}</a></li>
+                    <li><a>{% trans "aboutus" %}</a></li>
                     <!--Usar el método checkUser tras el login y luego poner{ if business!=None }...{{business.id}}...{ endif } -->
                     <!--Ponerlo tanto en esta lista como en la de abajo y ver si la página entera se recarga o sólo el cuerpo-->
                     <!--Decidir si el ckeck se hace en cada vista o sólo en el menú en general-->
-                    <li><a href="/thread/business/list/1" target="_self" class="collection-item">Hilos</a></li>
-                    <li><a href="/joboffer/user/list/" target="_self" class="collection-item">Ofertas de trabajo</a></li>
-                   
+                    <li><a href="/thread/business/list/1" target="_self" class="collection-item">{% trans "threads" %}</a></li>
+                    <li><a href="/joboffer/user/list/" target="_self" class="collection-item">{% trans "joboffers" %}</a></li>
+      
                 </ul>
 
             </div>
@@ -49,11 +53,13 @@
     </nav>
 
         <ul class="sidenav" id="slide_out">
-            <li class="active"><a>Página Principal</a></li>
-            <li><a>Servicios</a></li>
-            <li><a>Sobre Nosotros</a></li>
+
+            <li class="active"><a>{% trans "mainpage" %}</a></li>
+            <li><a>{% trans "services" %}</a></li>
+            <li><a>{% trans "aboutus" %}</a></li>
             <li><a href="/thread/business/list/1" target="_self" class="collection-item">Hilos</a></li>
             <li><a href="/joboffer/user/list/" target="_self" class="collection-item">Ofertas de trabajo</a></li>
+
         </ul>
 
         
