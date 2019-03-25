@@ -11,12 +11,21 @@ from .forms import FreelancerForm, BusinessForm, ThreadForm
 from django.db.models import Q
 from datetime import datetime, timezone
 from django.contrib import auth
+from django.contrib import sessions
 
+from django.utils.translation import gettext as _
+from django.utils import translation
 
 def index(request):
     # esto es como el controlador/servicios
+    language = request.session['language']
+    translation.activate(language)
+
     return render(request, 'index.html')
 
+def setlanguage(request, language):
+    request.session['language'] = language
+    return redirect('/')
 
 def pagarPaypal(request):
     host = request.get_host()

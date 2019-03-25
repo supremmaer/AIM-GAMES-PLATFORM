@@ -1,0 +1,11 @@
+Instalad esta cosa: https://github.com/mlocati/gettext-iconv-windows/releases/download/v0.19.8.1-v1.15/gettext0.19.8.1-iconv1.15-shared-32.exe
+
+En cada vista, añadid al principio {% load i18n %}
+
+En los sitios del html que queráis meter texto traducible, poned {% trans "PALABRA CLAVE" %}
+Para cada idioma corred "django-admin makemessages -l IDIOMA", los idiomas son en_GB y es_ES
+Esto os actualizará los archivos dentro de la carpeta locale (las subcarpetas de cada idioma)
+Dentro de cada carpeta tendréis varios pares de msgid y msgstr.
+msgid es lo que coge del trans del html (esto lo pone automáticamente el makemessages).
+msgstr es lo que devuelve (según el idioma).
+Cuando lo rellenéis todos, corred "django-admin compilemessages", genera unos binarios de las traducciones que son más eficientes
