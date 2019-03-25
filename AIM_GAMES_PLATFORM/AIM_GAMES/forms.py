@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class BusinessForm(ModelForm):
     class Meta:
         model = Business
-        exclude = ()
+        exclude = ('lastPayment',)
 
     def __init__(self, *args, **kwargs):
         super(BusinessForm, self).__init__(*args, **kwargs)

@@ -6,9 +6,11 @@ from django.shortcuts import render, get_list_or_404
 from paypal.standard.forms import PayPalPaymentsForm
 from django.shortcuts import redirect
 from django.views.generic import FormView, CreateView
-from .models import Freelancer, Business, Thread, Response, Link, JobOffer
+from .models import Freelancer, Business, Thread, Response, Link, JobOffer, Profile
 from .forms import FreelancerForm, BusinessForm, ThreadForm
 from django.db.models import Q
+from datetime import datetime, timezone
+from django.contrib import auth
 
 
 def index(request):
@@ -28,11 +30,13 @@ def pagarPaypal(request):
         'cancel_return': 'http://{}{}'.format(host, reverse('payment_canceled')),
         }
     form = PayPalPaymentsForm(initial=paypal_dict)
-    return render(request, 'pagarPaypal.html', {'form': form })
+    return render(request, 'pagarPaypal.html', {'form':form})
 
     
 def payment_done(request):
     # esto es como el controlador/servicios
+    buss_id = request.session.get('buss')
+    Business.objects.filter(id=buss_id).update(lastPayment=datetime.now())
     return render(request, 'payment_done.html')
 
 
@@ -45,7 +49,13 @@ def login_redir(request):
     if request.user.is_superuser:
         res = redirect('admin/')
     else:
-        res = redirect('accounts/login/')
+        prof = Profile.objects.filter(user__pk=request.user.id)
+        buss = Business.objects.filter(profile__pk=prof[0].id)
+        if (buss[0].lastPayment- datetime.now(timezone.utc)).total_seconds() > 31556952:
+            auth.logout(request)
+            res = pagarPaypal(request)
+        else:
+            res = redirect('accounts/login/')
     return res
 
 
@@ -89,12 +99,20 @@ class BusinessCreate(CreateView):
     template_name = 'accounts/signup.html'
     success_url = '/accounts/login'
 
+    def __init__(self, *args, **kwargs):
+        super(BusinessCreate, self).__init__(*args, **kwargs)
+
     def form_valid(self, form):
         # This method is called when valid form data has been POSTed.
         # It should return an HttpResponse.
         print('BusinessCreate: form_valid')
 
-        return super().form_valid(form)
+        #
+        buss = form.save()
+        print(buss)
+
+        self.request.session['buss'] = buss.id
+        return pagarPaypal(self.request)
 
     def get_context_data(self, **kwargs):
         # This method is called before the view es generate and add the context
@@ -115,7 +133,7 @@ class ThreadCreate(CreateView):
         # It should return an HttpResponse.
         print('ThreadCreate: form_valid')
 
-        return super().form_valid(form)
+        return render(pagarPaypal,)
 
     def get_context_data(self, **kwargs):
         # This method is called before the view es generate and add the context
