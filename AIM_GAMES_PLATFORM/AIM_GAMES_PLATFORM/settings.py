@@ -60,7 +60,7 @@ LANGUAGES = [
 ]
 
 
-LOCALE_PATHS = ["\\app\\AIM_GAMES_PLATFORM\\locale", "locale"]
+LOCALE_PATHS = ["app\\AIM_GAMES_PLATFORM\\locale", "locale"]
 
 ROOT_URLCONF = 'AIM_GAMES_PLATFORM.urls'
 
