@@ -71,6 +71,7 @@ class Freelancer(models.Model):
 
 class Business(models.Model):
     profile = models.OneToOneField(Profile, on_delete=models.CASCADE)
+    lastPayment = models.DateTimeField(null=True)
 
     def __str__(self):
         return self.profile.email

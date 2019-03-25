@@ -1,13 +1,14 @@
-from django.forms import ModelForm, forms, CharField, EmailField, ModelMultipleChoiceField,CheckboxSelectMultiple
+from django.forms import ModelForm, forms, CharField, EmailField, ModelMultipleChoiceField,CheckboxSelectMultiple, DateField, DateInput
 from django.contrib.auth.forms import UserCreationForm
 from AIM_GAMES.models import Freelancer, Business, Profile, Thread, Tag
 from django.contrib.auth.models import User
 
 
+
 class BusinessForm(ModelForm):
     class Meta:
         model = Business
-        exclude = ()
+        exclude = ('lastPayment',)
 
     def __init__(self, *args, **kwargs):
         super(BusinessForm, self).__init__(*args, **kwargs)
@@ -19,7 +20,7 @@ class BusinessForm(ModelForm):
 
     def clean(self):
         if not self.profile_form.is_valid():
-            raise forms.ValidationError(self.profile_form.errors)
+            raise forms.ValidationError("Profile not valid")
 
     def save(self, commit=False):
         print('save: BusinessForm')
@@ -57,6 +58,8 @@ class FreelancerForm(ModelForm):
 
 
 class ProfileForm(ModelForm):
+    dateOfBirth = DateField(widget=DateInput(attrs={'placeholder': 'MM/DD/YY', 'required': 'required'}))
+
     class Meta:
         model = Profile
         exclude = ()
@@ -91,22 +94,19 @@ class UserForm(UserCreationForm):
 
 class ThreadForm(ModelForm):
     # Representing the many to many related field in Thread
-    tags = ModelMultipleChoiceField(widget=CheckboxSelectMultiple, queryset=Tag.objects.all())
 
     class Meta:
         model = Thread
-        exclude = ('business', 'valoration')
+        exclude = ('business', 'valoration', 'tags', 'pics', 'attachedFiles')
 
     def __init__(self, *args, **kwargs):
         print('__init__ ThreadForm')
         # Only in case we build the form from an instance
         # (otherwise, 'tags' list should be empty)
-        if kwargs.get('instance'):
-            # We get the 'initial' keyword argument or initialize it
-            # as a dict if it didn't exist.
-            initial = kwargs.setdefault('initial', {})
-            # The widget for a ModelMultipleChoiceField expects
-            # a list of primary key for the selected data.
-            initial['toppings'] = [t.pk for t in kwargs['instance'].tag_set.all()]
+
         super(ThreadForm, self).__init__(*args, **kwargs)
+
+    def clean(self):
+        print('clean: ThreadForm')
+
 

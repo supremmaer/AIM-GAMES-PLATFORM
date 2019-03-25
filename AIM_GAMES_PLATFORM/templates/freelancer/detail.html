@@ -6,11 +6,50 @@
 <h3>{{ freelancer.profile.name }}</h3> 
 
 <b>Links:</b>
-  {% for link in links %}
+{% for link in links %}
   <p>{{link.url}}</p>
-  {% endfor %}  
-  <br>
-  <!-- {{link}} -->
+{% endfor %}  
+<br>
+
+<b>Formation:</b>
+{% for formation in formations %}
+  <p>{{formation.center}}</p>
+  <p>{{formation.startDate}}</p>
+  <p>{{formation.endDate}}</p>
+  <p>{{formation.formation}}</p>
+  <p>{{formation.miniature}}</p>
+{% endfor %}  
+<br>
+
+<b>Professional Experience:</b>
+{% for professionalExperience in professionalExperiences %}
+  <p>{{professionalExperience.center}}</p>
+  <p>{{professionalExperience.startDate}}</p>
+  <p>{{professionalExperience.endDate}}</p>
+  <p>{{professionalExperience.formation}}</p>
+  <p>{{professionalExperience.miniature}}</p>
+{% endfor %}  
+<br>
+
+<b>Aptitudes:</b>
+{% for aptitude in aptitudes %}
+  <p>{{aptitude.aptitude}}</p>
+{% endfor %}  
+<br>
+
+<b>HTML5 showcase:</b>
+{% for showcase in HTML5Showcase %}
+  <p>{{showcase.embedCode}}</p>
+{% endfor %}  
+<br>
+
+<b>Graphic Engine Experiences:</b>
+{% for exp in graphicEngineExperiences %}
+  <p>{{exp.graphicEngine.title}}</p>
+  <p>{{exp.graphicExperience}}</p>
+{% endfor %}  
+<br>
+<!-- {{link}} -->
 <!-- <p><b>Empresa:</b> {{ thread.business }}</p>  
 <p>{{ thread.description }}</p>  
 <p><b>Valoración:</b> {{ thread.valoration.score }}</p>  
