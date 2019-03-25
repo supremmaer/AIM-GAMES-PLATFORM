@@ -18,6 +18,8 @@ from django.utils import translation
 
 def index(request):
     # esto es como el controlador/servicios
+    if not request.session.has_key('language'):
+        request.session['language'] = 'es-ES'
     language = request.session['language']
     translation.activate(language)
 
