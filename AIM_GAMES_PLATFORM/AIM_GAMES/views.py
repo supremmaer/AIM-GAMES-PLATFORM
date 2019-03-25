@@ -51,9 +51,12 @@ def login_redir(request):
     else:
         prof = Profile.objects.filter(user__pk=request.user.id)
         buss = Business.objects.filter(profile__pk=prof[0].id)
-        if (buss[0].lastPayment- datetime.now(timezone.utc)).total_seconds() > 31556952:
-            auth.logout(request)
-            res = pagarPaypal(request)
+        if(not buss is None):
+            if (buss[0].lastPayment- datetime.now(timezone.utc)).total_seconds() > 31556952:
+                auth.logout(request)
+                res = pagarPaypal(request)
+            else:
+                res = redirect('accounts/login/')
         else:
             res = redirect('accounts/login/')
     return res
