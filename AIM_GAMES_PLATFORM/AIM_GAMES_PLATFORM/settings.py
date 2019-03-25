@@ -59,7 +59,9 @@ LANGUAGES = [
     ('es-ES', 'Spanish')
 ]
 
-LOCALE_PATHS = ['locale']
+BASE_PATH = os.path.dirname(os.path.abspath(__file__))
+
+LOCALE_PATHS = [os.path.join(BASE_PATH, "locale"), "locale"]
 
 ROOT_URLCONF = 'AIM_GAMES_PLATFORM.urls'
 
