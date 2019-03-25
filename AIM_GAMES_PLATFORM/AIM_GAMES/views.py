@@ -169,8 +169,10 @@ def threadList(request, business_id):
         q=Thread.objects.filter(business=business_id).filter(business__profile__name__icontains=search)
     else:
         q=Thread.objects.filter(business=business_id)
-    threads= get_list_or_404(q)
-    businessThread= get_object_or_404(Business,pk=business_id)
+    queryset = _get_queryset(q)
+    queryset2 = _get_queryset(Business)
+    threads= list(queryset)
+    businessThread= queryset2.get(pk=business_id)
     return render(request, 'threadList.html',{'threads':threads,'businessThread':businessThread}) 
 
 def jobOfferList(request):
@@ -186,7 +188,7 @@ def jobOfferList(request):
     jobOffers= get_list_or_404(q)
     return render(request, 'jobOfferList.html',{'jobOffers':jobOffers}) 
 
-def checkUser():
+def checkUser(request):
     freelancer = None
     business = None
     if request.user.is_authenticated:
@@ -208,3 +210,15 @@ def checkUser():
         return 'bussines'
     else:
         return 'none'
+
+def _get_queryset(klass):
+    """
+    Return a QuerySet or a Manager.
+    Duck typing in action: any class with a `get()` method (for
+    get_object_or_404) or a `filter()` method (for get_list_or_404) might do
+    the job.
+    """
+    # If it is a model class or anything else with ._default_manager
+    if hasattr(klass, '_default_manager'):
+        return klass._default_manager.all()
+    return klass
