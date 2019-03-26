@@ -11,13 +11,13 @@
 // $("#datepicker").datepicker();
 // });
 
-         $(document).ready(function() {
-             $('.datepicker').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15, // Creates a dropdown of 15 years to control year
-    format: 'dd-mm-yyyy' });
-
-         }
+    //      $(document).ready(function() {
+    //          $('.datepicker').pickadate({
+    // selectMonths: true, // Creates a dropdown to control month
+    // selectYears: 15, // Creates a dropdown of 15 years to control year
+    // format: 'dd-mm-yyyy' });
+    //
+    //      }
     </script>
 </head>
 <body>
@@ -58,6 +58,7 @@
                                     class="validate" name="{{ field.html_name }}" value="{{ field.value|default_if_none:'' }}">
                             {% elif field.id_for_label == "id_dateOfBirth" %}
                              <input id="{{ field.id_for_label }}" type="text" class="datepicker validate" name="{{ field.html_name }}" value="{{ field.value}}">
+
                             {% else %}
                              <input id="{{ field.id_for_label }}" type="text" class="validate" name="{{ field.html_name }}" value="{{ field.value|default_if_none:'MM/DD/YY' }}">
                              {% endif %}
@@ -88,13 +89,6 @@
         </form>
     </div>
 </div>
-<script>M.AutoInit();
-$(document).ready(function() {
-             $('.datepicker').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 15, // Creates a dropdown of 15 years to control year
-    format: 'dd-mm-yyyy' });
-
-         }</script>
+<script>M.AutoInit();</script>
 </body>
 {% endblock %}
