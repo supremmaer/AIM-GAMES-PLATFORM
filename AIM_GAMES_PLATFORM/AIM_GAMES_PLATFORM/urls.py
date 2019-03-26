@@ -36,6 +36,7 @@ urlpatterns = [
     path('thread/detail/<int:thread_id>',threadDetail, name='threadDetail'),
     path('thread/business/list/<int:business_id>', threadList, name='threadList'),
     path('joboffer/user/list/', jobOfferList, name='jobOfferList'),
+    path('curriculum/business/list/', curriculumList, name='curriculumList'),
     #static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     path('freelancer/detail/<int:id>',freelancerDetail, name='freelancerDetail'),
     path('setlanguage/<str:language>', setlanguage)

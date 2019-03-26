@@ -6,7 +6,7 @@ from django.shortcuts import render, get_list_or_404
 from paypal.standard.forms import PayPalPaymentsForm
 from django.shortcuts import redirect
 from django.views.generic import FormView, CreateView
-from .models import Freelancer, Business, Thread, Response, Link, JobOffer, Curriculum, Profile
+from .models import Freelancer, Business, Thread, Response, Link, JobOffer, Curriculum, Profile, Aptitude
 from .forms import FreelancerForm, BusinessForm, ThreadForm
 from django.db.models import Q
 from datetime import datetime, timezone
@@ -181,10 +181,11 @@ def freelancerDetail(request, id):
 def threadList(request, business_id):
     if(request.GET.__contains__('search')):
         search=request.GET.get('search')
-        q=Thread.objects.filter(business=business_id).filter(business__profile__name__icontains=search)
+        q=Thread.objects.filter(business__profile__name__icontains=search)
     else:
-        q=Thread.objects.filter(business=business_id)
+        q=Thread.objects.all()
     threads= q
+    #Esta llamada sirve también como comprobación de si la llamada se hace desde una URL que no es de business
     businessThread= get_object_or_404(Business,pk=business_id)
     return render(request, 'threadList.html',{'threads':threads,'businessThread':businessThread}) 
 
@@ -199,7 +200,21 @@ def jobOfferList(request):
     else:
         q=JobOffer.objects.all()
     jobOffers= q
-    return render(request, 'jobOfferList.html',{'jobOffers':jobOffers}) 
+    return render(request, 'jobOfferList.html',{'jobOffers':jobOffers})
+
+def curriculumList(request):
+    if(request.GET.__contains__('search')):
+        search=request.GET.get('search')
+        q=Curriculum.objects.filter(business__profile__name__icontains=search)
+    else:
+        q=Curriculum.objects.all()
+    curriculums= q
+    aptitudes={}
+    for c in curriculums.iterator():
+        aptitudesList=Aptitude.objects.filter(Aptitude,curriculum=c.id)
+        aptitudes[c.id]=(aptitudesList)
+        
+    return render(request, 'curriculumList.html',{'curriculums':curriculums,'aptitudes':aptitudes})
 
 def checkUser(request):
     freelancer = None
