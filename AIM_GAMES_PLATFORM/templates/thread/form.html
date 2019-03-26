@@ -2,34 +2,7 @@
 {% block content %}
 
 <head>
-    <script>
 
-          $('.chips').chips();
-  $('.chips-initial').chips({
-    data: [{
-      tag: 'Apple',
-    }, {
-      tag: 'Microsoft',
-    }, {
-      tag: 'Google',
-    }],
-  });
-  $('.chips-placeholder').chips({
-    placeholder: 'Enter a tag',
-    secondaryPlaceholder: '+Tag',
-  });
-  $('.chips-autocomplete').chips({
-    autocompleteOptions: {
-      data: {
-        'Apple': null,
-        'Microsoft': null,
-        'Google': null
-      },
-      limit: Infinity,
-      minLength: 1
-    }
-  });
-    </script>
 </head>
 
 <body>
@@ -37,14 +10,9 @@
     <div class="col s12 l6 m10 offset-m1 offset-l3">
         <form method="POST">
             {% csrf_token %}
-            <!--{{form.errors}}-->
-            <!--{{form.non_field_errors}}-->
+            {{form.non_field_errors}}
 
-            <!--{{ form }}-->
-            <label> Tags:</label>
-            <div class="chips">
-                <input id="{{ field.id_for_label }}" type="text" class="validate" name="{{ field.html_name }}" value="{{ field.value|default_if_none:'MM/DD/YY' }}">
-            </div>
+            {{ form }}
 
             <input type="submit" value="Submit">
         </form>
