@@ -116,7 +116,7 @@ class HTML5Showcase(models.Model):
 
 class Aptitude(models.Model):
     curriculum = models.ForeignKey(Curriculum, on_delete=models.CASCADE)
-    aptitude = models.TextField(max_length=30, blank=False)
+    title = models.TextField(max_length=30, blank=False)
 
 
 class Link(models.Model):
