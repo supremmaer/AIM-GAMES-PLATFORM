@@ -1,13 +1,14 @@
-from django.forms import ModelForm, forms, CharField, EmailField, ModelMultipleChoiceField,CheckboxSelectMultiple
+from django.forms import ModelForm, forms, CharField, EmailField, ModelMultipleChoiceField,CheckboxSelectMultiple, DateField, DateInput,SelectDateWidget
 from django.contrib.auth.forms import UserCreationForm
 from AIM_GAMES.models import Freelancer, Business, Profile, Thread, Tag
 from django.contrib.auth.models import User
+from django.contrib.auth.models import Group
 
 
 class BusinessForm(ModelForm):
     class Meta:
         model = Business
-        exclude = ()
+        exclude = ('lastPayment',)
 
     def __init__(self, *args, **kwargs):
         super(BusinessForm, self).__init__(*args, **kwargs)
@@ -19,12 +20,14 @@ class BusinessForm(ModelForm):
 
     def clean(self):
         if not self.profile_form.is_valid():
-            raise forms.ValidationError(self.profile_form.errors)
+            raise forms.ValidationError("Profile not valid")
 
     def save(self, commit=False):
         print('save: BusinessForm')
         obj = super(BusinessForm, self).save(commit=commit)
         obj.profile = self.profile_form.save()
+        group = Group.objects.get(name='Business')
+        obj.profile.user.groups.add(group)
         obj.save()
         return obj
 
@@ -52,11 +55,15 @@ class FreelancerForm(ModelForm):
         print('save: FreelancerForm')
         obj = super(FreelancerForm, self).save(commit=commit)
         obj.profile = self.profile_form.save()
+        group = Group.objects.get(name='Freelancer')
+        obj.profile.user.groups.add(group)
         obj.save()
         return obj
 
 
 class ProfileForm(ModelForm):
+    # dateOfBirth = DateField(widget=SelectDateWidget)
+
     class Meta:
         model = Profile
         exclude = ()
@@ -91,22 +98,19 @@ class UserForm(UserCreationForm):
 
 class ThreadForm(ModelForm):
     # Representing the many to many related field in Thread
-    tags = ModelMultipleChoiceField(widget=CheckboxSelectMultiple, queryset=Tag.objects.all())
 
     class Meta:
         model = Thread
-        exclude = ('business', 'valoration')
+        exclude = ('business', 'valoration', 'tags', 'pics', 'attachedFiles')
 
     def __init__(self, *args, **kwargs):
         print('__init__ ThreadForm')
         # Only in case we build the form from an instance
         # (otherwise, 'tags' list should be empty)
-        if kwargs.get('instance'):
-            # We get the 'initial' keyword argument or initialize it
-            # as a dict if it didn't exist.
-            initial = kwargs.setdefault('initial', {})
-            # The widget for a ModelMultipleChoiceField expects
-            # a list of primary key for the selected data.
-            initial['toppings'] = [t.pk for t in kwargs['instance'].tag_set.all()]
+
         super(ThreadForm, self).__init__(*args, **kwargs)
+
+    def clean(self):
+        print('clean: ThreadForm')
+
 
