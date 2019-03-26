@@ -156,6 +156,7 @@ class Valoration(models.Model):
     score = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)])
     thread=models.ForeignKey(Thread, on_delete=models.CASCADE)
     business=models.ForeignKey(Business, on_delete=models.CASCADE)
+
     class Meta:
         unique_together = (("thread", "business"),)
 

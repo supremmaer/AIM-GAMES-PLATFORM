@@ -152,16 +152,23 @@ class ThreadCreate(CreateView):
         # It should return an HttpResponse.
         print('ThreadCreate: form_valid')
         print(form.cleaned_data)
+        prof = Profile.objects.filter(user__pk=self.request.user.id)
+        buss = Business.objects.filter(profile__pk=prof[0].id)
+        thread = form.save(buss)
 
-        return render(threadDetail(self.request,1))
+        return threadDetail(self.request, thread.id)
 
     def get_context_data(self, **kwargs):
-        # This method is called before the view es generate and add the context
-        # It should return the context
 
         context = super(ThreadCreate, self).get_context_data(**kwargs)
 
         return context
+
+    def dispatch(self, request, *args, **kwargs):
+        if checkUser(self.request) == 'business':
+            return super(ThreadCreate, self).dispatch(request,*args, **kwargs)
+        else:
+            redirect('404')
 
 
 def threadDetail(request, thread_id):
@@ -224,7 +231,7 @@ def checkUser(request):
     if freelancer!=None:
         return 'freelancer'
     elif business !=None:
-        return 'bussines'
+        return 'business'
     else:
         return 'none'
 

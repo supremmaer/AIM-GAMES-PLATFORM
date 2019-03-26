@@ -1,9 +1,9 @@
 from django.forms import ModelForm, forms, CharField, EmailField, ModelMultipleChoiceField,CheckboxSelectMultiple, DateField, DateInput,SelectDateWidget
 from django.contrib.auth.forms import UserCreationForm
-from AIM_GAMES.models import Freelancer, Business, Profile, Thread, Tag
-from django.contrib.auth.models import User
-from django.contrib.auth.models import Group
-from django.contrib.postgres.fields import ArrayField
+from AIM_GAMES.models import Freelancer, Business, Profile, Thread, Tag, URL, Valoration
+from django.contrib.auth.models import User, Group
+from django.core.validators import URLValidator
+from django.core.exceptions import ValidationError
 
 
 class BusinessForm(ModelForm):
@@ -98,10 +98,22 @@ class UserForm(UserCreationForm):
 
 
 class ThreadForm(ModelForm):
+    images = CharField(required=True)
+    files = CharField(required=True)
 
     class Meta:
         model = Thread
-        exclude = ('business', 'valoration', )
+        exclude = ('business', 'pics', 'attachedFiles')
+
+    def clean_images(self):
+        """Split the tags string on whitespace and return a list"""
+        print('clean: ThreadForm: Images')
+        return self.cleaned_data['images'].strip().split()
+
+    def clean_files(self):
+        """Split the tags string on whitespace and return a list"""
+        print('clean: ThreadForm: Files')
+        return self.cleaned_data['files'].strip().split()
 
     def __init__(self, *args, **kwargs):
         print('__init__ ThreadForm')
@@ -110,5 +122,41 @@ class ThreadForm(ModelForm):
 
         super(ThreadForm, self).__init__(*args, **kwargs)
 
+    def clean(self):
+        print('clean: ThreadForm')
+        print(self.data)
+        val = URLValidator()
+        urls = self.cleaned_data['images']
+        try:
+            for url in urls:
+                val(url)
+
+            urls = self.cleaned_data['files']
+            for url in urls:
+                val(url)
+        except ValidationError:
+            raise ValidationError("Please, enter valid URLS separated by comas in the images and files field")
+
+    def save(self,business):
+        print('save: ProfileForm')
+        obj = super(ThreadForm, self).save(commit=False)
+        pics = []
+        attached_files = []
+        for image in self.cleaned_data['images']:
+            url = URL()
+            url.title = image
+            url.save()
+            pics.append(url)
+        for file in self.cleaned_data['files']:
+            url = URL()
+            url.title = file
+            url.save()
+            attached_files.append(url)
+
+        obj.business = business[0]
+        obj.save()
+        obj.attachedFiles.set(attached_files)
+        obj.pics.set(pics)
+        return obj
 
 
