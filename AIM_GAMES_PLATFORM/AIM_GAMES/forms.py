@@ -97,7 +97,8 @@ class UserForm(UserCreationForm):
 
 
 class ThreadForm(ModelForm):
-    # Representing the many to many related field in Thread
+    # Cada chip es un diccionario, tengo que mandar un array de diccionarios
+    chips = CharField()
 
     class Meta:
         model = Thread
@@ -112,5 +113,6 @@ class ThreadForm(ModelForm):
 
     def clean(self):
         print('clean: ThreadForm')
+        print(self.data )
 
 
