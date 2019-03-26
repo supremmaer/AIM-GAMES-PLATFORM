@@ -1,15 +1,23 @@
 {% extends "base_generic.html" %}
 {% block content %}
 <head>
-    <script
-  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
-  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
-  crossorigin="anonymous"></script>
+  <!--<script-->
+  <!--src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"-->
+  <!--integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="-->
+  <!--crossorigin="anonymous"></script>-->
     <script>
-        $(function () {
-            $.datepicker.setDefaults($.datepicker.regional["en"]);
-$("#datepicker").datepicker();
-});
+//         $(function () {
+//             $.datepicker.setDefaults($.datepicker.regional["en"]);
+// $("#datepicker").datepicker();
+// });
+
+    //      $(document).ready(function() {
+    //          $('.datepicker').pickadate({
+    // selectMonths: true, // Creates a dropdown to control month
+    // selectYears: 15, // Creates a dropdown of 15 years to control year
+    // format: 'dd-mm-yyyy' });
+    //
+    //      }
     </script>
 </head>
 <body>
@@ -20,16 +28,6 @@ $("#datepicker").datepicker();
         {% else %}
          <h2>Sign up as Business</h2>
         {% endif %}
-        <!--<form method="POST">-->
-            <!--{% csrf_token %}-->
-            <!--{{form.errors}}-->
-            <!--{{ form.profile_form.user_form}}-->
-            <!--{{ form.profile_form }}-->
-            <!--{{ form }}-->
-
-            <!--<input type="submit" value="Submit">-->
-        <!--</form>-->
-
         {% for error in form.non_field_errors %}
         <div class="red-text">
             <strong>{{ error|escape }}</strong>
@@ -60,8 +58,9 @@ $("#datepicker").datepicker();
                                     class="validate" name="{{ field.html_name }}" value="{{ field.value|default_if_none:'' }}">
                             {% elif field.id_for_label == "id_dateOfBirth" %}
                              <input id="{{ field.id_for_label }}" type="date" class="validate" name="{{ field.html_name }}" value="{{ field.value}}">
+
                             {% else %}
-                             <input id="{{ field.id_for_label }}" type="text" class="validate" name="{{ field.html_name }}" value="{{ field.value|default_if_none:'MM/DD/YY' }}">
+                             <input id="{{ field.id_for_label }}" type="text" class="validate" name="{{ field.html_name }}" value="{{ field.value }}">
                              {% endif %}
                             <label for="{{ field.id_for_label }}">{{ field.label_tag }}:</label>
                             {% endif %}
@@ -83,61 +82,13 @@ $("#datepicker").datepicker();
                         </div>
                          {% endfor %}
                          {%endif%}
-                        <!--<div class="input-field col s12">-->
-                            <!--<input placeholder="" id="pass" type="password" class="validate">-->
-                            <!--<label for="pass">Password:</label>-->
-                        <!--</div>-->
-                         <!--<div class="input-field col s12">-->
-                            <!--<input placeholder="" id="name" type="text" class="validate">-->
-                            <!--<label for="name">Name:</label>-->
-                        <!--</div>-->
-                         <!--<div class="input-field col s12">-->
-                            <!--<input placeholder="" id="surname" type="text" class="validate">-->
-                            <!--<label for="surname">Surname:</label>-->
-                        <!--</div>-->
-                         <!--<div class="input-field col s12">-->
-                            <!--<input placeholder="" id="city" type="text" class="validate">-->
-                            <!--<label for="city">City:</label>-->
-                        <!--</div>-->
-                         <!--<div class="input-field col s12">-->
-                            <!--<input placeholder="" id="postalcode" type="text" class="validate">-->
-                            <!--<label for="postalcode">Postalcode:</label>-->
-                        <!--</div>-->
-                         <!--<div class="input-field col s12">-->
-                            <!--<input placeholder="" id="date" type="text" class="validate">-->
-                            <!--<label for="date">Date Of Birth:</label>-->
-                        <!--</div>-->
-                         <!--<div class="input-field col s12">-->
-                            <!--<input placeholder="" id="phone" type="text" class="validate">-->
-                            <!--<label for="phone">Phone:</label>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                 <!--</div>-->
-             <!--</div>-->
-             <!--<div class="input-field col s12">-->
-                    <!--<input placeholder="" id="photo" type="text" class="validate">-->
-                    <!--<label for="photo">Photo:</label>-->
-             <!--</div>-->
-            <!--{% if type != "business"%}-->
-            <!--<div class="input-field col s12">-->
-                <!--<input placeholder="" id="profession" type="text" class="validate">-->
-                <!--<label for="profession">Profession:</label>-->
-            <!--</div>-->
-            <!--{% endif %}-->
-            <!--<div class="row">-->
-                <!--<div class="col s5 m5 l3 btn waves-effect waves-light blue lighten-2">-->
-                    <!--<button class="btn-flat white-text" type="submit" name="action">Sign up-->
-                        <!--<i class="material-icons right">send</i>-->
-                    <!--</button>-->
                          <input type="submit" value="Submit">
                     </div>
-                <!--<div class="col s5 m5 l3 push-s2 push-m2 push-l6 waves-effect waves-light btn red lighten-2">-->
-                    <!--<a href="login" class="btn-flat"><span class="white-text">Cancel</span></a>-->
                 </div>
             </div>
         </form>
     </div>
 </div>
-
+<script>M.AutoInit();</script>
 </body>
 {% endblock %}

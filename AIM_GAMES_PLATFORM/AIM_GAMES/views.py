@@ -12,6 +12,7 @@ from django.db.models import Q
 from datetime import datetime, timezone
 from django.contrib import auth
 from django.contrib import sessions
+from django.contrib.auth.models import Group
 
 from django.utils.translation import gettext as _
 from django.utils import translation
@@ -150,8 +151,9 @@ class ThreadCreate(CreateView):
         # This method is called when valid form data has been POSTed.
         # It should return an HttpResponse.
         print('ThreadCreate: form_valid')
+        print(form.cleaned_data)
 
-        return render(pagarPaypal,)
+        return render(threadDetail(self.request,1))
 
     def get_context_data(self, **kwargs):
         # This method is called before the view es generate and add the context

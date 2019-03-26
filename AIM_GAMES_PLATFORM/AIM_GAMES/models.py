@@ -110,7 +110,7 @@ class GraphicEngineExperience(models.Model):
 
 
 class HTML5Showcase(models.Model):
-    curriculum = models.ForeignKey(Curriculum, on_delete=models.CASCADE)
+    curriculum = models.OneToOneField(Curriculum, on_delete=models.CASCADE)
     embedCode = models.TextField()
 
 
@@ -137,14 +137,11 @@ class JobOffer(models.Model):
     images = models.TextField(blank=False)
 
 
-class Valoration(models.Model):
-    score = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(5)])
+    
 
 
 class Thread(models.Model):
     business = models.ForeignKey(Business, on_delete=models.CASCADE)
-    valoration = models.ForeignKey(Valoration, on_delete=models.CASCADE)
     title = models.TextField(max_length=100, blank=False)
     description = models.TextField(blank=False)
     tags = models.ManyToManyField(Tag)
@@ -153,6 +150,14 @@ class Thread(models.Model):
 
     def __str__(self):
         return self.title
+
+    
+class Valoration(models.Model):
+    score = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)])
+    thread=models.ForeignKey(Thread, on_delete=models.CASCADE)
+    business=models.ForeignKey(Business, on_delete=models.CASCADE)
+    class Meta:
+        unique_together = (("thread", "business"),)
 
 
 class Response(models.Model):

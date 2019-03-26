@@ -2,6 +2,8 @@ from django.forms import ModelForm, forms, CharField, EmailField, ModelMultipleC
 from django.contrib.auth.forms import UserCreationForm
 from AIM_GAMES.models import Freelancer, Business, Profile, Thread, Tag
 from django.contrib.auth.models import User
+from django.contrib.auth.models import Group
+from django.contrib.postgres.fields import ArrayField
 
 
 class BusinessForm(ModelForm):
@@ -25,6 +27,8 @@ class BusinessForm(ModelForm):
         print('save: BusinessForm')
         obj = super(BusinessForm, self).save(commit=commit)
         obj.profile = self.profile_form.save()
+        group = Group.objects.get(name='Business')
+        obj.profile.user.groups.add(group)
         obj.save()
         return obj
 
@@ -52,12 +56,14 @@ class FreelancerForm(ModelForm):
         print('save: FreelancerForm')
         obj = super(FreelancerForm, self).save(commit=commit)
         obj.profile = self.profile_form.save()
+        group = Group.objects.get(name='Freelancer')
+        obj.profile.user.groups.add(group)
         obj.save()
         return obj
 
 
 class ProfileForm(ModelForm):
-    dateOfBirth = DateField(widget=SelectDateWidget)
+    # dateOfBirth = DateField(widget=SelectDateWidget)
 
     class Meta:
         model = Profile
@@ -92,11 +98,10 @@ class UserForm(UserCreationForm):
 
 
 class ThreadForm(ModelForm):
-    # Representing the many to many related field in Thread
 
     class Meta:
         model = Thread
-        exclude = ('business', 'valoration', 'tags', 'pics', 'attachedFiles')
+        exclude = ('business', 'valoration', )
 
     def __init__(self, *args, **kwargs):
         print('__init__ ThreadForm')
@@ -105,7 +110,5 @@ class ThreadForm(ModelForm):
 
         super(ThreadForm, self).__init__(*args, **kwargs)
 
-    def clean(self):
-        print('clean: ThreadForm')
 
 
