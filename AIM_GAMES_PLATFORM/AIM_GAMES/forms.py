@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from AIM_GAMES.models import Freelancer, Business, Profile, Thread, Tag
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
+from django.contrib.postgres.fields import ArrayField
 
 
 class BusinessForm(ModelForm):
@@ -97,12 +98,10 @@ class UserForm(UserCreationForm):
 
 
 class ThreadForm(ModelForm):
-    # Cada chip es un diccionario, tengo que mandar un array de diccionarios
-    chips = CharField()
 
     class Meta:
         model = Thread
-        exclude = ('business', 'valoration', 'tags', 'pics', 'attachedFiles')
+        exclude = ('business', 'valoration', )
 
     def __init__(self, *args, **kwargs):
         print('__init__ ThreadForm')
@@ -111,8 +110,5 @@ class ThreadForm(ModelForm):
 
         super(ThreadForm, self).__init__(*args, **kwargs)
 
-    def clean(self):
-        print('clean: ThreadForm')
-        print(self.data )
 
 
