@@ -15,6 +15,11 @@ class Command(BaseCommand):
         freelancer = Group.objects.get(name='Freelancer')
         business = Group.objects.get(name='Business')
 
+        groups = Group.objects.all().values()
+
+        for g in groups:
+            print(g)
+
         #Otorgar permisos (esto se puede resumir con bucles)
         can_add_curriculum = Permission.objects.get(name='Can add curriculum')
         freelancer.permissions.add(can_add_curriculum)
