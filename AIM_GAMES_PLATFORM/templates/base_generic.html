@@ -1,68 +1,64 @@
 {% load i18n %}
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  {% block title %}<title>AIM Games Platform</title>{% endblock %}
-  
-<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style> 
-  body {
-  background-color: whitesmoke;
-  }
-  nav{
-  background-color:	#ff5c54;
-  }
-  #slide_out{
-  background-color: #ff5c54;
-  }
- 
-</style>
-<a href="/setlanguage/es-ES" target="_self" class="collection-item">Spanish</a>
-<a href="/setlanguage/en-GB" target="_self" class="collection-item">English</a>
-</head>
-
-
-<body>
-
-    <nav>
-        <div class="nav-wrapper">
-
-            <div class="container">
-                <a href="#" class="brand-logo" id="logotipo" >AIM Games</a>
-                <a href="#" class="sidenav-trigger" data-target="slide_out"><i class="material-icons">menu</i></a>
-                <ul class="hide-on-med-and-down right">
-                    <li class="active"><a>{% trans "mainpage" %}</a></li>
-                    <li><a>{% trans "services" %}</a></li>
-                    <li><a>{% trans "aboutus" %}</a></li>
-                    <li><a>{% trans "contactus" %}</a></li>
-                    <li><a href="/thread/business/list/1" target="_self" class="collection-item">{% trans "threads" %}</a></li>
-                    <li><a href="/joboffer/user/list/" target="_self" class="collection-item">{% trans "joboffers" %}</a></li>
-                   
-                </ul>
-
-            </div>
-
-        </div>
-    </nav>
-
-        <ul class="sidenav" id="slide_out">
-            <li class="active"><a>{% trans "mainpage" %}</a></li>
-            <li><a>{% trans "services" %}</a></li>
-            <li><a>{% trans "aboutus" %}</a></li>
-            <li><a>{% trans "contactus" %}</a></li>
-        </ul>
-
+    <head>
+        {% block title %}<title>AIM Games Platform</title>{% endblock %}
         
+        <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" /> -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script>
-        const slide_menu = document.querySelectorAll(".sidenav");
-        M.Sidenav.init(slide_menu,{});
-    </script>
-  {% block content %}<!-- default content text (typically empty) -->{% endblock %}
-</body>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+        <script src="{% static 'js/materialize.min.js' %}"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style> 
+            body {
+            background-color: whitesmoke;
+            }
+            nav{
+            background-color:	#ff5c54;
+            }
+            #slide_out{
+            background-color: #ff5c54;
+            }
+            
+        </style>
+        <a href="/setlanguage/es-ES" target="_self" class="collection-item">Spanish</a>
+        <a href="/setlanguage/en-GB" target="_self" class="collection-item">English</a>
+    </head>
+
+    <body>
+        <nav>
+            <div class="nav-wrapper">
+                <div class="container">
+                    <a href="#" class="brand-logo" id="logotipo" >AIM Games</a>
+                    <a href="#" class="sidenav-trigger" data-target="slide_out"><i class="material-icons">menu</i></a>
+                    <ul class="hide-on-med-and-down right">
+                        <li class="active"><a>{% trans "mainpage" %}</a></li>
+                        <li><a>{% trans "services" %}</a></li>
+                        <li><a>{% trans "aboutus" %}</a></li>
+                        <li><a>{% trans "contactus" %}</a></li>
+                        <li><a href="/thread/business/list/1" target="_self" class="collection-item">{% trans "threads" %}</a></li>
+                        <li><a href="/joboffer/user/list/" target="_self" class="collection-item">{% trans "joboffers" %}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+            <ul class="sidenav" id="slide_out">
+                <li class="active"><a>{% trans "mainpage" %}</a></li>
+                <li><a>{% trans "services" %}</a></li>
+                <li><a>{% trans "aboutus" %}</a></li>
+                <li><a>{% trans "contactus" %}</a></li>
+            </ul>
+
+        {% block content %}<!-- default content text (typically empty) -->{% endblock %}
+
+        <script>
+            const slide_menu = document.querySelectorAll(".sidenav");
+            M.Sidenav.init(slide_menu,{});
+            M.AutoInit();
+        </script>
+    </body>
 </html>
