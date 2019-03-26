@@ -57,7 +57,7 @@
                              <input placeholder="" id="{{ field.id_for_label }}" type="{{ field.field.widget.input_type }}"
                                     class="validate" name="{{ field.html_name }}" value="{{ field.value|default_if_none:'' }}">
                             {% elif field.id_for_label == "id_dateOfBirth" %}
-                             <input id="{{ field.id_for_label }}" type="text" class="datepicker validate" name="{{ field.html_name }}" value="{{ field.value}}">
+                             <input id="{{ field.id_for_label }}" type="date" class="validate" name="{{ field.html_name }}" value="{{ field.value}}">
 
                             {% else %}
                              <input id="{{ field.id_for_label }}" type="text" class="validate" name="{{ field.html_name }}" value="{{ field.value|default_if_none:'MM/DD/YY' }}">
