@@ -1,9 +1,10 @@
-from django.forms import ModelForm, forms, CharField, Textarea, ModelMultipleChoiceField, TextInput, MultipleChoiceField,EmailField, ModelMultipleChoiceField,CheckboxSelectMultiple, DateField, DateInput,SelectDateWidget,ChoiceField,RadioSelect
+from django.forms import ModelForm, forms, CharField,URLField, URLInput,Textarea,DateTimeField, ModelMultipleChoiceField,EmailInput, NumberInput, TextInput, MultipleChoiceField,EmailField, ModelMultipleChoiceField,CheckboxSelectMultiple, DateField, DateInput,SelectDateWidget,ChoiceField,RadioSelect
 from django.contrib.auth.forms import UserCreationForm
 from AIM_GAMES.models import *
 from django.contrib.auth.models import User, Group
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
+from django.utils.translation import ugettext_lazy as _
 
 
 class BusinessForm(ModelForm):
@@ -21,7 +22,7 @@ class BusinessForm(ModelForm):
 
     def clean(self):
         if not self.profile_form.is_valid():
-            raise forms.ValidationError("Profile not valid")
+            raise forms.ValidationError(_("Profile not valid"))
 
     def save(self, commit=False):
         print('save: BusinessForm')
@@ -34,7 +35,7 @@ class BusinessForm(ModelForm):
 
 
 class FreelancerForm(ModelForm):
-    profession = CharField(widget=TextInput(), label='{% trans "profession" %}')
+    profession = CharField(widget=TextInput(), label=_("profession"))
     class Meta:
         model = Freelancer
         exclude = ()
@@ -53,7 +54,7 @@ class FreelancerForm(ModelForm):
     def clean(self):
         print('clean: FreelancerForm')
         if not self.profile_form.is_valid():
-            raise forms.ValidationError("Profile not valid")
+            raise forms.ValidationError(_("Profile not valid"))
 
     def save(self, commit=False):
         print('save: FreelancerForm')
@@ -66,6 +67,15 @@ class FreelancerForm(ModelForm):
 
 
 class ProfileForm(ModelForm):
+    name = CharField(widget=TextInput(), label=_("Name"))
+    surname = CharField(widget=TextInput(), label=_("Surname"))
+    email = EmailField(widget=EmailInput(), label=_("Email"))
+    city = CharField(widget=TextInput(), label=_("City"))
+    postalCode = CharField(widget=NumberInput(), label=_("Postal Code"))
+    idCardNumber = CharField(widget=TextInput(), label=_("IDCard Number"))
+    dateOfBirth = DateField(widget=DateInput(), label=_("Date of birth"))
+    phoneNumber = CharField(widget=NumberInput(), label=_("Postal Code"))
+    photo = URLField(widget=URLInput(), label=_("Photo URL:"))
 
     class Meta:
         model = Profile
@@ -83,7 +93,7 @@ class ProfileForm(ModelForm):
     def clean(self):
         print('clean: ProfileForm')
         if not self.user_form.is_valid():
-            raise forms.ValidationError("User not valid")
+            raise forms.ValidationError(_("User not valid"))
 
     def save(self, commit=False):
         print('save: ProfileForm')
