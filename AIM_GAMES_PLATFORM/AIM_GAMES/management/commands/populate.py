@@ -166,4 +166,22 @@ class Command(BaseCommand):
         response1.pics.set(p)
         response1.save()
 
+        response2 = Response()
+        response2.business=business2
+        response2.thread=thread1
+        response2.title='title2'
+        response2.description='desctiption2'
+        response2.save()
+        response2.pics.set(p)
+        response2.save()
+
+        response3 = Response()
+        response3.business=business1
+        response3.thread=thread2
+        response3.title='title3'
+        response3.description='desctiption3'
+        response3.save()
+        response3.pics.set(p)
+        response3.save()
+
         print("Database populated.")
