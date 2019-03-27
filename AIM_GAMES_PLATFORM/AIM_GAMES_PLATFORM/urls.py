@@ -43,7 +43,7 @@ urlpatterns = [
     path('freelancer/link/create',linkCreate),
     path('freelancer/aptitude/create',aptitudeCreate),
     path('freelancer/graphicEngineExperience/create',graphicEngineExperienceCreate),
-    path('freelancer/ProfessionalExperience/create',professionalExperienceCreate),
+    path('freelancer/professionalExperience/create',professionalExperienceCreate),
     path('freelancer/formation/create',formationCreate),
     path('freelancer/html5showcase/edit',html5showcaseEdit),
 ]
