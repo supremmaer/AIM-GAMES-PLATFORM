@@ -7,7 +7,7 @@ from paypal.standard.forms import PayPalPaymentsForm
 from django.shortcuts import redirect
 from django.views.generic import FormView, CreateView
 from .models import Freelancer, Business, Thread, Response, Link, JobOffer, Curriculum, Profile
-from .forms import FreelancerForm, BusinessForm, ThreadForm
+from .forms import *
 from django.db.models import Q
 from datetime import datetime, timezone
 from django.contrib import auth
@@ -162,7 +162,7 @@ class ThreadCreate(CreateView):
 def threadDetail(request, thread_id):
         thread = get_object_or_404(Thread, pk=thread_id)
         responses = thread.response_set.all()
-        return render(request, 'threadDetail.html', {'thread': thread, 'responses:': responses})
+        return render(request, 'thread/threadDetail.html', {'thread': thread, 'responses': responses})
 
 def freelancerDetail(request, id):      
         freelancer = get_object_or_404(Freelancer,pk=id)
@@ -170,9 +170,13 @@ def freelancerDetail(request, id):
         links = curriculum.link_set.all()
         formation = curriculum.formation_set.all()
         professionalExperience = curriculum.professionalexperience_set.all()
-        HTML5Showcase = curriculum.html5showcase_set.all()
         graphicEngineExperience = curriculum.graphicengineexperience_set.all()
         aptitude = curriculum.aptitude_set.all()
+        try:
+            HTML5Showcase = curriculum.HTML5Showcase
+        except:
+            HTML5Showcase = None
+
         return render(request, 'freelancer/detail.html', {'freelancer': freelancer,'links':links,'formations':formation,'professionalExperiences':professionalExperience,'HTML5Showcase':HTML5Showcase,'graphicEngineExperiences':graphicEngineExperience,'aptitudes':aptitude})
 
 def threadList(request, business_id):
@@ -185,7 +189,7 @@ def threadList(request, business_id):
     queryset2 = _get_queryset(Business)
     threads= list(queryset)
     businessThread= queryset2.get(pk=business_id)
-    return render(request, 'threadList.html',{'threads':threads,'businessThread':businessThread}) 
+    return render(request, 'thread/threadList.html',{'threads':threads,'businessThread':businessThread}) 
 
 def jobOfferList(request):
     
@@ -214,21 +218,22 @@ def checkUser(request):
     business = None
     if request.user.is_authenticated:
         user = request.user
-        profile = user.profile
-        print(profile)
-        #profile = Profile.objects.select_related('user').get(id=user.id)
+        try:
+            profile = user.profile
+        except:
+            return 'admin'
         try:
             freelancer = Freelancer.objects.select_related('profile').get(id=profile.freelancer.id)
         except:
-            print('magic')
+            print('Principal is not a freelancer.')
         try:
             business = Business.objects.select_related('profile').get(id=profile.business.id)
         except:
-            print('moar magic')
+            print('Principal is not a business.')
     if freelancer!=None:
         return 'freelancer'
     elif business !=None:
-        return 'bussines'
+        return 'business'
     else:
         return 'none'
 
@@ -243,3 +248,152 @@ def _get_queryset(klass):
     if hasattr(klass, '_default_manager'):
         return klass._default_manager.all()
     return klass
+
+def response_create(request, threadId):
+    if request.method=="POST":
+        form = ResponseForm(request.POST)
+        if form.is_valid():
+            response = form.save(commit=False)
+            userprofile = Profile.objects.get(user=request.user)
+            businessPrincipal = Business.objects.get(profile=userprofile)
+            response.business=businessPrincipal
+            thread = Thread.objects.get(id=threadId) 
+            response.thread = thread
+            response.save()
+            return redirect('/thread/detail/' + str(threadId))
+    else:
+        form = ResponseForm()
+    return render(request,'thread/responseCreate.html',{'form':form})
+
+def findByPrincipal(request):
+    freelancer = None
+    business = None
+    if request.user.is_authenticated:
+        user = request.user
+        try:
+            profile = user.profile
+        except:
+            print('admin logged')
+        try:
+            freelancer = Freelancer.objects.select_related('profile').get(id=profile.freelancer.id)
+            return freelancer
+        except:
+            print('Principal is not a freelancer.')
+        try:
+            business = Business.objects.select_related('profile').get(id=profile.business.id)
+            return business
+        except:
+            print('Principal is not a business.')
+    return None
+
+def linkCreate(request):
+    if checkUser(request)=='freelancer':
+        freelancer = findByPrincipal(request)
+        if request.method == 'POST':
+            form = LinkForm(request.POST)
+            if form.is_valid():                
+                link = form.save(commit=False)
+                link.curriculum = freelancer.curriculum
+                link.save()
+                print('link saved')
+                return redirect('/freelancer/detail/'+str(freelancer.id))
+        else:
+            form = LinkForm()
+            return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add link'})
+    else:
+        return render(request, 'index.html')
+
+def aptitudeCreate(request):
+    if checkUser(request)=='freelancer':
+        freelancer = findByPrincipal(request)
+        if request.method == 'POST':
+            form = AptitudeForm(request.POST)
+            if form.is_valid():                
+                obj = form.save(commit=False)
+                obj.curriculum = freelancer.curriculum
+                obj.save()
+                print('Aptitude saved')
+                return redirect('/freelancer/detail/'+str(freelancer.id))
+            else:
+                return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add aptitude'})
+        else:
+            form = AptitudeForm()
+            return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add aptitude'})
+    else:
+        return render(request, 'index.html')
+
+def graphicEngineExperienceCreate(request):
+    if checkUser(request)=='freelancer':
+        freelancer = findByPrincipal(request)
+        if request.method == 'POST':
+            form = GraphicEngineExperienceForm(request.POST)
+            if form.is_valid():                
+                obj = form.save(commit=False)
+                obj.curriculum = freelancer.curriculum
+                obj.save()
+                print('Graphic engine experience saved')
+                return redirect('/freelancer/detail/'+str(freelancer.id))
+            else:
+                return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add graphic engine experience'})
+        else:
+            form = GraphicEngineExperienceForm()
+            return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add graphic engine experience'})
+    else:
+        return render(request, 'index.html')
+
+def professionalExperienceCreate(request):
+    if checkUser(request)=='freelancer':
+        freelancer = findByPrincipal(request)
+        if request.method == 'POST':
+            form = ProfessionalExperienceForm(request.POST)
+            if form.is_valid():                
+                obj = form.save(commit=False)
+                obj.curriculum = freelancer.curriculum
+                obj.save()
+                print('Professional Experience saved')
+                return redirect('/freelancer/detail/'+str(freelancer.id))
+            else:
+                return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add professional experience'})
+        else:
+            form = ProfessionalExperienceForm()
+            return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add professional experience'})
+    else:
+        return render(request, 'index.html')
+
+def formationCreate(request):
+    if checkUser(request)=='freelancer':
+        freelancer = findByPrincipal(request)
+        if request.method == 'POST':
+            form = FormationForm(request.POST)
+            if form.is_valid():                
+                obj = form.save(commit=False)
+                obj.curriculum = freelancer.curriculum
+                obj.save()
+                print('formation saved')
+                return redirect('/freelancer/detail/'+str(freelancer.id))
+            else:
+                return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add formation'})
+        else:
+            form = FormationForm()
+            return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add formation'})
+    else:
+        return render(request, 'index.html')
+
+def html5showcaseEdit(request):
+    if checkUser(request)=='freelancer':
+        freelancer = findByPrincipal(request)
+        if request.method == 'POST':
+            form = html5showcaseForm(request.POST)
+            if form.is_valid():                
+                obj = form.save(commit=False)
+                obj.curriculum = freelancer.curriculum
+                obj.save()
+                print('Aptitude saved')
+                return redirect('/freelancer/detail/'+str(freelancer.id))
+            else:
+                return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit HTML5Showcase'})
+        else:
+            form = html5showcaseForm()
+            return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit HTML5Showcase'})
+    else:
+        return render(request, 'index.html')
