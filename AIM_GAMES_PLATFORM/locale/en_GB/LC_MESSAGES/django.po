@@ -113,3 +113,11 @@ msgstr "Job offers"
 #: .\templates\jobOfferList.html:17
 msgid "company"
 msgstr "Company"
+
+#: .\templates\jobOfferList.html:18
+msgid "signup"
+msgstr "Sign up"
+
+#: .\templates\jobOfferList.html:18
+msgid "signupBusiness"
+msgstr "Sign up as company"
