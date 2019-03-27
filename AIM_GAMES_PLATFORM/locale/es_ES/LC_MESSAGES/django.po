@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-27 08:17+0100\n"
+"POT-Creation-Date: 2019-03-27 21:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,30 +17,100 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .\templates\base_generic.html:39 .\templates\base_generic.html:50
+#: .\AIM_GAMES\forms.py:25 .\AIM_GAMES\forms.py:57
+msgid "Profile not valid"
+msgstr "Perfil no válido"
+
+#: .\AIM_GAMES\forms.py:38
+msgid "profession"
+msgstr "Profesión"
+
+#: .\AIM_GAMES\forms.py:70
+msgid "Name"
+msgstr ""
+
+#: .\AIM_GAMES\forms.py:71
+msgid "Surname"
+msgstr ""
+
+#: .\AIM_GAMES\forms.py:72
+msgid "Email"
+msgstr ""
+
+#: .\AIM_GAMES\forms.py:73
+msgid "City"
+msgstr ""
+
+#: .\AIM_GAMES\forms.py:74 .\AIM_GAMES\forms.py:77
+msgid "Postal Code"
+msgstr ""
+
+#: .\AIM_GAMES\forms.py:75
+msgid "IDCard Number"
+msgstr ""
+
+#: .\AIM_GAMES\forms.py:76
+msgid "Date of birth"
+msgstr ""
+
+#: .\AIM_GAMES\forms.py:78
+msgid "Photo URL:"
+msgstr ""
+
+#: .\AIM_GAMES\forms.py:96
+#, fuzzy
+#| msgid "Profile not valid"
+msgid "User not valid"
+msgstr "Perfil no válido"
+
+#: .\templates\accounts\login.html:18 .\templates\accounts\login.html:48
+msgid "Log In"
+msgstr ""
+
+#: .\templates\accounts\login.html:21
+msgid "Logout"
+msgstr ""
+
+#: .\templates\accounts\login.html:36
+msgid "Username"
+msgstr ""
+
+#: .\templates\accounts\login.html:41
+msgid "Password"
+msgstr ""
+
+#: .\templates\accounts\login.html:54
+msgid "Sign up"
+msgstr ""
+
+#: .\templates\accounts\login.html:61
+msgid "Sign up as Business"
+msgstr ""
+
+#: .\templates\base_generic.html:37 .\templates\base_generic.html:48
 msgid "mainpage"
 msgstr "Página principal"
 
-#: .\templates\base_generic.html:40 .\templates\base_generic.html:51
+#: .\templates\base_generic.html:38 .\templates\base_generic.html:49
 msgid "services"
 msgstr "Servicios"
 
-#: .\templates\base_generic.html:41 .\templates\base_generic.html:52
+#: .\templates\base_generic.html:39 .\templates\base_generic.html:50
 msgid "aboutus"
 msgstr "Sobre nosotros"
 
-#: .\templates\base_generic.html:42 .\templates\base_generic.html:53
+#: .\templates\base_generic.html:40 .\templates\base_generic.html:51
 msgid "contactus"
 msgstr "Contáctanos"
 
-#: .\templates\base_generic.html:43
+#: .\templates\base_generic.html:41
 msgid "threads"
 msgstr "Hilos"
 
-#: .\templates\base_generic.html:44
+#: .\templates\base_generic.html:42
 msgid "joboffers"
 msgstr "Ofertas de trabajo"
 
-#: .\templates\jobOfferList.html:18
+#: .\templates\jobOfferList.html:17
 msgid "company"
 msgstr "Empresa"
