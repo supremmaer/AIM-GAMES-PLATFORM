@@ -175,7 +175,7 @@ class ResponseForm(ModelForm):
     class Meta:
         model = Response
         exclude = ('business','thread')
-        
+
 class LinkForm(ModelForm):
     
     def __init__(self, *args, **kwargs):
@@ -187,3 +187,10 @@ class LinkForm(ModelForm):
     class Meta:
         model = Link
         exclude = ('curriculum',)
+
+class GraphicEngineExperienceForm(ModelForm):
+
+    class Meta:
+        model = GraphicEngineExperience
+        exclude = ['curriculum']
+

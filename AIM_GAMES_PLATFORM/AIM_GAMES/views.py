@@ -303,3 +303,87 @@ def linkCreate(request):
     else:
         return render(request, 'index.html')
 
+def aptitudeCreate(request):
+    if checkUser(request)=='freelancer':
+        freelancer = findByPrincipal(request)
+        if request.method == 'POST':
+            form = AptitudeForm(request.POST)
+            if form.is_valid():                
+                obj = form.save(commit=False)
+                obj.curriculum = freelancer.curriculum
+                obj.save()
+                print('Aptitude saved')
+                return redirect('/freelancer/detail/'+str(freelancer.id))
+        else:
+            form = AptitudeForm()
+            return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add aptitude'})
+    else:
+        return render(request, 'index.html')
+
+def graphicEngineExperienceCreate(request):
+    if checkUser(request)=='freelancer':
+        freelancer = findByPrincipal(request)
+        if request.method == 'POST':
+            form = GraphicEngineExperienceForm(request.POST)
+            if form.is_valid():                
+                obj = form.save(commit=False)
+                obj.curriculum = freelancer.curriculum
+                obj.save()
+                print('Aptitude saved')
+                return redirect('/freelancer/detail/'+str(freelancer.id))
+        else:
+            form = GraphicEngineExperienceForm()
+            return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add graphic engine experience'})
+    else:
+        return render(request, 'index.html')
+
+def professionalExperienceCreate(request):
+    if checkUser(request)=='freelancer':
+        freelancer = findByPrincipal(request)
+        if request.method == 'POST':
+            form = GraphicEngineExperienceForm(request.POST)
+            if form.is_valid():                
+                obj = form.save(commit=False)
+                obj.curriculum = freelancer.curriculum
+                obj.save()
+                print('Aptitude saved')
+                return redirect('/freelancer/detail/'+str(freelancer.id))
+        else:
+            form = GraphicEngineExperienceForm()
+            return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add graphic engine experience'})
+    else:
+        return render(request, 'index.html')
+
+def formationCreate(request):
+    if checkUser(request)=='freelancer':
+        freelancer = findByPrincipal(request)
+        if request.method == 'POST':
+            form = GraphicEngineExperienceForm(request.POST)
+            if form.is_valid():                
+                obj = form.save(commit=False)
+                obj.curriculum = freelancer.curriculum
+                obj.save()
+                print('Aptitude saved')
+                return redirect('/freelancer/detail/'+str(freelancer.id))
+        else:
+            form = GraphicEngineExperienceForm()
+            return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add graphic engine experience'})
+    else:
+        return render(request, 'index.html')
+
+def html5showcaseEdit(request):
+    if checkUser(request)=='freelancer':
+        freelancer = findByPrincipal(request)
+        if request.method == 'POST':
+            form = GraphicEngineExperienceForm(request.POST)
+            if form.is_valid():                
+                obj = form.save(commit=False)
+                obj.curriculum = freelancer.curriculum
+                obj.save()
+                print('Aptitude saved')
+                return redirect('/freelancer/detail/'+str(freelancer.id))
+        else:
+            form = GraphicEngineExperienceForm()
+            return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add graphic engine experience'})
+    else:
+        return render(request, 'index.html')
