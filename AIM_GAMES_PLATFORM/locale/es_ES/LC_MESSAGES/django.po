@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-25 14:38+0100\n"
+"POT-Creation-Date: 2019-03-27 03:46+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,26 +17,64 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .\templates\base_generic.html:38 .\templates\base_generic.html:53
+#: .\templates\base_generic.html:39 .\templates\base_generic.html:56
 msgid "mainpage"
 msgstr "Página principal"
 
-#: .\templates\base_generic.html:39 .\templates\base_generic.html:54
+#: .\templates\base_generic.html:40 .\templates\base_generic.html:57
 msgid "services"
 msgstr "Servicios"
 
-#: .\templates\base_generic.html:40 .\templates\base_generic.html:55
+#: .\templates\base_generic.html:41 .\templates\base_generic.html:58
 msgid "aboutus"
 msgstr "Sobre nosotros"
 
-#: .\templates\base_generic.html:41 .\templates\base_generic.html:56
+#: .\templates\base_generic.html:42 .\templates\base_generic.html:59
 msgid "contactus"
 msgstr "Contáctanos"
 
-#: .\templates\base_generic.html:42
+#: .\templates\base_generic.html:47 .\templates\base_generic.html:61
+#: .\templates\threadList.html:8
 msgid "threads"
 msgstr "Hilos"
 
-#: .\templates\base_generic.html:43
+#: .\templates\base_generic.html:48 .\templates\base_generic.html:62
+msgid "curriculums"
+msgstr "Curriculums"
+
+#: .\templates\base_generic.html:50 .\templates\base_generic.html:64
 msgid "joboffers"
 msgstr "Ofertas de trabajo"
+
+#: .\templates\curriculumList.html:18
+msgid "name"
+msgstr "Nombre"
+
+#: .\templates\jobOfferList.html:7
+#, fuzzy
+#| msgid "joboffers"
+msgid "offers"
+msgstr "Ofertas de trabajo"
+
+#: .\templates\jobOfferList.html:18 .\templates\threadList.html:9
+#: .\templates\threadList.html:21
+msgid "company"
+msgstr "Empresa"
+
+#: .\templates\jobOfferList.html:19
+msgid "salary"
+msgstr "Sueldo"
+
+#: .\templates\jobOfferList.html:20
+msgid "schedule"
+msgstr "Horario"
+
+#: .\templates\jobOfferList.html:34
+msgid "newOffer"
+msgstr "Crear oferta"
+
+#: .\templates\threadList.html:25
+#, fuzzy
+#| msgid "threads"
+msgid "newThread"
+msgstr "Crear foro"
