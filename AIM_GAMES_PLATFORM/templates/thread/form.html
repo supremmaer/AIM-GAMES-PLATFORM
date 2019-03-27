@@ -1,5 +1,6 @@
 {% extends "base_generic.html" %}
 {% block content %}
+{% load i18n %}
 
 <head>
 
@@ -8,7 +9,7 @@
 <body>
 <div class="row ">
     <div class="col s12 l6 m10 offset-m1 offset-l3">
-        <h2>Create Thread</h2>
+        <h2>{% trans "Create Thread" %}</h2>
         <form method="POST">
              <div class="card">
                  <div class="row">
@@ -29,9 +30,13 @@
             {% endfor %}
 
 
-            <input type="submit" value="Submit">
+            <div class="col s12">
+                <div class="right">
+                    <input style="font-size: 14pt;" type="submit" class="btn waves-effect waves btn-small" value="{% trans "Submit" %}">
+                </div>
+            </div>
                   </div>
-                  </div>
+                 </div>
              </div>
         </form>
     </div>

@@ -1,9 +1,10 @@
-from django.forms import ModelForm, forms, CharField, Textarea, ModelMultipleChoiceField, TextInput, MultipleChoiceField,EmailField, ModelMultipleChoiceField,CheckboxSelectMultiple, DateField, DateInput,SelectDateWidget,ChoiceField,RadioSelect
+from django.forms import ModelForm, forms, CharField,URLField, URLInput,Textarea,DateTimeField, ModelMultipleChoiceField,EmailInput, NumberInput, TextInput, MultipleChoiceField,EmailField, ModelMultipleChoiceField,CheckboxSelectMultiple, DateField, DateInput,SelectDateWidget,ChoiceField,RadioSelect
 from django.contrib.auth.forms import UserCreationForm
 from AIM_GAMES.models import *
 from django.contrib.auth.models import User, Group
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
+from django.utils.translation import ugettext_lazy as _
 
 
 class BusinessForm(ModelForm):
@@ -21,7 +22,7 @@ class BusinessForm(ModelForm):
 
     def clean(self):
         if not self.profile_form.is_valid():
-            raise forms.ValidationError("Profile not valid")
+            raise forms.ValidationError(_("Profile not valid"))
 
     def save(self, commit=False):
         print('save: BusinessForm')
@@ -34,6 +35,7 @@ class BusinessForm(ModelForm):
 
 
 class FreelancerForm(ModelForm):
+    profession = CharField(widget=TextInput(), label=_("profession"))
     class Meta:
         model = Freelancer
         exclude = ()
@@ -46,11 +48,13 @@ class FreelancerForm(ModelForm):
         # 'prefix' parameter required if in a modelFormset
         self.instance.profile = Profile()
         self.profile_form = ProfileForm(instance=self.instance and self.instance.profile, prefix=self.prefix, data=data)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'validate'
 
     def clean(self):
         print('clean: FreelancerForm')
         if not self.profile_form.is_valid():
-            raise forms.ValidationError("Profile not valid")
+            raise forms.ValidationError(_("Profile not valid"))
 
     def save(self, commit=False):
         print('save: FreelancerForm')
@@ -63,7 +67,15 @@ class FreelancerForm(ModelForm):
 
 
 class ProfileForm(ModelForm):
-    # dateOfBirth = DateField(widget=SelectDateWidget)
+    name = CharField(widget=TextInput(), label=_("Name"))
+    surname = CharField(widget=TextInput(), label=_("Surname"))
+    email = EmailField(widget=EmailInput(), label=_("Email"))
+    city = CharField(widget=TextInput(), label=_("City"))
+    postalCode = CharField(widget=NumberInput(), label=_("Postal Code"))
+    idCardNumber = CharField(widget=TextInput(), label=_("IDCard Number"))
+    dateOfBirth = DateField(widget=DateInput(), label=_("Date of birth"))
+    phoneNumber = CharField(widget=NumberInput(), label=_("Postal Code"))
+    photo = URLField(widget=URLInput(), label=_("Photo URL:"))
 
     class Meta:
         model = Profile
@@ -81,7 +93,7 @@ class ProfileForm(ModelForm):
     def clean(self):
         print('clean: ProfileForm')
         if not self.user_form.is_valid():
-            raise forms.ValidationError("User not valid")
+            raise forms.ValidationError(_("User not valid"))
 
     def save(self, commit=False):
         print('save: ProfileForm')
@@ -98,11 +110,11 @@ class UserForm(UserCreationForm):
 
 
 class ThreadForm(ModelForm):
-    title = CharField(widget=TextInput(), label='Title')
-    description = CharField(widget=Textarea(), label='Description',)
-    tags = ModelMultipleChoiceField(queryset=Tag.objects.all(), label='Tags', required=False,)
-    images = CharField(widget=Textarea(), required=False, label='Images URL',)
-    files = CharField(widget=Textarea(), required=False, label='Files URL',)
+    title = CharField(widget=TextInput(), label=_('Title'))
+    description = CharField(widget=Textarea(), label=_('Description'),)
+    tags = ModelMultipleChoiceField(queryset=Tag.objects.all(), label=_('Tags'), required=False,)
+    images = CharField(widget=Textarea(), required=False, label=_('Image URLs'),)
+    files = CharField(widget=Textarea(), required=False, label=_('Attachment URLs'),)
 
     class Meta:
         model = Thread
