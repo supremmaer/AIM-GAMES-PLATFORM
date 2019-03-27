@@ -99,8 +99,8 @@ class UserForm(UserCreationForm):
 
 class ThreadForm(ModelForm):
     title = CharField(widget=TextInput(), label='Title')
-    description = CharField(widget=Textarea(), label='Description')
-    tags = ModelMultipleChoiceField(queryset=Tag.objects.all(), label='Tags',)
+    description = CharField(widget=Textarea(), label='Description',)
+    tags = ModelMultipleChoiceField(queryset=Tag.objects.all(), label='Tags', required=False,)
     images = CharField(widget=Textarea(), required=False, label='Images URL',)
     files = CharField(widget=Textarea(), required=False, label='Files URL',)
 

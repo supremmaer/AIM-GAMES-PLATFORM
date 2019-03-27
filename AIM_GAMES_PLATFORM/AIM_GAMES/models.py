@@ -144,7 +144,7 @@ class Thread(models.Model):
     business = models.ForeignKey(Business, on_delete=models.CASCADE)
     title = models.TextField(max_length=100, blank=False)
     description = models.TextField(blank=False)
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, blank=True)
     pics = models.ManyToManyField(URL, related_name="pic")
     attachedFiles = models.ManyToManyField(URL, related_name="attachedFile")
 
