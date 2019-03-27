@@ -60,7 +60,7 @@
                              <input id="{{ field.id_for_label }}" type="date" class="validate" name="{{ field.html_name }}" value="{{ field.value}}">
 
                             {% else %}
-                             <input id="{{ field.id_for_label }}" type="text" class="validate" name="{{ field.html_name }}" value="{{ field.value|default_if_none:'MM/DD/YY' }}">
+                             <input id="{{ field.id_for_label }}" type="text" class="validate" name="{{ field.html_name }}" value="{{ field.value }}">
                              {% endif %}
                             <label for="{{ field.id_for_label }}">{{ field.label_tag }}:</label>
                             {% endif %}
@@ -72,7 +72,6 @@
                          {% for field in form.visible_fields %}
                          <span class="red-text">{{ field.errors }}</span>
                         <div class="input-field col s12">
-                            <span class="red-text">{{ field.errors }}</span>
                            {% if field.id_for_label != "id_profile" %}
 
                              <input placeholder="" id="{{ field.id_for_label }}" type="text" class="validate" name="{{ field.html_name }}" value="{{ field.value|default_if_none:'' }}">

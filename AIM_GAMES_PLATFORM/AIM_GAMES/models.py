@@ -110,13 +110,13 @@ class GraphicEngineExperience(models.Model):
 
 
 class HTML5Showcase(models.Model):
-    curriculum = models.OneToOneField(Curriculum, on_delete=models.CASCADE)
+    curriculum = models.OneToOneField(Curriculum, on_delete=models.CASCADE,related_name='HTML5Showcase')
     embedCode = models.TextField()
 
 
 class Aptitude(models.Model):
     curriculum = models.ForeignKey(Curriculum, on_delete=models.CASCADE)
-    aptitude = models.TextField(max_length=30, blank=False)
+    title = models.TextField(max_length=30, blank=False)
 
 
 class Link(models.Model):
@@ -156,6 +156,7 @@ class Valoration(models.Model):
     score = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)])
     thread=models.ForeignKey(Thread, on_delete=models.CASCADE)
     business=models.ForeignKey(Business, on_delete=models.CASCADE)
+
     class Meta:
         unique_together = (("thread", "business"),)
 

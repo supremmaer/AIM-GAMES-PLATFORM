@@ -23,8 +23,10 @@
   
 <p>{{ thread.description }}</p>  
 
+<a href="/response/create/{{thread.id}}">Responder a este Hilo</a>
+
 <h5>Respuestas:</h5>
-{% for response in thread.response_set.all %}
+{% for response in responses %}
  
 <b>{{ response.title }}</b><p>{{response.description}}</p> Business: {{response.business}}
 <br>

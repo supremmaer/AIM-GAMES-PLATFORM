@@ -1,6 +1,6 @@
 {% extends "base_generic.html" %}
 {% block content %} 
-  
+{% load i18n %}  
 <body>
     <div class="col s12">  
         <h3>Ofertas</h3>      
@@ -14,7 +14,7 @@
     </div>
     <div class="col s12">
         <div class="row">
-            <div class="col s3"><h5>Empresa</h5></div>
+            <div class="col s3"><h5>{% trans "company"%}</h5></div>
             <div class="col s3"><h5>Salario</h5></div>
             <div class="col s3"><h5>Horarios</h5></div>
         </div>
