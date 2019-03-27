@@ -38,5 +38,7 @@ urlpatterns = [
     path('joboffer/user/list/', jobOfferList, name='jobOfferList'),
     #static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     path('freelancer/detail/<int:id>',freelancerDetail, name='freelancerDetail'),
-    path('setlanguage/<str:language>', setlanguage)
+    path('setlanguage/<str:language>', setlanguage),
+    path('response/create/<int:threadId>',response_create, name='responseCreate')
+
 ]

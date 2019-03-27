@@ -7,7 +7,7 @@ from paypal.standard.forms import PayPalPaymentsForm
 from django.shortcuts import redirect
 from django.views.generic import FormView, CreateView
 from .models import Freelancer, Business, Thread, Response, Link, JobOffer, Curriculum, Profile
-from .forms import FreelancerForm, BusinessForm, ThreadForm
+from .forms import FreelancerForm, BusinessForm, ThreadForm, ResponseForm
 from django.db.models import Q
 from datetime import datetime, timezone
 from django.contrib import auth
@@ -162,7 +162,7 @@ class ThreadCreate(CreateView):
 def threadDetail(request, thread_id):
         thread = get_object_or_404(Thread, pk=thread_id)
         responses = thread.response_set.all()
-        return render(request, 'threadDetail.html', {'thread': thread, 'responses:': responses})
+        return render(request, 'threadDetail.html', {'thread': thread, 'responses': responses})
 
 def freelancerDetail(request, id):      
         freelancer = get_object_or_404(Freelancer,pk=id)
@@ -243,3 +243,19 @@ def _get_queryset(klass):
     if hasattr(klass, '_default_manager'):
         return klass._default_manager.all()
     return klass
+
+def response_create(request, threadId):
+    if request.method=="POST":
+        form = ResponseForm(request.POST)
+        if form.is_valid():
+            response = form.save(commit=False)
+            userprofile = Profile.objects.get(user=request.user)
+            businessPrincipal = Business.objects.get(profile=userprofile)
+            response.business=businessPrincipal
+            thread = Thread.objects.get(id=threadId) 
+            response.thread = thread
+            response.save()
+            return redirect('/thread/detail/' + str(threadId), pk=threadId)
+    else:
+        form = ResponseForm()
+    return render(request,'thread/responseCreate.html',{'form':form})

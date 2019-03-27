@@ -1,6 +1,6 @@
 from django.forms import ModelForm, forms, CharField, Textarea, ModelMultipleChoiceField, TextInput, MultipleChoiceField,EmailField, ModelMultipleChoiceField,CheckboxSelectMultiple, DateField, DateInput,SelectDateWidget
 from django.contrib.auth.forms import UserCreationForm
-from AIM_GAMES.models import Freelancer, Business, Profile, Thread, Tag, URL, Valoration
+from AIM_GAMES.models import Freelancer, Business, Profile, Thread, Tag, URL, Valoration, Response
 from django.contrib.auth.models import User, Group
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
@@ -170,4 +170,8 @@ class ThreadForm(ModelForm):
         obj.pics.set(pics)
         return obj
 
+class ResponseForm(ModelForm):
 
+    class Meta:
+        model = Response
+        exclude = ('business','thread')
