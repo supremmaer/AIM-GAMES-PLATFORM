@@ -110,7 +110,7 @@ class GraphicEngineExperience(models.Model):
 
 
 class HTML5Showcase(models.Model):
-    curriculum = models.OneToOneField(Curriculum, on_delete=models.CASCADE)
+    curriculum = models.OneToOneField(Curriculum, on_delete=models.CASCADE,related_name='HTML5Showcase')
     embedCode = models.TextField()
 
 

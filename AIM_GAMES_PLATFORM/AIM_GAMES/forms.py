@@ -1,6 +1,6 @@
 from django.forms import ModelForm, forms, CharField, Textarea, ModelMultipleChoiceField, TextInput, MultipleChoiceField,EmailField, ModelMultipleChoiceField,CheckboxSelectMultiple, DateField, DateInput,SelectDateWidget
 from django.contrib.auth.forms import UserCreationForm
-from AIM_GAMES.models import Freelancer, Business, Profile, Thread, Tag, URL, Valoration, Response
+from AIM_GAMES.models import *
 from django.contrib.auth.models import User, Group
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
@@ -175,3 +175,15 @@ class ResponseForm(ModelForm):
     class Meta:
         model = Response
         exclude = ('business','thread')
+        
+class LinkForm(ModelForm):
+    
+    def __init__(self, *args, **kwargs):
+        print('__init__ LinkForm')
+        super(LinkForm, self).__init__(*args, **kwargs)
+        data = kwargs.get('data')
+        print('xd')
+
+    class Meta:
+        model = Link
+        exclude = ('curriculum',)

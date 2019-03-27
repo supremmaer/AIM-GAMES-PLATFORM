@@ -7,7 +7,7 @@ from paypal.standard.forms import PayPalPaymentsForm
 from django.shortcuts import redirect
 from django.views.generic import FormView, CreateView
 from .models import Freelancer, Business, Thread, Response, Link, JobOffer, Curriculum, Profile
-from .forms import FreelancerForm, BusinessForm, ThreadForm, ResponseForm
+from .forms import *
 from django.db.models import Q
 from datetime import datetime, timezone
 from django.contrib import auth
@@ -170,9 +170,13 @@ def freelancerDetail(request, id):
         links = curriculum.link_set.all()
         formation = curriculum.formation_set.all()
         professionalExperience = curriculum.professionalexperience_set.all()
-        HTML5Showcase = curriculum.html5showcase_set.all()
         graphicEngineExperience = curriculum.graphicengineexperience_set.all()
         aptitude = curriculum.aptitude_set.all()
+        try:
+            HTML5Showcase = curriculum.HTML5Showcase
+        except:
+            HTML5Showcase = None
+
         return render(request, 'freelancer/detail.html', {'freelancer': freelancer,'links':links,'formations':formation,'professionalExperiences':professionalExperience,'HTML5Showcase':HTML5Showcase,'graphicEngineExperiences':graphicEngineExperience,'aptitudes':aptitude})
 
 def threadList(request, business_id):
@@ -214,9 +218,10 @@ def checkUser(request):
     business = None
     if request.user.is_authenticated:
         user = request.user
-        profile = user.profile
-        print(profile)
-        #profile = Profile.objects.select_related('user').get(id=user.id)
+        try:
+            profile = user.profile
+        except:
+            return 'admin'
         try:
             freelancer = Freelancer.objects.select_related('profile').get(id=profile.freelancer.id)
         except:
@@ -259,3 +264,42 @@ def response_create(request, threadId):
     else:
         form = ResponseForm()
     return render(request,'thread/responseCreate.html',{'form':form})
+
+def findByPrincipal(request):
+    freelancer = None
+    business = None
+    if request.user.is_authenticated:
+        user = request.user
+        try:
+            profile = user.profile
+        except:
+            print('admin logged')
+        try:
+            freelancer = Freelancer.objects.select_related('profile').get(id=profile.freelancer.id)
+            return freelancer
+        except:
+            print('Principal is not a freelancer.')
+        try:
+            business = Business.objects.select_related('profile').get(id=profile.business.id)
+            return business
+        except:
+            print('Principal is not a business.')
+    return None
+
+def linkCreate(request):
+    if checkUser(request)=='freelancer':
+        freelancer = findByPrincipal(request)
+        if request.method == 'POST':
+            form = LinkForm(request.POST)
+            if form.is_valid():                
+                link = form.save(commit=False)
+                link.curriculum = freelancer.curriculum
+                link.save()
+                print('link saved')
+                return redirect('/freelancer/detail/'+str(freelancer.id))
+        else:
+            form = LinkForm()
+            return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add link'})
+    else:
+        return render(request, 'index.html')
+

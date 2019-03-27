@@ -39,6 +39,7 @@ urlpatterns = [
     #static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     path('freelancer/detail/<int:id>',freelancerDetail, name='freelancerDetail'),
     path('setlanguage/<str:language>', setlanguage),
-    path('response/create/<int:threadId>',response_create, name='responseCreate')
+    path('response/create/<int:threadId>',response_create, name='responseCreate'),
+    path('freelancer/link/create',linkCreate),
 
 ]
