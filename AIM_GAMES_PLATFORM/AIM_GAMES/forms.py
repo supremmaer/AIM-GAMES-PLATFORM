@@ -1,4 +1,4 @@
-from django.forms import ModelForm, forms, CharField, Textarea, ModelMultipleChoiceField, TextInput, MultipleChoiceField,EmailField, ModelMultipleChoiceField,CheckboxSelectMultiple, DateField, DateInput,SelectDateWidget
+from django.forms import ModelForm, forms, CharField, Textarea, ModelMultipleChoiceField, TextInput, MultipleChoiceField,EmailField, ModelMultipleChoiceField,CheckboxSelectMultiple, DateField, DateInput,SelectDateWidget,ChoiceField,RadioSelect
 from django.contrib.auth.forms import UserCreationForm
 from AIM_GAMES.models import *
 from django.contrib.auth.models import User, Group
@@ -175,7 +175,7 @@ class ResponseForm(ModelForm):
     class Meta:
         model = Response
         exclude = ('business','thread')
-        
+
 class LinkForm(ModelForm):
     
     def __init__(self, *args, **kwargs):
@@ -187,3 +187,33 @@ class LinkForm(ModelForm):
     class Meta:
         model = Link
         exclude = ('curriculum',)
+
+class GraphicEngineExperienceForm(ModelForm):
+
+    class Meta:
+        model = GraphicEngineExperience
+        exclude = ['curriculum']
+
+class AptitudeForm(ModelForm):
+
+    class Meta:
+        model = Aptitude
+        exclude = ['curriculum']
+
+class ProfessionalExperienceForm(ModelForm):
+    """ startDate = DateField(widget=SelectDateWidget()) """
+    class Meta:
+        model = ProfessionalExperience
+        exclude = ['curriculum']
+
+class FormationForm(ModelForm):
+
+    class Meta:
+        model = Formation
+        exclude = ['curriculum']
+
+class html5showcaseForm(ModelForm):
+
+    class Meta:
+        model = HTML5Showcase
+        exclude = ['curriculum']
