@@ -1,0 +1,36 @@
+{% extends "base_generic.html" %}
+{% block content %}
+  
+  
+<body>  
+<h1>Detalles del Hilo</h1>    
+<h3>{{ thread.title }}</h3> 
+<p><b>Empresa:</b> {{ thread.business }}</p>  
+<p><b>Valoración:</b> {{ thread.valoration.score }}</p>  
+<p><b>Tags:</b>
+  {% for tag in thread.tags.all %}
+  {{tag.title}}</p>
+  {% endfor %}  
+<p><b>Imágenes:</b>
+  {% for pic in thread.pics.all %}
+  <a href="{{pic.title}}">Imagen</a></p>
+  {% endfor %}  
+
+<b>Archivos Adicionales:</b>
+  {% for file in thread.attachedFiles.all %}
+  <a href="{{file.title}}">Archivo</a>
+  {% endfor %}  
+  
+<p>{{ thread.description }}</p>  
+
+<a href="/response/create/{{thread.id}}">Responder a este Hilo</a>
+
+<h5>Respuestas:</h5>
+{% for response in responses %}
+ 
+<b>{{ response.title }}</b><p>{{response.description}}</p> Business: {{response.business}}
+<br>
+{% endfor %}  
+
+</body>
+{% endblock %}
