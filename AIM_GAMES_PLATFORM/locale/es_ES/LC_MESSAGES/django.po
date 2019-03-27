@@ -27,35 +27,35 @@ msgstr "Profesión"
 
 #: .\AIM_GAMES\forms.py:70
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: .\AIM_GAMES\forms.py:71
 msgid "Surname"
-msgstr ""
+msgstr "Apellido"
 
 #: .\AIM_GAMES\forms.py:72
 msgid "Email"
-msgstr ""
+msgstr "Correo Electrónico"
 
 #: .\AIM_GAMES\forms.py:73
 msgid "City"
-msgstr ""
+msgstr "Ciudad"
 
 #: .\AIM_GAMES\forms.py:74 .\AIM_GAMES\forms.py:77
 msgid "Postal Code"
-msgstr ""
+msgstr "Código Postal"
 
 #: .\AIM_GAMES\forms.py:75
 msgid "IDCard Number"
-msgstr ""
+msgstr "DNI"
 
 #: .\AIM_GAMES\forms.py:76
 msgid "Date of birth"
-msgstr ""
+msgstr "Día de nacimiento"
 
 #: .\AIM_GAMES\forms.py:78
 msgid "Photo URL:"
-msgstr ""
+msgstr "Foto URL"
 
 #: .\AIM_GAMES\forms.py:96
 #, fuzzy
@@ -65,27 +65,27 @@ msgstr "Perfil no válido"
 
 #: .\templates\accounts\login.html:18 .\templates\accounts\login.html:48
 msgid "Log In"
-msgstr ""
+msgstr "Iniciar Sesión"
 
 #: .\templates\accounts\login.html:21
 msgid "Logout"
-msgstr ""
+msgstr "Cerrar Sesión"
 
 #: .\templates\accounts\login.html:36
 msgid "Username"
-msgstr ""
+msgstr "Usuario"
 
 #: .\templates\accounts\login.html:41
 msgid "Password"
-msgstr ""
+msgstr "Contraseña"
 
 #: .\templates\accounts\login.html:54
 msgid "Sign up"
-msgstr ""
+msgstr "Registrarse"
 
 #: .\templates\accounts\login.html:61
 msgid "Sign up as Business"
-msgstr ""
+msgstr "Registrarse (Empresa)"
 
 #: .\templates\base_generic.html:37 .\templates\base_generic.html:48
 msgid "mainpage"
