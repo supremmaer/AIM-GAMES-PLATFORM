@@ -4,6 +4,7 @@ from AIM_GAMES.models import *
 from django.contrib.auth.models import User, Group
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
+from django.utils.translation import ugettext_lazy as _
 
 
 class BusinessForm(ModelForm):
@@ -98,11 +99,11 @@ class UserForm(UserCreationForm):
 
 
 class ThreadForm(ModelForm):
-    title = CharField(widget=TextInput(), label='Title')
-    description = CharField(widget=Textarea(), label='Description',)
-    tags = ModelMultipleChoiceField(queryset=Tag.objects.all(), label='Tags', required=False,)
-    images = CharField(widget=Textarea(), required=False, label='Images URL',)
-    files = CharField(widget=Textarea(), required=False, label='Files URL',)
+    title = CharField(widget=TextInput(), label=_('Title'))
+    description = CharField(widget=Textarea(), label=_('Description'),)
+    tags = ModelMultipleChoiceField(queryset=Tag.objects.all(), label=_('Tags'), required=False,)
+    images = CharField(widget=Textarea(), required=False, label=_('Image URLs'),)
+    files = CharField(widget=Textarea(), required=False, label=_('Attachment URLs'),)
 
     class Meta:
         model = Thread

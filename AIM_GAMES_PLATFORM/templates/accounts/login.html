@@ -1,4 +1,5 @@
 {% extends "base_generic.html" %}
+{% load i18n %}
 {% block content %}
 <head>
     <style>
@@ -51,15 +52,15 @@
                     </button>
                 </div>
                 <a href="/freelancer/create/" class="">
-                <div class="col s5 m5 l3 push-s2 push-m2 push-l6 waves-effect waves-light btn red lighten-2">
-                    <span class="white-text">Sign up</span>
+                <div class="col s5 m5 20 push-s2 push-m2 push-l4 waves-effect waves-light btn red lighten-2">
+                    <span class="white-text">{% trans "signup" %}</span>
                 </div>
                 </a>
             </div>
             <div class="row">
                  <a href="/business/create/" class="">
-                <div class="col s5 m5 l3 offset-s7 offset-m7 offset-l9 waves-effect waves-light btn red lighten-2">
-                   <span class="white-text">Sign up as Business</span>
+                <div class="col s5 m5 20 offset-s7 offset-m7 offset-l7 waves-effect waves-light btn red lighten-2">
+                   <span class="white-text">{% trans "signupBusiness" %}</span>
                 </div>
                  </a>
             </div>

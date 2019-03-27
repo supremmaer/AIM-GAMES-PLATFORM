@@ -38,6 +38,7 @@
                         <li><a>{% trans "services" %}</a></li>
                         <li><a>{% trans "aboutus" %}</a></li>
                         <li><a>{% trans "contactus" %}</a></li>
+                        <li><a href="/accounts/login/">{% trans "signup" %}</a></li>
                         <li><a href="/thread/business/list/1" target="_self" class="collection-item">{% trans "threads" %}</a></li>
                         <li><a href="/joboffer/user/list/" target="_self" class="collection-item">{% trans "joboffers" %}</a></li>
                     </ul>
@@ -49,6 +50,8 @@
                 <li><a>{% trans "services" %}</a></li>
                 <li><a>{% trans "aboutus" %}</a></li>
                 <li><a>{% trans "contactus" %}</a></li>
+                <li><a href="/thread/business/list/1" target="_self" class="collection-item">{% trans "threads" %}</a></li>
+                <li><a href="/joboffer/user/list/" target="_self" class="collection-item">{% trans "joboffers" %}</a></li>
             </ul>
 
         {% block content %}<!-- default content text (typically empty) -->{% endblock %}
