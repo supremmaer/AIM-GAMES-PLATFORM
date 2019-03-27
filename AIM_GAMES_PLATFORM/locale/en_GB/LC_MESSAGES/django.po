@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-25 14:38+0100\n"
+"POT-Creation-Date: 2019-03-27 08:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,26 +18,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\templates\base_generic.html:38 .\templates\base_generic.html:53
+#: .\templates\base_generic.html:39 .\templates\base_generic.html:50
 msgid "mainpage"
 msgstr "Main page"
 
-#: .\templates\base_generic.html:39 .\templates\base_generic.html:54
+#: .\templates\base_generic.html:40 .\templates\base_generic.html:51
 msgid "services"
 msgstr "Services"
 
-#: .\templates\base_generic.html:40 .\templates\base_generic.html:55
+#: .\templates\base_generic.html:41 .\templates\base_generic.html:52
 msgid "aboutus"
 msgstr "About us"
 
-#: .\templates\base_generic.html:41 .\templates\base_generic.html:56
+#: .\templates\base_generic.html:42 .\templates\base_generic.html:53
 msgid "contactus"
 msgstr "Contact us"
 
-#: .\templates\base_generic.html:42
+#: .\templates\base_generic.html:43
 msgid "threads"
 msgstr "Threads"
 
-#: .\templates\base_generic.html:43
+#: .\templates\base_generic.html:44
 msgid "joboffers"
 msgstr "Job offers"
+
+#: .\templates\jobOfferList.html:18
+msgid "company"
+msgstr "Company"

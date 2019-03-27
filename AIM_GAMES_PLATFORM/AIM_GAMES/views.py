@@ -19,11 +19,6 @@ from django.utils import translation
 
 def index(request):
     # esto es como el controlador/servicios
-    if not request.session.has_key('language'):
-        request.session['language'] = 'es-ES'
-    language = request.session['language']
-    translation.activate(language)
-
     return render(request, 'index.html')
 
 def setlanguage(request, language):
@@ -152,23 +147,16 @@ class ThreadCreate(CreateView):
         # It should return an HttpResponse.
         print('ThreadCreate: form_valid')
         print(form.cleaned_data)
-        prof = Profile.objects.filter(user__pk=self.request.user.id)
-        buss = Business.objects.filter(profile__pk=prof[0].id)
-        thread = form.save(buss)
 
-        return threadDetail(self.request, thread.id)
+        return render(threadDetail(self.request,1))
 
     def get_context_data(self, **kwargs):
+        # This method is called before the view es generate and add the context
+        # It should return the context
 
         context = super(ThreadCreate, self).get_context_data(**kwargs)
 
         return context
-
-    def dispatch(self, request, *args, **kwargs):
-        if checkUser(self.request) == 'business':
-            return super(ThreadCreate, self).dispatch(request,*args, **kwargs)
-        else:
-            redirect('404')
 
 
 def threadDetail(request, thread_id):
@@ -200,16 +188,25 @@ def threadList(request, business_id):
     return render(request, 'threadList.html',{'threads':threads,'businessThread':businessThread}) 
 
 def jobOfferList(request):
+    
     if(request.GET.__contains__('search')):
         search=request.GET.get('search')
-        q=JobOffer.objects.filter( Q(business__profile__name__icontains=search)|
-        Q(position__icontains=search)|
-        Q(experienceRequired__icontains=search)|
-        Q(ubication__icontains=search)|
-        Q(description__icontains=search))
+        try:
+            q=JobOffer.objects.filter( Q(business__profile__name__icontains=search)|
+            Q(position__icontains=search)|
+            Q(experienceRequired__icontains=search)|
+            Q(ubication__icontains=search)|
+            Q(description__icontains=search))
+            jobOffers= get_list_or_404(q)
+        except:
+            jobOffers=()
     else:
-        q=JobOffer.objects.all()
-    jobOffers= get_list_or_404(q)
+        try:
+            q=JobOffer.objects.all()
+            jobOffers= get_list_or_404(q)
+        except:
+            jobOffers=()
+    
     return render(request, 'jobOfferList.html',{'jobOffers':jobOffers}) 
 
 def checkUser(request):
@@ -231,7 +228,7 @@ def checkUser(request):
     if freelancer!=None:
         return 'freelancer'
     elif business !=None:
-        return 'business'
+        return 'bussines'
     else:
         return 'none'
 
