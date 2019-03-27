@@ -34,6 +34,7 @@ class BusinessForm(ModelForm):
 
 
 class FreelancerForm(ModelForm):
+    profession = CharField(widget=TextInput(), label='{% trans "profession" %}')
     class Meta:
         model = Freelancer
         exclude = ()
@@ -46,6 +47,8 @@ class FreelancerForm(ModelForm):
         # 'prefix' parameter required if in a modelFormset
         self.instance.profile = Profile()
         self.profile_form = ProfileForm(instance=self.instance and self.instance.profile, prefix=self.prefix, data=data)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'validate'
 
     def clean(self):
         print('clean: FreelancerForm')
@@ -63,7 +66,6 @@ class FreelancerForm(ModelForm):
 
 
 class ProfileForm(ModelForm):
-    # dateOfBirth = DateField(widget=SelectDateWidget)
 
     class Meta:
         model = Profile
