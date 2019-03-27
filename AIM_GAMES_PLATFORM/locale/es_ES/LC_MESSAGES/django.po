@@ -7,9 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-27 08:17+0100\n"
-"PO-Revision-Date: 2019-03-27 20:31+0100\n"
-"Language: es_ES\n"
+"POT-Creation-Date: 2019-03-27 21:02+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,31 +19,101 @@ msgstr ""
 "Language-Team: \n"
 "X-Generator: Poedit 2.2.1\n"
 
-#: .\templates\base_generic.html:39 .\templates\base_generic.html:50
+#: .\AIM_GAMES\forms.py:25 .\AIM_GAMES\forms.py:57
+msgid "Profile not valid"
+msgstr "Perfil no válido"
+
+#: .\AIM_GAMES\forms.py:38
+msgid "profession"
+msgstr "Profesión"
+
+#: .\AIM_GAMES\forms.py:70
+msgid "Name"
+msgstr "Nombre"
+
+#: .\AIM_GAMES\forms.py:71
+msgid "Surname"
+msgstr "Apellido"
+
+#: .\AIM_GAMES\forms.py:72
+msgid "Email"
+msgstr "Correo Electrónico"
+
+#: .\AIM_GAMES\forms.py:73
+msgid "City"
+msgstr "Ciudad"
+
+#: .\AIM_GAMES\forms.py:74 .\AIM_GAMES\forms.py:77
+msgid "Postal Code"
+msgstr "Código Postal"
+
+#: .\AIM_GAMES\forms.py:75
+msgid "IDCard Number"
+msgstr "DNI"
+
+#: .\AIM_GAMES\forms.py:76
+msgid "Date of birth"
+msgstr "Día de nacimiento"
+
+#: .\AIM_GAMES\forms.py:78
+msgid "Photo URL:"
+msgstr "Foto URL"
+
+#: .\AIM_GAMES\forms.py:96
+#, fuzzy
+#| msgid "Profile not valid"
+msgid "User not valid"
+msgstr "Perfil no válido"
+
+#: .\templates\accounts\login.html:18 .\templates\accounts\login.html:48
+msgid "Log In"
+msgstr "Iniciar Sesión"
+
+#: .\templates\accounts\login.html:21
+msgid "Logout"
+msgstr "Cerrar Sesión"
+
+#: .\templates\accounts\login.html:36
+msgid "Username"
+msgstr "Usuario"
+
+#: .\templates\accounts\login.html:41
+msgid "Password"
+msgstr "Contraseña"
+
+#: .\templates\accounts\login.html:54
+msgid "Sign up"
+msgstr "Registrarse"
+
+#: .\templates\accounts\login.html:61
+msgid "Sign up as Business"
+msgstr "Registrarse (Empresa)"
+
+#: .\templates\base_generic.html:37 .\templates\base_generic.html:48
 msgid "mainpage"
 msgstr "Página principal"
 
-#: .\templates\base_generic.html:40 .\templates\base_generic.html:51
+#: .\templates\base_generic.html:38 .\templates\base_generic.html:49
 msgid "services"
 msgstr "Servicios"
 
-#: .\templates\base_generic.html:41 .\templates\base_generic.html:52
+#: .\templates\base_generic.html:39 .\templates\base_generic.html:50
 msgid "aboutus"
 msgstr "Sobre nosotros"
 
-#: .\templates\base_generic.html:42 .\templates\base_generic.html:53
+#: .\templates\base_generic.html:40 .\templates\base_generic.html:51
 msgid "contactus"
 msgstr "Contáctanos"
 
-#: .\templates\base_generic.html:43
+#: .\templates\base_generic.html:41
 msgid "threads"
 msgstr "Hilos"
 
-#: .\templates\base_generic.html:44
+#: .\templates\base_generic.html:42
 msgid "joboffers"
 msgstr "Ofertas de trabajo"
 
-#: .\templates\jobOfferList.html:18
+#: .\templates\jobOfferList.html:17
 msgid "company"
 msgstr "Empresa"
 

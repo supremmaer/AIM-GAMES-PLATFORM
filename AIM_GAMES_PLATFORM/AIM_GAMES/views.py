@@ -146,9 +146,12 @@ class ThreadCreate(CreateView):
         # This method is called when valid form data has been POSTed.
         # It should return an HttpResponse.
         print('ThreadCreate: form_valid')
-        print(form.cleaned_data)
 
-        return render(threadDetail(self.request,1))
+        prof = Profile.objects.filter(user__pk=self.request.user.id)
+        buss = Business.objects.filter(profile__pk=prof[0].id)
+        thread = form.save(buss)
+
+        return threadDetail(self.request, thread.id)
 
     def get_context_data(self, **kwargs):
         # This method is called before the view es generate and add the context
@@ -157,6 +160,12 @@ class ThreadCreate(CreateView):
         context = super(ThreadCreate, self).get_context_data(**kwargs)
 
         return context
+
+    def dispatch(self, request, *args, **kwargs):
+        if checkUser(self.request) == 'business':
+            return super(ThreadCreate, self).dispatch(request, *args, **kwargs)
+        else:
+            redirect('accounts/login')
 
 
 def threadDetail(request, thread_id):
