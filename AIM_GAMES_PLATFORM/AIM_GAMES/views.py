@@ -162,7 +162,7 @@ class ThreadCreate(CreateView):
 def threadDetail(request, thread_id):
         thread = get_object_or_404(Thread, pk=thread_id)
         responses = thread.response_set.all()
-        return render(request, 'threadDetail.html', {'thread': thread, 'responses': responses})
+        return render(request, 'thread/threadDetail.html', {'thread': thread, 'responses': responses})
 
 def freelancerDetail(request, id):      
         freelancer = get_object_or_404(Freelancer,pk=id)
@@ -189,7 +189,7 @@ def threadList(request, business_id):
     queryset2 = _get_queryset(Business)
     threads= list(queryset)
     businessThread= queryset2.get(pk=business_id)
-    return render(request, 'threadList.html',{'threads':threads,'businessThread':businessThread}) 
+    return render(request, 'thread/threadList.html',{'threads':threads,'businessThread':businessThread}) 
 
 def jobOfferList(request):
     
@@ -260,7 +260,7 @@ def response_create(request, threadId):
             thread = Thread.objects.get(id=threadId) 
             response.thread = thread
             response.save()
-            return redirect('/thread/detail/' + str(threadId), pk=threadId)
+            return redirect('/thread/detail/' + str(threadId))
     else:
         form = ResponseForm()
     return render(request,'thread/responseCreate.html',{'form':form})

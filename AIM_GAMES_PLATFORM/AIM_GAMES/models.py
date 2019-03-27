@@ -103,8 +103,7 @@ class Formation(models.Model):
 
 class GraphicEngineExperience(models.Model):
     curriculum = models.ForeignKey(Curriculum, on_delete=models.CASCADE)
-    graphicEngine = models.ManyToManyField(
-        GraphicEngine)
+    graphicEngine = models.ForeignKey(GraphicEngine,on_delete=models.CASCADE)
     graphicExperience = models.IntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(100)])
 
