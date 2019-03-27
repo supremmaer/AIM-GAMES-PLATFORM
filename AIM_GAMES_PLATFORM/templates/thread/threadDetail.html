@@ -1,36 +1,44 @@
+
 {% extends "base_generic.html" %}
 {% block content %}
   
-  
-<body>  
-<h1>Detalles del Hilo</h1>    
-<h3>{{ thread.title }}</h3> 
-<p><b>Empresa:</b> {{ thread.business }}</p>  
-<p><b>Valoración:</b> {{ thread.valoration.score }}</p>  
+<div class="card red lighten-4">  
+<div class="row">
+<h1 >Thread Detail:</h1><div class="col m6 s12"><h4>{{ thread.title }}</h4>   
+</div>
+<div class="col m6 s12">
+<h4>Business: {{ thread.business }}</h4>  
+</div>
+</div>
+<p class="flow-text">{{ thread.description }}</p>  
+
 <p><b>Tags:</b>
   {% for tag in thread.tags.all %}
-  {{tag.title}}</p>
+  {{tag.title}}
   {% endfor %}  
-<p><b>Imágenes:</b>
+<b>Pictures:</b>
   {% for pic in thread.pics.all %}
-  <a href="{{pic.title}}">Imagen</a></p>
+  <a href="{{pic.title}}">Imagen</a>
   {% endfor %}  
 
-<b>Archivos Adicionales:</b>
+<b >Attached Files:</b>
   {% for file in thread.attachedFiles.all %}
-  <a href="{{file.title}}">Archivo</a>
+  <a href="{{file.title}}">Archivo</a></p>
   {% endfor %}  
-  
-<p>{{ thread.description }}</p>  
 
-<a href="/response/create/{{thread.id}}">Responder a este Hilo</a>
+<p><b>Valoration:</b> {{ thread.valoration.score }}</p>  
+</div>
+<a class="waves-effect waves-light btn" id="boton" href="/response/create/{{thread.id}}">Create a response for this thread</a>
 
-<h5>Respuestas:</h5>
+<div class="row">
+<h4 class ="col m1.5"  id ="respuestas">Responses:</h4>
+</div>
 {% for response in responses %}
- 
-<b>{{ response.title }}</b><p>{{response.description}}</p> Business: {{response.business}}
+<div class="card red lighten-4">
+<b>{{ response.title }}</b><p>{{response.description}}</p>
+<p>Business: {{response.business}} </p>
 <br>
+</div>
 {% endfor %}  
 
-</body>
 {% endblock %}
