@@ -1,4 +1,4 @@
-from django.forms import ModelForm, forms, CharField, EmailField, ModelMultipleChoiceField,CheckboxSelectMultiple, DateField, DateInput,SelectDateWidget
+from django.forms import ModelForm, forms, CharField, Textarea, ModelMultipleChoiceField, TextInput, MultipleChoiceField,EmailField, ModelMultipleChoiceField,CheckboxSelectMultiple, DateField, DateInput,SelectDateWidget
 from django.contrib.auth.forms import UserCreationForm
 from AIM_GAMES.models import Freelancer, Business, Profile, Thread, Tag, URL, Valoration
 from django.contrib.auth.models import User, Group
@@ -98,12 +98,16 @@ class UserForm(UserCreationForm):
 
 
 class ThreadForm(ModelForm):
-    images = CharField(required=True)
-    files = CharField(required=True)
+    title = CharField(widget=TextInput(), label='Title')
+    description = CharField(widget=Textarea(), label='Description')
+    tags = ModelMultipleChoiceField(queryset=Tag.objects.all(), label='Tags',)
+    images = CharField(widget=Textarea(), required=False, label='Images URL',)
+    files = CharField(widget=Textarea(), required=False, label='Files URL',)
 
     class Meta:
         model = Thread
         exclude = ('business', 'pics', 'attachedFiles')
+
 
     def clean_images(self):
         """Split the tags string on whitespace and return a list"""
@@ -117,14 +121,13 @@ class ThreadForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         print('__init__ ThreadForm')
-        # Only in case we build the form from an instance
-        # (otherwise, 'tags' list should be empty)
-
         super(ThreadForm, self).__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'validate'
+
 
     def clean(self):
         print('clean: ThreadForm')
-        print(self.data)
         val = URLValidator()
         urls = self.cleaned_data['images']
         try:
@@ -143,14 +146,22 @@ class ThreadForm(ModelForm):
         pics = []
         attached_files = []
         for image in self.cleaned_data['images']:
-            url = URL()
-            url.title = image
-            url.save()
+            url = URL.objects.filter(title=image)
+            if not url:
+                url = URL()
+                url.title = image
+                url.save()
+            else:
+                url = url[0]
             pics.append(url)
         for file in self.cleaned_data['files']:
-            url = URL()
-            url.title = file
-            url.save()
+            url = URL.objects.filter(title=file)
+            if not url:
+                url = URL()
+                url.title = file
+                url.save()
+            else:
+                url = url[0]
             attached_files.append(url)
 
         obj.business = business[0]
