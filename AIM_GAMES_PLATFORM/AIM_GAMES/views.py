@@ -425,25 +425,6 @@ def formationCreate(request):
     else:
         return render(request, 'index.html')
 
-""" def html5showcaseEdit(request):
-    if checkUser(request)=='freelancer':
-        freelancer = findByPrincipal(request)
-        if request.method == 'POST':
-            form = html5showcaseForm(request.POST)
-            if form.is_valid():                
-                obj = form.save(commit=False)
-                obj.curriculum = freelancer.curriculum
-                obj.save()
-                print('Aptitude saved')
-                return redirect('/freelancer/detail/'+str(freelancer.id))
-            else:
-                return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit HTML5Showcase'})
-        else:
-            form = html5showcaseForm()
-            return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit HTML5Showcase'})
-    else:
-        return render(request, 'index.html') """
-
 def jobOfferCreate(request):
     if checkUser(request)=='business':
         business = findByPrincipal(request)
@@ -463,19 +444,19 @@ def jobOfferCreate(request):
     else:
         return render(request, 'index.html')
 
-""" class html5Update(UpdateView):
-    model = HTML5Showcase
-    fields = ['embedCode']
-    template_name_suffix = '_update_form' """
-
 def html5Edit(request, id): 
+    if checkUser(request)!='freelancer':
+        return render(request, 'index.html')
+
     instance = get_object_or_404(HTML5Showcase, id=id)
-    form = html5showcaseForm(request.POST or None, instance=instance)
     freelancer = findByPrincipal(request)
+    if instance.curriculum.id != freelancer.curriculum.id:
+        return render(request, 'index.html')
+
+    form = html5showcaseForm(request.POST or None, instance=instance)
     if form.is_valid():
         obj = form.save(commit=False)
         obj.curriculum = freelancer.curriculum
         obj.save()
         return redirect('/freelancer/detail/'+str(freelancer.id))
     return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit HTML5Showcase'})
-    """ return render(request, 'my_template.html', {'form': form}) """
