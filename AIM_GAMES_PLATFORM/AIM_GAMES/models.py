@@ -81,6 +81,7 @@ class Business(models.Model):
 
 class Curriculum(models.Model):
     freelancer = models.OneToOneField(Freelancer, on_delete=models.CASCADE)
+    verified = models.BooleanField(default=False)
 
 
 class ProfessionalExperience(models.Model):
