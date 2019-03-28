@@ -183,7 +183,8 @@ class ThreadCreate(CreateView):
 def threadDetail(request, thread_id):
         thread = get_object_or_404(Thread, pk=thread_id)
         responses = thread.response_set.all()
-        return render(request, 'thread/threadDetail.html', {'thread': thread, 'responses': responses})
+        pics = thread.pics
+        return render(request, 'thread/threadDetail.html', {'thread': thread, 'responses': responses,'pics':pics})
 
 def freelancerDetail(request, id):
         if id!='-':
