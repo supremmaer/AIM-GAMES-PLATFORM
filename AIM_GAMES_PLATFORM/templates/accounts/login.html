@@ -1,5 +1,7 @@
 {% extends "base_generic.html" %}
+{% load i18n %}
 {% block content %}
+{% load i18n %}
 <head>
     <style>
         .inputErr{
@@ -14,13 +16,11 @@
     <div class="col s12 l6 m10 offset-m1 offset-l3">
         <br>
         <img class="responsive-img" src="https://i.imgur.com/z3V1Sbc.png">
-        <h2 class="center">Log in</h2>
+        <h2 class="center">{% trans "Log In" %}</h2>
         {% if request.user.is_authenticated %}
-        Loged
         {{request.user.username}}
-        <p><a href="{% url 'logout' %}">logout</a></p>
+        <p><a href="{% url 'logout' %}">{% trans "Logout" %}</a></p>
         {% else %}
-        NotLoged
         {% endif %}
         {% for error in form.non_field_errors %}
         <div class="red-text">
@@ -34,32 +34,32 @@
                         <div class="input-field col s12">
                             <span class="red-text">{{ form.username.errors }}</span>
                             <input placeholder="" id="{{form.user.id_for_label}}" name="username" type="text" class="validate {% if form.username.errors %}inputErr{% endif %}">
-                            <label for="{{form.user.id_for_label}}" class="">User:</label>
+                            <label for="{{form.user.id_for_label}}" class="">{% trans "Username" %}</label>
                         </div>
                         <div class="input-field col s12">
                             <span class="red-text">{{ form.password.errors }}</span>
                             <input placeholder="" id="{{ form.password.id_for_label}}" name= "password" type="password" class="validate {% if form.password.errors %}inputErr{% endif %}">
-                            <label for="{{ form.password.id_for_label}}">Password:</label>
+                            <label for="{{ form.password.id_for_label}}">{% trans "Password" %}</label>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col s5 m5 l3 btn waves-effect waves-light blue lighten-2">
-                    <button class="btn-flat white-text" type="submit" >Log in
+                    <button class="btn-flat white-text" type="submit" >{% trans "Log In" %}
                         <i class="material-icons right">send</i>
                     </button>
                 </div>
                 <a href="/freelancer/create/" class="">
                 <div class="col s5 m5 l3 push-s2 push-m2 push-l6 waves-effect waves-light btn red lighten-2">
-                    <span class="white-text">Sign up</span>
+                    <span class="white-text">{% trans "Sign up" %}</span>
                 </div>
                 </a>
             </div>
             <div class="row">
                  <a href="/business/create/" class="">
-                <div class="col s5 m5 l3 offset-s7 offset-m7 offset-l9 waves-effect waves-light btn red lighten-2">
-                   <span class="white-text">Sign up as Business</span>
+                <div class="col s8 m5 l3 offset-s4 offset-m7 offset-l9 waves-effect waves-light btn red lighten-2">
+                   <span class="white-text">{% trans "Sign up as Business" %}</span>
                 </div>
                  </a>
             </div>

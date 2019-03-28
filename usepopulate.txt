@@ -1,0 +1,9 @@
+El populate es sobretodo para que tengais datos inyectados para que podais hacer pruebas si teneis que
+destruir la base de dato y no tengais que crearlo todo a mano de nuevo.
+
+1º Destruir el db.sqlite3
+2º Ejecutar python manage.py migrate
+3º Ejecutar python manage.py create_groups
+4º Ejecutar python manage.py populate
+
+Recordar crear la cuenta admin si la necesitais con el comando python manage.py createsuperuser

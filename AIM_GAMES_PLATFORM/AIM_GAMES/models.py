@@ -103,14 +103,13 @@ class Formation(models.Model):
 
 class GraphicEngineExperience(models.Model):
     curriculum = models.ForeignKey(Curriculum, on_delete=models.CASCADE)
-    graphicEngine = models.ManyToManyField(
-        GraphicEngine)
+    graphicEngine = models.ForeignKey(GraphicEngine,on_delete=models.CASCADE)
     graphicExperience = models.IntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(100)])
 
 
 class HTML5Showcase(models.Model):
-    curriculum = models.OneToOneField(Curriculum, on_delete=models.CASCADE)
+    curriculum = models.OneToOneField(Curriculum, on_delete=models.CASCADE,related_name='HTML5Showcase')
     embedCode = models.TextField()
 
 
@@ -144,7 +143,7 @@ class Thread(models.Model):
     business = models.ForeignKey(Business, on_delete=models.CASCADE)
     title = models.TextField(max_length=100, blank=False)
     description = models.TextField(blank=False)
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, blank=True)
     pics = models.ManyToManyField(URL, related_name="pic")
     attachedFiles = models.ManyToManyField(URL, related_name="attachedFile")
 
@@ -156,6 +155,7 @@ class Valoration(models.Model):
     score = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)])
     thread=models.ForeignKey(Thread, on_delete=models.CASCADE)
     business=models.ForeignKey(Business, on_delete=models.CASCADE)
+
     class Meta:
         unique_together = (("thread", "business"),)
 

@@ -1,19 +1,18 @@
 {% extends "base_generic.html" %}
 {% block content %}
+{% load i18n %}
 
 <div class="row">
     <div class="col m12 l6">
-        <h4>TODO:</h4>
+        <h4>{% trans "AIM Games" %}</h4>
         <ul class="collection">
-            <li class="collection-item">Pagina personalizada de error y 404</li>
-            <li class="collection-item">Hacer el proyecto</li>
-            <a href="/accounts/login" target="_blank" class="collection-item">Vista de login (funciona con cuenta admin)</a>
-            <a href="/pagar_paypal" target="_blank" class="collection-item">Paga Aqui</a>
+            <li class="collection-item">{% trans "AIM Games is the reference platform for game-making resources, where you can find anything and anyone you need to make the videogame of your dreams." %}</li>
+            <li class="collection-item">{% trans "Please note that this is a work in progress page and only the core functionality is available. More is to come in short time." %}</li>
 
         </ul>
     </div>
     <div class="col m12 l6">
-    <h3>Documentación</h3>
+    <h3>{% trans "Useful links" %}</h3>
         <div class="collection">
             <a href="https://docs.djangoproject.com/en/2.1/ " class="collection-item">Django</a>
             <a href="https://materializecss.com/" class="collection-item">https://materializecss.com/ (EL CSS)</a>
