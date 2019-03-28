@@ -39,6 +39,7 @@ urlpatterns = [
     path('curriculum/business/list/', curriculumList, name='curriculumList'),
     #static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     path('freelancer/detail/<int:id>',freelancerDetail, name='freelancerDetail'),
+    path('freelancer/mycurriculum/<str:id>',freelancerDetail, name='freelancerDetail'),
     path('setlanguage/<str:language>', setlanguage),
     path('response/create/<int:threadId>',response_create, name='responseCreate'),
     path('freelancer/link/create',linkCreate),
@@ -47,4 +48,5 @@ urlpatterns = [
     path('freelancer/professionalExperience/create',professionalExperienceCreate),
     path('freelancer/formation/create',formationCreate),
     path('freelancer/html5showcase/edit',html5showcaseEdit),
+    path('business/joboffer/create',jobOfferCreate),
 ]

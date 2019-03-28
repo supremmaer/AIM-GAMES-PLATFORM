@@ -247,3 +247,9 @@ class html5showcaseForm(ModelForm):
     class Meta:
         model = HTML5Showcase
         exclude = ['curriculum']
+
+class JobOfferForm(ModelForm):
+
+    class Meta:
+        model = JobOffer
+        exclude = ['business']

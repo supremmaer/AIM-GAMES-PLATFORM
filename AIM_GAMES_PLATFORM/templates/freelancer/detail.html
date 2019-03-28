@@ -7,8 +7,12 @@
   <b>Links:</b>
   {% for link in links %}
     <p>{{link.url}}</p>
-  {% endfor %} 
-  <a href="/freelancer/link/create">Add</a>
+  {% endfor %}
+  {% if request.session.currentUser == 'freelancer' %}
+    <div class="">
+        <a href="/freelancer/link/create" class="btn waves-effect waves-red">Add link</a>
+    </div>
+  {% endif %} 
   <br>
 
   <b>Formation:</b>
@@ -19,7 +23,11 @@
     <p>{{formation.formation}}</p>
     <p>{{formation.miniature}}</p>
   {% endfor %}  
-  <a href="/freelancer/formation/create">Add</a>
+  {% if request.session.currentUser == 'freelancer' %}
+    <div class="">
+        <a href="/freelancer/formation/create" class="btn waves-effect waves-red">Add Formation</a>
+    </div>
+  {% endif %}
   <br>
 
   <b>Professional Experience:</b>
@@ -30,14 +38,22 @@
     <p>{{professionalExperience.formation}}</p>
     <p>{{professionalExperience.miniature}}</p>
   {% endfor %}
-  <a href="/freelancer/professionalExperience/create">Add</a>
+  {% if request.session.currentUser == 'freelancer' %}
+    <div class="">
+        <a href="/freelancer/professionalExperience/create" class="btn waves-effect waves-red">Add professional experience</a>
+    </div>
+  {% endif %} 
   <br>
 
   <b>Aptitudes:</b>
   {% for aptitude in aptitudes %}
     <p>{{aptitude.title}}</p>
   {% endfor %}
-  <a href="/freelancer/aptitude/create">Add</a>
+  {% if request.session.currentUser == 'freelancer' %}
+    <div class="">
+        <a href="/freelancer/aptitude/create" class="btn waves-effect waves-red">Add aptitude</a>
+    </div>
+  {% endif %} 
   <br>
 
   <b>HTML5 showcase:</b>
@@ -49,7 +65,11 @@
     <p>{{exp.graphicEngine.title}}</p>
     <p>{{exp.graphicExperience}}</p>
   {% endfor %}
-  <a href="/freelancer/graphicEngineExperience/create">Add</a>
+  {% if request.session.currentUser == 'freelancer' %}
+    <div class="">
+        <a href="/freelancer/graphicEngineExperience/create" class="btn waves-effect waves-red">Add graphicEngineExperience</a>
+    </div>
+  {% endif %} 
   <br>
   
       

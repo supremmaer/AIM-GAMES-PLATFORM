@@ -185,8 +185,16 @@ def threadDetail(request, thread_id):
         responses = thread.response_set.all()
         return render(request, 'thread/threadDetail.html', {'thread': thread, 'responses': responses})
 
-def freelancerDetail(request, id):      
-        freelancer = get_object_or_404(Freelancer,pk=id)
+def freelancerDetail(request, id):
+        if id!='-':
+            freelancer = get_object_or_404(Freelancer,pk=id)
+            if checkUser(request)=='freelancer':
+                freelancer = findByPrincipal(request)
+                if(freelancer.id!=id):
+                    return render(request, 'index.html')
+        else:
+            freelancer = findByPrincipal(request)
+
         curriculum = freelancer.curriculum
         links = curriculum.link_set.all()
         formation = curriculum.formation_set.all()
@@ -431,5 +439,24 @@ def html5showcaseEdit(request):
         else:
             form = html5showcaseForm()
             return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit HTML5Showcase'})
+    else:
+        return render(request, 'index.html')
+
+def jobOfferCreate(request):
+    if checkUser(request)=='business':
+        business = findByPrincipal(request)
+        if request.method == 'POST':
+            form = JobOfferForm(request.POST)
+            if form.is_valid():                
+                obj = form.save(commit=False)
+                obj.business = business
+                obj.save()
+                print('job offer saved')
+                return redirect('/joboffer/user/list/')
+            else:
+                return render(request,'business/standardForm.html',{'form':form,'title':'Add Job Offer'})
+        else:
+            form = JobOfferForm()
+            return render(request,'business/standardForm.html',{'form':form,'title':'Add Job Offer'})
     else:
         return render(request, 'index.html')
