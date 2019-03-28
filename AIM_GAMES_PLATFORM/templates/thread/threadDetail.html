@@ -1,27 +1,7 @@
 
 {% extends "base_generic.html" %}
 {% block content %}
-  
-<div class="card red lighten-4">  
-    <div class="row">
-    <h1 >Thread Detail:</h1><div class="col m6 s12"><h4>{{ thread.title }}</h4>   
-    </div>
-    <div class="col m6 s12">
-    <h4>Business: {{ thread.business }}</h4>  
-    </div>
-    </div>
-    <p class="flow-text">{{ thread.description }}</p>  
-    
-    <p><b>Tags:</b>
-      {% for tag in thread.tags.all %}
-      {{tag.title}}
-      {% endfor %} </p> 
-    <p><b >Attached Files:</b>
-      {% for file in thread.attachedFiles.all %}
-      <a href="{{file.title}}">Attached File</a>
-      {% endfor %}  
-    </p>
-    <script>
+        <script>
           $(function(){
             var pics= '{{ pics }}';
             if(pics){
@@ -33,28 +13,50 @@
             }
           });
         </script>
-        <p><b>Valoration:</b> {{ thread.valoration.score }}</p>  
-      
+<div class="card  lighten-2">  
+    <div class="row">
+      <h1>Thread Detail:</h1>
+      <div class="col m6 s12">  
+        <h4>{{thread.title}}</h4>
+      </div>
+      <div class="col m6 s12">
+        <h4>Business: {{ thread.business }}</h4>  
+      </div>
+    </div>
+    <div class="card #ffebee red lighten-5"> 
+      <span class="card-title">Description:</span>
+      {{ thread.description }}
+    </div>  
+    
+    <ul class="collection"><b>Tags:</b>
+      {% for tag in thread.tags.all %}
+      <li>{{tag.title}}</li>
+      {% endfor %} 
+      </ul> 
+    <ul class="collection"><b >Attached Files:
+      {% for file in thread.attachedFiles.all %}
+      <li><a href="{{file.title}}">Attached File</a></li>
+      {% endfor %}  
+    </ul>
+   
+            <ul class="collection"><b >Attached Files:
+            <li><b>Valoration:</b> {{ thread.valoration.score }}</li>
+            </ul>  
             <b>Pictures:</b>
-            <div class="row">
-                
-                <div class="col s12 m12">
                   <div class="carousel carousel-slider">
                     {% for pic in thread.pics.all %}
                       <a class="carousel-item" href="{{pic.title}}"><img src="{{pic.title}}" class="img-responsive"></a>
                     {% endfor %}  
-                    </div>
                   </div>
-                
-              </div>
         </div>    
-    <a class="waves-effect waves-light btn" id="boton" href="/response/create/{{thread.id}}">Create a response for this thread</a>
+    <a class="waves-effect waves-teal btn-flat" href="/response/create/{{thread.id}}">Create a response for this thread     <i class="material-icons right">send</i>
+    </a>
     
 <div class="row">
-<h4 class ="col m1.5"  id ="respuestas">Responses:</h4>
+<h4 class ="col  #ffebee red lighten-5 m1.5"  >Responses:</h4>
 </div>
 {% for response in responses %}
-<div class="card red lighten-4">
+<div class="card #ffebee red lighten-5">
 <b>{{ response.title }}</b><p>{{response.description}}</p>
 <p>Business: {{response.business}} </p>
 <br>
