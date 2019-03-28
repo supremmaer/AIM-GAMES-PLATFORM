@@ -185,8 +185,16 @@ def threadDetail(request, thread_id):
         responses = thread.response_set.all()
         return render(request, 'thread/threadDetail.html', {'thread': thread, 'responses': responses})
 
-def freelancerDetail(request, id):      
-        freelancer = get_object_or_404(Freelancer,pk=id)
+def freelancerDetail(request, id):
+        if id!='-':
+            freelancer = get_object_or_404(Freelancer,pk=id)
+            if checkUser(request)=='freelancer':
+                freelancer = findByPrincipal(request)
+                if(freelancer.id!=id):
+                    return render(request, 'index.html')
+        else:
+            freelancer = findByPrincipal(request)
+
         curriculum = freelancer.curriculum
         links = curriculum.link_set.all()
         formation = curriculum.formation_set.all()

@@ -20,7 +20,7 @@
                         <div class="input-field col s12">
                             {% if 'Date' in field.html_name %}
                                 <input id="{{ field.id_for_label }}" type="date" class="validate" name="{{ field.html_name }}">
-                                <!-- <label for="{{ field.id_for_label }}">{{ field.label_tag }}:</label> -->
+                                <label for="{{ field.id_for_label }}">{{ field.label_tag }}:</label>
                             {% else %}
                                 {{field}}
                                 <label for="{{ field.id_for_label }}">{{ field.label_tag }}:</label>

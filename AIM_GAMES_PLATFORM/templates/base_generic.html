@@ -41,7 +41,10 @@
                         {% if request.session.currentUser == 'business' %}
                             <li><a href="/thread/business/list/" target="_self" class="collection-item">{% trans "threads" %}</a></li>
                             <li><a href="/curriculum/business/list/" target="_self" class="collection-item">{% trans "curriculums" %}</a></li>
-                        {% endif %}  
+                        {% endif %} 
+                        {% if request.session.currentUser == 'freelancer' %}
+                            <li><a href="/freelancer/mycurriculum/-" target="_self" class="collection-item">My curriculum</a></li>
+                        {% endif %}
                         {% if request.session.currentUser == 'business' or request.session.currentUser == 'freelancer' %}
                         	<li><a href="/joboffer/user/list/" target="_self" class="collection-item">{% trans "joboffers" %}</a></li>
                         {% endif %}
@@ -62,7 +65,10 @@
 				{% if request.session.currentUser == 'business' %}
                 	<li><a href="/thread/business/list/" target="_self" class="collection-item">{% trans "threads" %}</a></li>
                     <li><a href="/curriculum/business/list/" target="_self" class="collection-item">{% trans "curriculums" %}</a></li>
-                {% endif %}  
+                {% endif %}
+                {% if request.session.currentUser == 'freelancer' %}
+                    <li><a href="/freelancer/mycurriculum/-" target="_self" class="collection-item">My curriculum</a></li>
+                {% endif %} 
                 {% if request.session.currentUser == 'business' or request.session.currentUser == 'freelancer' %}
                     <li><a href="/joboffer/user/list/" target="_self" class="collection-item">{% trans "joboffers" %}</a></li>
                 {% endif %}
