@@ -58,8 +58,16 @@
 
   <b>HTML5 showcase:</b>
   <p>{{HTML5Showcase.embedCode}}</p>
+  {% if request.session.currentUser == 'freelancer' %}
+    <div class="">
+        <a href="/freelancer/html5showcase/edit/{{HTML5Showcase.id}}" class="btn waves-effect waves-red">Edit html5 showcase</a>
+    </div>
+  {% endif %} 
   <br>
 
+
+
+  
   <b>Graphic Engine Experiences:</b>
   {% for exp in graphicEngineExperiences %}
     <p>{{exp.graphicEngine.title}}</p>

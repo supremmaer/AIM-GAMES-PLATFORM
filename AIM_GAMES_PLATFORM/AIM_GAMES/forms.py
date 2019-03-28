@@ -62,8 +62,10 @@ class FreelancerForm(ModelForm):
         obj = super(FreelancerForm, self).save(commit=commit)
         obj.profile = self.profile_form.save()
         group = Group.objects.get(name='Freelancer')
-        obj.profile.user.groups.add(group)
+        obj.profile.user.groups.add(group)        
         obj.save()
+        cur,cre = Curriculum.objects.get_or_create(freelancer= obj,verified=False)
+        HTML5Showcase.objects.get_or_create(curriculum= cur,embedCode="")
         return obj
 
 
@@ -253,3 +255,4 @@ class JobOfferForm(ModelForm):
     class Meta:
         model = JobOffer
         exclude = ['business']
+

@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django.shortcuts import render, get_list_or_404
 from paypal.standard.forms import PayPalPaymentsForm
 from django.shortcuts import redirect
-from django.views.generic import FormView, CreateView
+from django.views.generic import FormView, CreateView, UpdateView
 from .models import Freelancer, Business, Thread, Response, Link, JobOffer, Curriculum, Profile, Aptitude
 from .forms import *
 from django.db.models import Q
@@ -14,6 +14,7 @@ from django.contrib import auth
 from django.contrib import sessions
 from django.contrib.auth.models import Group
 from django.http import Http404
+
 
 from django.utils.translation import gettext as _
 from django.utils import translation
@@ -424,7 +425,7 @@ def formationCreate(request):
     else:
         return render(request, 'index.html')
 
-def html5showcaseEdit(request):
+""" def html5showcaseEdit(request):
     if checkUser(request)=='freelancer':
         freelancer = findByPrincipal(request)
         if request.method == 'POST':
@@ -441,7 +442,7 @@ def html5showcaseEdit(request):
             form = html5showcaseForm()
             return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit HTML5Showcase'})
     else:
-        return render(request, 'index.html')
+        return render(request, 'index.html') """
 
 def jobOfferCreate(request):
     if checkUser(request)=='business':
@@ -461,3 +462,20 @@ def jobOfferCreate(request):
             return render(request,'business/standardForm.html',{'form':form,'title':'Add Job Offer'})
     else:
         return render(request, 'index.html')
+
+""" class html5Update(UpdateView):
+    model = HTML5Showcase
+    fields = ['embedCode']
+    template_name_suffix = '_update_form' """
+
+def html5Edit(request, id): 
+    instance = get_object_or_404(HTML5Showcase, id=id)
+    form = html5showcaseForm(request.POST or None, instance=instance)
+    freelancer = findByPrincipal(request)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.curriculum = freelancer.curriculum
+        obj.save()
+        return redirect('/freelancer/detail/'+str(freelancer.id))
+    return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit HTML5Showcase'})
+    """ return render(request, 'my_template.html', {'form': form}) """
