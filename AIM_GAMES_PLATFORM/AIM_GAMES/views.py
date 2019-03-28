@@ -76,6 +76,12 @@ def login_redir(request):
                 res = pagarPaypal(request)
         else:
             res = redirect('index')
+
+    try:
+        request.session['currentUser'] = checkUser(request)
+    except:
+        request.session['currentUser'] ='none'
+
     return res
 
 

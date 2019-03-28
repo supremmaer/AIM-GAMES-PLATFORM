@@ -44,9 +44,12 @@
                         {% endif %}  
                         {% if request.session.currentUser == 'business' or request.session.currentUser == 'freelancer' %}
                         	<li><a href="/joboffer/user/list/" target="_self" class="collection-item">{% trans "joboffers" %}</a></li>
-                        {% endif %}                        
-                        <li><a href="/accounts/login/">{% trans "signup" %}</a></li>
+                        {% endif %}
+                        {% if request.user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}">{% trans "Logout" %}</a></li>
+                        {% else %}
                         <li><a href="/accounts/login/" target="_self" class="collection-item">{% trans "Log In" %}</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
@@ -62,9 +65,12 @@
                 {% endif %}  
                 {% if request.session.currentUser == 'business' or request.session.currentUser == 'freelancer' %}
                     <li><a href="/joboffer/user/list/" target="_self" class="collection-item">{% trans "joboffers" %}</a></li>
-                {% endif %} 
-                <li><a href="/accounts/login/">{% trans "signup" %}</a></li>
+                {% endif %}
+                {% if request.user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">{% trans "Logout" %}</a></li>
+                {% else %}
                 <li><a href="/accounts/login/" target="_self" class="collection-item">{% trans "Log In" %}</a></li>
+                {% endif %}
             </ul>
 
         {% block content %}<!-- default content text (typically empty) -->{% endblock %}
