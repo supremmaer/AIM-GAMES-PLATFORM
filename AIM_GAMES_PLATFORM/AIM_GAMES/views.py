@@ -212,7 +212,7 @@ def threadList(request):
         businessThread = get_object_or_404(Business,profile=request.user.profile)
     except AttributeError:
         raise Http404('Debe estar autentificado como empresa para acceder a este servicio')
-    return render(request, 'threadList.html',{'threads':threads,'businessThread':businessThread}) 
+    return render(request, 'thread/threadList.html',{'threads':threads,'businessThread':businessThread})
 
 def jobOfferList(request):
     
