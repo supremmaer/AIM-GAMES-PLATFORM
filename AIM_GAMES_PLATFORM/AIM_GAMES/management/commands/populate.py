@@ -72,9 +72,9 @@ class Command(BaseCommand):
         business2,created = Business.objects.get_or_create(profile=profile5, lastPayment='2014-12-12 00:00')
         business3,created = Business.objects.get_or_create(profile=profile6, lastPayment='2014-12-12 00:00')
 
-        curriculum1,created = Curriculum.objects.get_or_create(freelancer= freelancer1)
-        curriculum2,created = Curriculum.objects.get_or_create(freelancer= freelancer2)
-        curriculum3,created = Curriculum.objects.get_or_create(freelancer= freelancer3)
+        curriculum1,created = Curriculum.objects.get_or_create(freelancer= freelancer1,verified=False)
+        curriculum2,created = Curriculum.objects.get_or_create(freelancer= freelancer2,verified=False)
+        curriculum3,created = Curriculum.objects.get_or_create(freelancer= freelancer3,verified=True)
 
         professionalExperience1,created = ProfessionalExperience.objects.get_or_create(curriculum=curriculum1, center='center1', 
             formation='formation1', startDate='2014-12-12 00:00',endDate='2015-12-12 00:00',miniature=url1)
