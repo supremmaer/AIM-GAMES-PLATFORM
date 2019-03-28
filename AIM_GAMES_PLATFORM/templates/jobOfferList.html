@@ -32,7 +32,7 @@
             <!--Este botón sólo debe salir al estar logueado como business, añadir cuando se vea cómo hacerlo-->
             {% if request.session.currentUser == 'business' %}
                 <div class="right">
-                    <a href="#!" class="btn waves-effect waves-red">{% trans "newOffer" %}</a>
+                    <a href="/business/joboffer/create" class="btn waves-effect waves-red">{% trans "newOffer" %}</a>
                 </div>
             {% endif %}
         </div>

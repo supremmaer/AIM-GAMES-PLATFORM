@@ -433,3 +433,22 @@ def html5showcaseEdit(request):
             return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit HTML5Showcase'})
     else:
         return render(request, 'index.html')
+
+def jobOfferCreate(request):
+    if checkUser(request)=='business':
+        business = findByPrincipal(request)
+        if request.method == 'POST':
+            form = JobOfferForm(request.POST)
+            if form.is_valid():                
+                obj = form.save(commit=False)
+                obj.business = business
+                obj.save()
+                print('job offer saved')
+                return redirect('/joboffer/user/list/')
+            else:
+                return render(request,'business/standardForm.html',{'form':form,'title':'Add Job Offer'})
+        else:
+            form = JobOfferForm()
+            return render(request,'business/standardForm.html',{'form':form,'title':'Add Job Offer'})
+    else:
+        return render(request, 'index.html')
