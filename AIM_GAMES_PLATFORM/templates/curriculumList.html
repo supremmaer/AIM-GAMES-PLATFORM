@@ -9,15 +9,15 @@
             <form action="/curriculum/business/list/">
                 <div class="input-field">
                 <input placeholder="Nombre Usuario" id="search" name="search" type="search" >
-                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                <i class="material-icons">close</i>
+                <label class="label-icon" for="search"><i class="material-icons">{% trans "search" %}</i></label>
+                <i class="material-icons">{% trans "close" %}</i>
                 </div>
             </form>
         </div>
         <div class="col s12">
             <div class="row">
                 <div class="col s4"><h5>{% trans "name" %}</h5></div>
-                <div class="col s4"><h5>Aptitudes</h5></div>
+                <div class="col s4"><h5>{% trans "aptitudes" %}</h5></div>
             </div>
             <div class="collection">
                 {% for curriculum in curriculums %}
@@ -33,7 +33,7 @@
                                     {% endfor %}
                                 {% endif %}
                             {% endfor %}
-                        </div><div class="col s2 offset-s2"><a href="/freelancer/detail/{{curriculum.freelancer.id}}" class="btn waves-effect waves-red">Ver</a></div>
+                        </div><div class="col s2 offset-s2"><a href="/freelancer/detail/{{curriculum.freelancer.id}}" class="btn waves-effect waves-red">{% trans "view" %}</a></div>
                         {% endif %}
                     </div>
                 </div>

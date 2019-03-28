@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-28 21:32+0100\n"
+"POT-Creation-Date: 2019-03-28 23:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,97 +28,97 @@ msgstr "Profession"
 
 #: .\AIM_GAMES\forms.py:73
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 #: .\AIM_GAMES\forms.py:74
 msgid "Surname"
-msgstr ""
+msgstr "Surname"
 
 #: .\AIM_GAMES\forms.py:75
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: .\AIM_GAMES\forms.py:76
 msgid "City"
-msgstr ""
+msgstr "City"
 
 #: .\AIM_GAMES\forms.py:77
 msgid "Postal Code"
-msgstr ""
+msgstr "Postal Code"
 
 #: .\AIM_GAMES\forms.py:78
 msgid "IDCard Number"
-msgstr ""
+msgstr "IDCard Number"
 
 #: .\AIM_GAMES\forms.py:79
 msgid "Date of birth"
-msgstr ""
+msgstr "Date of birth"
 
 #: .\AIM_GAMES\forms.py:80
 msgid "Phone Number"
-msgstr ""
+msgstr "Phone Number"
 
 #: .\AIM_GAMES\forms.py:81
 msgid "Photo URL:"
-msgstr ""
+msgstr "Photo URL"
 
 #: .\AIM_GAMES\forms.py:100
 msgid "Phone Number must be a number"
-msgstr ""
+msgstr "Phone Number must be a number"
 
 #: .\AIM_GAMES\forms.py:110
 msgid "You must be over 18 to sign up"
-msgstr ""
+msgstr "You must be over 18 to sign up"
 
 #: .\AIM_GAMES\forms.py:116
 msgid "User not valid"
-msgstr ""
+msgstr "User not valid"
 
 #: .\AIM_GAMES\forms.py:133
 msgid "Title"
-msgstr ""
+msgstr "Title"
 
 #: .\AIM_GAMES\forms.py:134
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 #: .\AIM_GAMES\forms.py:135
 msgid "Tags"
-msgstr ""
+msgstr "Tags"
 
 #: .\AIM_GAMES\forms.py:136
 msgid "Image URLs"
-msgstr ""
+msgstr "Image URLs"
 
 #: .\AIM_GAMES\forms.py:137
 msgid "Attachment URLs"
-msgstr ""
+msgstr "Attachment URLs"
 
 #: .\templates\accounts\login.html:19 .\templates\accounts\login.html:49
 #: .\templates\base_generic.html:49 .\templates\base_generic.html:71
 msgid "Log In"
-msgstr ""
+msgstr "Log In"
 
 #: .\templates\accounts\login.html:22 .\templates\base_generic.html:47
 #: .\templates\base_generic.html:69
 msgid "Logout"
-msgstr ""
+msgstr "Logout"
 
 #: .\templates\accounts\login.html:37
 msgid "Username"
-msgstr ""
+msgstr "Username"
 
 #: .\templates\accounts\login.html:42
 msgid "Password"
-msgstr ""
+msgstr "Password"
 
 #: .\templates\accounts\login.html:55
 msgid "Sign up"
-msgstr ""
+msgstr "Sign up"
 
 #: .\templates\accounts\login.html:62
 msgid "Sign up as Business"
-msgstr ""
+msgstr "Sign up as Business"
 
 #: .\templates\accounts\signup.html:29
 msgid "signup"
@@ -127,6 +127,10 @@ msgstr "Sign up"
 #: .\templates\accounts\signup.html:31
 msgid "signupBusiness"
 msgstr "Sign up as company"
+
+#: .\templates\base_generic.html:33
+msgid "menu"
+msgstr "Menu"
 
 #: .\templates\base_generic.html:35 .\templates\base_generic.html:57
 msgid "mainpage"
@@ -141,35 +145,98 @@ msgstr "Threads"
 msgid "curriculums"
 msgstr "Curriculums"
 
-#: .\templates\base_generic.html:44 .\templates\base_generic.html:66
-msgid "joboffers"
-msgstr "Job offers"
-
-#: .\templates\base_generic.html:63
+#: .\templates\base_generic.html:41 .\templates\base_generic.html:63
 #, fuzzy
 #| msgid "curriculums"
 msgid "My curriculum"
 msgstr "Curriculums"
 
+#: .\templates\base_generic.html:44 .\templates\base_generic.html:66
+msgid "joboffers"
+msgstr "Job offers"
+
+#: .\templates\curriculumList.html:12 .\templates\jobOfferList.html:12
+#: .\templates\thread\threadList.html:14
+msgid "search"
+msgstr "Search"
+
+#: .\templates\curriculumList.html:13 .\templates\thread\threadList.html:15
+msgid "close"
+msgstr "Close"
+
 #: .\templates\curriculumList.html:19
 msgid "name"
 msgstr "Name"
 
+#: .\templates\curriculumList.html:20 .\templates\freelancer\detail.html:58
+msgid "aptitudes"
+msgstr "Aptitudes"
+
+#: .\templates\curriculumList.html:36 .\templates\jobOfferList.html:27
+msgid "view"
+msgstr "View"
+
+#: .\templates\freelancer\detail.html:5
+msgid "freelancerDetails"
+msgstr "Freelancer details"
+
+#: .\templates\freelancer\detail.html:11
+msgid "links"
+msgstr "Links"
+
 #: .\templates\freelancer\detail.html:14
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 #: .\templates\freelancer\detail.html:16
 msgid "Delete"
-msgstr ""
+msgstr "Delete"
 
 #: .\templates\freelancer\detail.html:23
 msgid "Add link"
-msgstr ""
+msgstr "Add link"
+
+#: .\templates\freelancer\detail.html:28
+msgid "formation"
+msgstr "Formation"
+
+#: .\templates\freelancer\detail.html:38
+msgid "addFormation"
+msgstr "Add formation"
+
+#: .\templates\freelancer\detail.html:43
+#, fuzzy
+#| msgid "profession"
+msgid "professionalExperience"
+msgstr "Professional experience"
+
+#: .\templates\freelancer\detail.html:53
+msgid "addProfessionalExperience"
+msgstr "Add professional experience"
+
+#: .\templates\freelancer\detail.html:64
+msgid "addAptitude"
+msgstr "Add aptitude"
+
+#: .\templates\freelancer\detail.html:69
+msgid "HTML5Showcase"
+msgstr "HTML5 Showcase"
+
+#: .\templates\freelancer\detail.html:73
+msgid "editHTML5Showcase"
+msgstr "Edit HTML5 Showcase"
+
+#: .\templates\freelancer\detail.html:81
+msgid "graphicEngineExperiences"
+msgstr "Graphic engine experiences"
+
+#: .\templates\freelancer\detail.html:88
+msgid "addGraphicEngineExperience"
+msgstr "Add graphic engine experience"
 
 #: .\templates\index.html:7
 msgid "AIM Games"
-msgstr ""
+msgstr "AIM Games"
 
 #: .\templates\index.html:9
 msgid ""
@@ -185,7 +252,7 @@ msgstr ""
 
 #: .\templates\index.html:15
 msgid "Useful links"
-msgstr ""
+msgstr "Useful links"
 
 #: .\templates\jobOfferList.html:8
 #, fuzzy
@@ -210,6 +277,18 @@ msgstr "Schedule"
 msgid "newOffer"
 msgstr "Create offer"
 
+#: .\templates\pagarPaypal.html:14
+msgid "paymentprocess"
+msgstr "Payment process will start, press this button to pay:"
+
+#: .\templates\payment_canceled.html:13
+msgid "paymentcanceled"
+msgstr "Payment has been canceled, please try again"
+
+#: .\templates\payment_done.html:13
+msgid "paymentdone"
+msgstr "Payment process has finished correctly"
+
 #: .\templates\thread\form.html:12
 #, fuzzy
 #| msgid "threads"
@@ -218,7 +297,61 @@ msgstr "Threads"
 
 #: .\templates\thread\form.html:35
 msgid "Submit"
-msgstr ""
+msgstr "Submit"
+
+#: .\templates\thread\responseCreate.html:4
+msgid "newResponse"
+msgstr "New response"
+
+#: .\templates\thread\responseCreate.html:7
+msgid "save"
+msgstr "Save"
+
+#: .\templates\thread\threadDetail.html:18
+#, fuzzy
+#| msgid "threads"
+msgid "threadDetail"
+msgstr "Threads"
+
+#: .\templates\thread\threadDetail.html:23
+#, fuzzy
+#| msgid "signupBusiness"
+msgid "business"
+msgstr "Sign up as company"
+
+#: .\templates\thread\threadDetail.html:27
+msgid "description"
+msgstr "Description"
+
+#: .\templates\thread\threadDetail.html:31
+msgid "tags"
+msgstr "Tags"
+
+#: .\templates\thread\threadDetail.html:36
+msgid "attachedFiles"
+msgstr "Attached files"
+
+#: .\templates\thread\threadDetail.html:38
+#, fuzzy
+#| msgid "schedule"
+msgid "attachedFile"
+msgstr "Attached file"
+
+#: .\templates\thread\threadDetail.html:43
+msgid "valoration"
+msgstr "Valoration"
+
+#: .\templates\thread\threadDetail.html:45
+msgid "pictures"
+msgstr "Pictures"
+
+#: .\templates\thread\threadDetail.html:52
+msgid "createAResponseForThisThread"
+msgstr "Create a response for this thread"
+
+#: .\templates\thread\threadDetail.html:52
+msgid "send"
+msgstr "Send"
 
 #: .\templates\thread\threadList.html:26
 #, fuzzy
