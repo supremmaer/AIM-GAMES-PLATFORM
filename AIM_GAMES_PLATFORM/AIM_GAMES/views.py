@@ -70,12 +70,12 @@ def login_redir(request):
                     auth.logout(request)
                     res = pagarPaypal(request)
                 else:
-                    res = redirect('accounts/login/')
+                    res = redirect('')
             else:
                 auth.logout(request)
                 res = pagarPaypal(request)
         else:
-            res = redirect('accounts/login/')
+            res = redirect('')
     return res
 
 
