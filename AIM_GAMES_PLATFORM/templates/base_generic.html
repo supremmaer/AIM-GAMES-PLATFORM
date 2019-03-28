@@ -40,14 +40,13 @@
                         <li><a>{% trans "services" %}</a></li>
                         <li><a>{% trans "aboutus" %}</a></li>
                         <li><a>{% trans "contactus" %}</a></li>
-                        <!--Usar el método checkUser tras el login y luego poner{ if business!=None }...{{business.id}}...{ endif } -->
-                    	<!--Ponerlo tanto en esta lista como en la de abajo y ver si la página entera se recarga o sólo el cuerpo-->
-                        <!--Decidir si el ckeck se hace en cada vista o sólo en el menú en general-->
                         {% if request.session.currentUser == 'business' %}
                             <li><a href="/thread/business/list/" target="_self" class="collection-item">{% trans "threads" %}</a></li>
                             <li><a href="/curriculum/business/list/" target="_self" class="collection-item">{% trans "curriculums" %}</a></li>
-                        {% endif %}
-                        <li><a href="/joboffer/user/list/" target="_self" class="collection-item">{% trans "joboffers" %}</a></li>                        
+                        {% endif %}  
+                        {% if request.session.currentUser == 'business' or request.session.currentUser == 'freelancer' %}
+                        <li><a href="/joboffer/user/list/" target="_self" class="collection-item">{% trans "joboffers" %}</a></li>
+                        {% endif %}                        
                     </ul>
                 </div>
             </div>

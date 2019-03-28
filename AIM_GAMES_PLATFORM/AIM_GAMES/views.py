@@ -24,10 +24,11 @@ def index(request):
         request.session['language'] = 'es-ES'
     language = request.session['language']
     translation.activate(language)
-    if not request.session.has_key('currentUser'):
+    try:
         request.session['currentUser'] = checkUser(request)
-    currentUser= request.session['currentUser']
-    return render(request, 'index.html',context={'currentUser': currentUser},)
+    except:
+        request.session['currentUser'] ='none'
+    return render(request, 'index.html')
 
 def setlanguage(request, language):
     request.session['language'] = language
