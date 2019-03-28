@@ -7,141 +7,214 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-27 21:02+0100\n"
+"POT-Creation-Date: 2019-03-28 03:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Last-Translator: \n"
-"Language-Team: \n"
 "X-Generator: Poedit 2.2.1\n"
 
-#: .\AIM_GAMES\forms.py:25 .\AIM_GAMES\forms.py:57
+#: .\AIM_GAMES\forms.py:26 .\AIM_GAMES\forms.py:58
 msgid "Profile not valid"
 msgstr "Perfil no válido"
 
-#: .\AIM_GAMES\forms.py:38
+#: .\AIM_GAMES\forms.py:39
 msgid "profession"
 msgstr "Profesión"
 
-#: .\AIM_GAMES\forms.py:70
+#: .\AIM_GAMES\forms.py:71
 msgid "Name"
 msgstr "Nombre"
 
-#: .\AIM_GAMES\forms.py:71
+#: .\AIM_GAMES\forms.py:72
 msgid "Surname"
 msgstr "Apellido"
 
-#: .\AIM_GAMES\forms.py:72
+#: .\AIM_GAMES\forms.py:73
 msgid "Email"
 msgstr "Correo Electrónico"
 
-#: .\AIM_GAMES\forms.py:73
+#: .\AIM_GAMES\forms.py:74
 msgid "City"
 msgstr "Ciudad"
 
-#: .\AIM_GAMES\forms.py:74 .\AIM_GAMES\forms.py:77
+#: .\AIM_GAMES\forms.py:75
 msgid "Postal Code"
 msgstr "Código Postal"
 
-#: .\AIM_GAMES\forms.py:75
+#: .\AIM_GAMES\forms.py:76
 msgid "IDCard Number"
 msgstr "DNI"
 
-#: .\AIM_GAMES\forms.py:76
+#: .\AIM_GAMES\forms.py:77
 msgid "Date of birth"
 msgstr "Día de nacimiento"
 
 #: .\AIM_GAMES\forms.py:78
+msgid "Phone Number"
+msgstr "Número de Teléfono"
+
+#: .\AIM_GAMES\forms.py:79
 msgid "Photo URL:"
 msgstr "Foto URL"
 
-#: .\AIM_GAMES\forms.py:96
+#: .\AIM_GAMES\forms.py:98
+msgid "Phone Number must be a number"
+msgstr "El número de teléfono debe ser un número"
+
+#: .\AIM_GAMES\forms.py:108
+msgid "You must be over 18 to sign up"
+msgstr "Debes ser mayor de 18 años para registrarte"
+
+#: .\AIM_GAMES\forms.py:114
 #, fuzzy
 #| msgid "Profile not valid"
 msgid "User not valid"
 msgstr "Perfil no válido"
 
-#: .\templates\accounts\login.html:18 .\templates\accounts\login.html:48
-msgid "Log In"
-msgstr "Iniciar Sesión"
-
-#: .\templates\accounts\login.html:21
-msgid "Logout"
-msgstr "Cerrar Sesión"
-
-#: .\templates\accounts\login.html:36
-msgid "Username"
-msgstr "Usuario"
-
-#: .\templates\accounts\login.html:41
-msgid "Password"
-msgstr "Contraseña"
-
-#: .\templates\accounts\login.html:54
-msgid "Sign up"
-msgstr "Registrarse"
-
-#: .\templates\accounts\login.html:61
-msgid "Sign up as Business"
-msgstr "Registrarse (Empresa)"
-
-#: .\templates\base_generic.html:37 .\templates\base_generic.html:48
-msgid "mainpage"
-msgstr "Página principal"
-
-#: .\templates\base_generic.html:38 .\templates\base_generic.html:49
-msgid "services"
-msgstr "Servicios"
-
-#: .\templates\base_generic.html:39 .\templates\base_generic.html:50
-msgid "aboutus"
-msgstr "Sobre nosotros"
-
-#: .\templates\base_generic.html:40 .\templates\base_generic.html:51
-msgid "contactus"
-msgstr "Contáctanos"
-
-#: .\templates\base_generic.html:41
-msgid "threads"
-msgstr "Hilos"
-
-#: .\templates\base_generic.html:42
-msgid "joboffers"
-msgstr "Ofertas de trabajo"
-
-#: .\templates\jobOfferList.html:17
-msgid "company"
-msgstr "Empresa"
-
-#: .\templates\jobOfferList.html:18
-msgid "signup"
-msgstr "Registrarse"
-
-#: .\templates\jobOfferList.html:18
-msgid "signupBusiness"
-msgstr "Registrarse como empresa"
-
+#: .\AIM_GAMES\forms.py:131
 msgid "Title"
 msgstr "Título"
 
+#: .\AIM_GAMES\forms.py:132
 msgid "Description"
 msgstr "Descripción"
 
+#: .\AIM_GAMES\forms.py:133
 msgid "Tags"
 msgstr "Etiquetas"
 
+#: .\AIM_GAMES\forms.py:134
 msgid "Image URLs"
 msgstr "URLs de imágenes"
 
+#: .\AIM_GAMES\forms.py:135
 msgid "Attachment URLs"
 msgstr "URLs de archivos adjuntos"
 
+#: .\templates\accounts\login.html:19 .\templates\accounts\login.html:49
+#: .\templates\base_generic.html:49 .\templates\base_generic.html:67
+msgid "Log In"
+msgstr "Iniciar Sesión"
+
+#: .\templates\accounts\login.html:22
+msgid "Logout"
+msgstr "Cerrar sesión"
+
+#: .\templates\accounts\login.html:37
+msgid "Username"
+msgstr "Usuario"
+
+#: .\templates\accounts\login.html:42
+msgid "Password"
+msgstr "Contraseña"
+
+#: .\templates\accounts\login.html:55
+msgid "Sign up"
+msgstr "Registrarse"
+
+#: .\templates\accounts\login.html:62
+msgid "Sign up as Business"
+msgstr "Registrarse (Empresa)"
+
+#: .\templates\accounts\signup.html:29 .\templates\base_generic.html:48
+#: .\templates\base_generic.html:66
+msgid "signup"
+msgstr "Registrarse"
+
+#: .\templates\accounts\signup.html:31
+msgid "signupBusiness"
+msgstr "Registrarse como empresa"
+
+#: .\templates\base_generic.html:37 .\templates\base_generic.html:55
+msgid "mainpage"
+msgstr "Página principal"
+
+#: .\templates\base_generic.html:38 .\templates\base_generic.html:56
+msgid "services"
+msgstr "Servicios"
+
+#: .\templates\base_generic.html:39 .\templates\base_generic.html:57
+msgid "aboutus"
+msgstr "Sobre nosotros"
+
+#: .\templates\base_generic.html:40 .\templates\base_generic.html:58
+msgid "contactus"
+msgstr "Contáctanos"
+
+#: .\templates\base_generic.html:42 .\templates\base_generic.html:60
+#: .\templates\thread\threadList.html:9
+msgid "threads"
+msgstr "Hilos"
+
+#: .\templates\base_generic.html:43 .\templates\base_generic.html:61
+msgid "curriculums"
+msgstr "Curriculums"
+
+#: .\templates\base_generic.html:46 .\templates\base_generic.html:64
+msgid "joboffers"
+msgstr "Ofertas de trabajo"
+
+#: .\templates\curriculumList.html:19
+msgid "name"
+msgstr "Nombre"
+
+#: .\templates\index.html:7
+msgid "AIM Games"
+msgstr ""
+
+#: .\templates\index.html:9
+msgid ""
+"AIM Games is the reference platform for game-making resources, where you can "
+"find anything and anyone you need to make the videogame of your dreams."
+msgstr ""
+
+#: .\templates\index.html:10
+msgid ""
+"Please note that this is a work in progress page and only the core "
+"functionality is available. More is to come in short time."
+msgstr ""
+
+#: .\templates\index.html:15
+msgid "Useful links"
+msgstr ""
+
+#: .\templates\jobOfferList.html:8
+#, fuzzy
+#| msgid "joboffers"
+msgid "offers"
+msgstr "Ofertas de trabajo"
+
+#: .\templates\jobOfferList.html:19 .\templates\thread\threadList.html:10
+#: .\templates\thread\threadList.html:22
+msgid "company"
+msgstr "Empresa"
+
+#: .\templates\jobOfferList.html:20
+msgid "salary"
+msgstr "Sueldo"
+
+#: .\templates\jobOfferList.html:21
+msgid "schedule"
+msgstr "Horario"
+
+#: .\templates\jobOfferList.html:35
+msgid "newOffer"
+msgstr "Crear oferta"
+
+#: .\templates\thread\form.html:12
 msgid "Create Thread"
 msgstr "Crear hilo"
 
+#: .\templates\thread\form.html:35
 msgid "Submit"
 msgstr "Enviar"
+
+#: .\templates\thread\threadList.html:26
+#, fuzzy
+#| msgid "threads"
+msgid "newThread"
+msgstr "Crear hilo"

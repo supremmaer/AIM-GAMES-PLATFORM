@@ -1,27 +1,30 @@
 {% extends "base_generic.html" %}
+{% load i18n %}
 {% block content %}
   
   
 <body>
-    <div class="col s12">  
-        <h3>Mensajes del foro</h3>    
-        <h5>Empresa: {{businessThread.profile.name }}</h5>   
-        <form action="/thread/business/list/{{businessThread.id}}">
-            <div class="input-field">
-            <input id="search" name="search" type="search" >
-            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-            <i class="material-icons">close</i>
-            </div>
-        </form>
-    </div>
-    <div class="col s12">
-        <div class="collection">
-            {% for thread in threads %}
-                <a href="/thread/detail/{{thread.id}}" class="collection-item">{{ thread.title }}   &nbsp;&nbsp;&nbsp;&nbsp;  <i class="tiny material-icons">star</i> {{ thread.valoration.score }}</a>
-            {% endfor %}
+    <div class="container">
+        <div class="col s12">  
+            <h3>{% trans "threads" %}</h3>    
+            <h5>{% trans "company" %}: {{businessThread.profile.name }}</h5>   
+            <form action="/thread/business/list/">
+                <div class="input-field">
+                <input placeholder="Nombre compañía" id="search" name="search" type="search" >
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+                </div>
+            </form>
         </div>
-        <div class="right">
-            <a href="/thread/create/" class="btn waves-effect waves-red">Crear hilo</a>
+        <div class="col s12">
+            <div class="collection">
+                {% for thread in threads %}
+                    <a href="/thread/detail/{{thread.id}}" class="collection-item">{{ thread.title }}   &nbsp;&nbsp;&nbsp;&nbsp;{% trans "company" %}: {{ thread.business.profile.name }}</a>
+                {% endfor %}
+            </div>
+            <div class="right">
+                <a href="/thread/create/" class="btn waves-effect waves-red">{% trans "newThread" %}</a>
+            </div>
         </div>
     </div>
 </body>

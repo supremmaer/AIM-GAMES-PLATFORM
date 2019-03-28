@@ -34,8 +34,9 @@ urlpatterns = [
     path('business/create/',BusinessCreate.as_view(),name='signupBusiness'),
     path('thread/create/',ThreadCreate.as_view(),name='threadCreate'),
     path('thread/detail/<int:thread_id>',threadDetail, name='threadDetail'),
-    path('thread/business/list/<int:business_id>', threadList, name='threadList'),
+    path('thread/business/list/', threadList, name='threadList'),
     path('joboffer/user/list/', jobOfferList, name='jobOfferList'),
+    path('curriculum/business/list/', curriculumList, name='curriculumList'),
     #static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     path('freelancer/detail/<int:id>',freelancerDetail, name='freelancerDetail'),
     path('setlanguage/<str:language>', setlanguage),

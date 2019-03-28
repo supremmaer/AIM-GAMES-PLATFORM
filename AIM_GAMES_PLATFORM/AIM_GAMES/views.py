@@ -6,19 +6,25 @@ from django.shortcuts import render, get_list_or_404
 from paypal.standard.forms import PayPalPaymentsForm
 from django.shortcuts import redirect
 from django.views.generic import FormView, CreateView
-from .models import Freelancer, Business, Thread, Response, Link, JobOffer, Curriculum, Profile
+from .models import Freelancer, Business, Thread, Response, Link, JobOffer, Curriculum, Profile, Aptitude
 from .forms import *
 from django.db.models import Q
 from datetime import datetime, timezone
 from django.contrib import auth
 from django.contrib import sessions
 from django.contrib.auth.models import Group
+from django.http import Http404
 
 from django.utils.translation import gettext as _
 from django.utils import translation
 
 def index(request):
     # esto es como el controlador/servicios
+    try:
+        request.session['currentUser'] = checkUser(request)
+    except:
+        request.session['currentUser'] ='none'
+
     return render(request, 'index.html')
 
 def setlanguage(request, language):
@@ -188,17 +194,19 @@ def freelancerDetail(request, id):
 
         return render(request, 'freelancer/detail.html', {'freelancer': freelancer,'links':links,'formations':formation,'professionalExperiences':professionalExperience,'HTML5Showcase':HTML5Showcase,'graphicEngineExperiences':graphicEngineExperience,'aptitudes':aptitude})
 
-def threadList(request, business_id):
+def threadList(request):
     if(request.GET.__contains__('search')):
         search=request.GET.get('search')
-        q=Thread.objects.filter(business=business_id).filter(business__profile__name__icontains=search)
+        q=Thread.objects.filter(business__profile__name__icontains=search)
     else:
-        q=Thread.objects.filter(business=business_id)
-    queryset = _get_queryset(q)
-    queryset2 = _get_queryset(Business)
-    threads= list(queryset)
-    businessThread= queryset2.get(pk=business_id)
-    return render(request, 'thread/threadList.html',{'threads':threads,'businessThread':businessThread}) 
+        q=Thread.objects.all()
+    threads= q
+    #Esta llamada sirve también como comprobación de si la llamada se hace desde una URL que no es de business
+    try:
+        businessThread = get_object_or_404(Business,profile=request.user.profile)
+    except AttributeError:
+        raise Http404('Debe estar autentificado como empresa para acceder a este servicio')
+    return render(request, 'threadList.html',{'threads':threads,'businessThread':businessThread}) 
 
 def jobOfferList(request):
     
@@ -214,13 +222,26 @@ def jobOfferList(request):
         except:
             jobOffers=()
     else:
-        try:
-            q=JobOffer.objects.all()
-            jobOffers= get_list_or_404(q)
-        except:
-            jobOffers=()
-    
-    return render(request, 'jobOfferList.html',{'jobOffers':jobOffers}) 
+        q=JobOffer.objects.all()
+    jobOffers= q
+    return render(request, 'jobOfferList.html',{'jobOffers':jobOffers})
+
+def curriculumList(request):
+    if(request.GET.__contains__('search')):
+        search=request.GET.get('search')
+        q=Curriculum.objects.filter(freelancer__profile__name__icontains=search)
+    else:
+        q=Curriculum.objects.all()
+    curriculums= q
+    aptitudes={}
+    for c in curriculums:
+        aptitudesList=Aptitude.objects.filter(curriculum=c.id)
+        aptitudes[c.id]=list(aptitudesList)
+    try:
+        businessThread = get_object_or_404(Business,profile=request.user.profile)
+    except AttributeError:
+        raise Http404('Debe estar autentificado como empresa para acceder a este servicio')
+    return render(request, 'curriculumList.html',{'curriculums':curriculums,'aptitudes':aptitudes})
 
 def checkUser(request):
     freelancer = None
