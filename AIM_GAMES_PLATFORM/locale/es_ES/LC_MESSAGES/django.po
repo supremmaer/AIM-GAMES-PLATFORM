@@ -87,6 +87,9 @@ msgstr "Descripción"
 msgid "Tags"
 msgstr "Etiquetas"
 
+msgid "Contact"
+msgstr "Contacto"
+
 #: .\AIM_GAMES\forms.py:136
 msgid "Image URLs"
 msgstr "URLs de imágenes"
