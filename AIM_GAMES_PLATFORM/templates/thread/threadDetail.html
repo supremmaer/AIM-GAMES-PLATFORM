@@ -18,27 +18,27 @@
         </script>
 <div class="card  lighten-2">  
     <div class="row">
-      <h1>{% trans "threadDetail" %}:</h1>
+      <h1>{% trans "Thread details" %}:</h1>
       <div class="col m6 s12">  
         <h4>{{thread.title}}</h4>
       </div>
       <div class="col m6 s12">
-        <h4>{% trans "business" %}: {{ thread.business }}</h4>  
+        <h4>{% trans "Business" %}: {{ thread.business }}</h4>
       </div>
     </div>
     <div class="card #ffebee red lighten-5"> 
-      <span class="card-title">{% trans "description" %}:</span>
+      <span class="card-title">{% trans "Description" %}:</span>
       {{ thread.description }}
     </div>  
     
-    <ul class="collection"><b>{% trans "tags" %}:</b>
+    <ul class="collection"><b>{% trans "Tags" %}:</b>
       {% for tag in thread.tags.all %}
       <li>{{tag.title}}</li>
       {% endfor %} 
       </ul> 
-    <ul class="collection"><b >{% trans "attachedFiles" %}:</b>
+    <ul class="collection"><b >{% trans "Attached files" %}:</b>
       {% for file in thread.attachedFiles.all %}
-      <li><a href="{{file.title}}">{% trans "attachedFile" %}</a></li>
+      <li><a href="{{file.title}}">{% trans "Attached file" %}</a></li>
       {% endfor %}  
     </ul>
    
