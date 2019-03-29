@@ -545,3 +545,65 @@ def linkEdit(request, id):
         obj.save()
         return redirect('/freelancer/detail/'+str(freelancer.id))
     return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit Link'})
+
+def html5Delete(request, id): 
+    if checkUser(request)!='freelancer':
+        return render(request, 'index.html')
+
+    instance = get_object_or_404(HTML5Showcase, id=id)
+    freelancer = findByPrincipal(request)
+    if instance.curriculum.id != freelancer.curriculum.id:
+        return render(request, 'index.html')
+    instance.embedCode=""
+    instance.save()
+    return redirect('/freelancer/detail/'+str(freelancer.id))
+
+def formationDelete(request, id): 
+    if checkUser(request)!='freelancer':
+        return render(request, 'index.html')
+    instance = get_object_or_404(Formation, id=id)
+    freelancer = findByPrincipal(request)
+    if instance.curriculum.id != freelancer.curriculum.id:
+        return render(request, 'index.html')
+    instance.delete()
+    return redirect('/freelancer/detail/'+str(freelancer.id))
+
+def professionalExperienceDelete(request, id): 
+    if checkUser(request)!='freelancer':
+        return render(request, 'index.html')
+    instance = get_object_or_404(ProfessionalExperience, id=id)
+    freelancer = findByPrincipal(request)
+    if instance.curriculum.id != freelancer.curriculum.id:
+        return render(request, 'index.html')
+    instance.delete()
+    return redirect('/freelancer/detail/'+str(freelancer.id))
+
+def aptitudeDelete(request, id): 
+    if checkUser(request)!='freelancer':
+        return render(request, 'index.html')
+    instance = get_object_or_404(Aptitude, id=id)
+    freelancer = findByPrincipal(request)
+    if instance.curriculum.id != freelancer.curriculum.id:
+        return render(request, 'index.html')
+    instance.delete()
+    return redirect('/freelancer/detail/'+str(freelancer.id))
+
+def graphicEngineExperienceDelete(request, id): 
+    if checkUser(request)!='freelancer':
+        return render(request, 'index.html')
+    instance = get_object_or_404(GraphicEngineExperience, id=id)
+    freelancer = findByPrincipal(request)
+    if instance.curriculum.id != freelancer.curriculum.id:
+        return render(request, 'index.html')
+    instance.delete()
+    return redirect('/freelancer/detail/'+str(freelancer.id))
+
+def linkDelete(request, id): 
+    if checkUser(request)!='freelancer':
+        return render(request, 'index.html')
+    instance = get_object_or_404(Link, id=id)
+    freelancer = findByPrincipal(request)
+    if instance.curriculum.id != freelancer.curriculum.id:
+        return render(request, 'index.html')
+    instance.delete()
+    return redirect('/freelancer/detail/'+str(freelancer.id))

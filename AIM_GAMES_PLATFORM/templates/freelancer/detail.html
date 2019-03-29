@@ -2,105 +2,203 @@
 {% block content %}
 {% load i18n %}
   
-  <h1>{% trans "freelancerDetails" %}</h1>    
-  <h3>{{ freelancer.profile.name }}</h3> 
+  
+  <!-- <div class="container "> -->
+    <h1>{% trans "freelancerDetails" %}</h1>    
+    <h3>{{ freelancer.profile.name }}</h3> 
+    <div class="row">
+      <div class="col s12 m12 l8 offset-l2">
+        <div class="col s12 m10 l10 offset-l1 offset-m1">
+          <ul class="collection with-header">
+              <li class="collection-header"><h5>{% trans "links" %}</h5></li>
+              {% for link in links %}
+              <li class="collection-item"><a href="{{link.url}}">{{link.url}}</a>
+                {% if request.session.currentUser == 'freelancer' %}
+                  <a class="secondary-content fix-secondary-content" href="/freelancer/link/edit/{{link.id}}">{% trans "Edit" %}</a>
+                  <a class="secondary-content" href="/freelancer/link/delete/{{link.id}}">{% trans "Delete" %}</a></li>
+                {% endif %}
+              {% endfor %}
+          </ul>
+          {% if request.session.currentUser == 'freelancer' %}
+          <div class="">
+            <a href="/freelancer/link/create" class="btn waves-effect waves-red">{% trans "Add link" %}</a>
+          </div>
+          {% endif %}
+        </div>
 
-  <div class="row">
-    <div class="col s12 m12 l8 offset-l2">
-      <ul class="collection with-header">
-          <li class="collection-header"><h5>{% trans "links" %}</h5></li>
-          {% for link in links %}
-          <li class="collection-item"><a href="{{link.url}}">{{link.url}}</a>
+        <div class="col s12 m12 l12 offset-m1">
+        <b>{% trans "formation" %}:</b>
+        </div>
+        {% for formation in formations %}
+        <div class="col s12 m10 l6 offset-m1">
+          
+          <div class="card small blue-grey darken-1">
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="{{formation.miniature}}">
+            </div>
+            <div class="card-content">
+                <span class="card-title activator white-text text-darken-4">{{formation.formation}}<i class="material-icons right">more_vert</i></span>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">{{formation.formation}}<i class="material-icons right">close</i></span>
+              <p>{{formation.center}}</p>
+              <p>{{formation.startDate}}</p>
+              <p>{{formation.endDate}}</p>
+            </div>
             {% if request.session.currentUser == 'freelancer' %}
-              <a class="secondary-content" href="/freelancer/link/edit/{{link.id}}">{% trans "Edit" %}</a> 
-              <a class="secondary-content" href="#">{% trans "Delete" %}</a></li>
+              <div class="card-action">
+                <a href="/freelancer/formation/edit/{{formation.id}}">{% trans "Edit" %}</a>
+                <a href="/freelancer/formation/delete/{{formation.id}}">{% trans "Delete" %}</a>
+              </div>
             {% endif %}
-          {% endfor %}
-      </ul>
+          </div> 
+          
+        </div>
+        {% endfor %}
+
+        {% if request.session.currentUser == 'freelancer' %}
+          <div class="col s12 m12 l12 offset-m1">
+              <a href="/freelancer/formation/create" class="btn waves-effect waves-red">{% trans "addFormation" %}</a>
+          </div>
+        {% endif %}
+       <!--  <b>{% trans "formation" %}:</b>
+        {% for formation in formations %}
+          <p>{{formation.center}}</p>
+          <p>{{formation.startDate}}</p>
+          <p>{{formation.endDate}}</p>
+          <p>{{formation.formation}}</p>
+          <p>{{formation.miniature}}</p>
+          {% if request.session.currentUser == 'freelancer' %}
+            <p><a href="/freelancer/formation/edit/{{formation.id}}">{% trans "Edit" %}</a></p>
+            <p><a href="/freelancer/formation/delete/{{formation.id}}">{% trans "Delete" %}</a></p>
+          {% endif %}
+        {% endfor %}  
+        {% if request.session.currentUser == 'freelancer' %}
+          <div class="">
+              <a href="/freelancer/formation/create" class="btn waves-effect waves-red">{% trans "addFormation" %}</a>
+          </div>
+        {% endif %}
+        <br> -->
+        
+        <div class="col s12 m12 l12 offset-m1">
+            <b>{% trans "professionalExperience" %}:</b>
+        </div>
+
+        {% for professionalExperience in professionalExperiences %}
+        <div class="col s12 m10 l6 offset-m1">
+          
+          <div class="card small grey darken-1">
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="{{professionalExperience.miniature}}">
+            </div>
+            <div class="card-content">
+                <span class="card-title activator white-text text-darken-4">{{professionalExperience.formation}}<i class="material-icons right">more_vert</i></span>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">{{professionalExperience.formation}}<i class="material-icons right">close</i></span>
+              <p>{{professionalExperience.center}}</p>
+              <p>{{professionalExperience.startDate}}</p>
+              <p>{{professionalExperience.endDate}}</p>
+            </div>
+            {% if request.session.currentUser == 'freelancer' %}
+              <div class="card-action">
+                  <a href="/freelancer/professionalExperience/edit/{{professionalExperience.id}}">{% trans "Edit" %}</a>
+                  <a href="/freelancer/professionalExperience/delete/{{professionalExperience.id}}">{% trans "Delete" %}</a>
+              </div>
+            {% endif %}
+          </div> 
+          
+        </div>
+        {% endfor %}
+
+        {% if request.session.currentUser == 'freelancer' %}
+          <div class="col s12 m12 l12 offset-m1">
+              <a href="/freelancer/professionalExperience/create" class="btn waves-effect waves-red">{% trans "addProfessionalExperience" %}</a>
+          </div>
+        {% endif %}
+
+
+        <!-- <b>{% trans "professionalExperience" %}:</b>
+        {% for professionalExperience in professionalExperiences %}
+          <p>{{professionalExperience.center}}</p>
+          <p>{{professionalExperience.startDate}}</p>
+          <p>{{professionalExperience.endDate}}</p>
+          <p>{{professionalExperience.formation}}</p>
+          <p>{{professionalExperience.miniature}}</p>
+          {% if request.session.currentUser == 'freelancer' %}
+            <p><a href="/freelancer/professionalExperience/edit/{{professionalExperience.id}}">{% trans "Edit" %}</a></p>
+            <p><a href="/freelancer/professionalExperience/delete/{{professionalExperience.id}}">{% trans "Delete" %}</a></p>
+          {% endif %}
+        {% endfor %}
+        {% if request.session.currentUser == 'freelancer' %}
+          <div class="">
+              <a href="/freelancer/professionalExperience/create" class="btn waves-effect waves-red">{% trans "addProfessionalExperience" %}</a>
+          </div>
+        {% endif %} 
+        <br> -->
+        <div class="col s12 m10 l10 offset-l1 offset-m1">
+          <ul class="collection with-header">
+            <li class="collection-header"><h5>{% trans "aptitudes" %}</h5></li>
+            {% for aptitude in aptitudes %}
+            <li class="collection-item">{{aptitude.title}}
+              {% if request.session.currentUser == 'freelancer' %}
+                <a class="secondary-content fix-secondary-content" href="/freelancer/aptitude/edit/{{aptitude.id}}">{% trans "Edit" %}</a>
+                <a class="secondary-content fix-secondary-content" href="/freelancer/aptitude/delete/{{aptitude.id}}">{% trans "Delete" %}</a></li>
+              {% endif %}
+            {% endfor %}
+            </ul>
+          {% if request.session.currentUser == 'freelancer' %}
+          <div class="">
+              <a href="/freelancer/aptitude/create" class="btn waves-effect waves-red">{% trans "addAptitude" %}</a>
+          </div>
+          {% endif %}
+        </div>
+
+
+
+        <!-- <b>{% trans "aptitudes" %}:</b>
+        {% for aptitude in aptitudes %}
+          <p>{{aptitude.title}}</p>
+          {% if request.session.currentUser == 'freelancer' %}
+            <p><a href="/freelancer/aptitude/edit/{{aptitude.id}}">{% trans "Edit" %}</a></p>
+            <p><a href="/freelancer/aptitude/delete/{{aptitude.id}}">{% trans "Delete" %}</a></p>
+          {% endif %}
+        {% endfor %}
+        {% if request.session.currentUser == 'freelancer' %}
+          <div class="">
+              <a href="/freelancer/aptitude/create" class="btn waves-effect waves-red">{% trans "addAptitude" %}</a>
+          </div>
+        {% endif %} 
+        <br>
+
+        <b>{% trans "HTML5Showcase" %}:</b>
+        <p>{{HTML5Showcase.embedCode}}</p>
+        {% if request.session.currentUser == 'freelancer' %}
+          <div class="">
+              <a href="/freelancer/html5showcase/edit/{{HTML5Showcase.id}}" class="btn waves-effect waves-red">{% trans "editHTML5Showcase" %}</a>
+              <a href="/freelancer/html5showcase/delete/{{HTML5Showcase.id}}" class="btn waves-effect waves-red">{% trans "Delete" %}</a>
+          </div>
+        {% endif %} 
+        <br>
+
+        <b>{% trans "graphicEngineExperiences" %}:</b>
+        {% for exp in graphicEngineExperiences %}
+          <p>{{exp.graphicEngine.title}}</p>
+          <p>{{exp.graphicExperience}}</p>
+          {% if request.session.currentUser == 'freelancer' %}
+            <p><a href="/freelancer/graphicEngineExperience/edit/{{exp.id}}">{% trans "Edit" %}</a></p>
+            <p><a href="/freelancer/graphicEngineExperience/delete/{{exp.id}}">{% trans "Delete" %}</a></p>
+          {% endif %}  
+        {% endfor %}
+        {% if request.session.currentUser == 'freelancer' %}
+          <div class="">
+              <a href="/freelancer/graphicEngineExperience/create" class="btn waves-effect waves-red">{% trans "addGraphicEngineExperience" %}</a>
+          </div>
+        {% endif %} 
+        <br> -->
     
-  
-      {% if request.session.currentUser == 'freelancer' %}
-      <div class="">
-        <a href="/freelancer/link/create" class="btn waves-effect waves-red">{% trans "Add link" %}</a>
       </div>
-      {% endif %}
-      <br>
-
-      <b>{% trans "formation" %}:</b>
-      {% for formation in formations %}
-        <p>{{formation.center}}</p>
-        <p>{{formation.startDate}}</p>
-        <p>{{formation.endDate}}</p>
-        <p>{{formation.formation}}</p>
-        <p>{{formation.miniature}}</p>
-        {% if request.session.currentUser == 'freelancer' %}
-          <p><a href="/freelancer/formation/edit/{{formation.id}}">{% trans "Edit" %}</a></p>
-        {% endif %}
-      {% endfor %}  
-      {% if request.session.currentUser == 'freelancer' %}
-        <div class="">
-            <a href="/freelancer/formation/create" class="btn waves-effect waves-red">{% trans "addFormation" %}</a>
-        </div>
-      {% endif %}
-      <br>
-
-      <b>{% trans "professionalExperience" %}:</b>
-      {% for professionalExperience in professionalExperiences %}
-        <p>{{professionalExperience.center}}</p>
-        <p>{{professionalExperience.startDate}}</p>
-        <p>{{professionalExperience.endDate}}</p>
-        <p>{{professionalExperience.formation}}</p>
-        <p>{{professionalExperience.miniature}}</p>
-        {% if request.session.currentUser == 'freelancer' %}
-          <p><a href="/freelancer/professionalExperience/edit/{{professionalExperience.id}}">{% trans "Edit" %}</a></p>
-        {% endif %}
-      {% endfor %}
-      {% if request.session.currentUser == 'freelancer' %}
-        <div class="">
-            <a href="/freelancer/professionalExperience/create" class="btn waves-effect waves-red">{% trans "addProfessionalExperience" %}</a>
-        </div>
-      {% endif %} 
-      <br>
-
-      <b>{% trans "aptitudes" %}:</b>
-      {% for aptitude in aptitudes %}
-        <p>{{aptitude.title}}</p>
-        {% if request.session.currentUser == 'freelancer' %}
-          <p><a href="/freelancer/aptitude/edit/{{aptitude.id}}">{% trans "Edit" %}</a></p>
-        {% endif %}
-      {% endfor %}
-      {% if request.session.currentUser == 'freelancer' %}
-        <div class="">
-            <a href="/freelancer/aptitude/create" class="btn waves-effect waves-red">{% trans "addAptitude" %}</a>
-        </div>
-      {% endif %} 
-      <br>
-
-      <b>{% trans "HTML5Showcase" %}:</b>
-      <p>{{HTML5Showcase.embedCode}}</p>
-      {% if request.session.currentUser == 'freelancer' %}
-        <div class="">
-            <a href="/freelancer/html5showcase/edit/{{HTML5Showcase.id}}" class="btn waves-effect waves-red">{% trans "editHTML5Showcase" %}</a>
-        </div>
-      {% endif %} 
-      <br>
-
-      <b>{% trans "graphicEngineExperiences" %}:</b>
-      {% for exp in graphicEngineExperiences %}
-        <p>{{exp.graphicEngine.title}}</p>
-        <p>{{exp.graphicExperience}}</p>
-        {% if request.session.currentUser == 'freelancer' %}
-          <p><a href="/freelancer/graphicEngineExperience/edit/{{exp.id}}">{% trans "Edit" %}</a></p>
-        {% endif %}  
-      {% endfor %}
-      {% if request.session.currentUser == 'freelancer' %}
-        <div class="">
-            <a href="/freelancer/graphicEngineExperience/create" class="btn waves-effect waves-red">{% trans "addGraphicEngineExperience" %}</a>
-        </div>
-      {% endif %} 
-      <br>
-  
     </div>
-  </div>   
+  </div>
 
 {% endblock %}
