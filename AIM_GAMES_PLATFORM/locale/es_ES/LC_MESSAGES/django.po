@@ -79,6 +79,9 @@ msgstr "Perfil no válido"
 msgid "Title"
 msgstr "Título"
 
+msgid "New thread"
+msgstr "Nuevo hilo"
+
 #: .\AIM_GAMES\forms.py:136
 msgid "Image URLs"
 msgstr "URLs de imágenes"

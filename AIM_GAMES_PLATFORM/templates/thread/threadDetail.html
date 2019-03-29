@@ -64,9 +64,11 @@
     <p>Business: {{response.business}} </p>
     <b>{% trans "pictures" %}:</b>
     <div class="carousel m1 s4">
+    {% if response.pics.count > 0 %}
         {% for pic in response.pics.all %}
           <a class="carousel-item" href="{{pic.title}}"><img src="{{pic.title}}" class="img-responsive"></a>
         {% endfor %}
+    {% endif %}
     </div>
     <br>
 </div>
