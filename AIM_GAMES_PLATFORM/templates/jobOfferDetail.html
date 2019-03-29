@@ -1,0 +1,71 @@
+
+{% extends "base_generic.html" %}
+{% load i18n %}
+{% block content %}
+<div class="row">
+<div class="col s12 m12 l8 offset-l2">
+<div class="col s12 m10 l10 offset-l1 offset-m1">
+  <div class="col-sm-6">
+    <h3>{{jobOffer.business.profile.name}}</h3>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{% trans "ubication"%}</h5>
+        <p class="card-text">{{jobOffer.position}}</p>
+      </div>
+    </div>
+  </div>
+   <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{% trans "experienceRequired"%}</h5>
+        <p class="card-text">{{jobOffer.experienceRequired}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{% trans "schedule"%}</h5>
+        <p class="card-text">{{jobOffer.schedule}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{% trans "salary"%}</h5>
+        <p class="card-text">{{jobOffer.salary}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{% trans "ubication"%}</h5>
+        <p class="card-text">{{jobOffer.ubication}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{% trans "description"%}</h5>
+        <p class="card-text">{{jobOffer.description}}</p>
+      </div>
+    </div>
+  </div>
+      <div class="row text-center text-lg-left">
+      {% for pic in pics %}
+         <div class="col-lg-3 col-md-4 col-6">
+          <a target="_blank" rel="noopener noreferrer" href="{{pic}}" class="d-block mb-4 h-100">
+            <img class="img-fluid img-thumbnail" src="{{pic}}" alt="">
+          </a>
+          </div>
+      {% endfor %}
+      </div>
+</div>
+</div>
+</div>
+{% endblock %}

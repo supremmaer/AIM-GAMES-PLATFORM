@@ -56,12 +56,12 @@
     </a>
 
 <div class="row">
-<h4 class ="col  #ffebee red lighten-5 m1.5"  >Responses:</h4>
+<h4 class ="col  #ffebee red lighten-5 m1.5"  >{% trans "responses" %}:</h4>
 </div>
 {% for response in responses %}
 <div class="card #ffebee red lighten-5">
     <b>{{ response.title }}</b><p>{{response.description}}</p>
-    <p>Business: {{response.business}} </p>
+    <p>{% trans "business" %}: {{response.business}} </p>
     <b>{% trans "pictures" %}:</b>
     <div class="carousel m1 s4">
     {% if response.pics.count > 0 %}

@@ -187,6 +187,15 @@ def threadDetail(request, thread_id):
         pics = thread.pics
         return render(request, 'thread/threadDetail.html', {'thread': thread, 'responses': responses,'pics':pics})
 
+def jobOfferDetail(request, id):
+        jobOffer = get_object_or_404(JobOffer, pk=id)
+        pics = jobOffer.images.split(",")
+        for pic in pics:
+            pic.strip()
+        
+        return render(request, 'jobOfferDetail.html', {'jobOffer': jobOffer, 'pics' : pics})
+
+
 def freelancerDetail(request, id):
         if id!='-':
             freelancer = get_object_or_404(Freelancer,pk=id)

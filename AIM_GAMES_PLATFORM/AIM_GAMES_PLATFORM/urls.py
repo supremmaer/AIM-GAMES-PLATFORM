@@ -60,4 +60,6 @@ urlpatterns = [
     path('freelancer/aptitude/delete/<int:id>',aptitudeDelete),
     path('freelancer/professionalExperience/delete/<int:id>',professionalExperienceDelete),
     path('freelancer/formation/delete/<int:id>',formationDelete),
+    path('jobOffer/detail/<int:id>',jobOfferDetail),
+
 ]
