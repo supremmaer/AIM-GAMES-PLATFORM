@@ -126,7 +126,7 @@
 
         <div class="col s12 m10 l10 offset-l1 offset-m1">
             <ul class="collapsible with-header">
-                <li class="collapsible-header"><h5>{% trans "graphicEngineExperiences" %}</h5></li>
+                <div class="collapsible-header"><h5>{% trans "graphicEngineExperiences" %}</h5></div>
             {% for exp in graphicEngineExperiences %}
               <li>
               <div class="collection-item collapsible-header">
@@ -147,6 +147,29 @@
             {% endfor %}
             </ul>
         </div>
+        {% if request.session.currentUser == 'freelancer' %}
+          <div class="col s12 m12 l12 offset-m1">
+              <a href="/freelancer/graphicEngineExperience/create" class="btn waves-effect waves-red">{% trans "addGraphicEngineExperience" %}</a>
+          </div>
+        {% endif %}
+
+        
+        <div class="col s12 m12 l12 offset-m1">
+          <b>{% trans "HTML5Showcase" %}:</b>
+        </div>
+        <div class="col s12 m10 l10 offset-l1 offset-m1">
+          <blockquote>
+              {{HTML5Showcase.embedCode}}
+          </blockquote>
+        </div>
+        {% if request.session.currentUser == 'freelancer' %}
+        <div class="col s12 m12 l12 offset-m1">
+              <a href="/freelancer/html5showcase/edit/{{HTML5Showcase.id}}" class="btn waves-effect waves-red">{% trans "editHTML5Showcase" %}</a>
+              <a href="/freelancer/html5showcase/delete/{{HTML5Showcase.id}}" class="btn waves-effect waves-red">{% trans "Delete" %}</a>
+          </div>
+        {% endif %} 
+
+
 
         <!-- <b>{% trans "HTML5Showcase" %}:</b>
         <p>{{HTML5Showcase.embedCode}}</p>
