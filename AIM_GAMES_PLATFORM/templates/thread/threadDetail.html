@@ -7,11 +7,13 @@
             var pics= '{{ pics }}';
             if(pics){
               $('.carousel.carousel-slider').carousel({
-                duration:50,
-                dist=10,
-                shift:0
+                  numVisible : 5
               });
             }
+          });
+          var instance = M.Carousel.init({
+            fullWidth: true,
+            indicators: true
           });
         </script>
 <div class="card  lighten-2">  
@@ -34,14 +36,14 @@
       <li>{{tag.title}}</li>
       {% endfor %} 
       </ul> 
-    <ul class="collection"><b >{% trans "attachedFiles" %}:
+    <ul class="collection"><b >{% trans "attachedFiles" %}:</b>
       {% for file in thread.attachedFiles.all %}
       <li><a href="{{file.title}}">{% trans "attachedFile" %}</a></li>
       {% endfor %}  
     </ul>
    
-            <ul class="collection"><b >
-            <li><b>{% trans "valoration" %}:</b> {{ thread.valoration.score }}</li>
+            <ul class="collection">
+                <li><b>{% trans "valoration" %}:</b> {{ thread.valoration.score }}</li>
             </ul>  
             <b>{% trans "pictures" %}:</b>
                   <div class="carousel carousel-slider">
@@ -52,15 +54,21 @@
         </div>    
     <a class="waves-effect waves-teal btn-flat" href="/response/create/{{thread.id}}">{% trans "createAResponseForThisThread" %}     <i class="material-icons right">{% trans "send" %}</i>
     </a>
-    
+
 <div class="row">
 <h4 class ="col  #ffebee red lighten-5 m1.5"  >Responses:</h4>
 </div>
 {% for response in responses %}
 <div class="card #ffebee red lighten-5">
-<b>{{ response.title }}</b><p>{{response.description}}</p>
-<p>Business: {{response.business}} </p>
-<br>
+    <b>{{ response.title }}</b><p>{{response.description}}</p>
+    <p>Business: {{response.business}} </p>
+    <b>{% trans "pictures" %}:</b>
+    <div class="carousel m1 s4">
+        {% for pic in response.pics.all %}
+          <a class="carousel-item" href="{{pic.title}}"><img src="{{pic.title}}" class="img-responsive"></a>
+        {% endfor %}
+    </div>
+    <br>
 </div>
 {% endfor %}  
 
