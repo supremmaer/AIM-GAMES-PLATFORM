@@ -48,5 +48,10 @@ urlpatterns = [
     path('freelancer/professionalExperience/create',professionalExperienceCreate),
     path('freelancer/formation/create',formationCreate),
     path('freelancer/html5showcase/edit/<int:id>',html5Edit),
+    path('freelancer/link/edit/<int:id>',linkEdit),
+    path('freelancer/graphicEngineExperience/edit/<int:id>',graphicEngineExperienceEdit),
+    path('freelancer/aptitude/edit/<int:id>',aptitudeEdit),
+    path('freelancer/professionalExperience/edit/<int:id>',professionalExperienceEdit),
+    path('freelancer/formation/edit/<int:id>',formationEdit),
     path('business/joboffer/create',jobOfferCreate),
 ]
