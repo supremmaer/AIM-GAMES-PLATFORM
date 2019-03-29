@@ -11,8 +11,10 @@
           <li class="collection-header"><h5>{% trans "links" %}</h5></li>
           {% for link in links %}
           <li class="collection-item"><a href="{{link.url}}">{{link.url}}</a>
-            <a class="secondary-content" href="/freelancer/link/edit/{{link.id}}">{% trans "Edit" %}</a> 
-            <a class="secondary-content" href="#">{% trans "Delete" %}</a></li>
+            {% if request.session.currentUser == 'freelancer' %}
+              <a class="secondary-content" href="/freelancer/link/edit/{{link.id}}">{% trans "Edit" %}</a> 
+              <a class="secondary-content" href="#">{% trans "Delete" %}</a></li>
+            {% endif %}
           {% endfor %}
       </ul>
     
@@ -31,7 +33,9 @@
         <p>{{formation.endDate}}</p>
         <p>{{formation.formation}}</p>
         <p>{{formation.miniature}}</p>
-        <p><a href="/freelancer/formation/edit/{{formation.id}}">{% trans "Edit" %}</a></p>
+        {% if request.session.currentUser == 'freelancer' %}
+          <p><a href="/freelancer/formation/edit/{{formation.id}}">{% trans "Edit" %}</a></p>
+        {% endif %}
       {% endfor %}  
       {% if request.session.currentUser == 'freelancer' %}
         <div class="">
@@ -47,7 +51,9 @@
         <p>{{professionalExperience.endDate}}</p>
         <p>{{professionalExperience.formation}}</p>
         <p>{{professionalExperience.miniature}}</p>
-        <p><a href="/freelancer/professionalExperience/edit/{{professionalExperience.id}}">{% trans "Edit" %}</a></p>
+        {% if request.session.currentUser == 'freelancer' %}
+          <p><a href="/freelancer/professionalExperience/edit/{{professionalExperience.id}}">{% trans "Edit" %}</a></p>
+        {% endif %}
       {% endfor %}
       {% if request.session.currentUser == 'freelancer' %}
         <div class="">
@@ -59,7 +65,9 @@
       <b>{% trans "aptitudes" %}:</b>
       {% for aptitude in aptitudes %}
         <p>{{aptitude.title}}</p>
-        <p><a href="/freelancer/aptitude/edit/{{aptitude.id}}">{% trans "Edit" %}</a></p>
+        {% if request.session.currentUser == 'freelancer' %}
+          <p><a href="/freelancer/aptitude/edit/{{aptitude.id}}">{% trans "Edit" %}</a></p>
+        {% endif %}
       {% endfor %}
       {% if request.session.currentUser == 'freelancer' %}
         <div class="">
@@ -81,7 +89,9 @@
       {% for exp in graphicEngineExperiences %}
         <p>{{exp.graphicEngine.title}}</p>
         <p>{{exp.graphicExperience}}</p>
-        <p><a href="/freelancer/graphicEngineExperience/edit/{{exp.id}}">{% trans "Edit" %}</a></p>
+        {% if request.session.currentUser == 'freelancer' %}
+          <p><a href="/freelancer/graphicEngineExperience/edit/{{exp.id}}">{% trans "Edit" %}</a></p>
+        {% endif %}  
       {% endfor %}
       {% if request.session.currentUser == 'freelancer' %}
         <div class="">
