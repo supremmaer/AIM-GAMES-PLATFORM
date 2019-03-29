@@ -3,7 +3,7 @@
 {% load i18n %}
   
   
-  <!-- <div class="container "> -->
+  
     <h1>{% trans "freelancerDetails" %}</h1>    
     <h3>{{ freelancer.profile.name }}</h3> 
     <div class="row">
@@ -61,24 +61,7 @@
               <a href="/freelancer/formation/create" class="btn waves-effect waves-red">{% trans "addFormation" %}</a>
           </div>
         {% endif %}
-       <!--  <b>{% trans "formation" %}:</b>
-        {% for formation in formations %}
-          <p>{{formation.center}}</p>
-          <p>{{formation.startDate}}</p>
-          <p>{{formation.endDate}}</p>
-          <p>{{formation.formation}}</p>
-          <p>{{formation.miniature}}</p>
-          {% if request.session.currentUser == 'freelancer' %}
-            <p><a href="/freelancer/formation/edit/{{formation.id}}">{% trans "Edit" %}</a></p>
-            <p><a href="/freelancer/formation/delete/{{formation.id}}">{% trans "Delete" %}</a></p>
-          {% endif %}
-        {% endfor %}  
-        {% if request.session.currentUser == 'freelancer' %}
-          <div class="">
-              <a href="/freelancer/formation/create" class="btn waves-effect waves-red">{% trans "addFormation" %}</a>
-          </div>
-        {% endif %}
-        <br> -->
+       
         
         <div class="col s12 m12 l12 offset-m1">
             <b>{% trans "professionalExperience" %}:</b>
@@ -118,24 +101,7 @@
         {% endif %}
 
 
-        <!-- <b>{% trans "professionalExperience" %}:</b>
-        {% for professionalExperience in professionalExperiences %}
-          <p>{{professionalExperience.center}}</p>
-          <p>{{professionalExperience.startDate}}</p>
-          <p>{{professionalExperience.endDate}}</p>
-          <p>{{professionalExperience.formation}}</p>
-          <p>{{professionalExperience.miniature}}</p>
-          {% if request.session.currentUser == 'freelancer' %}
-            <p><a href="/freelancer/professionalExperience/edit/{{professionalExperience.id}}">{% trans "Edit" %}</a></p>
-            <p><a href="/freelancer/professionalExperience/delete/{{professionalExperience.id}}">{% trans "Delete" %}</a></p>
-          {% endif %}
-        {% endfor %}
-        {% if request.session.currentUser == 'freelancer' %}
-          <div class="">
-              <a href="/freelancer/professionalExperience/create" class="btn waves-effect waves-red">{% trans "addProfessionalExperience" %}</a>
-          </div>
-        {% endif %} 
-        <br> -->
+        
         <div class="col s12 m10 l10 offset-l1 offset-m1">
           <ul class="collection with-header">
             <li class="collection-header"><h5>{% trans "aptitudes" %}</h5></li>
@@ -154,24 +120,35 @@
           {% endif %}
         </div>
 
+        <div class="col s12 m12 l12 offset-m1">
+          <b>{% trans "graphicEngineExperiences" %}:</b>
+        </div>
 
+        <div class="col s12 m10 l10 offset-l1 offset-m1">
+            <ul class="collapsible with-header">
+                <li class="collapsible-header"><h5>{% trans "graphicEngineExperiences" %}</h5></li>
+            {% for exp in graphicEngineExperiences %}
+              <li>
+              <div class="collection-item collapsible-header">
+                <div class="col s10 m10 l10 offset-l2">
+                  {{exp.graphicEngine.title}}
+                </div>
+                <div class="col s2 m2 l2 offset-l2">
+                  {{exp.graphicExperience}}
+                </div>
+              </div>
+              {% if request.session.currentUser == 'freelancer' %}
+              <div class="collapsible-body">
+                <p><a href="/freelancer/graphicEngineExperience/edit/{{exp.id}}">{% trans "Edit" %}</a>
+                <a class="fix-secondary-content" href="/freelancer/graphicEngineExperience/delete/{{exp.id}}">{% trans "Delete" %}</a></p>
+              </div>
+              {% endif %}
+            </li>
+            {% endfor %}
+            </ul>
+        </div>
 
-        <!-- <b>{% trans "aptitudes" %}:</b>
-        {% for aptitude in aptitudes %}
-          <p>{{aptitude.title}}</p>
-          {% if request.session.currentUser == 'freelancer' %}
-            <p><a href="/freelancer/aptitude/edit/{{aptitude.id}}">{% trans "Edit" %}</a></p>
-            <p><a href="/freelancer/aptitude/delete/{{aptitude.id}}">{% trans "Delete" %}</a></p>
-          {% endif %}
-        {% endfor %}
-        {% if request.session.currentUser == 'freelancer' %}
-          <div class="">
-              <a href="/freelancer/aptitude/create" class="btn waves-effect waves-red">{% trans "addAptitude" %}</a>
-          </div>
-        {% endif %} 
-        <br>
-
-        <b>{% trans "HTML5Showcase" %}:</b>
+        <!-- <b>{% trans "HTML5Showcase" %}:</b>
         <p>{{HTML5Showcase.embedCode}}</p>
         {% if request.session.currentUser == 'freelancer' %}
           <div class="">
@@ -179,8 +156,9 @@
               <a href="/freelancer/html5showcase/delete/{{HTML5Showcase.id}}" class="btn waves-effect waves-red">{% trans "Delete" %}</a>
           </div>
         {% endif %} 
-        <br>
+        <br>-->
 
+        <!--
         <b>{% trans "graphicEngineExperiences" %}:</b>
         {% for exp in graphicEngineExperiences %}
           <p>{{exp.graphicEngine.title}}</p>
@@ -196,9 +174,71 @@
           </div>
         {% endif %} 
         <br> -->
-    
+
+
+        <!--  <b>{% trans "formation" %}:</b>
+        {% for formation in formations %}
+          <p>{{formation.center}}</p>
+          <p>{{formation.startDate}}</p>
+          <p>{{formation.endDate}}</p>
+          <p>{{formation.formation}}</p>
+          <p>{{formation.miniature}}</p>
+          {% if request.session.currentUser == 'freelancer' %}
+            <p><a href="/freelancer/formation/edit/{{formation.id}}">{% trans "Edit" %}</a></p>
+            <p><a href="/freelancer/formation/delete/{{formation.id}}">{% trans "Delete" %}</a></p>
+          {% endif %}
+        {% endfor %}  
+        {% if request.session.currentUser == 'freelancer' %}
+          <div class="">
+              <a href="/freelancer/formation/create" class="btn waves-effect waves-red">{% trans "addFormation" %}</a>
+          </div>
+        {% endif %}
+        <br> -->
+
+        <!-- <b>{% trans "professionalExperience" %}:</b>
+        {% for professionalExperience in professionalExperiences %}
+          <p>{{professionalExperience.center}}</p>
+          <p>{{professionalExperience.startDate}}</p>
+          <p>{{professionalExperience.endDate}}</p>
+          <p>{{professionalExperience.formation}}</p>
+          <p>{{professionalExperience.miniature}}</p>
+          {% if request.session.currentUser == 'freelancer' %}
+            <p><a href="/freelancer/professionalExperience/edit/{{professionalExperience.id}}">{% trans "Edit" %}</a></p>
+            <p><a href="/freelancer/professionalExperience/delete/{{professionalExperience.id}}">{% trans "Delete" %}</a></p>
+          {% endif %}
+        {% endfor %}
+        {% if request.session.currentUser == 'freelancer' %}
+          <div class="">
+              <a href="/freelancer/professionalExperience/create" class="btn waves-effect waves-red">{% trans "addProfessionalExperience" %}</a>
+          </div>
+        {% endif %} 
+        <br> -->
+
+        <!-- <b>{% trans "aptitudes" %}:</b>
+        {% for aptitude in aptitudes %}
+          <p>{{aptitude.title}}</p>
+          {% if request.session.currentUser == 'freelancer' %}
+            <p><a href="/freelancer/aptitude/edit/{{aptitude.id}}">{% trans "Edit" %}</a></p>
+            <p><a href="/freelancer/aptitude/delete/{{aptitude.id}}">{% trans "Delete" %}</a></p>
+          {% endif %}
+        {% endfor %}
+        {% if request.session.currentUser == 'freelancer' %}
+          <div class="">
+              <a href="/freelancer/aptitude/create" class="btn waves-effect waves-red">{% trans "addAptitude" %}</a>
+          </div>
+        {% endif %} 
+        <br>-->
+
       </div>
     </div>
-  </div>
+
+
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems, options);
+  });
+  </script>
 
 {% endblock %}
