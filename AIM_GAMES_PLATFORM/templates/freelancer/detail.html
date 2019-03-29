@@ -12,13 +12,11 @@
           {% for link in links %}
           <li class="collection-item"><a href="{{link.url}}">{{link.url}}</a>
             {% if request.session.currentUser == 'freelancer' %}
-              <a class="secondary-content" href="/freelancer/link/edit/{{link.id}}">{% trans "Edit" %}</a> 
-              <a class="secondary-content" href="#">{% trans "Delete" %}</a></li>
+              <a class="secondary-content fix-secondary-content" href="/freelancer/link/edit/{{link.id}}">{% trans "Edit" %}</a>
+              <a class="secondary-content" href="/freelancer/link/delete/{{link.id}}">{% trans "Delete" %}</a></li>
             {% endif %}
           {% endfor %}
       </ul>
-    
-  
       {% if request.session.currentUser == 'freelancer' %}
       <div class="">
         <a href="/freelancer/link/create" class="btn waves-effect waves-red">{% trans "Add link" %}</a>
@@ -35,6 +33,7 @@
         <p>{{formation.miniature}}</p>
         {% if request.session.currentUser == 'freelancer' %}
           <p><a href="/freelancer/formation/edit/{{formation.id}}">{% trans "Edit" %}</a></p>
+          <p><a href="/freelancer/formation/delete/{{formation.id}}">{% trans "Delete" %}</a></p>
         {% endif %}
       {% endfor %}  
       {% if request.session.currentUser == 'freelancer' %}
@@ -53,6 +52,7 @@
         <p>{{professionalExperience.miniature}}</p>
         {% if request.session.currentUser == 'freelancer' %}
           <p><a href="/freelancer/professionalExperience/edit/{{professionalExperience.id}}">{% trans "Edit" %}</a></p>
+          <p><a href="/freelancer/professionalExperience/delete/{{professionalExperience.id}}">{% trans "Delete" %}</a></p>
         {% endif %}
       {% endfor %}
       {% if request.session.currentUser == 'freelancer' %}
@@ -67,6 +67,7 @@
         <p>{{aptitude.title}}</p>
         {% if request.session.currentUser == 'freelancer' %}
           <p><a href="/freelancer/aptitude/edit/{{aptitude.id}}">{% trans "Edit" %}</a></p>
+          <p><a href="/freelancer/aptitude/delete/{{aptitude.id}}">{% trans "Delete" %}</a></p>
         {% endif %}
       {% endfor %}
       {% if request.session.currentUser == 'freelancer' %}
@@ -81,6 +82,7 @@
       {% if request.session.currentUser == 'freelancer' %}
         <div class="">
             <a href="/freelancer/html5showcase/edit/{{HTML5Showcase.id}}" class="btn waves-effect waves-red">{% trans "editHTML5Showcase" %}</a>
+            <a href="/freelancer/html5showcase/delete/{{HTML5Showcase.id}}" class="btn waves-effect waves-red">{% trans "Delete" %}</a>
         </div>
       {% endif %} 
       <br>
@@ -91,6 +93,7 @@
         <p>{{exp.graphicExperience}}</p>
         {% if request.session.currentUser == 'freelancer' %}
           <p><a href="/freelancer/graphicEngineExperience/edit/{{exp.id}}">{% trans "Edit" %}</a></p>
+          <p><a href="/freelancer/graphicEngineExperience/delete/{{exp.id}}">{% trans "Delete" %}</a></p>
         {% endif %}  
       {% endfor %}
       {% if request.session.currentUser == 'freelancer' %}
