@@ -401,7 +401,7 @@ msgstr "Expositor de HTML5"
 
 #: .\templates\freelancer\detail.html:155
 msgid "editHTML5Showcase"
-msgstr "Añadir expositor de HTML5"
+msgstr "Modificar expositor de HTML5"
 
 #: .\templates\freelancer\detail.html:173
 msgid "addGraphicEngineExperience"
