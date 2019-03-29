@@ -460,3 +460,88 @@ def html5Edit(request, id):
         obj.save()
         return redirect('/freelancer/detail/'+str(freelancer.id))
     return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit HTML5Showcase'})
+
+def formationEdit(request, id): 
+    if checkUser(request)!='freelancer':
+        return render(request, 'index.html')
+
+    instance = get_object_or_404(Formation, id=id)
+    freelancer = findByPrincipal(request)
+    if instance.curriculum.id != freelancer.curriculum.id:
+        return render(request, 'index.html')
+
+    form = FormationForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.curriculum = freelancer.curriculum
+        obj.save()
+        return redirect('/freelancer/detail/'+str(freelancer.id))
+    return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit Formation'})
+
+def professionalExperienceEdit(request, id): 
+    if checkUser(request)!='freelancer':
+        return render(request, 'index.html')
+
+    instance = get_object_or_404(ProfessionalExperience, id=id)
+    freelancer = findByPrincipal(request)
+    if instance.curriculum.id != freelancer.curriculum.id:
+        return render(request, 'index.html')
+
+    form = ProfessionalExperienceForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.curriculum = freelancer.curriculum
+        obj.save()
+        return redirect('/freelancer/detail/'+str(freelancer.id))
+    return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit ProfessionalExperience'})
+
+def aptitudeEdit(request, id): 
+    if checkUser(request)!='freelancer':
+        return render(request, 'index.html')
+
+    instance = get_object_or_404(Aptitude, id=id)
+    freelancer = findByPrincipal(request)
+    if instance.curriculum.id != freelancer.curriculum.id:
+        return render(request, 'index.html')
+
+    form = AptitudeForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.curriculum = freelancer.curriculum
+        obj.save()
+        return redirect('/freelancer/detail/'+str(freelancer.id))
+    return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit Aptitude'})
+
+def graphicEngineExperienceEdit(request, id): 
+    if checkUser(request)!='freelancer':
+        return render(request, 'index.html')
+
+    instance = get_object_or_404(GraphicEngineExperience, id=id)
+    freelancer = findByPrincipal(request)
+    if instance.curriculum.id != freelancer.curriculum.id:
+        return render(request, 'index.html')
+
+    form = GraphicEngineExperienceForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.curriculum = freelancer.curriculum
+        obj.save()
+        return redirect('/freelancer/detail/'+str(freelancer.id))
+    return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit Graphic Engine Experience'})
+
+def linkEdit(request, id): 
+    if checkUser(request)!='freelancer':
+        return render(request, 'index.html')
+
+    instance = get_object_or_404(Link, id=id)
+    freelancer = findByPrincipal(request)
+    if instance.curriculum.id != freelancer.curriculum.id:
+        return render(request, 'index.html')
+
+    form = LinkForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.curriculum = freelancer.curriculum
+        obj.save()
+        return redirect('/freelancer/detail/'+str(freelancer.id))
+    return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit Link'})
