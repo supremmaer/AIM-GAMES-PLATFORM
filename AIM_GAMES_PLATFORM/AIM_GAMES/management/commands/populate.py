@@ -38,6 +38,7 @@ class Command(BaseCommand):
         url6 = URL(title='http://www.funcage.com/blog/wp-content/uploads/2013/11/Random-Photoshopped-Pictures-006.jpg')
         url6.save()
 
+        superAdmin = User.objects.create_superuser(username='root',email='',password='toor')
         user1 = User.objects.create_user(username='freelancer1', password='estoesuntest')
         user2 = User.objects.create_user(username='freelancer2', password='estoesuntest')
         user3 = User.objects.create_user(username='freelancer3', password='estoesuntest')
