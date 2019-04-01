@@ -38,8 +38,8 @@ urlpatterns = [
     path('joboffer/user/list/', jobOfferList, name='jobOfferList'),
     path('curriculum/business/list/', curriculumList, name='curriculumList'),
     #static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    path('freelancer/detail/<int:id>',freelancerDetail, name='freelancerDetail'),
-    path('freelancer/mycurriculum/<str:id>',freelancerDetail, name='freelancerDetail'),
+    path('freelancer/detail/<int:id>',freelancerDetail),
+    path('freelancer/mycurriculum/<str:id>',freelancerDetail),
     path('setlanguage/<str:language>', setlanguage),
     path('response/create/<int:threadId>',response_create, name='responseCreate'),
     path('freelancer/link/create',linkCreate),

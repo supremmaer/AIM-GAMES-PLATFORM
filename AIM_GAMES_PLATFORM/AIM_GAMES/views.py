@@ -195,29 +195,57 @@ def jobOfferDetail(request, id):
         
         return render(request, 'jobOfferDetail.html', {'jobOffer': jobOffer, 'pics' : pics})
 
+def findByPrincipal(request):
+    freelancer = None
+    business = None
+    if request.user.is_authenticated:
+        user = request.user
+        try:
+            profile = user.profile
+        except:
+            print('admin logged')
+        try:
+            freelancer = Freelancer.objects.select_related('profile').get(id=profile.freelancer.id)
+            return freelancer
+        except:
+            print('Principal is not a freelancer.')
+        try:
+            business = Business.objects.select_related('profile').get(id=profile.business.id)
+            return business
+        except:
+            print('Principal is not a business.')
+    return None
 
 def freelancerDetail(request, id):
-        if id!='-':
-            freelancer = get_object_or_404(Freelancer,pk=id)
-            if checkUser(request)=='freelancer':
-                freelancer = findByPrincipal(request)
-                if(freelancer.id!=id):
-                    return render(request, 'index.html')
-        else:
+    userString = checkUser(request)
+    if userString == 'none':
+        return redirect('/')
+    elif userString=='freelancer':
+        if id == '-':
             freelancer = findByPrincipal(request)
-        print(freelancer.getData())
-        curriculum = freelancer.curriculum
-        links = curriculum.link_set.all()
-        formation = curriculum.formation_set.all()
-        professionalExperience = curriculum.professionalexperience_set.all()
-        graphicEngineExperience = curriculum.graphicengineexperience_set.all()
-        aptitude = curriculum.aptitude_set.all()
-        try:
-            HTML5Showcase = curriculum.HTML5Showcase
-        except:
-            HTML5Showcase = None
+        else:
+            freelancer = get_object_or_404(Freelancer,pk=id)
+            user = findByPrincipal(request)        
+            if user.id != freelancer.id:
+                return redirect('/')
+    else:
+        if id=='-':
+            return redirect('/')
+        else:
+            freelancer = get_object_or_404(Freelancer,pk=id)
+    
+    curriculum = freelancer.curriculum
+    links = curriculum.link_set.all()
+    formation = curriculum.formation_set.all()
+    professionalExperience = curriculum.professionalexperience_set.all()
+    graphicEngineExperience = curriculum.graphicengineexperience_set.all()
+    aptitude = curriculum.aptitude_set.all()
+    try:
+        HTML5Showcase = curriculum.HTML5Showcase
+    except:
+        HTML5Showcase = None
 
-        return render(request, 'freelancer/detail.html', {'freelancer': freelancer,'links':links,'formations':formation,'professionalExperiences':professionalExperience,'HTML5Showcase':HTML5Showcase,'graphicEngineExperiences':graphicEngineExperience,'aptitudes':aptitude})
+    return render(request, 'freelancer/detail.html', {'freelancer': freelancer,'links':links,'formations':formation,'professionalExperiences':professionalExperience,'HTML5Showcase':HTML5Showcase,'graphicEngineExperiences':graphicEngineExperience,'aptitudes':aptitude})
 
 def threadList(request):
     if(request.GET.__contains__('search')):
@@ -319,27 +347,6 @@ def response_create(request, threadId):
     else:
         form = ResponseForm()
     return render(request,'thread/responseCreate.html',{'form':form})
-
-def findByPrincipal(request):
-    freelancer = None
-    business = None
-    if request.user.is_authenticated:
-        user = request.user
-        try:
-            profile = user.profile
-        except:
-            print('admin logged')
-        try:
-            freelancer = Freelancer.objects.select_related('profile').get(id=profile.freelancer.id)
-            return freelancer
-        except:
-            print('Principal is not a freelancer.')
-        try:
-            business = Business.objects.select_related('profile').get(id=profile.business.id)
-            return business
-        except:
-            print('Principal is not a business.')
-    return None
 
 def linkCreate(request):
     if checkUser(request)=='freelancer':
