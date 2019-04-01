@@ -436,7 +436,6 @@ def formationCreate(request):
 def jobOfferCreate(request):
     if checkUser(request)=='business':
         business = findByPrincipal(request)
-        print(business.getData())
         if request.method == 'POST':
             form = JobOfferForm(request.POST)
             if form.is_valid():                
