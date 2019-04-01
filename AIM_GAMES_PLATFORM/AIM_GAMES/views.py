@@ -205,7 +205,7 @@ def freelancerDetail(request, id):
                     return render(request, 'index.html')
         else:
             freelancer = findByPrincipal(request)
-
+        print(freelancer.getData())
         curriculum = freelancer.curriculum
         links = curriculum.link_set.all()
         formation = curriculum.formation_set.all()

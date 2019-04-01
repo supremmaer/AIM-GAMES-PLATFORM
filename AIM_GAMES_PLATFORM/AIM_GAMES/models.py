@@ -88,14 +88,14 @@ class Manager(models.Model):
 
 
 class Curriculum(models.Model):
-    freelancer = models.OneToOneField(Freelancer, on_delete=models.CASCADE,verbose_name=_("freelancer"))
+    freelancer = models.OneToOneField(Freelancer, on_delete=models.CASCADE, verbose_name=_("freelancer"))
     verified = models.BooleanField(verbose_name=_("verified"),default=False)
 
 
 
 
 class ProfessionalExperience(models.Model):
-    curriculum = models.ForeignKey(Curriculum, on_delete=models.CASCADE,verbose_name=_("curriculum"))
+    curriculum = models.ForeignKey(Curriculum, on_delete=models.CASCADE, verbose_name=_("curriculum"))
     center = models.TextField(verbose_name=_("center"),max_length=50, blank=False)
     formation = models.TextField(verbose_name=_("formation"),max_length=100, blank=False)
     startDate = models.DateTimeField(verbose_name=_("startDate"),null=False)
@@ -103,12 +103,12 @@ class ProfessionalExperience(models.Model):
     miniature = models.URLField(verbose_name=_("miniature"),)
 
     def getData(self):
-        data = self.center + "\n" + self.formation + "\n" + self.startDate + "\n" + self.endDate + "\n" + self.miniature
+        data = "Center: " + self.center + "\n" + "Formation: " + self.formation + "\n" + "Start date: " + self.startDate.strftime('%m/%d/%Y') + "\n" + "End date: " + self.endDate.strftime('%m/%d/%Y') + "\n" + "Miniature: " + self.miniature
         return data
 
 
 class Formation(models.Model):
-    curriculum = models.ForeignKey(Curriculum, on_delete=models.CASCADE,verbose_name=_("curriculum"))
+    curriculum = models.ForeignKey(Curriculum, on_delete=models.CASCADE, verbose_name=_("curriculum"))
     center = models.TextField(verbose_name=_("center"),max_length=50, blank=False)
     formation = models.TextField(verbose_name=_("formation"),max_length=100, blank=False)
     startDate = models.DateTimeField(verbose_name=_("startDate"),null=False)
@@ -117,7 +117,7 @@ class Formation(models.Model):
 
     
     def getData(self):
-        data = self.center + "\n" + self.formation + "\n" + self.startDate + "\n" + self.endDate + "\n" + self.miniature
+        data = "Center: " + self.center + "\n" + "Formation: " + self.formation + "\n" + "Start date: " + self.startDate.strftime('%m/%d/%Y') + "\n" + "End date: " + self.endDate.strftime('%m/%d/%Y') + "\n" + "Miniature: " + self.miniature
         return data
 
 
@@ -128,7 +128,8 @@ class GraphicEngineExperience(models.Model):
         validators=[MinValueValidator(0), MaxValueValidator(100)])
 
     def getData(self):
-        data = self.graphicEngine + "\n" + self.graphicExperience
+        data = ""
+        data = "Graphic engine: " + data + str(self.graphicEngine) + "\n" + "Experience: " +str(self.graphicExperience)
         return data
 
 class HTML5Showcase(models.Model):
@@ -136,7 +137,7 @@ class HTML5Showcase(models.Model):
     embedCode = models.TextField(verbose_name=_("embedCode"),)
     
     def getData(self):
-        data = self.embedCode
+        data = "Embed code: " +self.embedCode
         return data
 
 
@@ -145,7 +146,7 @@ class Aptitude(models.Model):
     title = models.TextField(verbose_name=_("title"),max_length=30, blank=False)
     
     def getData(self):
-        data = self.title
+        data = "Title: " +self.title
         return data
 
 
@@ -236,46 +237,49 @@ class Message(models.Model):
 
 
 def getCurriculumData(self):
-    professionalExperiences = ProfessionalExperience.objects.get(curriculum=self)
-    formations = Formation.objects.get(curriculum=self)
-    graphicEngineExperiences = GraphicEngineExperience.objects.get(curriculum=self)
+    professionalExperiences = ProfessionalExperience.objects.filter(curriculum=self)
+    formations = Formation.objects.filter(curriculum=self)
+    graphicEngineExperiences = GraphicEngineExperience.objects.filter(curriculum=self)
     html5Showcase = HTML5Showcase.objects.get(curriculum=self)
-    aptitudes = Aptitude.objects.get(curriculum=self)
-    links = Link.objects.get(curriculum=self)
+    aptitudes = Aptitude.objects.filter(curriculum=self)
+    links = Link.objects.filter(curriculum=self)
 
-    data = ""
-
-    data = data + "\n"
-    for formation in formations.values():
+    data = "-----CURRICULUM-----\n\n"
+    data = data + "-----FORMATIONS-----\n\n"
+    for formation in list(formations):
         data = data + "\n" + formation.getData()
 
-    data = data + "\n"
-    for graphicEngineExperience in graphicEngineExperiences.values():
+    data = data + "\n\n-----GRAPHIC ENGINE EXPERIENCES-----\n\n"
+    for graphicEngineExperience in list(graphicEngineExperiences):
         data = data + "\n" + graphicEngineExperience.getData()
     
-    data = data + "\n"
-    for professionalExperience in professionalExperiences.values():
+    data = data + "\n\n-----PROFESSIONAL EXPERIENCES-----\n\n"
+    for professionalExperience in list(professionalExperiences):
         data = data + "\n" + professionalExperience.getData()
 
-    data = data + "\n"
-    for aptitude in aptitudes.values():
+    data = data + "\n\n-----APTITUDES-----\n\n"
+    for aptitude in list(aptitudes):
         data = data + "\n" + aptitude.getData()
     
-    data = data + "\n"
-    for link in links.values():
+    data = data + "\n\n-----LINKS-----\n\n"
+    for link in list(links):
         data = data + "\n" + link.getData()
     
-    data = data + "\n"
+    data = data + "\n\n-----HTML5 SHOWCASE-----\n\n"
 
     data = data + html5Showcase.getData()
+
+    return data
 
 
 Curriculum.getData = getCurriculumData
 
 def getFreelancerData(self):
     profile = self.profile
-    data = profile.name + "\n" + profile.surname + "\n" + profile.email + "\n" + profile.city + "\n" + profile.postalCode + "\n" + profile.idCardNumber + "\n" + profile.dateOfBirth + "\n" + profile.phoneNumber + "\n" + profile.photo
+    data = "-----PROFILE-----\n\n"
+    data = data + "Name: " + profile.name + "\n" + "Surname: " + profile.surname + "\n" + "Email: " + profile.email + "\n" + "City: " + profile.city + "\n" + "Postal code: " + profile.postalCode + "\n" + "ID Card Number: " + profile.idCardNumber + "\n" + "Date of birth: " + profile.dateOfBirth.strftime('%m/%d/%Y') + "\n" + "Phone number: " + profile.phoneNumber + "\n" + "Photo: " + profile.photo
     curriculum = Curriculum.objects.get(freelancer=self)
-    data = data + "\n" + curriculum.getData()
+    data = data + "\n\n\n" + curriculum.getData()
+    return data
 
 Freelancer.getData = getFreelancerData
