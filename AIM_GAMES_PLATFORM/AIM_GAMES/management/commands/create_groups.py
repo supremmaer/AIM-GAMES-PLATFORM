@@ -10,10 +10,12 @@ class Command(BaseCommand):
         #Creación de grupos
         freelancer, created = Group.objects.get_or_create(name='Freelancer')
         business, created = Group.objects.get_or_create(name='Business')
+        management, created = Group.objects.get_or_create(name='Management')
 
         #Obtener grupos (para setear permisos si los grupos ya han sido creados)
         freelancer = Group.objects.get(name='Freelancer')
         business = Group.objects.get(name='Business')
+        management = Group.objects.get(name='Management')
 
         groups = Group.objects.all().values()
 
