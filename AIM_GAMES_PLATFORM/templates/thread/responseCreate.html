@@ -1,9 +1,10 @@
 {% extends 'base_generic.html' %}
+{% load i18n %}
 
 {% block content %}
-    <h1>Nueva Respuesta</h1>
+    <h1>{% trans "newResponse" %}</h1>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Guardar</button>
+        <button type="submit" class="save btn btn-default">{% trans "save" %}</button>
     </form>
 {% endblock %}

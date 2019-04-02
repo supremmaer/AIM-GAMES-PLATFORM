@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Tag, GraphicEngine, URL, Profile, Freelancer, Business, Curriculum,ProfessionalExperience, Formation, GraphicEngineExperience, HTML5Showcase, Aptitude, Link, JobOffer, Valoration, Thread, Response
+from .models import *
 
 admin.site.register(Tag)
 admin.site.register(GraphicEngine)
@@ -18,6 +18,11 @@ admin.site.register(Valoration)
 admin.site.register(Thread)
 admin.site.register(Response)
 admin.site.register(Freelancer)
+admin.site.register(Manager)
+admin.site.register(Chat)
+admin.site.register(Message)
+admin.site.register(Event)
+admin.site.register(Challenge)
 
 
 # Register your models here.

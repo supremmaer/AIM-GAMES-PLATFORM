@@ -23,27 +23,22 @@
             }
             
         </style>
-        <a href="/setlanguage/es-ES" target="_self" class="collection-item">Spanish</a>
-        <a href="/setlanguage/en-GB" target="_self" class="collection-item">English</a>
+       
     </head>
 
     <body>
         <nav>
             <div class="nav-wrapper">
-                <div class="container">
                     <a href="/" class="brand-logo" id="logotipo" >AIM Games</a>
                     <a href="#" class="sidenav-trigger" data-target="slide_out"><i class="material-icons">menu</i></a>
                     <ul class="hide-on-med-and-down right">
                         <li class="active"><a href="/">{% trans "mainpage" %}</a></li>
-                        <li><a>{% trans "services" %}</a></li>
-                        <li><a>{% trans "aboutus" %}</a></li>
-                        <li><a>{% trans "contactus" %}</a></li>
                         {% if request.session.currentUser == 'business' %}
                             <li><a href="/thread/business/list/" target="_self" class="collection-item">{% trans "threads" %}</a></li>
                             <li><a href="/curriculum/business/list/" target="_self" class="collection-item">{% trans "curriculums" %}</a></li>
                         {% endif %} 
                         {% if request.session.currentUser == 'freelancer' %}
-                            <li><a href="/freelancer/mycurriculum/-" target="_self" class="collection-item">My curriculum</a></li>
+                            <li><a href="/freelancer/mycurriculum/-" target="_self" class="collection-item">{% trans "My curriculum" %}</a></li>
                         {% endif %}
                         {% if request.session.currentUser == 'business' or request.session.currentUser == 'freelancer' %}
                         	<li><a href="/joboffer/user/list/" target="_self" class="collection-item">{% trans "joboffers" %}</a></li>
@@ -54,20 +49,18 @@
                         <li><a href="/accounts/login/" target="_self" class="collection-item">{% trans "Log In" %}</a></li>
                         {% endif %}
                     </ul>
-                </div>
             </div>
         </nav>
+        <a href="/setlanguage/es-ES" target="_self"  class="waves-effect waves-light btn">Spanish</a>
+        <a href="/setlanguage/en-GB" target="_self"  class="waves-effect waves-light btn">English</a>
             <ul class="sidenav" id="slide_out">
                 <li class="active"><a>{% trans "mainpage" %}</a></li>
-                <li><a>{% trans "services" %}</a></li>
-                <li><a>{% trans "aboutus" %}</a></li>
-                <li><a>{% trans "contactus" %}</a></li>
 				{% if request.session.currentUser == 'business' %}
                 	<li><a href="/thread/business/list/" target="_self" class="collection-item">{% trans "threads" %}</a></li>
                     <li><a href="/curriculum/business/list/" target="_self" class="collection-item">{% trans "curriculums" %}</a></li>
                 {% endif %}
                 {% if request.session.currentUser == 'freelancer' %}
-                    <li><a href="/freelancer/mycurriculum/-" target="_self" class="collection-item">My curriculum</a></li>
+                    <li><a href="/freelancer/mycurriculum/-" target="_self" class="collection-item">{% trans "My curriculum" %}</a></li>
                 {% endif %} 
                 {% if request.session.currentUser == 'business' or request.session.currentUser == 'freelancer' %}
                     <li><a href="/joboffer/user/list/" target="_self" class="collection-item">{% trans "joboffers" %}</a></li>

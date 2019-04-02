@@ -1,4 +1,5 @@
 {% extends "base_generic.html" %}
+{% load i18n %}
 {% block content %}
   
 
@@ -10,7 +11,7 @@
           <img src="https://i.imgur.com/z3V1Sbc.png">
         </div>
         <div class="card-content center" >
-          <p>El proceso de pago se ha realizado correctamente! </p>
+          <p>{% trans "paymentdone" %}:</p>
             <div class="row s12"></div>
             <i class="large material-icons" style="color:green">done</i>
         </div>

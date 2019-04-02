@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django.shortcuts import render, get_list_or_404
 from paypal.standard.forms import PayPalPaymentsForm
 from django.shortcuts import redirect
-from django.views.generic import FormView, CreateView
+from django.views.generic import FormView, CreateView, UpdateView
 from .models import Freelancer, Business, Thread, Response, Link, JobOffer, Curriculum, Profile, Aptitude
 from .forms import *
 from django.db.models import Q
@@ -14,6 +14,7 @@ from django.contrib import auth
 from django.contrib import sessions
 from django.contrib.auth.models import Group
 from django.http import Http404
+
 
 from django.utils.translation import gettext as _
 from django.utils import translation
@@ -183,30 +184,68 @@ class ThreadCreate(CreateView):
 def threadDetail(request, thread_id):
         thread = get_object_or_404(Thread, pk=thread_id)
         responses = thread.response_set.all()
-        return render(request, 'thread/threadDetail.html', {'thread': thread, 'responses': responses})
+        pics = thread.pics
+        return render(request, 'thread/threadDetail.html', {'thread': thread, 'responses': responses,'pics':pics})
+
+def jobOfferDetail(request, id):
+        jobOffer = get_object_or_404(JobOffer, pk=id)
+        pics = jobOffer.images.split(",")
+        for pic in pics:
+            pic.strip()
+        
+        return render(request, 'jobOfferDetail.html', {'jobOffer': jobOffer, 'pics' : pics})
+
+def findByPrincipal(request):
+    freelancer = None
+    business = None
+    if request.user.is_authenticated:
+        user = request.user
+        try:
+            profile = user.profile
+        except:
+            print('admin logged')
+        try:
+            freelancer = Freelancer.objects.select_related('profile').get(id=profile.freelancer.id)
+            return freelancer
+        except:
+            print('Principal is not a freelancer.')
+        try:
+            business = Business.objects.select_related('profile').get(id=profile.business.id)
+            return business
+        except:
+            print('Principal is not a business.')
+    return None
 
 def freelancerDetail(request, id):
-        if id!='-':
-            freelancer = get_object_or_404(Freelancer,pk=id)
-            if checkUser(request)=='freelancer':
-                freelancer = findByPrincipal(request)
-                if(freelancer.id!=id):
-                    return render(request, 'index.html')
-        else:
+    userString = checkUser(request)
+    if userString == 'none':
+        return redirect('/')
+    elif userString=='freelancer':
+        if id == '-':
             freelancer = findByPrincipal(request)
+        else:
+            freelancer = get_object_or_404(Freelancer,pk=id)
+            user = findByPrincipal(request)        
+            if user.id != freelancer.id:
+                return redirect('/')
+    else:
+        if id=='-':
+            return redirect('/')
+        else:
+            freelancer = get_object_or_404(Freelancer,pk=id)
+    
+    curriculum = freelancer.curriculum
+    links = curriculum.link_set.all()
+    formation = curriculum.formation_set.all()
+    professionalExperience = curriculum.professionalexperience_set.all()
+    graphicEngineExperience = curriculum.graphicengineexperience_set.all()
+    aptitude = curriculum.aptitude_set.all()
+    try:
+        HTML5Showcase = curriculum.HTML5Showcase
+    except:
+        HTML5Showcase = None
 
-        curriculum = freelancer.curriculum
-        links = curriculum.link_set.all()
-        formation = curriculum.formation_set.all()
-        professionalExperience = curriculum.professionalexperience_set.all()
-        graphicEngineExperience = curriculum.graphicengineexperience_set.all()
-        aptitude = curriculum.aptitude_set.all()
-        try:
-            HTML5Showcase = curriculum.HTML5Showcase
-        except:
-            HTML5Showcase = None
-
-        return render(request, 'freelancer/detail.html', {'freelancer': freelancer,'links':links,'formations':formation,'professionalExperiences':professionalExperience,'HTML5Showcase':HTML5Showcase,'graphicEngineExperiences':graphicEngineExperience,'aptitudes':aptitude})
+    return render(request, 'freelancer/detail.html', {'freelancer': freelancer,'links':links,'formations':formation,'professionalExperiences':professionalExperience,'HTML5Showcase':HTML5Showcase,'graphicEngineExperiences':graphicEngineExperience,'aptitudes':aptitude})
 
 def threadList(request):
     if(request.GET.__contains__('search')):
@@ -309,27 +348,6 @@ def response_create(request, threadId):
         form = ResponseForm()
     return render(request,'thread/responseCreate.html',{'form':form})
 
-def findByPrincipal(request):
-    freelancer = None
-    business = None
-    if request.user.is_authenticated:
-        user = request.user
-        try:
-            profile = user.profile
-        except:
-            print('admin logged')
-        try:
-            freelancer = Freelancer.objects.select_related('profile').get(id=profile.freelancer.id)
-            return freelancer
-        except:
-            print('Principal is not a freelancer.')
-        try:
-            business = Business.objects.select_related('profile').get(id=profile.business.id)
-            return business
-        except:
-            print('Principal is not a business.')
-    return None
-
 def linkCreate(request):
     if checkUser(request)=='freelancer':
         freelancer = findByPrincipal(request)
@@ -423,25 +441,6 @@ def formationCreate(request):
     else:
         return render(request, 'index.html')
 
-def html5showcaseEdit(request):
-    if checkUser(request)=='freelancer':
-        freelancer = findByPrincipal(request)
-        if request.method == 'POST':
-            form = html5showcaseForm(request.POST)
-            if form.is_valid():                
-                obj = form.save(commit=False)
-                obj.curriculum = freelancer.curriculum
-                obj.save()
-                print('Aptitude saved')
-                return redirect('/freelancer/detail/'+str(freelancer.id))
-            else:
-                return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit HTML5Showcase'})
-        else:
-            form = html5showcaseForm()
-            return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit HTML5Showcase'})
-    else:
-        return render(request, 'index.html')
-
 def jobOfferCreate(request):
     if checkUser(request)=='business':
         business = findByPrincipal(request)
@@ -460,3 +459,167 @@ def jobOfferCreate(request):
             return render(request,'business/standardForm.html',{'form':form,'title':'Add Job Offer'})
     else:
         return render(request, 'index.html')
+
+def html5Edit(request, id): 
+    if checkUser(request)!='freelancer':
+        return render(request, 'index.html')
+
+    instance = get_object_or_404(HTML5Showcase, id=id)
+    freelancer = findByPrincipal(request)
+    if instance.curriculum.id != freelancer.curriculum.id:
+        return render(request, 'index.html')
+
+    form = html5showcaseForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.curriculum = freelancer.curriculum
+        obj.save()
+        return redirect('/freelancer/detail/'+str(freelancer.id))
+    return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit HTML5Showcase'})
+
+def formationEdit(request, id): 
+    if checkUser(request)!='freelancer':
+        return render(request, 'index.html')
+
+    instance = get_object_or_404(Formation, id=id)
+    freelancer = findByPrincipal(request)
+    if instance.curriculum.id != freelancer.curriculum.id:
+        return render(request, 'index.html')
+
+    form = FormationForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.curriculum = freelancer.curriculum
+        obj.save()
+        return redirect('/freelancer/detail/'+str(freelancer.id))
+    return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit Formation'})
+
+def professionalExperienceEdit(request, id): 
+    if checkUser(request)!='freelancer':
+        return render(request, 'index.html')
+
+    instance = get_object_or_404(ProfessionalExperience, id=id)
+    freelancer = findByPrincipal(request)
+    if instance.curriculum.id != freelancer.curriculum.id:
+        return render(request, 'index.html')
+
+    form = ProfessionalExperienceForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.curriculum = freelancer.curriculum
+        obj.save()
+        return redirect('/freelancer/detail/'+str(freelancer.id))
+    return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit ProfessionalExperience'})
+
+def aptitudeEdit(request, id): 
+    if checkUser(request)!='freelancer':
+        return render(request, 'index.html')
+
+    instance = get_object_or_404(Aptitude, id=id)
+    freelancer = findByPrincipal(request)
+    if instance.curriculum.id != freelancer.curriculum.id:
+        return render(request, 'index.html')
+
+    form = AptitudeForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.curriculum = freelancer.curriculum
+        obj.save()
+        return redirect('/freelancer/detail/'+str(freelancer.id))
+    return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit Aptitude'})
+
+def graphicEngineExperienceEdit(request, id): 
+    if checkUser(request)!='freelancer':
+        return render(request, 'index.html')
+
+    instance = get_object_or_404(GraphicEngineExperience, id=id)
+    freelancer = findByPrincipal(request)
+    if instance.curriculum.id != freelancer.curriculum.id:
+        return render(request, 'index.html')
+
+    form = GraphicEngineExperienceForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.curriculum = freelancer.curriculum
+        obj.save()
+        return redirect('/freelancer/detail/'+str(freelancer.id))
+    return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit Graphic Engine Experience'})
+
+def linkEdit(request, id): 
+    if checkUser(request)!='freelancer':
+        return render(request, 'index.html')
+
+    instance = get_object_or_404(Link, id=id)
+    freelancer = findByPrincipal(request)
+    if instance.curriculum.id != freelancer.curriculum.id:
+        return render(request, 'index.html')
+
+    form = LinkForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.curriculum = freelancer.curriculum
+        obj.save()
+        return redirect('/freelancer/detail/'+str(freelancer.id))
+    return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit Link'})
+
+def html5Delete(request, id): 
+    if checkUser(request)!='freelancer':
+        return render(request, 'index.html')
+
+    instance = get_object_or_404(HTML5Showcase, id=id)
+    freelancer = findByPrincipal(request)
+    if instance.curriculum.id != freelancer.curriculum.id:
+        return render(request, 'index.html')
+    instance.embedCode=""
+    instance.save()
+    return redirect('/freelancer/detail/'+str(freelancer.id))
+
+def formationDelete(request, id): 
+    if checkUser(request)!='freelancer':
+        return render(request, 'index.html')
+    instance = get_object_or_404(Formation, id=id)
+    freelancer = findByPrincipal(request)
+    if instance.curriculum.id != freelancer.curriculum.id:
+        return render(request, 'index.html')
+    instance.delete()
+    return redirect('/freelancer/detail/'+str(freelancer.id))
+
+def professionalExperienceDelete(request, id): 
+    if checkUser(request)!='freelancer':
+        return render(request, 'index.html')
+    instance = get_object_or_404(ProfessionalExperience, id=id)
+    freelancer = findByPrincipal(request)
+    if instance.curriculum.id != freelancer.curriculum.id:
+        return render(request, 'index.html')
+    instance.delete()
+    return redirect('/freelancer/detail/'+str(freelancer.id))
+
+def aptitudeDelete(request, id): 
+    if checkUser(request)!='freelancer':
+        return render(request, 'index.html')
+    instance = get_object_or_404(Aptitude, id=id)
+    freelancer = findByPrincipal(request)
+    if instance.curriculum.id != freelancer.curriculum.id:
+        return render(request, 'index.html')
+    instance.delete()
+    return redirect('/freelancer/detail/'+str(freelancer.id))
+
+def graphicEngineExperienceDelete(request, id): 
+    if checkUser(request)!='freelancer':
+        return render(request, 'index.html')
+    instance = get_object_or_404(GraphicEngineExperience, id=id)
+    freelancer = findByPrincipal(request)
+    if instance.curriculum.id != freelancer.curriculum.id:
+        return render(request, 'index.html')
+    instance.delete()
+    return redirect('/freelancer/detail/'+str(freelancer.id))
+
+def linkDelete(request, id): 
+    if checkUser(request)!='freelancer':
+        return render(request, 'index.html')
+    instance = get_object_or_404(Link, id=id)
+    freelancer = findByPrincipal(request)
+    if instance.curriculum.id != freelancer.curriculum.id:
+        return render(request, 'index.html')
+    instance.delete()
+    return redirect('/freelancer/detail/'+str(freelancer.id))

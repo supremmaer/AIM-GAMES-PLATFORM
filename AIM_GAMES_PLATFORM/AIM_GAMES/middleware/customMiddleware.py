@@ -9,3 +9,4 @@ class GetLanguage(MiddlewareMixin):
             request.session['language'] = 'es-ES'
         language = request.session['language']
         translation.activate(language)
+

@@ -62,8 +62,10 @@ class FreelancerForm(ModelForm):
         obj = super(FreelancerForm, self).save(commit=commit)
         obj.profile = self.profile_form.save()
         group = Group.objects.get(name='Freelancer')
-        obj.profile.user.groups.add(group)
+        obj.profile.user.groups.add(group)        
         obj.save()
+        cur,cre = Curriculum.objects.get_or_create(freelancer= obj,verified=False)
+        HTML5Showcase.objects.get_or_create(curriculum= cur,embedCode="")
         return obj
 
 
@@ -176,19 +178,19 @@ class ThreadForm(ModelForm):
         pics = []
         attached_files = []
         for image in self.cleaned_data['images']:
-            url = URL.objects.filter(title=image)
+            url = URL.objects.filter(uri=image)
             if not url:
                 url = URL()
-                url.title = image
+                url.uri = image
                 url.save()
             else:
                 url = url[0]
             pics.append(url)
         for file in self.cleaned_data['files']:
-            url = URL.objects.filter(title=file)
+            url = URL.objects.filter(uri=file)
             if not url:
                 url = URL()
-                url.title = file
+                url.uri = file
                 url.save()
             else:
                 url = url[0]
@@ -253,3 +255,4 @@ class JobOfferForm(ModelForm):
     class Meta:
         model = JobOffer
         exclude = ['business']
+
