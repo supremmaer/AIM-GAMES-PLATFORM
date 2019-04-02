@@ -29,10 +29,10 @@ class GraphicEngine(models.Model):
 
 
 class URL(models.Model):
-    uri = models.URLField(verbose_name=_("uri"),)
+    uri = models.URLField(verbose_name=_("uri"),default='http://default.com')
 
     def __str__(self):
-        return self.title
+        return self.uri
 
 
 # Profile class. Attributes regarding all users of the system go here
