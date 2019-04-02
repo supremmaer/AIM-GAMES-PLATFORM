@@ -232,19 +232,6 @@ def freelancerDetail(request, id):
         if id=='-':
             return redirect('/')
         else:
-<<<<<<< HEAD
-            freelancer = findByPrincipal(request)
-        curriculum = freelancer.curriculum
-        links = curriculum.link_set.all()
-        formation = curriculum.formation_set.all()
-        professionalExperience = curriculum.professionalexperience_set.all()
-        graphicEngineExperience = curriculum.graphicengineexperience_set.all()
-        aptitude = curriculum.aptitude_set.all()
-        try:
-            HTML5Showcase = curriculum.HTML5Showcase
-        except:
-            HTML5Showcase = None
-=======
             freelancer = get_object_or_404(Freelancer,pk=id)
     
     curriculum = freelancer.curriculum
@@ -257,7 +244,6 @@ def freelancerDetail(request, id):
         HTML5Showcase = curriculum.HTML5Showcase
     except:
         HTML5Showcase = None
->>>>>>> 59025ff4b6f1b1ed9fd284b6cb980ac83b086e11
 
     return render(request, 'freelancer/detail.html', {'freelancer': freelancer,'links':links,'formations':formation,'professionalExperiences':professionalExperience,'HTML5Showcase':HTML5Showcase,'graphicEngineExperiences':graphicEngineExperience,'aptitudes':aptitude})
 
