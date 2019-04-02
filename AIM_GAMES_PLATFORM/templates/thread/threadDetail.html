@@ -38,7 +38,7 @@
       </ul> 
     <ul class="collection"><b >{% trans "Attached files" %}:</b>
       {% for file in thread.attachedFiles.all %}
-      <li><a href="{{file.title}}">{% trans "Attached file" %}</a></li>
+      <li><a href="{{file.uri}}">{% trans "Attached file" %}</a></li>
       {% endfor %}  
     </ul>
    
@@ -48,7 +48,7 @@
             <b>{% trans "pictures" %}:</b>
                   <div class="carousel carousel-slider">
                     {% for pic in thread.pics.all %}
-                      <a class="carousel-item" href="{{pic.title}}"><img src="{{pic.title}}" class="img-responsive"></a>
+                      <a class="carousel-item" href="{{pic.uri}}"><img src="{{pic.uri}}" class="img-responsive"></a>
                     {% endfor %}  
                   </div>
         </div>    
@@ -66,7 +66,7 @@
     <div class="carousel m1 s4">
     {% if response.pics.count > 0 %}
         {% for pic in response.pics.all %}
-          <a class="carousel-item" href="{{pic.title}}"><img src="{{pic.title}}" class="img-responsive"></a>
+          <a class="carousel-item" href="{{pic.uri}}"><img src="{{pic.uri}}" class="img-responsive"></a>
         {% endfor %}
     {% endif %}
     </div>

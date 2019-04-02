@@ -25,19 +25,20 @@ class Command(BaseCommand):
         graphicEngine3 = GraphicEngine(title='graphicEngine3')
         graphicEngine3.save()
 
-        url1 = URL(title='http://www.funcage.com/blog/wp-content/uploads/2013/11/Random-Photoshopped-Pictures-006.jpg')
+        url1 = URL(uri='http://www.funcage.com/blog/wp-content/uploads/2013/11/Random-Photoshopped-Pictures-006.jpg')
         url1.save()
-        url2 = URL(title='http://www.funcage.com/blog/wp-content/uploads/2013/11/Random-Photoshopped-Pictures-006.jpg')
+        url2 = URL(uri='http://www.funcage.com/blog/wp-content/uploads/2013/11/Random-Photoshopped-Pictures-006.jpg')
         url2.save()
-        url3 = URL(title='http://www.funcage.com/blog/wp-content/uploads/2013/11/Random-Photoshopped-Pictures-006.jpg')
+        url3 = URL(uri='http://www.funcage.com/blog/wp-content/uploads/2013/11/Random-Photoshopped-Pictures-006.jpg')
         url3.save()
-        url4 = URL(title='http://www.funcage.com/blog/wp-content/uploads/2013/11/Random-Photoshopped-Pictures-006.jpg')
+        url4 = URL(uri='http://www.funcage.com/blog/wp-content/uploads/2013/11/Random-Photoshopped-Pictures-006.jpg')
         url4.save()
-        url5 = URL(title='http://www.funcage.com/blog/wp-content/uploads/2013/11/Random-Photoshopped-Pictures-006.jpg')
+        url5 = URL(uri='http://www.funcage.com/blog/wp-content/uploads/2013/11/Random-Photoshopped-Pictures-006.jpg')
         url5.save()
-        url6 = URL(title='http://www.funcage.com/blog/wp-content/uploads/2013/11/Random-Photoshopped-Pictures-006.jpg')
+        url6 = URL(uri='http://www.funcage.com/blog/wp-content/uploads/2013/11/Random-Photoshopped-Pictures-006.jpg')
         url6.save()
 
+        User.objects.filter(is_superuser=False).delete()
         superAdmin = User.objects.create_superuser(username='root',email='',password='toor')
         user1 = User.objects.create_user(username='freelancer1', password='estoesuntest')
         user2 = User.objects.create_user(username='freelancer2', password='estoesuntest')
@@ -45,6 +46,10 @@ class Command(BaseCommand):
         user4 = User.objects.create_user(username='business1', password='estoesuntest')
         user5 = User.objects.create_user(username='business2', password='estoesuntest')
         user6 = User.objects.create_user(username='business3', password='estoesuntest')
+        user7 = User.objects.create_user(username='manager1', password='estoesuntest')
+        user8 = User.objects.create_user(username='manager2', password='estoesuntest')
+        user9 = User.objects.create_user(username='manager3', password='estoesuntest')
+
         
         profile1= Profile(user=user1, name='freelancer1', surname='surf1', email='freelance1@test.com', city='city1', 
             postalCode='code1', idCardNumber='number1', dateOfBirth='2012-12-12 00:00', phoneNumber='phone1',photo=url1)
@@ -64,6 +69,15 @@ class Command(BaseCommand):
         profile6= Profile(user=user6, name='business3', surname='surb3', email='business3@test.com', city='city6', 
             postalCode='code6', idCardNumber='number6', dateOfBirth='2012-12-12 00:00', phoneNumber='phone6',photo=url6)
         profile6.save()
+        profile7= Profile(user=user7, name='manager1', surname='surm1', email='manager1@test.com', city='city7', 
+            postalCode='code7', idCardNumber='number7', dateOfBirth='2012-12-12 00:00', phoneNumber='phone7',photo=url6)
+        profile7.save()
+        profile8= Profile(user=user8, name='manager2', surname='surm2', email='manager2@test.com', city='city8', 
+            postalCode='code8', idCardNumber='number8', dateOfBirth='2012-12-12 00:00', phoneNumber='phone8',photo=url6)
+        profile8.save()
+        profile9= Profile(user=user9, name='manager3', surname='surm3', email='manager3@test.com', city='city9', 
+            postalCode='code9', idCardNumber='number9', dateOfBirth='2012-12-12 00:00', phoneNumber='phone9',photo=url6)
+        profile9.save()
 
         freelancer1,created = Freelancer.objects.get_or_create(profile=profile1, profession='profession1')
         freelancer2,created = Freelancer.objects.get_or_create(profile=profile2, profession='profession2')
@@ -72,6 +86,10 @@ class Command(BaseCommand):
         business1,created = Business.objects.get_or_create(profile=profile4, lastPayment='2014-12-12 00:00')
         business2,created = Business.objects.get_or_create(profile=profile5, lastPayment='2014-12-12 00:00')
         business3,created = Business.objects.get_or_create(profile=profile6, lastPayment='2014-12-12 00:00')
+
+        manager1, created = Manager.objects.get_or_create(profile=profile7)
+        manager2, created = Manager.objects.get_or_create(profile=profile8)
+        manager3, created = Manager.objects.get_or_create(profile=profile9)
 
         curriculum1,created = Curriculum.objects.get_or_create(freelancer= freelancer1,verified=False)
         curriculum2,created = Curriculum.objects.get_or_create(freelancer= freelancer2,verified=False)
@@ -184,5 +202,43 @@ class Command(BaseCommand):
         response3.save()
         response3.pics.set(p)
         response3.save()
+
+        challenge1, created = Challenge.objects.get_or_create(business=business1, title="title", description="description", objectives="objectives")
+        freelancers1 = (freelancer1, freelancer2)
+        challenge1.freelancers.set(freelancers1)
+        challenge1.save
+
+        challenge2, created = Challenge.objects.get_or_create(business=business1, title="title", description="description", objectives="objectives")
+        freelancers2 = (freelancer1,)
+        challenge2.freelancers.set(freelancers2)
+        challenge1.save
+
+        challenge3, created = Challenge.objects.get_or_create(business=business2, title="title", description="description", objectives="objectives")
+        freelancers3 = (freelancer1, freelancer2, freelancer3)
+        challenge3.freelancers.set(freelancers3)
+        challenge1.save
+
+
+        event1, created = Event.objects.get_or_create(manager = manager1, location = "location", title="title",description="description", moment= "2019-12-12 00:00")
+        freelancers1= (freelancer1,)
+        businesses1 = (business1,business2)
+        event1.freelancers.set(freelancers1)
+        event1.companies.set(businesses1)
+
+        event1, created = Event.objects.get_or_create(manager = manager2, location = "location", title="title",description="description", moment= "2019-12-12 00:00")
+        freelancers2= (freelancer1,freelancer2)
+        businesses2 = (business1,)
+        event1.freelancers.set(freelancers2)
+        event1.companies.set(businesses2)
+
+        event1, created = Event.objects.get_or_create(manager = manager3, location = "location", title="title",description="description", moment= "2019-12-12 00:00")
+        freelancers3= (freelancer1,)
+        businesses3 = (business1,)
+        event1.freelancers.set(freelancers3)
+        event1.companies.set(businesses3)
+
+        chat1, created = Chat.objects.get_or_create(user1=user1, user2=user2)
+        message1, created = Message.objects.get_or_create(chat=chat1, sender=user1, text="uwu")
+        message2, created = Message.objects.get_or_create(chat=chat1, sender=user2, text="owo")
 
         print("Database populated.")
