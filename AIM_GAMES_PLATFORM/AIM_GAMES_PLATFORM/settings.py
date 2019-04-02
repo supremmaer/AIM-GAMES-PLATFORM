@@ -26,6 +26,11 @@ SECRET_KEY = 'oci=@^)#+uz-b6g(%0)_xtschhw&_^1ff!@az_(9wm^p!3)auv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# HTTPS: Make HTTP petitions redirect to HTTPS
+if 'DYNO' in os.environ:
+    SECURE_SSL_REDIRECT = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 ALLOWED_HOSTS = ['localhost', '127.0.0.1','*']
 VERSION=2
 
