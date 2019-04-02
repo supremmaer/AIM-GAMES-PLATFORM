@@ -38,7 +38,7 @@
       </ul> 
     <ul class="collection"><b >{% trans "Attached files" %}:</b>
       {% for file in thread.attachedFiles.all %}
-      <li><a href="{{file.title}}">{% trans "Attached file" %}</a></li>
+      <li><a href="{{file.uri}}">{% trans "Attached file" %}</a></li>
       {% endfor %}  
     </ul>
    

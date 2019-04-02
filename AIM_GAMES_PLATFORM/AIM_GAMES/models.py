@@ -29,7 +29,7 @@ class GraphicEngine(models.Model):
 
 
 class URL(models.Model):
-    title = models.URLField(verbose_name=_("title"),)
+    uri = models.URLField(verbose_name=_("uri"),)
 
     def __str__(self):
         return self.title
