@@ -122,9 +122,9 @@ class Command(BaseCommand):
         html5Showcase2, created = HTML5Showcase.objects.get_or_create(curriculum=curriculum2, embedCode='codecode2')
         html5Showcase3, created = HTML5Showcase.objects.get_or_create(curriculum=curriculum3, embedCode='codecode3')
 
-        Aptitude1, created = Aptitude.objects.get_or_create(curriculum=curriculum1, title='title1')
-        Aptitude2, created = Aptitude.objects.get_or_create(curriculum=curriculum2, title='title2')
-        Aptitude3, created = Aptitude.objects.get_or_create(curriculum=curriculum3, title='title3')
+        Aptitude1, created = Aptitude.objects.get_or_create(curriculum=curriculum1, aptitude='aptitude1')
+        Aptitude2, created = Aptitude.objects.get_or_create(curriculum=curriculum2, aptitude='aptitude2')
+        Aptitude3, created = Aptitude.objects.get_or_create(curriculum=curriculum3, aptitude='aptitude3')
 
         link1, created = Link.objects.get_or_create(curriculum=curriculum3, url=url1)
         link2, created = Link.objects.get_or_create(curriculum=curriculum3, url=url2)
