@@ -1,6 +1,7 @@
 
 {% load i18n %}
 {% load staticfiles %}
+{% load cookielaw_tags %}
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -9,7 +10,10 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
         <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
-          <script src="{% static 'js/materialize.min.js' %}"></script>
+        <script src="{% static 'cookielaw/js/cookielaw.js'%}" type="text/javascript"></script>
+        <link href="{% static 'cookielaw/css/cookielaw.css'%}" rel="stylesheet" />
+
+        <script src="{% static 'js/materialize.min.js' %}"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style> 
             body {
@@ -73,7 +77,7 @@
             </ul>
 
         {% block content %}<!-- default content text (typically empty) -->{% endblock %}
-
+        {% cookielaw_banner %}
         <script>
             const slide_menu = document.querySelectorAll(".sidenav");
             M.Sidenav.init(slide_menu,{});
