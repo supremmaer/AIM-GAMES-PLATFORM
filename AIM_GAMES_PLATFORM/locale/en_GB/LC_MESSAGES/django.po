@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-03 22:34+0200\n"
+"POT-Creation-Date: 2019-04-03 23:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -319,6 +319,14 @@ msgstr ""
 #: .\templates\base_generic.html:60 .\templates\base_generic.html:82
 msgid "Log In"
 msgstr "Log In"
+
+#: .\templates\accounts\login.html:20
+msgid "Loged as"
+msgstr ""
+
+#: .\templates\accounts\login.html:20
+msgid ", please logout before login again"
+msgstr ""
 
 #: .\templates\accounts\login.html:22 .\templates\base_generic.html:58
 #: .\templates\base_generic.html:80
