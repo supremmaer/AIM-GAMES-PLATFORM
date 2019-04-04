@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-03 23:03+0200\n"
+"POT-Creation-Date: 2019-04-04 11:06+0200\n"
 "PO-Revision-Date: 2019-03-29 13:19+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -317,20 +317,20 @@ msgid "chat"
 msgstr ""
 
 #: .\templates\accounts\login.html:19 .\templates\accounts\login.html:49
-#: .\templates\base_generic.html:60 .\templates\base_generic.html:82
+#: .\templates\base_generic.html:63 .\templates\base_generic.html:85
 msgid "Log In"
 msgstr "Iniciar Sesión"
 
-#: .\templates\accounts\login.html:20
+#: .\templates\accounts\login.html:21
 msgid "Loged as"
 msgstr "Sesión iniciada como"
 
-#: .\templates\accounts\login.html:20
+#: .\templates\accounts\login.html:21
 msgid ", please logout before login again"
 msgstr ", por favor cierra sesión antes de volver a iniciarla"
 
-#: .\templates\accounts\login.html:22 .\templates\base_generic.html:58
-#: .\templates\base_generic.html:80
+#: .\templates\accounts\login.html:22 .\templates\base_generic.html:61
+#: .\templates\base_generic.html:83
 msgid "Logout"
 msgstr "Cerrar sesión"
 
@@ -358,28 +358,32 @@ msgstr "Registrarse"
 msgid "signupBusiness"
 msgstr "Registrarse como empresa"
 
-#: .\templates\base_generic.html:46 .\templates\base_generic.html:68
+#: .\templates\base_generic.html:46 .\templates\base_generic.html:71
 msgid "mainpage"
 msgstr "Página principal"
 
-#: .\templates\base_generic.html:48 .\templates\base_generic.html:70
+#: .\templates\base_generic.html:48 .\templates\base_generic.html:73
 #: .\templates\thread\threadList.html:9
 msgid "threads"
 msgstr "Hilos"
 
-#: .\templates\base_generic.html:49 .\templates\base_generic.html:71
+#: .\templates\base_generic.html:49 .\templates\base_generic.html:74
 #: .\templates\curriculumList.html:8
 msgid "curriculums"
 msgstr "Curriculums"
 
-#: .\templates\base_generic.html:52 .\templates\base_generic.html:74
+#: .\templates\base_generic.html:52 .\templates\base_generic.html:77
 msgid "My curriculum"
 msgstr "Mi curriculum"
 
-#: .\templates\base_generic.html:55 .\templates\base_generic.html:77
+#: .\templates\base_generic.html:55 .\templates\base_generic.html:80
 #: .\templates\jobOfferList.html:8
 msgid "joboffers"
 msgstr "Ofertas de trabajo"
+
+#: .\templates\base_generic.html:58
+msgid "Admin Panel"
+msgstr "Panel de Administración"
 
 #: .\templates\cookielaw\banner.html:8
 msgid "Cookies disclaimer"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-03 23:03+0200\n"
+"POT-Creation-Date: 2019-04-04 11:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -316,20 +316,20 @@ msgid "chat"
 msgstr ""
 
 #: .\templates\accounts\login.html:19 .\templates\accounts\login.html:49
-#: .\templates\base_generic.html:60 .\templates\base_generic.html:82
+#: .\templates\base_generic.html:63 .\templates\base_generic.html:85
 msgid "Log In"
 msgstr "Log In"
 
-#: .\templates\accounts\login.html:20
+#: .\templates\accounts\login.html:21
 msgid "Loged as"
 msgstr ""
 
-#: .\templates\accounts\login.html:20
+#: .\templates\accounts\login.html:21
 msgid ", please logout before login again"
 msgstr ""
 
-#: .\templates\accounts\login.html:22 .\templates\base_generic.html:58
-#: .\templates\base_generic.html:80
+#: .\templates\accounts\login.html:22 .\templates\base_generic.html:61
+#: .\templates\base_generic.html:83
 msgid "Logout"
 msgstr "Logout"
 
@@ -357,28 +357,32 @@ msgstr "Sign up"
 msgid "signupBusiness"
 msgstr "Sign up as company"
 
-#: .\templates\base_generic.html:46 .\templates\base_generic.html:68
+#: .\templates\base_generic.html:46 .\templates\base_generic.html:71
 msgid "mainpage"
 msgstr "Main page"
 
-#: .\templates\base_generic.html:48 .\templates\base_generic.html:70
+#: .\templates\base_generic.html:48 .\templates\base_generic.html:73
 #: .\templates\thread\threadList.html:9
 msgid "threads"
 msgstr "Threads"
 
-#: .\templates\base_generic.html:49 .\templates\base_generic.html:71
+#: .\templates\base_generic.html:49 .\templates\base_generic.html:74
 #: .\templates\curriculumList.html:8
 msgid "curriculums"
 msgstr "Curriculums"
 
-#: .\templates\base_generic.html:52 .\templates\base_generic.html:74
+#: .\templates\base_generic.html:52 .\templates\base_generic.html:77
 msgid "My curriculum"
 msgstr "Curriculums"
 
-#: .\templates\base_generic.html:55 .\templates\base_generic.html:77
+#: .\templates\base_generic.html:55 .\templates\base_generic.html:80
 #: .\templates\jobOfferList.html:8
 msgid "joboffers"
 msgstr "Job offers"
+
+#: .\templates\base_generic.html:58
+msgid "Admin Panel"
+msgstr ""
 
 #: .\templates\cookielaw\banner.html:8
 msgid "Cookies disclaimer"
