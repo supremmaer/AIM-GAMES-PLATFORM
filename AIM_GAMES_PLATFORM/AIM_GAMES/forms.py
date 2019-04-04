@@ -256,3 +256,9 @@ class JobOfferForm(ModelForm):
         model = JobOffer
         exclude = ['business']
 
+
+class ChallengeForm(ModelForm):
+
+    class Meta:
+        model = Challenge
+        exclude = ['business', 'freelancers']
