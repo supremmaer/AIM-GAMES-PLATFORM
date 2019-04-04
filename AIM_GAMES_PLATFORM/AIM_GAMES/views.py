@@ -61,7 +61,7 @@ def payment_canceled(request):
 
 
 def login_redir(request):
-    if request.user.is_superuser:
+    if request.user.is_superuser or request.user.is_staff:
         res = redirect('admin/')
     else:
         prof = Profile.objects.filter(user__pk=request.user.id)
