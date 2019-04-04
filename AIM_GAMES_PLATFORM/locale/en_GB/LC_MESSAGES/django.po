@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-04 18:24+0200\n"
+"POT-Creation-Date: 2019-04-04 18:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -318,7 +318,7 @@ msgid "chat"
 msgstr ""
 
 #: .\templates\accounts\login.html:19 .\templates\accounts\login.html:49
-#: .\templates\base_generic.html:63 .\templates\base_generic.html:88
+#: .\templates\base_generic.html:65 .\templates\base_generic.html:90
 msgid "Log In"
 msgstr "Log In"
 
@@ -330,8 +330,8 @@ msgstr ""
 msgid ", please logout before login again"
 msgstr ""
 
-#: .\templates\accounts\login.html:22 .\templates\base_generic.html:61
-#: .\templates\base_generic.html:86
+#: .\templates\accounts\login.html:22 .\templates\base_generic.html:63
+#: .\templates\base_generic.html:88
 msgid "Logout"
 msgstr "Logout"
 
@@ -359,38 +359,42 @@ msgstr "Sign up"
 msgid "signupBusiness"
 msgstr "Sign up as company"
 
-#: .\templates\base_generic.html:46 .\templates\base_generic.html:71
+#: .\templates\base_generic.html:46 .\templates\base_generic.html:73
 msgid "mainpage"
 msgstr "Main page"
 
-#: .\templates\base_generic.html:48 .\templates\base_generic.html:73
+#: .\templates\base_generic.html:48 .\templates\base_generic.html:75
 #: .\templates\thread\threadList.html:9
 msgid "threads"
 msgstr "Threads"
 
-#: .\templates\base_generic.html:49 .\templates\base_generic.html:74
+#: .\templates\base_generic.html:49 .\templates\base_generic.html:76
 #: .\templates\curriculumList.html:8
 msgid "curriculums"
 msgstr "Curriculums"
 
-#: .\templates\base_generic.html:52 .\templates\base_generic.html:77
+#: .\templates\base_generic.html:52 .\templates\base_generic.html:79
 msgid "My curriculum"
 msgstr "Curriculums"
 
-#: .\templates\base_generic.html:55 .\templates\base_generic.html:80
+#: .\templates\base_generic.html:55 .\templates\base_generic.html:82
 #: .\templates\jobOfferList.html:8
 msgid "joboffers"
 msgstr "Job offers"
 
-#: .\templates\base_generic.html:58 .\templates\base_generic.html:83
+#: .\templates\base_generic.html:56
+#, fuzzy
+#| msgid "newChallenge"
+msgid "Challenges"
+msgstr "Challenges"
+
+#: .\templates\base_generic.html:60 .\templates\base_generic.html:85
 msgid "Admin Panel"
 msgstr ""
 
 #: .\templates\challenge\challengeDetail.html:7
-#, fuzzy
-#| msgid "challenges"
 msgid "Challenge details"
-msgstr "Challenges"
+msgstr "Challenge Detail"
 
 #: .\templates\challenge\challengeDetail.html:12
 #: .\templates\thread\threadDetail.html:26

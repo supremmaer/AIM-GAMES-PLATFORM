@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-04 18:24+0200\n"
+"POT-Creation-Date: 2019-04-04 18:45+0200\n"
 "PO-Revision-Date: 2019-03-29 13:19+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -319,7 +319,7 @@ msgid "chat"
 msgstr ""
 
 #: .\templates\accounts\login.html:19 .\templates\accounts\login.html:49
-#: .\templates\base_generic.html:63 .\templates\base_generic.html:88
+#: .\templates\base_generic.html:65 .\templates\base_generic.html:90
 msgid "Log In"
 msgstr "Iniciar Sesión"
 
@@ -331,8 +331,8 @@ msgstr "Sesión iniciada como"
 msgid ", please logout before login again"
 msgstr ", por favor cierra sesión antes de volver a iniciarla"
 
-#: .\templates\accounts\login.html:22 .\templates\base_generic.html:61
-#: .\templates\base_generic.html:86
+#: .\templates\accounts\login.html:22 .\templates\base_generic.html:63
+#: .\templates\base_generic.html:88
 msgid "Logout"
 msgstr "Cerrar sesión"
 
@@ -360,38 +360,42 @@ msgstr "Registrarse"
 msgid "signupBusiness"
 msgstr "Registrarse como empresa"
 
-#: .\templates\base_generic.html:46 .\templates\base_generic.html:71
+#: .\templates\base_generic.html:46 .\templates\base_generic.html:73
 msgid "mainpage"
 msgstr "Página principal"
 
-#: .\templates\base_generic.html:48 .\templates\base_generic.html:73
+#: .\templates\base_generic.html:48 .\templates\base_generic.html:75
 #: .\templates\thread\threadList.html:9
 msgid "threads"
 msgstr "Hilos"
 
-#: .\templates\base_generic.html:49 .\templates\base_generic.html:74
+#: .\templates\base_generic.html:49 .\templates\base_generic.html:76
 #: .\templates\curriculumList.html:8
 msgid "curriculums"
 msgstr "Curriculums"
 
-#: .\templates\base_generic.html:52 .\templates\base_generic.html:77
+#: .\templates\base_generic.html:52 .\templates\base_generic.html:79
 msgid "My curriculum"
 msgstr "Mi curriculum"
 
-#: .\templates\base_generic.html:55 .\templates\base_generic.html:80
+#: .\templates\base_generic.html:55 .\templates\base_generic.html:82
 #: .\templates\jobOfferList.html:8
 msgid "joboffers"
 msgstr "Ofertas de trabajo"
 
-#: .\templates\base_generic.html:58 .\templates\base_generic.html:83
+#: .\templates\base_generic.html:56
+#, fuzzy
+#| msgid "newChallenge"
+msgid "Challenges"
+msgstr "Retos"
+
+#: .\templates\base_generic.html:60 .\templates\base_generic.html:85
 msgid "Admin Panel"
 msgstr "Panel de Administración"
 
 #: .\templates\challenge\challengeDetail.html:7
-#, fuzzy
-#| msgid "challenges"
 msgid "Challenge details"
-msgstr "Retos"
+msgstr "Detalles del reto"
 
 #: .\templates\challenge\challengeDetail.html:12
 #: .\templates\thread\threadDetail.html:26
