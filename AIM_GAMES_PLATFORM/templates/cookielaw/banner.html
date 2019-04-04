@@ -1,0 +1,18 @@
+{% load i18n %}
+<style>
+
+}</style>
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+      <h4>{% trans "Cookies disclaimer" %}</h4>
+        <a href="/setlanguage/es-ES" target="_self"  class="waves-effect waves-light btn">Spanish</a>
+        <a href="/setlanguage/en-GB" target="_self"  class="waves-effect waves-light btn">English</a>
+      <p>{% trans "cookie_des" %}
+      </p>
+    </div>
+
+    <div class="modal-footer">
+        <a class="btn btn-primary pull-right modal-close waves-effect waves-green btn-flat" href="javascript:Cookielaw.createCookielawCookie();">{% trans "Agreed" %}</a>
+    </div>
+  </div>

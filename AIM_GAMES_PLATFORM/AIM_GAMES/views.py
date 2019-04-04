@@ -61,7 +61,7 @@ def payment_canceled(request):
 
 
 def login_redir(request):
-    if request.user.is_superuser:
+    if request.user.is_superuser or request.user.is_staff:
         res = redirect('admin/')
     else:
         prof = Profile.objects.filter(user__pk=request.user.id)
@@ -636,3 +636,40 @@ def linkDelete(request, id):
         return render(request, 'index.html')
     instance.delete()
     return redirect('/freelancer/detail/'+str(freelancer.id))
+
+def challengeList(request):
+    
+    if(request.GET.__contains__('search')):
+        search=request.GET.get('search')
+        try:
+            q=Challenge.objects.filter(Q(business__profile__name__icontains=search)|Q(title__icontains=search))
+            challenges = get_list_or_404(q)
+        except:
+            challenges=()
+    else:
+        q=Challenge.objects.all()
+    challenges= q
+    return render(request, 'challenge/challengeList.html',{'challenges':challenges})
+
+def challengeCreate(request):
+    if checkUser(request)=='business':
+        business = findByPrincipal(request)
+        if request.method == 'POST':
+            form = ChallengeForm(request.POST)
+            if form.is_valid():                
+                obj = form.save(commit=False)
+                obj.business = business
+                obj.save()
+                print('Challenge saved')
+                return redirect('/challenge/list/')
+            else:
+                return render(request,'business/standardForm.html',{'form':form,'title':'Add Challenge'})
+        else:
+            form = ChallengeForm()
+            return render(request,'business/standardForm.html',{'form':form,'title':'Add Challenge'})
+    else:
+        return render(request, 'index.html')
+
+def challengeDetail(request, challenge_id):
+        challenge = get_object_or_404(Challenge, pk=challenge_id)
+        return render(request, 'challenge/challengeDetail.html', {'challenge': challenge})
