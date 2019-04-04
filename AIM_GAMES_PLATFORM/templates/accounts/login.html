@@ -18,10 +18,10 @@
         <img class="responsive-img" src="https://i.imgur.com/z3V1Sbc.png">
         <h2 class="center">{% trans "Log In" %}</h2>
         {% if request.user.is_authenticated %}
-        {{request.user.username}}
+        {% trans "Loged as" %} {{request.user.username}}{% trans ", please logout before login again" %}
         <p><a href="{% url 'logout' %}">{% trans "Logout" %}</a></p>
         {% else %}
-        {% endif %}
+
         {% for error in form.non_field_errors %}
         <div class="red-text">
             <strong>{{ error|escape }}</strong>
@@ -64,8 +64,7 @@
                  </a>
             </div>
         </form>
-
-
+        {% endif %}
     </div>
 </div>
 

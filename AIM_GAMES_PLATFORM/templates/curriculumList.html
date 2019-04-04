@@ -29,7 +29,7 @@
                             {% for key, value in aptitudes.items %}
                                 {% if curriculum.id == key %}
                                     {% for v in value %}
-                                        {{ v.title }}</br>
+                                        {{ v.aptitude }}</br>
                                     {% endfor %}
                                 {% endif %}
                             {% endfor %}

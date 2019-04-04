@@ -170,11 +170,11 @@ class HTML5Showcase(models.Model):
 class Aptitude(models.Model):
     curriculum = models.ForeignKey(
         Curriculum, on_delete=models.CASCADE, verbose_name=_("curriculum"))
-    title = models.TextField(verbose_name=_(
-        "title"), max_length=30, blank=False)
+    aptitude = models.TextField(verbose_name=_(
+        "aptitude"), max_length=30, blank=False, default='defaul')
 
     def getData(self):
-        data = "Title: " + self.title
+        data = "aptitude: " + self.aptitude
         return data
 
 

@@ -106,7 +106,7 @@
           <ul class="collection with-header">
             <li class="collection-header"><h5>{% trans "aptitudes" %}</h5></li>
             {% for aptitude in aptitudes %}
-            <li class="collection-item">{{aptitude.title}}
+            <li class="collection-item">{{aptitude.aptitude}}
               {% if request.session.currentUser == 'freelancer' %}
                 <a class="secondary-content fix-secondary-content" href="/freelancer/aptitude/edit/{{aptitude.id}}">{% trans "Edit" %}</a>
                 <a class="secondary-content fix-secondary-content" href="/freelancer/aptitude/delete/{{aptitude.id}}">{% trans "Delete" %}</a></li>

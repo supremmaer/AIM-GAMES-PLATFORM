@@ -6,5 +6,4 @@ django-paypal
 pyparsing
 pydot
 django_extensions
-
-
+django-cookie-law
