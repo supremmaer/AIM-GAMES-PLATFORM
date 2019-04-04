@@ -11,7 +11,7 @@ from AIM_GAMES.models import *
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
-        
+
         tag = Tag(title='Very good tag')
         tag.save()
         tag2 = Tag(title='Very good tag2')
@@ -46,9 +46,23 @@ class Command(BaseCommand):
         user4 = User.objects.create_user(username='business1', password='estoesuntest')
         user5 = User.objects.create_user(username='business2', password='estoesuntest')
         user6 = User.objects.create_user(username='business3', password='estoesuntest')
-        user7 = User.objects.create_user(username='manager1', password='estoesuntest')
-        user8 = User.objects.create_user(username='manager2', password='estoesuntest')
-        user9 = User.objects.create_user(username='manager3', password='estoesuntest')
+        user7 = User.objects.create_user(username='manager1', password='estoesuntest', is_staff=True)
+        user8 = User.objects.create_user(username='manager2', password='estoesuntest', is_staff=True)
+        user9 = User.objects.create_user(username='manager3', password='estoesuntest', is_staff=True)
+
+        business_group = Group.objects.get(name='Business')
+        freelancer_group = Group.objects.get(name='Freelancer')
+        management_group = Group.objects.get(name='Management')
+
+        freelancer_group.user_set.add(user1)
+        freelancer_group.user_set.add(user2)
+        freelancer_group.user_set.add(user3)
+        business_group.user_set.add(user4)
+        business_group.user_set.add(user5)
+        business_group.user_set.add(user6)
+        management_group.user_set.add(user7)
+        management_group.user_set.add(user8)
+        management_group.user_set.add(user9)
 
         
         profile1= Profile(user=user1, name='freelancer1', surname='surf1', email='freelance1@test.com', city='city1', 
