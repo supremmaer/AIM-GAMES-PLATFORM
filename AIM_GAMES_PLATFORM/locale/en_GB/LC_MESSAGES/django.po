@@ -642,3 +642,6 @@ msgstr "Threads"
 
 #~ msgid "aboutus"
 #~ msgstr "About us"
+
+msgid "Verified curriculum"
+msgstr "Verified curriculum"

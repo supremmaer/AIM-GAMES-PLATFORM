@@ -643,3 +643,6 @@ msgstr "Nuevo hilo"
 
 #~ msgid "contactus"
 #~ msgstr "Contáctanos"
+
+msgid "Verified curriculum"
+msgstr "Curriculum verificado"

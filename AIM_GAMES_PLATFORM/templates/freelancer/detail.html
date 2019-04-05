@@ -12,8 +12,11 @@
 
         
         <div class="col s12 m10 l10 offset-l1 offset-m1">
-          {% if request.session.currentUser == 'manager' %}
-            <a href="/freelancer/curriculum/verify" class="btn waves-effect waves-red">{% trans "verify" %}</a>
+          {% if request.session.currentUser == 'manager' and freelancer.curriculum.verified == False%}
+            <a href="/freelancer/curriculum/verify/{{freelancer.curriculum.id}}" class="btn waves-effect waves-red">{% trans "verify" %}</a>
+          {% endif %}
+          {% if freelancer.curriculum.verified == True %}
+            {% trans "Verified curriculum" %}
           {% endif %}
           <ul class="collapsible with-header">
             <div class="collapsible-header"><h5>{% trans "links" %}</h5></div>

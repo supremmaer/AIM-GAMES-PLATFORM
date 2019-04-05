@@ -685,6 +685,26 @@ def challengeDetail(request, challenge_id):
         challenge = get_object_or_404(Challenge, pk=challenge_id)
         return render(request, 'challenge/challengeDetail.html', {'challenge': challenge})
 
+def curriculumVerify(request, id):
+    userString = checkUser(request)
+    if userString!='manager':
+        return HttpResponse(status=403)
+    curriculum = get_object_or_404(Curriculum, pk=id)
+    curriculum.verified = True
+    curriculum.save()
+    return redirect('/freelancer/detail/' + str(curriculum.freelancer.id))
+
+def curriculumListManager(request):
+    if checkUser(request)!='manager':
+        return handler500(request)
+    curriculums = Curriculum.objects.all()
+    aptitudes={}
+    for c in curriculums:
+        aptitudesList=Aptitude.objects.filter(curriculum=c.id)
+        aptitudes[c.id]=list(aptitudesList)
+    return render(request, 'curriculumList.html',{'curriculums':curriculums,'aptitudes':aptitudes})
+
+
 def handler404(request):
     return render(request, '404.html', status=404)
 
