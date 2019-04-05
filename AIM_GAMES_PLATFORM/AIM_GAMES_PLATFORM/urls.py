@@ -64,4 +64,8 @@ urlpatterns = [
     path('challenge/list/', challengeList, name='challengeList'),
     path('business/challenge/create',challengeCreate),
     path('challenge/detail/<int:challenge_id>',challengeDetail),
+    path('freelancer/curriculum/verify/<int:id>',curriculumVerify),
+    path('curriculum/manager/list/', curriculumListManager),
+    path('500/', handler500, name='500'),
+    path('404/', handler404, name='404'),
 ]

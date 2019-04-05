@@ -20,11 +20,11 @@
                         <span class="red-text">{{ field.errors }}</span>
                         <div class="input-field col s12">
                             {% if 'Date' in field.html_name %}
+                                <div class="labelxd">{{ field.label_tag }}</div>
                                 <input id="{{ field.id_for_label }}" type="date" class="validate" name="{{ field.html_name }}">
-                                <label for="{{ field.id_for_label }}">{{ field.label_tag }}:</label>
                             {% else %}
+                                {{ field.label_tag }}
                                 {{field}}
-                                <label for="{{ field.id_for_label }}">{{ field.label_tag }}:</label>
                             {% endif %}
                             
                         </div>
@@ -37,6 +37,11 @@
 
     </div>
 </div>
-<script>M.AutoInit();</script>
+
+
+<script>
+M.AutoInit();
+</script>
+
 </body>
 {% endblock %}

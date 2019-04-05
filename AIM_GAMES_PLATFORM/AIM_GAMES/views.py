@@ -160,7 +160,7 @@ class ThreadCreate(CreateView):
         # This method is called when valid form data has been POSTed.
         # It should return an HttpResponse.
         if checkUser(self.request) != 'business':
-            return HttpResponse(status=403)
+            return handler500(self.request)
         print('ThreadCreate: form_valid')
 
         prof = Profile.objects.filter(user__pk=self.request.user.id)
@@ -181,14 +181,16 @@ class ThreadCreate(CreateView):
         if checkUser(self.request) == 'business':
             return super(ThreadCreate, self).dispatch(request, *args, **kwargs)
         else:
-            return HttpResponse(status=403)
+            return handler500(request)
 
 
 def threadDetail(request, thread_id):
-        thread = get_object_or_404(Thread, pk=thread_id)
-        responses = thread.response_set.all()
-        pics = thread.pics
-        return render(request, 'thread/threadDetail.html', {'thread': thread, 'responses': responses,'pics':pics})
+    if checkUser(request)!='business' and checkUser(request)!='manager':
+        return handler500(request)
+    thread = get_object_or_404(Thread, pk=thread_id)
+    responses = thread.response_set.all()
+    pics = thread.pics
+    return render(request, 'thread/threadDetail.html', {'thread': thread, 'responses': responses,'pics':pics})
 
 def jobOfferDetail(request, id):
         jobOffer = get_object_or_404(JobOffer, pk=id)
@@ -217,14 +219,18 @@ def findByPrincipal(request):
             return business
         except:
             print('Principal is not a business.')
+        try:
+            manager = Manager.objects.select_related('profile').get(id=profile.manager.id)
+            return manager
+        except:
+            print('Principal is not a manager.')
+        
     return None
 
 def freelancerDetail(request, id):
-    if checkUser(request)!='freelancer' and checkUser(request)!='business':
-        return HttpResponse(status=403)
     userString = checkUser(request)
     if userString == 'none':
-        return HttpResponse(status=403)
+        return handler500(request)
     elif userString=='freelancer':
         if id == '-':
             freelancer = findByPrincipal(request)
@@ -232,10 +238,10 @@ def freelancerDetail(request, id):
             freelancer = get_object_or_404(Freelancer,pk=id)
             user = findByPrincipal(request)        
             if user.id != freelancer.id:
-                return redirect('/')
+                return HttpResponse(status=403)
     else:
         if id=='-':
-            return redirect('/')
+            return HttpResponse(status=403)
         else:
             freelancer = get_object_or_404(Freelancer,pk=id)
     
@@ -253,8 +259,8 @@ def freelancerDetail(request, id):
     return render(request, 'freelancer/detail.html', {'freelancer': freelancer,'links':links,'formations':formation,'professionalExperiences':professionalExperience,'HTML5Showcase':HTML5Showcase,'graphicEngineExperiences':graphicEngineExperience,'aptitudes':aptitude})
 
 def threadList(request):
-    if checkUser(request)!='business':
-        return HttpResponse(status=403)
+    if checkUser(request)!='business' and checkUser(request)!='manager':
+        return handler500(request)
     if(request.GET.__contains__('search')):
         search=request.GET.get('search')
         q=Thread.objects.filter(business__profile__name__icontains=search)
@@ -265,12 +271,12 @@ def threadList(request):
     try:
         businessThread = get_object_or_404(Business,profile=request.user.profile)
     except AttributeError:
-        return HttpResponse(status=403)
+        return handler500(request)
     return render(request, 'thread/threadList.html',{'threads':threads,'businessThread':businessThread})
 
 def jobOfferList(request):
-    if checkUser(request)!='freelancer' and checkUser(request)!='business':
-        return HttpResponse(status=403)
+    if checkUser(request)!='freelancer' and checkUser(request)!='business' and checkUser(request)!='manager':
+        return handler500(request)
     if(request.GET.__contains__('search')):
         search=request.GET.get('search')
         try:
@@ -289,7 +295,7 @@ def jobOfferList(request):
 
 def curriculumList(request):
     if checkUser(request)!='business':
-        return HttpResponse(status=403)
+        return handler500(request)
     if(request.GET.__contains__('search')):
         search=request.GET.get('search')
         q=Curriculum.objects.filter(freelancer__profile__name__icontains=search)
@@ -303,7 +309,7 @@ def curriculumList(request):
     try:
         businessThread = get_object_or_404(Business,profile=request.user.profile)
     except AttributeError:
-        return HttpResponse(status=403)
+        return handler500(request)
     return render(request, 'curriculumList.html',{'curriculums':curriculums,'aptitudes':aptitudes})
 
 def checkUser(request):
@@ -323,10 +329,16 @@ def checkUser(request):
             business = Business.objects.select_related('profile').get(id=profile.business.id)
         except:
             print('Principal is not a business.')
+        try:
+            manager = Manager.objects.select_related('profile').get(id=profile.manager.id)
+        except:
+            print('Principal is not a manager.')
     if freelancer!=None:
         return 'freelancer'
     elif business !=None:
         return 'business'
+    elif manager !=None:
+        return 'manager'
     else:
         return 'none'
 
@@ -359,7 +371,7 @@ def response_create(request, threadId):
             form = ResponseForm()
         return render(request,'thread/responseCreate.html',{'form':form})
     else:
-        return HttpResponse(status=403)
+        return handler500(request)
 
 def linkCreate(request):
     if checkUser(request)=='freelancer':
@@ -376,7 +388,7 @@ def linkCreate(request):
             form = LinkForm()
             return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add link'})
     else:
-        return HttpResponse(status=403)
+        return handler500(request)
 
 def aptitudeCreate(request):
     if checkUser(request)=='freelancer':
@@ -395,7 +407,7 @@ def aptitudeCreate(request):
             form = AptitudeForm()
             return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add aptitude'})
     else:
-        return HttpResponse(status=403)
+        return handler500(request)
 
 def graphicEngineExperienceCreate(request):
     if checkUser(request)=='freelancer':
@@ -414,7 +426,7 @@ def graphicEngineExperienceCreate(request):
             form = GraphicEngineExperienceForm()
             return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add graphic engine experience'})
     else:
-        return HttpResponse(status=403)
+        return handler500(request)
 
 def professionalExperienceCreate(request):
     if checkUser(request)=='freelancer':
@@ -433,7 +445,7 @@ def professionalExperienceCreate(request):
             form = ProfessionalExperienceForm()
             return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add professional experience'})
     else:
-        return HttpResponse(status=403)
+        return handler500(request)
 
 def formationCreate(request):
     if checkUser(request)=='freelancer':
@@ -452,7 +464,7 @@ def formationCreate(request):
             form = FormationForm()
             return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add formation'})
     else:
-        return HttpResponse(status=403)
+        return handler500(request)
 
 def jobOfferCreate(request):
     if checkUser(request)=='business':
@@ -471,11 +483,11 @@ def jobOfferCreate(request):
             form = JobOfferForm()
             return render(request,'business/standardForm.html',{'form':form,'title':'Add Job Offer'})
     else:
-        return HttpResponse(status=403)
+        return handler500(request)
 
 def html5Edit(request, id): 
-    if checkUser(request)!='freelancer':
-        return HttpResponse(status=403)
+    if checkUser(request)!='freelancer' and checkUser(request)!='manager':
+        return handler500(request)
 
     instance = get_object_or_404(HTML5Showcase, id=id)
     freelancer = findByPrincipal(request)
@@ -491,8 +503,8 @@ def html5Edit(request, id):
     return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit HTML5Showcase'})
 
 def formationEdit(request, id): 
-    if checkUser(request)!='freelancer':
-        return HttpResponse(status=403)
+    if checkUser(request)!='freelancer' and checkUser(request)!='manager':
+        return handler500(request)
 
     instance = get_object_or_404(Formation, id=id)
     freelancer = findByPrincipal(request)
@@ -508,8 +520,8 @@ def formationEdit(request, id):
     return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit Formation'})
 
 def professionalExperienceEdit(request, id): 
-    if checkUser(request)!='freelancer':
-        return HttpResponse(status=403)
+    if checkUser(request)!='freelancer' and checkUser(request)!='manager':
+        return handler500(request)
 
     instance = get_object_or_404(ProfessionalExperience, id=id)
     freelancer = findByPrincipal(request)
@@ -525,8 +537,8 @@ def professionalExperienceEdit(request, id):
     return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit ProfessionalExperience'})
 
 def aptitudeEdit(request, id): 
-    if checkUser(request)!='freelancer':
-        return HttpResponse(status=403)
+    if checkUser(request)!='freelancer' and checkUser(request)!='manager':
+        return handler500(request)
 
     instance = get_object_or_404(Aptitude, id=id)
     freelancer = findByPrincipal(request)
@@ -542,8 +554,8 @@ def aptitudeEdit(request, id):
     return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit Aptitude'})
 
 def graphicEngineExperienceEdit(request, id): 
-    if checkUser(request)!='freelancer':
-        return HttpResponse(status=403)
+    if checkUser(request)!='freelancer' and checkUser(request)!='manager':
+        return handler500(request)
 
     instance = get_object_or_404(GraphicEngineExperience, id=id)
     freelancer = findByPrincipal(request)
@@ -559,8 +571,8 @@ def graphicEngineExperienceEdit(request, id):
     return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit Graphic Engine Experience'})
 
 def linkEdit(request, id): 
-    if checkUser(request)!='freelancer':
-        return HttpResponse(status=403)
+    if checkUser(request)!='freelancer' and checkUser(request)!='manager':
+        return handler500(request)
 
     instance = get_object_or_404(Link, id=id)
     freelancer = findByPrincipal(request)
@@ -576,8 +588,8 @@ def linkEdit(request, id):
     return render(request,'freelancer/standardForm.html',{'form':form,'title':'Edit Link'})
 
 def html5Delete(request, id): 
-    if checkUser(request)!='freelancer':
-        return HttpResponse(status=403)
+    if checkUser(request)!='freelancer' and checkUser(request)!='manager':
+        return handler500(request)
 
     instance = get_object_or_404(HTML5Showcase, id=id)
     freelancer = findByPrincipal(request)
@@ -588,8 +600,8 @@ def html5Delete(request, id):
     return redirect('/freelancer/detail/'+str(freelancer.id))
 
 def formationDelete(request, id): 
-    if checkUser(request)!='freelancer':
-        return HttpResponse(status=403)
+    if checkUser(request)!='freelancer' and checkUser(request)!='manager':
+        return handler500(request)
     instance = get_object_or_404(Formation, id=id)
     freelancer = findByPrincipal(request)
     if instance.curriculum.id != freelancer.curriculum.id:
@@ -598,8 +610,8 @@ def formationDelete(request, id):
     return redirect('/freelancer/detail/'+str(freelancer.id))
 
 def professionalExperienceDelete(request, id): 
-    if checkUser(request)!='freelancer':
-        return HttpResponse(status=403)
+    if checkUser(request)!='freelancer' and checkUser(request)!='manager':
+        return handler500(request)
     instance = get_object_or_404(ProfessionalExperience, id=id)
     freelancer = findByPrincipal(request)
     if instance.curriculum.id != freelancer.curriculum.id:
@@ -608,8 +620,8 @@ def professionalExperienceDelete(request, id):
     return redirect('/freelancer/detail/'+str(freelancer.id))
 
 def aptitudeDelete(request, id): 
-    if checkUser(request)!='freelancer':
-        return HttpResponse(status=403)
+    if checkUser(request)!='freelancer' and checkUser(request)!='manager':
+        return handler500(request)
     instance = get_object_or_404(Aptitude, id=id)
     freelancer = findByPrincipal(request)
     if instance.curriculum.id != freelancer.curriculum.id:
@@ -618,8 +630,8 @@ def aptitudeDelete(request, id):
     return redirect('/freelancer/detail/'+str(freelancer.id))
 
 def graphicEngineExperienceDelete(request, id): 
-    if checkUser(request)!='freelancer':
-        return HttpResponse(status=403)
+    if checkUser(request)!='freelancer' and checkUser(request)!='manager':
+        return handler500(request)
     instance = get_object_or_404(GraphicEngineExperience, id=id)
     freelancer = findByPrincipal(request)
     if instance.curriculum.id != freelancer.curriculum.id:
@@ -628,8 +640,8 @@ def graphicEngineExperienceDelete(request, id):
     return redirect('/freelancer/detail/'+str(freelancer.id))
 
 def linkDelete(request, id): 
-    if checkUser(request)!='freelancer':
-        return HttpResponse(status=403)
+    if checkUser(request)!='freelancer' and checkUser(request)!='manager':
+        return handler500(request)
     instance = get_object_or_404(Link, id=id)
     freelancer = findByPrincipal(request)
     if instance.curriculum.id != freelancer.curriculum.id:
@@ -638,7 +650,6 @@ def linkDelete(request, id):
     return redirect('/freelancer/detail/'+str(freelancer.id))
 
 def challengeList(request):
-    
     if(request.GET.__contains__('search')):
         search=request.GET.get('search')
         try:
@@ -673,3 +684,29 @@ def challengeCreate(request):
 def challengeDetail(request, challenge_id):
         challenge = get_object_or_404(Challenge, pk=challenge_id)
         return render(request, 'challenge/challengeDetail.html', {'challenge': challenge})
+
+def curriculumVerify(request, id):
+    userString = checkUser(request)
+    if userString!='manager':
+        return HttpResponse(status=403)
+    curriculum = get_object_or_404(Curriculum, pk=id)
+    curriculum.verified = True
+    curriculum.save()
+    return redirect('/freelancer/detail/' + str(curriculum.freelancer.id))
+
+def curriculumListManager(request):
+    if checkUser(request)!='manager':
+        return handler500(request)
+    curriculums = Curriculum.objects.all()
+    aptitudes={}
+    for c in curriculums:
+        aptitudesList=Aptitude.objects.filter(curriculum=c.id)
+        aptitudes[c.id]=list(aptitudesList)
+    return render(request, 'curriculumList.html',{'curriculums':curriculums,'aptitudes':aptitudes})
+
+
+def handler404(request):
+    return render(request, '404.html', status=404)
+
+def handler500(request):
+    return render(request, '500.html', status=500)

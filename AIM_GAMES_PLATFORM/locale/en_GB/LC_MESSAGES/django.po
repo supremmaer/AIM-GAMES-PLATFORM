@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-04 18:24+0200\n"
+"POT-Creation-Date: 2019-04-04 19:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -177,7 +177,7 @@ msgid "center"
 msgstr "Center"
 
 #: .\AIM_GAMES\models.py:114 .\AIM_GAMES\models.py:132
-#: .\templates\freelancer\detail.html:30 .\templates\freelancer\detail.html:202
+#: .\templates\freelancer\detail.html:43
 msgid "formation"
 msgstr "Formation"
 
@@ -318,7 +318,7 @@ msgid "chat"
 msgstr ""
 
 #: .\templates\accounts\login.html:19 .\templates\accounts\login.html:49
-#: .\templates\base_generic.html:63 .\templates\base_generic.html:88
+#: .\templates\base_generic.html:65 .\templates\base_generic.html:90
 msgid "Log In"
 msgstr "Log In"
 
@@ -330,8 +330,8 @@ msgstr ""
 msgid ", please logout before login again"
 msgstr ""
 
-#: .\templates\accounts\login.html:22 .\templates\base_generic.html:61
-#: .\templates\base_generic.html:86
+#: .\templates\accounts\login.html:22 .\templates\base_generic.html:63
+#: .\templates\base_generic.html:88
 msgid "Logout"
 msgstr "Logout"
 
@@ -359,38 +359,42 @@ msgstr "Sign up"
 msgid "signupBusiness"
 msgstr "Sign up as company"
 
-#: .\templates\base_generic.html:46 .\templates\base_generic.html:71
+#: .\templates\base_generic.html:46 .\templates\base_generic.html:73
 msgid "mainpage"
 msgstr "Main page"
 
-#: .\templates\base_generic.html:48 .\templates\base_generic.html:73
+#: .\templates\base_generic.html:48 .\templates\base_generic.html:75
 #: .\templates\thread\threadList.html:9
 msgid "threads"
 msgstr "Threads"
 
-#: .\templates\base_generic.html:49 .\templates\base_generic.html:74
+#: .\templates\base_generic.html:49 .\templates\base_generic.html:76
 #: .\templates\curriculumList.html:8
 msgid "curriculums"
 msgstr "Curriculums"
 
-#: .\templates\base_generic.html:52 .\templates\base_generic.html:77
+#: .\templates\base_generic.html:52 .\templates\base_generic.html:79
 msgid "My curriculum"
 msgstr "Curriculums"
 
-#: .\templates\base_generic.html:55 .\templates\base_generic.html:80
+#: .\templates\base_generic.html:55 .\templates\base_generic.html:82
 #: .\templates\jobOfferList.html:8
 msgid "joboffers"
 msgstr "Job offers"
 
-#: .\templates\base_generic.html:58 .\templates\base_generic.html:83
+#: .\templates\base_generic.html:56
+#, fuzzy
+#| msgid "newChallenge"
+msgid "Challenges"
+msgstr "Challenges"
+
+#: .\templates\base_generic.html:60 .\templates\base_generic.html:85
 msgid "Admin Panel"
 msgstr ""
 
 #: .\templates\challenge\challengeDetail.html:7
-#, fuzzy
-#| msgid "challenges"
 msgid "Challenge details"
-msgstr "Challenges"
+msgstr "Challenge Detail"
 
 #: .\templates\challenge\challengeDetail.html:12
 #: .\templates\thread\threadDetail.html:26
@@ -446,8 +450,7 @@ msgstr ""
 msgid "Agreed"
 msgstr ""
 
-#: .\templates\curriculumList.html:20 .\templates\freelancer\detail.html:107
-#: .\templates\freelancer\detail.html:240
+#: .\templates\curriculumList.html:20 .\templates\freelancer\detail.html:118
 msgid "aptitudes"
 msgstr "Aptitudes"
 
@@ -455,73 +458,60 @@ msgstr "Aptitudes"
 msgid "freelancerDetails"
 msgstr "Freelancer details"
 
-#: .\templates\freelancer\detail.html:13
+msgid "verify"
+msgstr "Verify curriculum"
+
+#: .\templates\freelancer\detail.html:19
 msgid "links"
 msgstr "Links"
 
-#: .\templates\freelancer\detail.html:17 .\templates\freelancer\detail.html:50
-#: .\templates\freelancer\detail.html:88 .\templates\freelancer\detail.html:111
-#: .\templates\freelancer\detail.html:142
-#: .\templates\freelancer\detail.html:190
-#: .\templates\freelancer\detail.html:210
-#: .\templates\freelancer\detail.html:229
-#: .\templates\freelancer\detail.html:244
+#: .\templates\freelancer\detail.html:29 .\templates\freelancer\detail.html:63
+#: .\templates\freelancer\detail.html:100
+#: .\templates\freelancer\detail.html:126
+#: .\templates\freelancer\detail.html:154
 msgid "Edit"
 msgstr "Edit"
 
-#: .\templates\freelancer\detail.html:18 .\templates\freelancer\detail.html:51
-#: .\templates\freelancer\detail.html:89 .\templates\freelancer\detail.html:112
-#: .\templates\freelancer\detail.html:143
-#: .\templates\freelancer\detail.html:168
-#: .\templates\freelancer\detail.html:179
-#: .\templates\freelancer\detail.html:191
-#: .\templates\freelancer\detail.html:211
-#: .\templates\freelancer\detail.html:230
-#: .\templates\freelancer\detail.html:245
+#: .\templates\freelancer\detail.html:30 .\templates\freelancer\detail.html:64
+#: .\templates\freelancer\detail.html:101
+#: .\templates\freelancer\detail.html:127
+#: .\templates\freelancer\detail.html:155
+#: .\templates\freelancer\detail.html:181
 msgid "Delete"
 msgstr "Delete"
 
-#: .\templates\freelancer\detail.html:24
+#: .\templates\freelancer\detail.html:38
 msgid "Add link"
 msgstr "Add link"
 
-#: .\templates\freelancer\detail.html:61 .\templates\freelancer\detail.html:216
+#: .\templates\freelancer\detail.html:74
 msgid "addFormation"
 msgstr "Add formation"
 
-#: .\templates\freelancer\detail.html:67 .\templates\freelancer\detail.html:221
+#: .\templates\freelancer\detail.html:79
 #, fuzzy
 #| msgid "profession"
 msgid "professionalExperience"
 msgstr "Professional experience"
 
-#: .\templates\freelancer\detail.html:99 .\templates\freelancer\detail.html:235
+#: .\templates\freelancer\detail.html:111
 msgid "addProfessionalExperience"
 msgstr "Add professional experience"
 
-#: .\templates\freelancer\detail.html:118
-#: .\templates\freelancer\detail.html:250
-msgid "addAptitude"
-msgstr "Add aptitude"
-
-#: .\templates\freelancer\detail.html:124
-#: .\templates\freelancer\detail.html:129
-#: .\templates\freelancer\detail.html:185
-msgid "graphicEngineExperiences"
-msgstr "Graphic engine experiences"
-
-#: .\templates\freelancer\detail.html:152
-#: .\templates\freelancer\detail.html:196
+#: .\templates\freelancer\detail.html:135
+#: .\templates\freelancer\detail.html:164
 msgid "addGraphicEngineExperience"
 msgstr "Add graphic engine experience"
 
-#: .\templates\freelancer\detail.html:158
-#: .\templates\freelancer\detail.html:174
+#: .\templates\freelancer\detail.html:141
+msgid "graphicEngineExperiences"
+msgstr "Graphic engine experiences"
+
+#: .\templates\freelancer\detail.html:171
 msgid "HTML5Showcase"
 msgstr "HTML5 Showcase"
 
-#: .\templates\freelancer\detail.html:167
-#: .\templates\freelancer\detail.html:178
+#: .\templates\freelancer\detail.html:180
 msgid "editHTML5Showcase"
 msgstr "Edit HTML5 Showcase"
 
@@ -628,6 +618,9 @@ msgstr "New response"
 msgid "New thread"
 msgstr "Threads"
 
+#~ msgid "addAptitude"
+#~ msgstr "Add aptitude"
+
 #, fuzzy
 #~| msgid "joboffers"
 #~ msgid "offers"
@@ -649,3 +642,6 @@ msgstr "Threads"
 
 #~ msgid "aboutus"
 #~ msgstr "About us"
+
+msgid "Verified curriculum"
+msgstr "Verified curriculum"
