@@ -217,11 +217,15 @@ def findByPrincipal(request):
             return business
         except:
             print('Principal is not a business.')
+        try:
+            manager = Manager.objects.select_related('profile').get(id=profile.manager.id)
+            return manager
+        except:
+            print('Principal is not a manager.')
+        
     return None
 
 def freelancerDetail(request, id):
-    if checkUser(request)!='freelancer' and checkUser(request)!='business':
-        return HttpResponse(status=403)
     userString = checkUser(request)
     if userString == 'none':
         return HttpResponse(status=403)
@@ -232,10 +236,10 @@ def freelancerDetail(request, id):
             freelancer = get_object_or_404(Freelancer,pk=id)
             user = findByPrincipal(request)        
             if user.id != freelancer.id:
-                return redirect('/')
+                return HttpResponse(status=403)
     else:
         if id=='-':
-            return redirect('/')
+            return HttpResponse(status=403)
         else:
             freelancer = get_object_or_404(Freelancer,pk=id)
     
@@ -323,10 +327,16 @@ def checkUser(request):
             business = Business.objects.select_related('profile').get(id=profile.business.id)
         except:
             print('Principal is not a business.')
+        try:
+            manager = Manager.objects.select_related('profile').get(id=profile.manager.id)
+        except:
+            print('Principal is not a manager.')
     if freelancer!=None:
         return 'freelancer'
     elif business !=None:
         return 'business'
+    elif manager !=None:
+        return 'manager'
     else:
         return 'none'
 
