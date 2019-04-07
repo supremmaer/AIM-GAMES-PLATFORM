@@ -44,6 +44,7 @@
                     <a href="#" class="sidenav-trigger" data-target="slide_out"><i class="material-icons">menu</i></a>
                     <ul class="hide-on-med-and-down right">
                         <li class="active"><a href="/">{% trans "mainpage" %}</a></li>
+                        <li><a href="/terms-and-conditions" target="_self" class="collection-item">{% trans "terms-and-conditions" %}</a></li>
                         {% if request.session.currentUser == 'business' %}
                             <li><a href="/thread/business/list/" target="_self" class="collection-item">{% trans "threads" %}</a></li>
                             <li><a href="/curriculum/business/list/" target="_self" class="collection-item">{% trans "curriculums" %}</a></li>
@@ -74,6 +75,7 @@
         <a href="/setlanguage/en-GB" target="_self"  class="waves-effect waves-light btn">English</a>
             <ul class="sidenav" id="slide_out">
                 <li class="active"><a>{% trans "mainpage" %}</a></li>
+                <li><a href="/terms-and-conditions" target="_self" class="collection-item">{% trans "terms-and-conditions" %}</a></li>
 				{% if request.session.currentUser == 'business' %}
                 	<li><a href="/thread/business/list/" target="_self" class="collection-item">{% trans "threads" %}</a></li>
                     <li><a href="/curriculum/business/list/" target="_self" class="collection-item">{% trans "curriculums" %}</a></li>
@@ -83,6 +85,7 @@
                 {% endif %} 
                 {% if request.session.currentUser == 'business' or request.session.currentUser == 'freelancer' %}
                     <li><a href="/joboffer/user/list/" target="_self" class="collection-item">{% trans "joboffers" %}</a></li>
+                    <li><a href="/challenge/list/" target="_self" class="collection-item">{% trans "Challenges" %}</a></li>
                 {% endif %}
                 {% if request.session.currentUser == 'manager' %}
                     <li><a href="/curriculum/manager/list" target="_self" class="collection-item">{% trans "curriculums" %}</a></li>

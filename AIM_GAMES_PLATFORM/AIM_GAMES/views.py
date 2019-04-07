@@ -710,3 +710,9 @@ def handler404(request):
 
 def handler500(request):
     return render(request, '500.html', status=500)
+
+def termsAndConditions(request):
+    return render(request, "terms-and-conditions.html")
+
+def privacyPolicy(request):
+    return render(request, "privacy-policy.html")    

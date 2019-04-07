@@ -68,4 +68,6 @@ urlpatterns = [
     path('curriculum/manager/list/', curriculumListManager),
     path('500/', handler500, name='500'),
     path('404/', handler404, name='404'),
+    path('terms-and-conditions', termsAndConditions),
+    path('privacy-policy', privacyPolicy),
 ]
