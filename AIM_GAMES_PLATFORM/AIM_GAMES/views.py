@@ -238,10 +238,10 @@ def freelancerDetail(request, id):
             freelancer = get_object_or_404(Freelancer,pk=id)
             user = findByPrincipal(request)        
             if user.id != freelancer.id:
-                return HttpResponse(status=403)
+                return handler500(request)
     else:
         if id=='-':
-            return HttpResponse(status=403)
+            return handler500(request)
         else:
             freelancer = get_object_or_404(Freelancer,pk=id)
     
@@ -688,7 +688,7 @@ def challengeDetail(request, challenge_id):
 def curriculumVerify(request, id):
     userString = checkUser(request)
     if userString!='manager':
-        return HttpResponse(status=403)
+        return handler500(request)
     curriculum = get_object_or_404(Curriculum, pk=id)
     curriculum.verified = True
     curriculum.save()
