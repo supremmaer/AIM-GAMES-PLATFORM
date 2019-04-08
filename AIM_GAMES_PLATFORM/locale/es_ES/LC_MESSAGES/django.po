@@ -210,7 +210,7 @@ msgstr "Experiencias con motores gráficos"
 
 #: .\AIM_GAMES\models.py:163
 msgid "embedCode"
-msgstr "Código incrustado"
+msgstr "Fuente para iframe"
 
 #: .\AIM_GAMES\models.py:174
 #, fuzzy

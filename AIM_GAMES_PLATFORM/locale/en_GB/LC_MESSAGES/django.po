@@ -209,7 +209,7 @@ msgstr "Graphic engine experiences"
 
 #: .\AIM_GAMES\models.py:163
 msgid "embedCode"
-msgstr "Embed code"
+msgstr "Iframe source"
 
 #: .\AIM_GAMES\models.py:174
 #, fuzzy
