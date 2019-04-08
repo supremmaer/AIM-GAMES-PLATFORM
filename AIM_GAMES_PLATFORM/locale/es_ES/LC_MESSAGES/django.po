@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 00:10+0200\n"
+"POT-Creation-Date: 2019-04-09 01:15+0200\n"
 "PO-Revision-Date: 2019-03-29 13:19+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -180,7 +180,7 @@ msgid "center"
 msgstr "Centro"
 
 #: .\AIM_GAMES\models.py:114 .\AIM_GAMES\models.py:132
-#: .\templates\freelancer\detail.html:46
+#: .\templates\freelancer\detail.html:54
 msgid "formation"
 msgstr "Formación"
 
@@ -328,7 +328,7 @@ msgid "chat"
 msgstr ""
 
 #: .\templates\accounts\login.html:19 .\templates\accounts\login.html:49
-#: .\templates\base_generic.html:83 .\templates\base_generic.html:115
+#: .\templates\base_generic.html:72 .\templates\base_generic.html:104
 msgid "Log In"
 msgstr "Iniciar Sesión"
 
@@ -340,8 +340,8 @@ msgstr "Sesión iniciada como"
 msgid ", please logout before login again"
 msgstr ", por favor cierra sesión antes de volver a iniciarla"
 
-#: .\templates\accounts\login.html:22 .\templates\base_generic.html:80
-#: .\templates\base_generic.html:112
+#: .\templates\accounts\login.html:22 .\templates\base_generic.html:69
+#: .\templates\base_generic.html:101
 msgid "Logout"
 msgstr "Cerrar sesión"
 
@@ -373,46 +373,46 @@ msgstr "Registrarse como empresa"
 msgid "acceptTerms"
 msgstr "Acepto los "
 
-#: .\templates\accounts\signup.html:87 .\templates\base_generic.html:60
-#: .\templates\base_generic.html:93
+#: .\templates\accounts\signup.html:87 .\templates\base_generic.html:49
+#: .\templates\base_generic.html:82
 msgid "terms-and-conditions"
 msgstr "Términos y Condiciones"
 
-#: .\templates\base_generic.html:59 .\templates\base_generic.html:92
+#: .\templates\base_generic.html:48 .\templates\base_generic.html:81
 msgid "mainpage"
 msgstr "Página principal"
 
-#: .\templates\base_generic.html:62 .\templates\base_generic.html:95
+#: .\templates\base_generic.html:51 .\templates\base_generic.html:84
 #: .\templates\thread\threadList.html:9
 msgid "threads"
 msgstr "Hilos"
 
-#: .\templates\base_generic.html:63 .\templates\base_generic.html:69
-#: .\templates\base_generic.html:96 .\templates\base_generic.html:106
+#: .\templates\base_generic.html:52 .\templates\base_generic.html:58
+#: .\templates\base_generic.html:85 .\templates\base_generic.html:95
 #: .\templates\curriculumList.html:8
 msgid "curriculums"
 msgstr "Curriculums"
 
-#: .\templates\base_generic.html:66 .\templates\base_generic.html:99
+#: .\templates\base_generic.html:55 .\templates\base_generic.html:88
 msgid "My curriculum"
 msgstr "Mi curriculum"
 
-#: .\templates\base_generic.html:72 .\templates\base_generic.html:102
+#: .\templates\base_generic.html:61 .\templates\base_generic.html:91
 #: .\templates\jobOfferList.html:7
 msgid "joboffers"
 msgstr "Ofertas de trabajo"
 
-#: .\templates\base_generic.html:73 .\templates\base_generic.html:103
+#: .\templates\base_generic.html:62 .\templates\base_generic.html:92
 #, fuzzy
 #| msgid "newChallenge"
 msgid "Challenges"
 msgstr "Retos"
 
-#: .\templates\base_generic.html:77 .\templates\base_generic.html:109
+#: .\templates\base_generic.html:66 .\templates\base_generic.html:98
 msgid "Admin Panel"
 msgstr "Panel de Administración"
 
-#: .\templates\base_generic.html:81 .\templates\base_generic.html:113
+#: .\templates\base_generic.html:70 .\templates\base_generic.html:102
 msgid "Events"
 msgstr "Eventos"
 
@@ -496,7 +496,7 @@ msgstr ""
 msgid "Agreed"
 msgstr "De acuerdo"
 
-#: .\templates\curriculumList.html:20 .\templates\freelancer\detail.html:121
+#: .\templates\curriculumList.html:20 .\templates\freelancer\detail.html:129
 msgid "aptitudes"
 msgstr "Aptitudes"
 
@@ -512,10 +512,10 @@ msgstr "Asistentes"
 msgid "Join"
 msgstr "Unirse"
 
-#: .\templates\event\eventDetail.html:61 .\templates\freelancer\detail.html:32
-#: .\templates\freelancer\detail.html:66 .\templates\freelancer\detail.html:103
-#: .\templates\freelancer\detail.html:129
-#: .\templates\freelancer\detail.html:157
+#: .\templates\event\eventDetail.html:61 .\templates\freelancer\detail.html:40
+#: .\templates\freelancer\detail.html:74 .\templates\freelancer\detail.html:111
+#: .\templates\freelancer\detail.html:137
+#: .\templates\freelancer\detail.html:165
 msgid "Edit"
 msgstr "Editar"
 
@@ -537,62 +537,70 @@ msgstr "Eventos"
 msgid "Submit"
 msgstr "Enviar"
 
-#: .\templates\freelancer\detail.html:7
+#: .\templates\freelancer\detail.html:15
 msgid "freelancerDetails"
 msgstr "Detalles del freelancer"
 
-#: .\templates\freelancer\detail.html:16
+#: .\templates\freelancer\detail.html:24
 msgid "verify"
 msgstr "Verificar curriculum"
 
-#: .\templates\freelancer\detail.html:19
+#: .\templates\freelancer\detail.html:27
 msgid "Verified curriculum"
 msgstr "Curriculum verificado"
 
-#: .\templates\freelancer\detail.html:22
+#: .\templates\freelancer\detail.html:30
 msgid "links"
 msgstr "Enlaces"
 
-#: .\templates\freelancer\detail.html:33 .\templates\freelancer\detail.html:67
-#: .\templates\freelancer\detail.html:104
-#: .\templates\freelancer\detail.html:130
-#: .\templates\freelancer\detail.html:158
-#: .\templates\freelancer\detail.html:186
+#: .\templates\freelancer\detail.html:41 .\templates\freelancer\detail.html:75
+#: .\templates\freelancer\detail.html:112
+#: .\templates\freelancer\detail.html:138
+#: .\templates\freelancer\detail.html:166
+#: .\templates\freelancer\detail.html:200
 msgid "Delete"
 msgstr "Eliminar"
 
-#: .\templates\freelancer\detail.html:41
+#: .\templates\freelancer\detail.html:49
 msgid "Add link"
 msgstr "Añadir enlace"
 
-#: .\templates\freelancer\detail.html:77
+#: .\templates\freelancer\detail.html:85
 msgid "addFormation"
 msgstr "Añadir formación"
 
-#: .\templates\freelancer\detail.html:82
+#: .\templates\freelancer\detail.html:90
 #, fuzzy
 #| msgid "profession"
 msgid "professionalExperience"
 msgstr "Profesión"
 
-#: .\templates\freelancer\detail.html:114
+#: .\templates\freelancer\detail.html:122
 msgid "addProfessionalExperience"
 msgstr "Añadir experiencia profesional"
 
-#: .\templates\freelancer\detail.html:138
-#: .\templates\freelancer\detail.html:167
+#: .\templates\freelancer\detail.html:146
+#: .\templates\freelancer\detail.html:175
 msgid "addGraphicEngineExperience"
 msgstr "Añadir experiencia con motores gráficos"
 
-#: .\templates\freelancer\detail.html:144
+#: .\templates\freelancer\detail.html:152
 msgid "graphicEngineExperiences"
 msgstr "Experiencias con motores gráficos"
 
-#: .\templates\freelancer\detail.html:174
+#: .\templates\freelancer\detail.html:182
 msgid "HTML5Showcase"
 msgstr "Expositor de HTML5"
 
-#: .\templates\freelancer\detail.html:185
+#: .\templates\freelancer\detail.html:189
+msgid "mostrar"
+msgstr "Mostrar expositor de HTML"
+
+#: .\templates\freelancer\detail.html:194
+msgid "Game not fully compatible? Try it out at "
+msgstr "¿El juego no es completamente compatible? Pruébalo en "
+
+#: .\templates\freelancer\detail.html:199
 msgid "editHTML5Showcase"
 msgstr "Modificar expositor de HTML5"
 
