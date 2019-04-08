@@ -3,59 +3,40 @@
 {% load i18n %}
 {% block content %}
 <div class="row">
-<div class="col s12 m12 l8 offset-l2">
 <div class="col s12 m10 l10 offset-l1 offset-m1">
   <div class="col-sm-6">
     <h3>{{jobOffer.business.profile.name}}</h3>
   </div>
-  <div class="col-sm-6">
-    <div class="card">
+
+
+      <div class="card">
       <div class="card-body">
-        <h5 class="card-title">{% trans "ubication"%}</h5>
-        <p class="card-text">{{jobOffer.position}}</p>
+        <div class="row">
+        <div class="col l11 offset-l1 s12 ">
+
+          <h5 class="bold offset-l1 l11 ">{% trans "positioDisplay" %}</h5>
+          <p class="card-text col l11 offset-l1 s12 ">{{jobOffer.position}}</p>
+
+          <h5 class="bold">{% trans "experienceRequired"%}</h5>
+          <p class="card-text col l11 offset-l1 s12 ">{{jobOffer.experienceRequired}}</p>
+
+          <h5 class="bold">{% trans "schedule"%}</h5>
+          <p class="card-text col l11 offset-l1 s12 ">   {{jobOffer.schedule}}</p>
+
+          <h5 class="bold">{% trans "salary"%}</h5>
+          <p class="card-text col l11 offset-l1 s12 ">{{jobOffer.salary}}</p>
+
+          <h5 class="bold">{% trans "ubication"%}</h5>
+          <p class="card-text col l11 offset-l1 s12 ">{{jobOffer.ubication}}</p>
+
+          <h5 class="bold">{% trans "description"%}</h5>
+          <p class="card-text col l11 offset-l1 s12 ">{{jobOffer.description}}</p>
+        </div>
       </div>
     </div>
-  </div>
-   <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">{% trans "experienceRequired"%}</h5>
-        <p class="card-text">{{jobOffer.experienceRequired}}</p>
-      </div>
+
     </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">{% trans "schedule"%}</h5>
-        <p class="card-text">{{jobOffer.schedule}}</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">{% trans "salary"%}</h5>
-        <p class="card-text">{{jobOffer.salary}}</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">{% trans "ubication"%}</h5>
-        <p class="card-text">{{jobOffer.ubication}}</p>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">{% trans "description"%}</h5>
-        <p class="card-text">{{jobOffer.description}}</p>
-      </div>
-    </div>
-  </div>
+
       <div class="row text-center text-lg-left">
       {% for pic in pics %}
          <div class="col-lg-3 col-md-4 col-6">
@@ -65,15 +46,17 @@
           </div>
       {% endfor %}
       </div>
-    <div class="col-sm-6">
+
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">{% trans "Contact"%}</h5>
-            <p class="card-text"><a href="mailto:{{jobOffer.business.profile.email}}">{% trans "Contact" %}</a></p>
+            <div class="row">
+              <div class="col l11 offset-l1 s12 ">
+            <h5 class="bold">{% trans "Contact"%}</h5>
+            <p class="card-text col l11 offset-l1 s12 "><a href="mailto:{{jobOffer.business.profile.email}}">{% trans "Contact" %}</a></p>
+              </div>
           </div>
         </div>
       </div>
     </div>
-</div>
 </div>
 {% endblock %}
