@@ -232,8 +232,8 @@ class Thread(models.Model):
     def getData(self):
         data = "Title: " + self.title + "\n" + "Description: " + self.description + "\n" + "Tags: " + \
             str(list(self.tags.values('title'))) + "\n"+"Pics: " + \
-            str(list(self.pics.values('title'))) + "\n"+"AttachedFiles: " + \
-            str(list(self.attachedFiles.values('title')))
+            str(list(self.pics.values('uri'))) + "\n"+"AttachedFiles: " + \
+            str(list(self.attachedFiles.values('uri')))
         return data
 
 
@@ -265,7 +265,7 @@ class Response(models.Model):
     def getData(self):
         data = "Thread: " + str(self.thread) + "\n"+"Title: " + self.title + \
             "\n"+"Description: " + self.description + \
-            "\n"+"Pics: " + str(list(self.pics.values('title')))
+            "\n"+"Pics: " + str(list(self.pics.values('uri')))
         return data
 
 

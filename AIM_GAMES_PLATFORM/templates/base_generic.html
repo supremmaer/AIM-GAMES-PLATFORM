@@ -7,6 +7,18 @@
     <head>
         {% block title %}<title>AIM Games Platform</title>{% endblock %}
         
+
+        <style>  
+         body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1 0 auto;
+        }
+      </style>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
         <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
@@ -73,8 +85,9 @@
                     </ul>
             </div>
         </nav>
-        <a href="/setlanguage/es-ES" target="_self"  class="waves-effect waves-light btn">Spanish</a>
-        <a href="/setlanguage/en-GB" target="_self"  class="waves-effect waves-light btn">English</a>
+    
+
+        </div>
             <ul class="sidenav" id="slide_out">
                 <li class="active"><a>{% trans "mainpage" %}</a></li>
                 <li><a href="/terms-and-conditions" target="_self" class="collection-item">{% trans "terms-and-conditions" %}</a></li>
@@ -110,5 +123,22 @@
             M.Sidenav.init(slide_menu,{});
             M.AutoInit();
         </script>
+        <footer class="page-footer">
+            <div class="footer-copyright">
+                <div class="container row">
+                <div class="col s12 m6">
+                <a href="/setlanguage/es-ES" target="_self"  class="waves-effect waves-light btn">Spanish</a>
+                <a href="/setlanguage/en-GB" target="_self"  class="waves-effect waves-light btn">English</a>
+                </div>
+                <div class="col s12 m3">
+                © 2019 AIM-GAMES-PLATFORM
+                </div>
+                <div class="col s12 m3">
+
+                <a class="grey-text text-lighten-4 right"  onclick="window.open('userDownloadData')" >DownloadData</a>
+                </div></div>
+            </div>
+        </div>
+    </footer>
     </body>
 </html>

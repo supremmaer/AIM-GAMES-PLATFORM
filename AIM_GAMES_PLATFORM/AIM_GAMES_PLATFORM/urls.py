@@ -76,4 +76,6 @@ urlpatterns = [
     path('event/detail/<int:event_id>',eventDetail,name='eventDetail'),
     path('event/edit/<int:event_id>',eventEdit,name='eventEdit'),
     path('event/join/<int:event_id>',eventJoin,name='eventJoin'),
+    path('userDownloadData',downloadData),
+
 ]
