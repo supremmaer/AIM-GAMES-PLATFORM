@@ -686,3 +686,6 @@ msgstr "Threads"
 
 #~ msgid "aboutus"
 #~ msgstr "About us"
+
+msgid "acceptTerms"
+msgstr "I accept "

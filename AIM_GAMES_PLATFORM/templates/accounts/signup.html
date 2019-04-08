@@ -74,10 +74,18 @@
                          {% for field in form.visible_fields %}
                          <span class="red-text">{{ field.errors }}</span>
                         <div class="input-field col s12">
-                           {% if field.id_for_label != "id_profile" %}
+                           {% if field.id_for_label != "id_profile" and 'term' not in field.html_name %}
 
                              <input placeholder="" id="{{ field.id_for_label }}" type="text" class="validate" name="{{ field.html_name }}" value="{{ field.value|default_if_none:'' }}">
                              <label for="{{ field.id_for_label }}">{{ field.label_tag }}:</label>
+                            
+                            {% endif %}
+
+                            {% if 'term' in field.html_name %}
+                                <p><label>
+                                    <input id="{{ field.id_for_label }}" required name="{{ field.html_name }}" type="checkbox" class="filled-in"/>
+                                    <span>{% trans "acceptTerms" %} <a  target="_blank" href="/terms-and-conditions">{% trans "terms-and-conditions" %}</a></span>
+                                </label></p>
                             {% endif %}
 
                         </div>

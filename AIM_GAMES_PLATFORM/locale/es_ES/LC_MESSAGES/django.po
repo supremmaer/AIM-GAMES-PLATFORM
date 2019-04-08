@@ -687,3 +687,6 @@ msgstr "Nuevo hilo"
 
 #~ msgid "contactus"
 #~ msgstr "Contáctanos"
+
+msgid "acceptTerms"
+msgstr "Acepto los "
