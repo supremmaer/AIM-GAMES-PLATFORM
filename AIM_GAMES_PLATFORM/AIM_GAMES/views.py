@@ -815,3 +815,14 @@ def eventJoin(request, event_id):
         obj.companies.add(user)
     obj.save()
     return redirect('/event/detail/'+str(event_id))
+
+def downloadData(request):
+    print("entre!")
+    datos=findByPrincipal(request).getData()
+    print(datos)
+
+    filename = "AIM-GAMES-PLATFORM_yourdata.txt"
+    content = str(datos)
+    response = HttpResponse(content, content_type='text/plain')
+    response['Content-Disposition'] = 'attachment; filename={0}'.format(filename)
+    return response
