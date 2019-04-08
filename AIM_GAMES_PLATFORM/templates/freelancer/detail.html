@@ -2,12 +2,16 @@
 {% block content %}
 {% load i18n %}
 <script type="text/javascript">
-   function toggle_visibility(id) {
-       var e = document.getElementById(id);
-       if(e.style.display == 'block')
-          e.style.display = 'none';
-       else
-          e.style.display = 'block';
+   function toggle_showcase() {
+       var e = document.getElementById('bq');
+       if(e.style.display == 'block'){
+         e.style.display = 'none';
+         document.getElementById('ifr').src='';
+       }
+       else{
+         e.style.display = 'block';
+         document.getElementById('ifr').src='{{HTML5Showcase.embedCode}}';
+       }
    }
 </script>
   
@@ -184,11 +188,10 @@
         </div>
 
         <div class="col s12 m10 l10 offset-l1 offset-m1">
-          <a href="#!" onclick="toggle_visibility('bq');
-          document.getElementById('ifr').src='{{HTML5Showcase.embedCode}}';" class="btn waves-effect waves-red">
+          <a href="#!" onclick="toggle_showcase();" class="btn waves-effect waves-red">
             {% trans "mostrar" %}</a>
           <blockquote id="bq" style="display:none">
-            <div class="video-container">
+            <div>
             <iframe id="ifr" sandbox="allow-scripts" frameborder="0" scrolling="no" width="1000" height="600"></iframe>
             </div>
             <br>
