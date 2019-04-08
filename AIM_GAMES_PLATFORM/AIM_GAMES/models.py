@@ -285,6 +285,22 @@ class Challenge(models.Model):
             "Freelancers: " + str(list(self.freelancers.values("profile__name", "profile__surname"))) + "\n"
         return data
 
+class ChallengeResponse(models.Model):
+    freelancer = models.ForeignKey(
+        Freelancer, on_delete=models.CASCADE, verbose_name=_("freelancer"))
+    challenge = models.ForeignKey(
+        Challenge, on_delete=models.CASCADE, verbose_name=_("challenge"))
+    title = models.TextField(
+        max_length=100, blank=False, verbose_name=_("title"))
+    description = models.TextField(blank=False, verbose_name=_("description"))
+
+    def __str__(self):
+        return self.title
+
+    def getData(self):
+        data = "Challenge: " + str(self.challenge) + "\n"+"Title: " + self.title + "\n"+"Description: " + self.description
+        return data
+
 
 # Manager objects
 
