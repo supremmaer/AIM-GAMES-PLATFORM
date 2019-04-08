@@ -21,7 +21,6 @@ from django.contrib.auth import views as auth_views
 
 #Aqui ponemos las rutas
 urlpatterns = [
-    
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('paypal', include('paypal.standard.ipn.urls')),

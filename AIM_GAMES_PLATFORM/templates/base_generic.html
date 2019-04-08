@@ -4,6 +4,7 @@
 {% load cookielaw_tags %}
 <!DOCTYPE html>
 <html lang="es">
+<body>
     <head>
         {% block title %}<title>AIM Games Platform</title>{% endblock %}
         
@@ -38,7 +39,7 @@
        
     </head>
 
-    <body>
+    
         <nav>
             <div class="nav-wrapper">
                     <a href="/" class="brand-logo" id="logotipo" >AIM Games</a>
@@ -103,9 +104,10 @@
                 <li><a href="/accounts/login/" target="_self" class="collection-item">{% trans "Log In" %}</a></li>
                 {% endif %}
             </ul>
-
+            <main>
         {% block content %}<!-- default content text (typically empty) -->{% endblock %}
         {% cookielaw_banner %}
+            </main>
         <script>
             const slide_menu = document.querySelectorAll(".sidenav");
             M.Sidenav.init(slide_menu,{});
