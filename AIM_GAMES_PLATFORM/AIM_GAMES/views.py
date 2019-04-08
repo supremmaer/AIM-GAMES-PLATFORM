@@ -384,6 +384,8 @@ def linkCreate(request):
                 link.save()
                 print('link saved')
                 return redirect('/freelancer/detail/'+str(freelancer.id))
+            else:
+                return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add link'})
         else:
             form = LinkForm()
             return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add link'})
