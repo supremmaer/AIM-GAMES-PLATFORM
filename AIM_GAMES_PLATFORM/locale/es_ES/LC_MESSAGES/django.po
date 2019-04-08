@@ -425,9 +425,6 @@ msgstr "Empresa"
 msgid "Objectives"
 msgstr "Objetivos"
 
-#: .\templates\challenge\challengeDetail.html:23
-#, fuzzy
-#| msgid "createAResponseForThisThread"
 msgid "createAResponseForThisChallenge"
 msgstr "Crear una respuesta para este reto"
 
