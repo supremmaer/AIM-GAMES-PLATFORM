@@ -294,7 +294,7 @@ class Event(models.Model):
         Manager, on_delete=models.CASCADE, verbose_name=_("manager"))
     location = models.TextField(blank=False, verbose_name=_("location"))
     title = models.TextField(max_length=150, blank=False,
-                             verbose_name=_("description"))
+                             verbose_name=_("title"))
     description = models.TextField(blank=False, verbose_name=_("description"))
     moment = models.DateTimeField(null=False)
     freelancers = models.ManyToManyField(

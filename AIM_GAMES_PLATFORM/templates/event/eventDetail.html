@@ -1,0 +1,67 @@
+
+{% extends "base_generic.html" %}
+{% load i18n %}
+{% block content %}
+<body>
+    <div class="container">
+        <div class="col s12">
+          <div class="section">
+            <h3>{{ event.title }} </h3>  
+          </div>
+          <div class="divider"></div>
+          <div class="section">
+              <h5>{% trans "description" %}</h5>
+              <p>{{ event.description }}</p>  
+          </div>
+          <div class="divider"></div>
+          <div class="section">
+              <h5>{% trans "location" %}</h5>
+              <p>{{ event.location }}</p>  
+          </div>
+          <div class="divider"></div>
+          <div class="section">
+              <h5>{% trans "moment" %}</h5>
+              <p>{{ event.moment }}</p>  
+          </div>
+          <div class="divider"></div>
+          <div class="section">
+            <h5>{% trans "assistants" %}</h5>      
+            <div class="row">
+              <div class="col s6">
+                <h6>{% trans "freelancers" %}</h6>
+                <div class="collection">
+                  {% for freelancer in freelancers %}
+                  <div class="collection-item">
+                    {{ freelancer.profile.name }} {{ freelancer.profile.surname }}
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="col s6">
+                <h6>{% trans "companies" %}</h6>
+                <div class="collection">
+                  {% for company in companies %}
+                  <div class="collection-item">
+                    {{ company.profile.name }} {{ company.profile.surname }}
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% if request.session.currentUser == 'business' or request.session.currentUser == 'freelancer'%}
+            {% if not joining %}
+              <div class="right">
+                <a href="/event/join/{{event.id}}" class="btn waves-effect waves-red">{% trans "Join" %}</a>
+              </div>
+            {% endif %}
+          {% endif %}
+          {% if request.session.currentUser == 'manager'%}
+          <div class="right">
+            <a href="/event/edit/{{event.id}}" class="btn waves-effect waves-red">{% trans "Edit" %}</a>
+          </div>
+          {% endif %}
+        </div>
+    </div>>
+</body>
+{% endblock %}
