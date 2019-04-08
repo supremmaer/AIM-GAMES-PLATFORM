@@ -21,6 +21,7 @@ from django.contrib.auth import views as auth_views
 
 #Aqui ponemos las rutas
 urlpatterns = [
+    
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('paypal', include('paypal.standard.ipn.urls')),
@@ -70,4 +71,9 @@ urlpatterns = [
     path('404/', handler404, name='404'),
     path('terms-and-conditions', termsAndConditions),
     path('privacy-policy', privacyPolicy),
+    path('event/list/',eventList,name='eventList'),
+    path('event/create/',eventCreate,name='eventCreate'),
+    path('event/detail/<int:event_id>',eventDetail,name='eventDetail'),
+    path('event/edit/<int:event_id>',eventEdit,name='eventEdit'),
+    path('event/join/<int:event_id>',eventJoin,name='eventJoin'),
 ]

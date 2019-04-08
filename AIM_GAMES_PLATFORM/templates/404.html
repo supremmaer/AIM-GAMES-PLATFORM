@@ -1,5 +1,5 @@
 {% extends "base_generic.html" %}
-
+{% load staticfiles %}
 {% block content %} 
 
   <script>
@@ -17,7 +17,7 @@
 <h4 class="center">La pagina que busca no existe, por favor relajese con estos gatos antes de intentarlo de nuevo</h2>
 <div class="carousel">
 
-    <a class="carousel-item"><img src="http://loremflickr.com/640/360/cat?random=1"></a>
+    <!-- <a class="carousel-item"><img src="http://loremflickr.com/640/360/cat?random=1"></a>
     <a class="carousel-item"><img src="http://loremflickr.com/640/360/cat?random=2"></a>
     <a class="carousel-item"><img src="http://loremflickr.com/640/360/cat?random=3"></a>
     <a class="carousel-item"><img src="http://placekitten.com/640/360/?random=4"></a>
@@ -28,7 +28,17 @@
     <a class="carousel-item"><img src="http://placekitten.com/640/360/?random=9"></a>
     <a class="carousel-item"><img src="http://loremflickr.com/640/360/cat?random=10"></a>
     <a class="carousel-item"><img src="http://loremflickr.com/640/360/cat?random=11"></a>
-    <a class="carousel-item"><img src="http://loremflickr.com/640/360/cat?random=12"></a>
+    <a class="carousel-item"><img src="http://loremflickr.com/640/360/cat?random=12"></a> -->
+    
+    <a class="carousel-item"><img src="{% static 'gatos/1.jpg' %}"></a>
+    <a class="carousel-item"><img src="{% static 'gatos/2.jpg' %}"></a>
+    <a class="carousel-item"><img src="{% static 'gatos/3.jpg' %}"></a>
+    <a class="carousel-item"><img src="{% static 'gatos/4.jpg' %}"></a>
+    <a class="carousel-item"><img src="{% static 'gatos/5.jpg' %}"></a>
+    <a class="carousel-item"><img src="{% static 'gatos/6.jpg' %}"></a>
+    <a class="carousel-item"><img src="{% static 'gatos/7.jpg' %}"></a>
+    <a class="carousel-item"><img src="{% static 'gatos/8.jpg' %}"></a>
+
 
 
 

@@ -716,3 +716,81 @@ def termsAndConditions(request):
 
 def privacyPolicy(request):
     return render(request, "privacy-policy.html")    
+
+def eventList(request):
+    if not request.user.is_authenticated:
+        return handler500(request)
+    if(request.GET.__contains__('search')):
+        search=request.GET.get('search')
+        q=Event.objects.filter( Q(location__icontains=search)|
+            Q(title__icontains=search)|
+            Q(description__icontains=search))
+    else:
+        q=Event.objects.all()
+    events= q
+    return render(request, 'event/eventList.html',{'events':events})
+
+def eventCreate(request):
+    if checkUser(request)=='manager':
+        manager = findByPrincipal(request)
+        if request.method == 'POST':
+            form = EventForm(request.POST)
+            if form.is_valid():                
+                obj = form.save(commit=False)
+                obj.manager = manager
+                obj.save()
+                print('Event saved')
+                return redirect('/event/list/')
+            else:
+                return render(request,'event/standardForm.html',{'form':form})
+        else:
+            form = EventForm()
+            return render(request,'event/standardForm.html',{'form':form})
+    else:
+        return handler500(request)
+
+def eventDetail(request, event_id):
+    event = get_object_or_404(Event, pk=event_id)
+    freelancers= event.freelancers.all()
+    companies= event.companies.all()
+    manager = findByPrincipal(request)
+    if checkUser(request)!='manager':
+        user = findByPrincipal(request)
+        if(user in freelancers or user in companies):
+            joining=True
+        else:
+            joining=False
+    else:
+        joining=False
+    return render(request, 'event/eventDetail.html', {'event': event,'freelancers':freelancers,'companies':companies, 'joining':joining})
+
+def eventEdit(request, event_id): 
+    if checkUser(request)!='manager':
+        return handler500(request)
+
+    instance = get_object_or_404(Event, id=event_id)
+    manager = findByPrincipal(request)
+
+    form = EventForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.manager = manager
+        obj.save()
+        return redirect('/event/detail/'+str(event_id))
+    return render(request,'event/standardForm.html',{'form':form})
+
+def eventJoin(request, event_id): 
+    userRole=checkUser(request)
+    if userRole!='business' and userRole!='freelancer':
+        return handler500(request)
+    instance = get_object_or_404(Event, id=event_id)
+    user = findByPrincipal(request)
+
+    form = EventForm(instance=instance)
+    obj = form.save(commit=False)
+    if userRole=='freelancer':
+        obj.freelancers.add(user)
+    else:
+        obj.companies.add(user)
+    obj.save()
+    return redirect('/event/detail/'+str(event_id))
