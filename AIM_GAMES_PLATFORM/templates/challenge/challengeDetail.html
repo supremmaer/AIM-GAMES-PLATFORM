@@ -19,6 +19,21 @@
     <div class="card #ffebee red lighten-5"> 
         <span class="card-title">{% trans "Objectives" %}:</span>
         {{ challenge.objectives }}
-      </div>  
+      </div>
+
+      {% if request.session.currentUser == 'freelancer'%}
+      <a class="waves-effect waves-teal btn-flat" href="/challengeResponse/create/{{challenge.id}}">{% trans "createAResponseForThisChallenge" %}<i class="material-icons right">send</i></a>
+      {% endif %}
 </div>
+
+<div class="row">
+  <h4 class ="col  #ffebee red lighten-5 m1.5"  >{% trans "responsesChallenge" %}:</h4>
+  </div>
+  {% for response in responsesChallenge %}
+  <div class="card #ffebee red lighten-5">
+      <b>{{ response.title }}</b><p>{{response.description}}</p>
+      <p>{% trans "freelancerResponse" %}: {{response.freelancer}} </p>
+      <br>
+  </div>
+  {% endfor %}  
 {% endblock %}

@@ -263,6 +263,12 @@ class ChallengeForm(ModelForm):
         model = Challenge
         exclude = ['business', 'freelancers']
 
+class ChallengeResponseForm(ModelForm):
+
+    class Meta:
+        model = ChallengeResponse
+        exclude = ('freelancer','challenge')
+
 class EventForm(ModelForm):
 
     class Meta:
