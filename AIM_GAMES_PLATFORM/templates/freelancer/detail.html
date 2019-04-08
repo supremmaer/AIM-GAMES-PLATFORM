@@ -188,8 +188,9 @@
           document.getElementById('ifr').src='{{HTML5Showcase.embedCode}}';" class="btn waves-effect waves-red">
             {% trans "mostrar" %}</a>
           <blockquote id="bq" style="display:none">
-
-            <iframe id="ifr" sandbox="allow-scripts" frameborder="0" scrolling="no" width="700" height="400"></iframe>
+            <div class="video-container">
+            <iframe id="ifr" sandbox="allow-scripts" frameborder="0" scrolling="no" width="1000" height="600"></iframe>
+            </div>
             <br>
             {% trans "Game not fully compatible? Try it out at " %}<a href="{{HTML5Showcase.embedCode}}">{{HTML5Showcase.embedCode}}</a>
           </blockquote>
