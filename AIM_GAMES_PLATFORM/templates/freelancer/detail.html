@@ -175,7 +175,9 @@
         </div>
         <div class="col s12 m10 l10 offset-l1 offset-m1">
           <blockquote>
+            {% autoescape off %}
               {{HTML5Showcase.embedCode}}
+            {% endautoescape %}
           </blockquote>
         </div>
         {% if request.session.currentUser == 'freelancer' %}
