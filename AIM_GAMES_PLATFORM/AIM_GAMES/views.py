@@ -384,6 +384,8 @@ def linkCreate(request):
                 link.save()
                 print('link saved')
                 return redirect('/freelancer/detail/'+str(freelancer.id))
+            else:
+                return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add link'})
         else:
             form = LinkForm()
             return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add link'})
@@ -681,9 +683,28 @@ def challengeCreate(request):
     else:
         return render(request, 'index.html')
 
+def challengeResponse_create(request, challengeId):
+    if checkUser(request) == 'freelancer':
+        if request.method=="POST":
+            form = ChallengeResponseForm(request.POST)
+            if form.is_valid():
+                obj = form.save(commit=False)
+                challenge = Challenge.objects.get(id=challengeId)
+                obj.freelancer= findByPrincipal(request)
+                print('todo bien')
+                obj.challenge = challenge
+                obj.save()
+                return redirect('/challenge/detail/' + str(challengeId))
+        else:
+            form = ChallengeResponseForm()
+        return render(request,'challenge/responseCreate.html',{'form':form})
+    else:
+        return handler500(request)
+
 def challengeDetail(request, challenge_id):
         challenge = get_object_or_404(Challenge, pk=challenge_id)
-        return render(request, 'challenge/challengeDetail.html', {'challenge': challenge})
+        responsesChallenge = challenge.challengeresponse_set.all()
+        return render(request, 'challenge/challengeDetail.html', {'challenge': challenge, 'responsesChallenge': responsesChallenge})
 
 def curriculumVerify(request, id):
     userString = checkUser(request)
@@ -794,3 +815,14 @@ def eventJoin(request, event_id):
         obj.companies.add(user)
     obj.save()
     return redirect('/event/detail/'+str(event_id))
+
+def downloadData(request):
+    print("entre!")
+    datos=findByPrincipal(request).getData()
+    print(datos)
+
+    filename = "AIM-GAMES-PLATFORM_yourdata.txt"
+    content = str(datos)
+    response = HttpResponse(content, content_type='text/plain')
+    response['Content-Disposition'] = 'attachment; filename={0}'.format(filename)
+    return response

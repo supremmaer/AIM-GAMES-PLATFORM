@@ -1,4 +1,4 @@
-from django.forms import ModelForm, forms, CharField,URLField, URLInput,Textarea,DateTimeField, ModelMultipleChoiceField,EmailInput, NumberInput, TextInput, MultipleChoiceField,EmailField, ModelMultipleChoiceField,CheckboxSelectMultiple, DateField, DateInput,SelectDateWidget,ChoiceField,RadioSelect
+from django.forms import ModelForm, forms, CharField,URLField, URLInput,Textarea,DateTimeField, ModelMultipleChoiceField,EmailInput, NumberInput, TextInput, MultipleChoiceField,EmailField, ModelMultipleChoiceField,CheckboxSelectMultiple, DateField, DateInput,SelectDateWidget,ChoiceField,RadioSelect,BooleanField
 from django.contrib.auth.forms import UserCreationForm
 from AIM_GAMES.models import *
 from django.contrib.auth.models import User, Group
@@ -37,6 +37,8 @@ class BusinessForm(ModelForm):
 
 class FreelancerForm(ModelForm):
     profession = CharField(widget=TextInput(), label=_("profession"))
+    terms = BooleanField(required = True,label = 'terms')
+
     class Meta:
         model = Freelancer
         exclude = ()
@@ -262,6 +264,12 @@ class ChallengeForm(ModelForm):
     class Meta:
         model = Challenge
         exclude = ['business', 'freelancers']
+
+class ChallengeResponseForm(ModelForm):
+
+    class Meta:
+        model = ChallengeResponse
+        exclude = ('freelancer','challenge')
 
 class EventForm(ModelForm):
 
