@@ -732,6 +732,12 @@ msgstr "New response"
 msgid "New thread"
 msgstr "Threads"
 
+msgid "DeleteAllyourData"
+msgstr "Delete your account forever"
+
+msgid "DownloadData"
+msgstr "Download all your data"
+
 #~ msgid "addAptitude"
 #~ msgstr "Add aptitude"
 

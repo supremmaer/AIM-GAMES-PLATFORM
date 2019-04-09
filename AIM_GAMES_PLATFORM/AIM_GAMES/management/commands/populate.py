@@ -39,7 +39,7 @@ class Command(BaseCommand):
         url6.save()
 
         User.objects.filter(is_superuser=False).delete()
-        #superAdmin = User.objects.create_superuser(username='root',email='',password='toor')
+        superAdmin = User.objects.create_superuser(username='root',email='',password='toor')
         user1 = User.objects.create_user(username='freelancer1', password='estoesuntest')
         user2 = User.objects.create_user(username='freelancer2', password='estoesuntest')
         user3 = User.objects.create_user(username='freelancer3', password='estoesuntest')

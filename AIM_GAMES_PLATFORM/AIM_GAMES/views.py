@@ -827,6 +827,13 @@ def downloadData(request):
     response['Content-Disposition'] = 'attachment; filename={0}'.format(filename)
     return response
 
+def deleteUser(request):
+    user=request.user
+    user.delete()
+    auth.logout(request)
+    return redirect('/')    
+
+
 def message_list(request):
     if not request.user.is_authenticated:
         return handler500(request)

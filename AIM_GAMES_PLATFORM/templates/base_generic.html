@@ -66,13 +66,13 @@
                         	<li><a href="/admin">{% trans "Admin Panel" %}</a></li>
                         {% endif %}
                         {% if request.user.is_authenticated %}
-                            <li><a href="{% url 'logout' %}">{% trans "Logout" %}</a></li>
                             <li><a href="/event/list/">{% trans "Events" %}</a></li>
                             <li><a href="/message/list/">{% trans "Messages" %}
                             {% if not request.session.message_count == 0 %}
                             ({{request.session.message_count}})
                             {% endif %}
                             </a></li>
+                            <li><a href="{% url 'logout' %}">{% trans "Logout" %}</a></li>
                         {% else %}
                         <li><a href="/accounts/login/" target="_self" class="collection-item">{% trans "Log In" %}</a></li>
                         {% endif %}
@@ -129,8 +129,12 @@
                 © 2019 AIM-GAMES-PLATFORM
                 </div>
                 <div class="col s12 m3">
+                {% if request.session.currentUser == 'business' or request.session.currentUser == 'freelancer' %}
+                    <a class="grey-text text-lighten-4 right"  onclick="window.open('userDownloadData')" >{% trans "DownloadData" %}</a><br>
+                    <a class="grey-text text-lighten-4 right"  href="/deleteUser" >{% trans "DeleteAllyourData" %}</a>
 
-                <a class="grey-text text-lighten-4 right"  onclick="window.open('userDownloadData')" >DownloadData</a>
+                {% endif %}
+
                 </div></div>
             </div>
         </div>

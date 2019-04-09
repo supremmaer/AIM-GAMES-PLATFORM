@@ -16,10 +16,14 @@
             indicators: true
           });
         </script>
+<div class="row">
+<div class="col s12 m8">
 <div class="card  lighten-2">  
     <div class="row">
-      <h1>{% trans "Thread details" %}:</h1>
-      <div class="col m6 s12">  
+        <div class="col m6 s12">
+            <h1>{% trans "Thread details" %}:</h1>
+        </div>
+      <div class="col m6 s12">
         <h4>{{thread.title}}</h4>
       </div>
       <div class="col m6 s12">
@@ -42,9 +46,9 @@
       {% endfor %}  
     </ul>
    
-            <ul class="collection">
+            {% comment %}<ul class="collection">
                 <li><b>{% trans "valoration" %}:</b> {{ thread.valoration.score }}</li>
-            </ul>  
+            </ul> {% endcomment %}
             <b>{% trans "pictures" %}:</b>
                   <div class="carousel carousel-slider">
                     {% for pic in thread.pics.all %}
@@ -54,24 +58,28 @@
         </div>    
     <a class="waves-effect waves-teal btn-flat" href="/response/create/{{thread.id}}">{% trans "createAResponseForThisThread" %}     <i class="material-icons right">send</i>
     </a>
-
+</div></div>
 <div class="row">
 <h4 class ="col  #ffebee red lighten-5 m1.5"  >{% trans "responses" %}:</h4>
 </div>
 {% for response in responses %}
-<div class="card #ffebee red lighten-5">
-    <b>{{ response.title }}</b><p>{{response.description}}</p>
-    <p>{% trans "business" %}: {{response.business}} </p>
-    <b>{% trans "pictures" %}:</b>
-    <div class="carousel m1 s4">
-    {% if response.pics.count > 0 %}
-        {% for pic in response.pics.all %}
-          <a class="carousel-item" href="{{pic.uri}}"><img src="{{pic.uri}}" class="img-responsive"></a>
-        {% endfor %}
-    {% endif %}
+    <div class="row">
+        <div class="col s12 m6">
+            <div class="card #ffebee red lighten-5">
+                <p><b>{{ response.title }}</b></p><p>{{response.description}}</p>
+                <p>{% trans "business" %}: {{response.business}} </p>
+                <b>{% trans "pictures" %}:</b>
+                <div class="carousel">
+                {% if response.pics.count > 0 %}
+                    {% for pic in response.pics.all %}
+                      <a class="carousel-item" href="{{pic.uri}}"><img src="{{pic.uri}}" class="img-responsive"></a>
+                    {% endfor %}
+                {% endif %}
+                </div>
+                <br>
+            </div>
+        </div>
     </div>
-    <br>
-</div>
 {% endfor %}  
 
 {% endblock %}
