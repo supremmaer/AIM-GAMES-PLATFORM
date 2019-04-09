@@ -502,7 +502,7 @@ def jobOfferEdit(request,id):
             obj = form.save(commit=False)
             obj.business = business
             obj.save()
-            return redirect('/joboffer/user/list/')
+            return redirect('/jobOffer/detail/'+ str(id))
         else:
             return render(request,'business/standardForm.html',{'form':form,'title':'Edit Job Offer'})
     else:
