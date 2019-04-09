@@ -839,8 +839,13 @@ def message_show(request, id):
     user = request.user 
     if not (user == message.sender or user == message.recipient):
         return handler500(request)
-    message.readed = True
-    message.save()
+    if message.readed is False:
+        count = int(request.session["message_count"])
+        if count>0:
+            count = count - 1
+            request.session["message_count"] = count
+        message.readed = True
+        message.save()
     return render(request, 'message/show.html', {'message': message})
 
 def message_create(request):

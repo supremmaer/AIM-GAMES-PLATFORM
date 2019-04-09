@@ -15,11 +15,11 @@ class GetLanguage(MiddlewareMixin):
 
 class CountUnreadedMessages(MiddlewareMixin):
     def process_request(self, request):
-        count = "0"
+        count = 0
         if request.user.is_authenticated:
             user = request.user
-            count = str(Message.objects.filter(recipient=user, readed=False).count())
-            if int(count) > 99:
+            count = Message.objects.filter(recipient=user, readed=False).count()
+            if count > 99:
                 count = "99+"
         request.session['message_count'] = count
         return
