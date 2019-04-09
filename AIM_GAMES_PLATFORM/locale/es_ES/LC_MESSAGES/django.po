@@ -720,6 +720,12 @@ msgstr "Nueva respuesta"
 msgid "New thread"
 msgstr "Nuevo hilo"
 
+msgid "DeleteAllyourData"
+msgstr "Borra tu cuenta para siempre"
+
+msgid "DownloadData"
+msgstr "Descargar todos tus datos"
+
 #~ msgid "addAptitude"
 #~ msgstr "Añadir aptitud"
 
