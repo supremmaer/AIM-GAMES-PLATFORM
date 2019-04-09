@@ -134,8 +134,10 @@
                 © 2019 AIM-GAMES-PLATFORM
                 </div>
                 <div class="col s12 m3">
+                {% if request.session.currentUser == 'business' or request.session.currentUser == 'freelancer' %}
+                    <a class="grey-text text-lighten-4 right"  onclick="window.open('userDownloadData')" >DownloadData</a>
+                {% endif %}
 
-                <a class="grey-text text-lighten-4 right"  onclick="window.open('userDownloadData')" >DownloadData</a>
                 </div></div>
             </div>
         </div>
