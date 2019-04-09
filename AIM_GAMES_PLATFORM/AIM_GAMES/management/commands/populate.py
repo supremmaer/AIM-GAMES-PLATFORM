@@ -39,7 +39,7 @@ class Command(BaseCommand):
         url6.save()
 
         User.objects.filter(is_superuser=False).delete()
-        superAdmin = User.objects.create_superuser(username='root',email='',password='toor')
+        #superAdmin = User.objects.create_superuser(username='root',email='',password='toor')
         user1 = User.objects.create_user(username='freelancer1', password='estoesuntest')
         user2 = User.objects.create_user(username='freelancer2', password='estoesuntest')
         user3 = User.objects.create_user(username='freelancer3', password='estoesuntest')
@@ -250,9 +250,8 @@ class Command(BaseCommand):
         businesses3 = (business1,)
         event3.freelancers.set(freelancers3)
         event3.companies.set(businesses3)
-
-        chat1, created = Chat.objects.get_or_create(user1=user1, user2=user2)
-        message1, created = Message.objects.get_or_create(chat=chat1, sender=user1, text="hello there")
-        message2, created = Message.objects.get_or_create(chat=chat1, sender=user2, text="General Kenobi")
+        
+        message1, created = Message.objects.get_or_create(sender=user1, recipient=user2, subject="uwu" ,text="sad")
+        message1, created = Message.objects.get_or_create(sender=user2, recipient=user1, subject="owo" ,text="sand dunes")
 
         print("Database populated.")

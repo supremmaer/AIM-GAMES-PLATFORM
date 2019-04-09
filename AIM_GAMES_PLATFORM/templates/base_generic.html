@@ -68,6 +68,7 @@
                         {% if request.user.is_authenticated %}
                             <li><a href="{% url 'logout' %}">{% trans "Logout" %}</a></li>
                             <li><a href="/event/list/">{% trans "Events" %}</a></li>
+                            <li><a href="/message/list/">{% trans "Messages" %}({{request.session.message_count}})</a></li>
                         {% else %}
                         <li><a href="/accounts/login/" target="_self" class="collection-item">{% trans "Log In" %}</a></li>
                         {% endif %}

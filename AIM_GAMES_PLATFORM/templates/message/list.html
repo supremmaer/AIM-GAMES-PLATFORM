@@ -1,0 +1,39 @@
+{% extends "base_generic.html" %}
+{% load i18n %}
+{% block content %}
+  
+  
+<body>
+     <table class="striped responsive">
+        <thead>
+          <tr>
+              <th>{% trans "date" %}</th>
+              <th>{% trans "subject" %}</th>
+              <th>{% trans "sender" %}</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        {% for message in messages %}
+        {% if message.readed == True %}
+        <tr>
+            <td bgcolor="#5D7B9D">{{message.timestamp}}</td>
+            <td bgcolor="#5D7B9D">{{message.subject}}</td>
+            <td bgcolor="#5D7B9D">{{message.sender}}</td>
+            <td bgcolor="#5D7B9D"><a href="/message/show/{{message.id}}" class="btn waves-effect waves-red">{% trans "view" %}</a></td>
+        </tr>
+        {% endif %}
+        {% if message.readed == False %}
+        <tr>
+            <td bgcolor="#FF0022">{{message.timestamp}}</td>
+            <td bgcolor="#FF0022">{{message.subject}}</td>
+            <td bgcolor="#FF0022">{{message.sender}}</td>
+            <td bgcolor="#FF0022"><a href="/message/show/{{message.id}}" class="btn waves-effect waves-red">{% trans "view" %}</a></td>
+        </tr>
+        {% endif %}
+         
+        {% endfor %}
+      </table>
+    <td><a href="/message/create/" class="btn waves-effect waves-red">{% trans "newmessage" %}</a></td>
+</body>
+{% endblock %}
