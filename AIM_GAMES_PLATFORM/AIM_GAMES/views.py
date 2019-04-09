@@ -830,7 +830,7 @@ def downloadData(request):
 def deleteUser(request):
     user=request.user
     user.delete()
-    return render(request, 'index.html')
+    return redirect('/')    
 
 
 def message_list(request):
