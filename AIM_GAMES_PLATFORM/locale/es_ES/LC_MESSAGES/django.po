@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 01:15+0200\n"
+"POT-Creation-Date: 2019-04-09 01:55+0200\n"
 "PO-Revision-Date: 2019-03-29 13:19+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -180,7 +180,7 @@ msgid "center"
 msgstr "Centro"
 
 #: .\AIM_GAMES\models.py:114 .\AIM_GAMES\models.py:132
-#: .\templates\freelancer\detail.html:54
+#: .\templates\freelancer\detail.html:61
 msgid "formation"
 msgstr "Formación"
 
@@ -496,7 +496,7 @@ msgstr ""
 msgid "Agreed"
 msgstr "De acuerdo"
 
-#: .\templates\curriculumList.html:20 .\templates\freelancer\detail.html:129
+#: .\templates\curriculumList.html:20 .\templates\freelancer\detail.html:136
 msgid "aptitudes"
 msgstr "Aptitudes"
 
@@ -512,10 +512,10 @@ msgstr "Asistentes"
 msgid "Join"
 msgstr "Unirse"
 
-#: .\templates\event\eventDetail.html:61 .\templates\freelancer\detail.html:40
-#: .\templates\freelancer\detail.html:74 .\templates\freelancer\detail.html:111
-#: .\templates\freelancer\detail.html:137
-#: .\templates\freelancer\detail.html:165
+#: .\templates\event\eventDetail.html:61 .\templates\freelancer\detail.html:47
+#: .\templates\freelancer\detail.html:81 .\templates\freelancer\detail.html:118
+#: .\templates\freelancer\detail.html:144
+#: .\templates\freelancer\detail.html:172
 msgid "Edit"
 msgstr "Editar"
 
@@ -537,70 +537,74 @@ msgstr "Eventos"
 msgid "Submit"
 msgstr "Enviar"
 
-#: .\templates\freelancer\detail.html:15
+#: .\templates\freelancer\detail.html:12
+msgid "warninghtml5"
+msgstr "Estás a punto de cargar contenido ajeno a AIMGAME, ¿está seguro que desea continuar?"
+
+#: .\templates\freelancer\detail.html:22
 msgid "freelancerDetails"
 msgstr "Detalles del freelancer"
 
-#: .\templates\freelancer\detail.html:24
+#: .\templates\freelancer\detail.html:31
 msgid "verify"
 msgstr "Verificar curriculum"
 
-#: .\templates\freelancer\detail.html:27
+#: .\templates\freelancer\detail.html:34
 msgid "Verified curriculum"
 msgstr "Curriculum verificado"
 
-#: .\templates\freelancer\detail.html:30
+#: .\templates\freelancer\detail.html:37
 msgid "links"
 msgstr "Enlaces"
 
-#: .\templates\freelancer\detail.html:41 .\templates\freelancer\detail.html:75
-#: .\templates\freelancer\detail.html:112
-#: .\templates\freelancer\detail.html:138
-#: .\templates\freelancer\detail.html:166
-#: .\templates\freelancer\detail.html:200
+#: .\templates\freelancer\detail.html:48 .\templates\freelancer\detail.html:82
+#: .\templates\freelancer\detail.html:119
+#: .\templates\freelancer\detail.html:145
+#: .\templates\freelancer\detail.html:173
+#: .\templates\freelancer\detail.html:207
 msgid "Delete"
 msgstr "Eliminar"
 
-#: .\templates\freelancer\detail.html:49
+#: .\templates\freelancer\detail.html:56
 msgid "Add link"
 msgstr "Añadir enlace"
 
-#: .\templates\freelancer\detail.html:85
+#: .\templates\freelancer\detail.html:92
 msgid "addFormation"
 msgstr "Añadir formación"
 
-#: .\templates\freelancer\detail.html:90
+#: .\templates\freelancer\detail.html:97
 #, fuzzy
 #| msgid "profession"
 msgid "professionalExperience"
 msgstr "Profesión"
 
-#: .\templates\freelancer\detail.html:122
+#: .\templates\freelancer\detail.html:129
 msgid "addProfessionalExperience"
 msgstr "Añadir experiencia profesional"
 
-#: .\templates\freelancer\detail.html:146
-#: .\templates\freelancer\detail.html:175
+#: .\templates\freelancer\detail.html:153
+#: .\templates\freelancer\detail.html:182
 msgid "addGraphicEngineExperience"
 msgstr "Añadir experiencia con motores gráficos"
 
-#: .\templates\freelancer\detail.html:152
+#: .\templates\freelancer\detail.html:159
 msgid "graphicEngineExperiences"
 msgstr "Experiencias con motores gráficos"
 
-#: .\templates\freelancer\detail.html:182
+#: .\templates\freelancer\detail.html:189
 msgid "HTML5Showcase"
 msgstr "Expositor de HTML5"
 
-#: .\templates\freelancer\detail.html:189
+#: .\templates\freelancer\detail.html:195
 msgid "mostrar"
 msgstr "Mostrar expositor de HTML"
 
-#: .\templates\freelancer\detail.html:194
+#: .\templates\freelancer\detail.html:201
 msgid "Game not fully compatible? Try it out at "
 msgstr "¿El juego no es completamente compatible? Pruébalo en "
 
-#: .\templates\freelancer\detail.html:199
+#: .\templates\freelancer\detail.html:206
 msgid "editHTML5Showcase"
 msgstr "Modificar expositor de HTML5"
 

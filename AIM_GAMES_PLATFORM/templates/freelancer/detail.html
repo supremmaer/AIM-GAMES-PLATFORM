@@ -9,8 +9,11 @@
          document.getElementById('ifr').src='';
        }
        else{
-         e.style.display = 'block';
-         document.getElementById('ifr').src='{{HTML5Showcase.embedCode}}';
+         var r = confirm("{% trans 'warninghtml5' %}");
+         if (r == true) {
+           e.style.display = 'block';
+           document.getElementById('ifr').src='{{HTML5Showcase.embedCode}}';
+         }
        }
    }
 </script>
