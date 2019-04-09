@@ -423,7 +423,7 @@ msgstr "Eventos"
 
 #: .\templates\base_generic.html:71
 msgid "Messages"
-msgstr ""
+msgstr "Mensajes"
 
 #: .\templates\challenge\challengeDetail.html:7
 msgid "Challenge details"
@@ -655,19 +655,19 @@ msgstr "Crear oferta"
 
 #: .\templates\message\create.html:7
 msgid "Message"
-msgstr ""
+msgstr "Mensaje"
 
 #: .\templates\message\list.html:10
 msgid "date"
-msgstr ""
+msgstr "Fecha"
 
 #: .\templates\message\list.html:11
 msgid "subject"
-msgstr ""
+msgstr "Asunto"
 
 #: .\templates\message\list.html:37
 msgid "newmessage"
-msgstr ""
+msgstr "Nuevo mensaje"
 
 #: .\templates\pagarPaypal.html:15
 msgid "paymentprocess"
