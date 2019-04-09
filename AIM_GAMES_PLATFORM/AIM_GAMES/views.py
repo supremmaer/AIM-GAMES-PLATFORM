@@ -198,6 +198,10 @@ def jobOfferDetail(request, id):
         for pic in pics:
             pic.strip()
         
+        if checkUser(request)=='business':
+            business = findByPrincipal(request)
+            if business.id == jobOffer.id:
+                return render(request, 'jobOfferDetail.html', {'jobOffer': jobOffer, 'pics' : pics,'owner':True})        
         return render(request, 'jobOfferDetail.html', {'jobOffer': jobOffer, 'pics' : pics})
 
 def findByPrincipal(request):
@@ -484,6 +488,34 @@ def jobOfferCreate(request):
         else:
             form = JobOfferForm()
             return render(request,'business/standardForm.html',{'form':form,'title':'Add Job Offer'})
+    else:
+        return handler500(request)
+
+def jobOfferEdit(request,id):
+    if checkUser(request)=='business':
+        business = findByPrincipal(request)
+        instance = get_object_or_404(JobOffer, id=id)
+        if instance.business.id != business.id:
+            return handler500(request)
+        form = JobOfferForm(request.POST or None, instance=instance)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.business = business
+            obj.save()
+            return redirect('/joboffer/user/list/')
+        else:
+            return render(request,'business/standardForm.html',{'form':form,'title':'Edit Job Offer'})
+    else:
+        return handler500(request)
+
+def jobOfferDelete(request,id):
+    if checkUser(request)=='business':
+        business = findByPrincipal(request)
+        instance = get_object_or_404(JobOffer, id=id)
+        if instance.business.id != business.id:
+            return handler500(request)
+        instance.delete()
+        return redirect('/joboffer/user/list/')
     else:
         return handler500(request)
 

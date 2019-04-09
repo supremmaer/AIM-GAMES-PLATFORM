@@ -23,7 +23,11 @@
                 {% for jobOffer in jobOffers %}
                 <div class="collection-item">
                     <div class="row">
-                        <div class="col s3">{{ jobOffer.business.profile.name }}</div><div class="col s3">{{ jobOffer.salary}}</div><div class="col s3">{{ jobOffer.schedule}}</div><div class="col s2 offset-s1"><a href="/jobOffer/detail/{{jobOffer.id}}" class="btn waves-effect waves-red">{% trans "view" %}</a></div>
+                        <div class="col s3">{{ jobOffer.business.profile.name }}</div>
+                        <div class="col s3">{{ jobOffer.salary}}</div><div class="col s3">{{ jobOffer.schedule}}</div>
+                        <div class="col s2 offset-s1">
+                            <a href="/jobOffer/detail/{{jobOffer.id}}" class="btn waves-effect waves-red">{% trans "view" %}</a>
+                        </div>
                     </div>
                 </div>
                 {% endfor %}
