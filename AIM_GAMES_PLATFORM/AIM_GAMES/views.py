@@ -830,6 +830,7 @@ def downloadData(request):
 def deleteUser(request):
     user=request.user
     user.delete()
+    auth.logout(request)
     return redirect('/')    
 
 
