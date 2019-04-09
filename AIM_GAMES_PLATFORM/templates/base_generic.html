@@ -4,21 +4,10 @@
 {% load cookielaw_tags %}
 <!DOCTYPE html>
 <html lang="es">
+<body>
     <head>
         {% block title %}<title>AIM Games Platform</title>{% endblock %}
         
-
-        <style>  
-         body {
-            display: flex;
-            min-height: 100vh;
-            flex-direction: column;
-        }
-
-        main {
-            flex: 1 0 auto;
-        }
-      </style>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
         <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
@@ -50,7 +39,7 @@
        
     </head>
 
-    <body>
+    
         <nav>
             <div class="nav-wrapper">
                     <a href="/" class="brand-logo" id="logotipo" >AIM Games</a>
@@ -79,6 +68,11 @@
                         {% if request.user.is_authenticated %}
                             <li><a href="{% url 'logout' %}">{% trans "Logout" %}</a></li>
                             <li><a href="/event/list/">{% trans "Events" %}</a></li>
+                            <li><a href="/message/list/">{% trans "Messages" %}
+                            {% if not request.session.message_count == 0 %}
+                            ({{request.session.message_count}})
+                            {% endif %}
+                            </a></li>
                         {% else %}
                         <li><a href="/accounts/login/" target="_self" class="collection-item">{% trans "Log In" %}</a></li>
                         {% endif %}
@@ -115,9 +109,10 @@
                 <li><a href="/accounts/login/" target="_self" class="collection-item">{% trans "Log In" %}</a></li>
                 {% endif %}
             </ul>
-
+            <main>
         {% block content %}<!-- default content text (typically empty) -->{% endblock %}
         {% cookielaw_banner %}
+            </main>
         <script>
             const slide_menu = document.querySelectorAll(".sidenav");
             M.Sidenav.init(slide_menu,{});

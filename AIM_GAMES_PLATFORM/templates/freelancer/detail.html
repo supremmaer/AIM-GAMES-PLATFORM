@@ -1,7 +1,22 @@
 {% extends "base_generic.html" %}
 {% block content %}
 {% load i18n %}
-  
+<script type="text/javascript">
+   function toggle_showcase() {
+       var e = document.getElementById('bq');
+       if(e.style.display == 'block'){
+         e.style.display = 'none';
+         document.getElementById('ifr').src='';
+       }
+       else{
+         var r = confirm("{% trans 'warninghtml5' %}");
+         if (r == true) {
+           e.style.display = 'block';
+           document.getElementById('ifr').src='{{HTML5Showcase.embedCode}}';
+         }
+       }
+   }
+</script>
   
   
     <h1>{% trans "freelancerDetails" %}</h1>    
@@ -167,17 +182,23 @@
               <a href="/freelancer/graphicEngineExperience/create" class="btn waves-effect waves-red">{% trans "addGraphicEngineExperience" %}</a>
           
         {% endif %}
+
       </div>
 
-        
         <div class="col s12 m12 l12 offset-m1">
           <b>{% trans "HTML5Showcase" %}:</b>
+
         </div>
+
         <div class="col s12 m10 l10 offset-l1 offset-m1">
-          <blockquote>
-            {% autoescape off %}
-              {{HTML5Showcase.embedCode}}
-            {% endautoescape %}
+          <a href="#!" onclick="toggle_showcase();" class="btn waves-effect waves-red">
+            {% trans "mostrar" %}</a>
+          <blockquote id="bq" style="display:none">
+            <div class="hide-on-med-and-down">
+            <iframe id="ifr" sandbox="allow-scripts" frameborder="0" scrolling="no" width="1000" height="600"></iframe>
+            </div>
+            <br>
+            {% trans "Game not fully compatible? Try it out at " %}<a href="{{HTML5Showcase.embedCode}}">{{HTML5Showcase.embedCode}}</a>
           </blockquote>
         </div>
         {% if request.session.currentUser == 'freelancer' %}

@@ -21,7 +21,6 @@ from django.contrib.auth import views as auth_views
 
 #Aqui ponemos las rutas
 urlpatterns = [
-    
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('paypal', include('paypal.standard.ipn.urls')),
@@ -78,5 +77,8 @@ urlpatterns = [
     path('event/join/<int:event_id>',eventJoin,name='eventJoin'),
     path('userDownloadData',downloadData),
     path('challengeResponse/create/<int:challengeId>', challengeResponse_create, name="responseCreate"),
+    path('message/list/',message_list),
+    path('message/show/<int:id>',message_show),
+    path('message/create/', message_create)
 
 ]

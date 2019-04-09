@@ -4,6 +4,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.urls import reverse
 from django.contrib.auth.hashers import make_password
 from django.utils.translation import ugettext_lazy as _
+from django.utils import timezone
 
 # Create your models here.
 # System objects
@@ -319,20 +320,15 @@ class Event(models.Model):
 
 # Objects for all users
 
-
-class Chat(models.Model):
-    user1 = models.OneToOneField(
-        User, on_delete=models.CASCADE, verbose_name=_("user"), related_name="user1")
-    user2 = models.OneToOneField(
-        User, on_delete=models.CASCADE, verbose_name=_("user"), related_name="user2")
-
-
 class Message(models.Model):
-    chat = models.ForeignKey(
-        Chat, on_delete=models.CASCADE, verbose_name=_("chat"))
     sender = models.ForeignKey(
-        User, on_delete=models.CASCADE, verbose_name=_("user"))
+        User, on_delete=models.CASCADE, verbose_name=_("sender"), related_name=("sender_messages"))
+    recipient = models.ForeignKey(
+        User, on_delete=models.CASCADE, verbose_name=_("recipient"), related_name=("recipient_messages"))
+    subject = models.TextField(max_length=100, blank=False)
     text = models.TextField(blank=False)
+    timestamp = models.DateTimeField(default=timezone.now)
+    readed = models.BooleanField(default=False)
 
 
 def getCurriculumData(self):
