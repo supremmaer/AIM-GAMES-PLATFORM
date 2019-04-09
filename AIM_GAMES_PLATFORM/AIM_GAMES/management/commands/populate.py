@@ -12,30 +12,30 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        tag = Tag(title='Very good tag')
+        tag = Tag(title='Event')
         tag.save()
-        tag2 = Tag(title='Very good tag2')
+        tag2 = Tag(title='Game engine')
         tag2.save()
-        tag3 = Tag.objects.get_or_create(title='Very good tag3')
+        tag3 = Tag.objects.get_or_create(title='Software library')
 
-        graphicEngine1 = GraphicEngine(title='graphicEngine1')
+        graphicEngine1 = GraphicEngine(title='Unreal Engine')
         graphicEngine1.save()
-        graphicEngine2 = GraphicEngine(title='graphicEngine2')
+        graphicEngine2 = GraphicEngine(title='Unity')
         graphicEngine2.save()
-        graphicEngine3 = GraphicEngine(title='graphicEngine3')
+        graphicEngine3 = GraphicEngine(title='RPG Maker')
         graphicEngine3.save()
 
         url1 = URL(uri='http://www.funcage.com/blog/wp-content/uploads/2013/11/Random-Photoshopped-Pictures-006.jpg')
         url1.save()
-        url2 = URL(uri='http://www.funcage.com/blog/wp-content/uploads/2013/11/Random-Photoshopped-Pictures-006.jpg')
+        url2 = URL(uri='https://404store.com/2017/08/15/4949794-random-image.jpg')
         url2.save()
-        url3 = URL(uri='http://www.funcage.com/blog/wp-content/uploads/2013/11/Random-Photoshopped-Pictures-006.jpg')
+        url3 = URL(uri='https://vignette.wikia.nocookie.net/blogclan-2/images/b/b9/Random-image-15.jpg/revision/latest?cb=20160706220047')
         url3.save()
-        url4 = URL(uri='http://www.funcage.com/blog/wp-content/uploads/2013/11/Random-Photoshopped-Pictures-006.jpg')
+        url4 = URL(uri='https://vignette.wikia.nocookie.net/rpg-maker-wiki/images/7/78/RPGMakerlogo.png/revision/latest?cb=20190109034832')
         url4.save()
-        url5 = URL(uri='http://www.funcage.com/blog/wp-content/uploads/2013/11/Random-Photoshopped-Pictures-006.jpg')
+        url5 = URL(uri='https://www.linuxadictos.com/wp-content/uploads/unity-logo.jpg')
         url5.save()
-        url6 = URL(uri='http://www.funcage.com/blog/wp-content/uploads/2013/11/Random-Photoshopped-Pictures-006.jpg')
+        url6 = URL(uri='https://nextn-cdn-nextn.netdna-ssl.com/wp-content/uploads/2016/05/1605-14-Unreal-Engine-1.jpg')
         url6.save()
 
         User.objects.filter(is_superuser=False).delete()
@@ -65,37 +65,37 @@ class Command(BaseCommand):
         management_group.user_set.add(user9)
 
         
-        profile1= Profile(user=user1, name='freelancer1', surname='surf1', email='freelance1@test.com', city='city1', 
-            postalCode='code1', idCardNumber='number1', dateOfBirth='2012-12-12 00:00', phoneNumber='phone1',photo=url1)
+        profile1= Profile(user=user1, name='Indiana', surname='Ford', email='indiana@test.com', city='Sevilla', 
+            postalCode='41008', idCardNumber='12345678A', dateOfBirth='1990-12-12 00:00', phoneNumber='691000000',photo=url1)
         profile1.save()
-        profile2= Profile(user=user2, name='freelancer2', surname='surf2', email='freelance2@test.com', city='city2', 
-            postalCode='code2', idCardNumber='number2', dateOfBirth='2012-12-12 00:00', phoneNumber='phone2',photo=url2)
+        profile2= Profile(user=user2, name='Francisco', surname='Vega', email='francisco@test.com', city='Huelva', 
+            postalCode='41008', idCardNumber='12387678B', dateOfBirth='1991-12-12 00:00', phoneNumber='691000002',photo=url2)
         profile2.save()
-        profile3= Profile(user=user3, name='freelancer3', surname='surf3', email='freelance1@test.com', city='city3', 
-            postalCode='code3', idCardNumber='number3', dateOfBirth='2012-12-12 00:00', phoneNumber='phone3',photo=url3)
+        profile3= Profile(user=user3, name='Raul', surname='Cuevas', email='raul@test.com', city='Cordoba', 
+            postalCode='41008', idCardNumber='12365678C', dateOfBirth='1991-12-12 00:00', phoneNumber='691000003',photo=url3)
         profile3.save()
-        profile4= Profile(user=user4, name='business1', surname='surb1', email='business1@test.com', city='city4', 
-            postalCode='code4', idCardNumber='number4', dateOfBirth='2012-12-12 00:00', phoneNumber='phone4',photo=url4)
+        profile4= Profile(user=user4, name='TakeTwo', surname='TakeTwo', email='TakeTwo@test.com', city='Barcelona', 
+            postalCode='41008', idCardNumber='12340678D', dateOfBirth='2000-12-12 00:00', phoneNumber='691000004',photo=url1)
         profile4.save()
-        profile5= Profile(user=user5, name='business2', surname='surb2', email='business2@test.com', city='city5', 
-            postalCode='code5', idCardNumber='number5', dateOfBirth='2012-12-12 00:00', phoneNumber='phone5',photo=url5)
+        profile5= Profile(user=user5, name='LigthDemons', surname='LigthDemons', email='LigthDemons@test.com', city='Sevilla', 
+            postalCode='41008', idCardNumber='12347678E', dateOfBirth='2012-12-12 00:00', phoneNumber='691000005',photo=url2)
         profile5.save()
-        profile6= Profile(user=user6, name='business3', surname='surb3', email='business3@test.com', city='city6', 
-            postalCode='code6', idCardNumber='number6', dateOfBirth='2012-12-12 00:00', phoneNumber='phone6',photo=url6)
+        profile6= Profile(user=user6, name='GreatGames', surname='GreatGames', email='GreatGames@test.com', city='Madrid', 
+            postalCode='41008', idCardNumber='12343678F', dateOfBirth='2012-12-12 00:00', phoneNumber='691000006',photo=url3)
         profile6.save()
-        profile7= Profile(user=user7, name='manager1', surname='surm1', email='manager1@test.com', city='city7', 
-            postalCode='code7', idCardNumber='number7', dateOfBirth='2012-12-12 00:00', phoneNumber='phone7',photo=url6)
+        profile7= Profile(user=user7, name='Jacinto', surname='Rojo', email='jacinto@test.com', city='Cadiz', 
+            postalCode='41008', idCardNumber='12345648G', dateOfBirth='1990-12-12 00:00', phoneNumber='691000007',photo=url1)
         profile7.save()
-        profile8= Profile(user=user8, name='manager2', surname='surm2', email='manager2@test.com', city='city8', 
-            postalCode='code8', idCardNumber='number8', dateOfBirth='2012-12-12 00:00', phoneNumber='phone8',photo=url6)
+        profile8= Profile(user=user8, name='Luis', surname='Salazar', email='luis@test.com', city='Madrid', 
+            postalCode='41008', idCardNumber='12345658H', dateOfBirth='1985-12-12 00:00', phoneNumber='691000008',photo=url2)
         profile8.save()
-        profile9= Profile(user=user9, name='manager3', surname='surm3', email='manager3@test.com', city='city9', 
-            postalCode='code9', idCardNumber='number9', dateOfBirth='2012-12-12 00:00', phoneNumber='phone9',photo=url6)
+        profile9= Profile(user=user9, name='Victor', surname='Blanco', email='victor@test.com', city='Sevilla', 
+            postalCode='41008', idCardNumber='12345679I', dateOfBirth='1993-12-12 00:00', phoneNumber='691000009',photo=url3)
         profile9.save()
 
-        freelancer1,created = Freelancer.objects.get_or_create(profile=profile1, profession='profession1')
-        freelancer2,created = Freelancer.objects.get_or_create(profile=profile2, profession='profession2')
-        freelancer3,created = Freelancer.objects.get_or_create(profile=profile3, profession='profession3')
+        freelancer1,created = Freelancer.objects.get_or_create(profile=profile1, profession='Writer')
+        freelancer2,created = Freelancer.objects.get_or_create(profile=profile2, profession='Programmer')
+        freelancer3,created = Freelancer.objects.get_or_create(profile=profile3, profession='Art Designer')
         
         business1,created = Business.objects.get_or_create(profile=profile4, lastPayment='2014-12-12 00:00')
         business2,created = Business.objects.get_or_create(profile=profile5, lastPayment='2014-12-12 00:00')
@@ -109,21 +109,21 @@ class Command(BaseCommand):
         curriculum2,created = Curriculum.objects.get_or_create(freelancer= freelancer2,verified=False)
         curriculum3,created = Curriculum.objects.get_or_create(freelancer= freelancer3,verified=True)
 
-        professionalExperience1,created = ProfessionalExperience.objects.get_or_create(curriculum=curriculum1, center='center1', 
-            formation='formation1', startDate='2014-12-12 00:00',endDate='2015-12-12 00:00',miniature=url1)
-        professionalExperience2,created = ProfessionalExperience.objects.get_or_create(curriculum=curriculum2, center='center2',
-            formation='formation2', startDate='2014-12-12 00:00',endDate='2015-12-12 00:00',miniature=url2)
-        professionalExperience3,created = ProfessionalExperience.objects.get_or_create(curriculum=curriculum3, center='center3',
-            formation='formation3', startDate='2014-12-12 00:00',endDate='2015-12-12 00:00',miniature=url3)
+        professionalExperience1,created = ProfessionalExperience.objects.get_or_create(curriculum=curriculum1, center='Nintendo', 
+            formation='Co-Writer of Zelda', startDate='2014-12-12 00:00',endDate='2015-12-12 00:00',miniature=url1)
+        professionalExperience2,created = ProfessionalExperience.objects.get_or_create(curriculum=curriculum2, center='Ubisoft',
+            formation='Worked in Assasins Creed team developer', startDate='2014-12-12 00:00',endDate='2015-12-12 00:00',miniature=url2)
+        professionalExperience3,created = ProfessionalExperience.objects.get_or_create(curriculum=curriculum3, center='Blizzard',
+            formation='Worked in Starcraft 2 concept art', startDate='2014-12-12 00:00',endDate='2015-12-12 00:00',miniature=url3)
 
-        Formation1,created = Formation.objects.get_or_create(curriculum=curriculum1, center='center1', 
-            formation='formation1', startDate='2014-12-12 00:00',endDate='2015-12-12 00:00',miniature=url1)
-        Formation2,created = Formation.objects.get_or_create(curriculum=curriculum2, center='center2', 
-            formation='formation2', startDate='2014-12-12 00:00',endDate='2015-12-12 00:00',miniature=url2)
-        Formation3,created = Formation.objects.get_or_create(curriculum=curriculum3, center='center3', 
-            formation='formation3', startDate='2014-12-12 00:00',endDate='2015-12-12 00:00',miniature=url3)
-        Formation4,created = Formation.objects.get_or_create(curriculum=curriculum1, center='center1', 
-            formation='formation4', startDate='2014-12-12 00:00',endDate='2015-12-12 00:00',miniature=url4)
+        Formation1,created = Formation.objects.get_or_create(curriculum=curriculum1, center='GAMES RESEARCH CENTER', 
+            formation='RPGMAKER course', startDate='2014-12-12 00:00',endDate='2015-12-12 00:00',miniature=url4)
+        Formation2,created = Formation.objects.get_or_create(curriculum=curriculum2, center='GAMES RESEARCH CENTER', 
+            formation='RPGMAKER developer course', startDate='2014-12-12 00:00',endDate='2015-12-12 00:00',miniature=url4)
+        Formation3,created = Formation.objects.get_or_create(curriculum=curriculum3, center='GAMES RESEARCH CENTER', 
+            formation='Unity course', startDate='2014-12-12 00:00',endDate='2015-12-12 00:00',miniature=url5)
+        Formation4,created = Formation.objects.get_or_create(curriculum=curriculum1, center='GAMES RESEARCH CENTER', 
+            formation='Unreal engine course', startDate='2014-12-12 00:00',endDate='2015-12-12 00:00',miniature=url6)
 
         graphicEngineExperience1, created = GraphicEngineExperience.objects.get_or_create(curriculum=curriculum1, 
             graphicEngine=graphicEngine1, graphicExperience=90)
@@ -132,32 +132,32 @@ class Command(BaseCommand):
         graphicEngineExperience3, created = GraphicEngineExperience.objects.get_or_create(curriculum=curriculum3, 
             graphicEngine=graphicEngine3, graphicExperience=75)
 
-        html5Showcase1, created = HTML5Showcase.objects.get_or_create(curriculum=curriculum1, embedCode='codecode')
-        html5Showcase2, created = HTML5Showcase.objects.get_or_create(curriculum=curriculum2, embedCode='codecode2')
-        html5Showcase3, created = HTML5Showcase.objects.get_or_create(curriculum=curriculum3, embedCode='codecode3')
+        html5Showcase1, created = HTML5Showcase.objects.get_or_create(curriculum=curriculum1, embedCode='html5Showcase code')
+        html5Showcase2, created = HTML5Showcase.objects.get_or_create(curriculum=curriculum2, embedCode='html5Showcase2 code')
+        html5Showcase3, created = HTML5Showcase.objects.get_or_create(curriculum=curriculum3, embedCode='html5Showcase3 code')
 
-        Aptitude1, created = Aptitude.objects.get_or_create(curriculum=curriculum1, aptitude='aptitude1')
-        Aptitude2, created = Aptitude.objects.get_or_create(curriculum=curriculum2, aptitude='aptitude2')
-        Aptitude3, created = Aptitude.objects.get_or_create(curriculum=curriculum3, aptitude='aptitude3')
+        Aptitude1, created = Aptitude.objects.get_or_create(curriculum=curriculum1, aptitude='Imaginative')
+        Aptitude2, created = Aptitude.objects.get_or_create(curriculum=curriculum2, aptitude='perfectionist')
+        Aptitude3, created = Aptitude.objects.get_or_create(curriculum=curriculum3, aptitude='Good art skills')
 
         link1, created = Link.objects.get_or_create(curriculum=curriculum3, url=url1)
         link2, created = Link.objects.get_or_create(curriculum=curriculum3, url=url2)
         link3, created = Link.objects.get_or_create(curriculum=curriculum3, url=url3)
 
-        jobOffer1, created = JobOffer.objects.get_or_create(business=business1, position='position1',experienceRequired='expr1',
-        schedule = 'schedule1', salary=20000, ubication='ubitacion1', description='description1', images='image1')
-        jobOffer2, created = JobOffer.objects.get_or_create(business=business2, position='position2',experienceRequired='expr2',
-        schedule = 'schedule2', salary=20000, ubication='ubitacion2', description='description2', images='image2')
-        jobOffer3, created = JobOffer.objects.get_or_create(business=business3, position='position3',experienceRequired='expr3',
-        schedule = 'schedule3', salary=20000, ubication='ubitacion3', description='description3', images='image3')
+        jobOffer1, created = JobOffer.objects.get_or_create(business=business1, position='Developer',experienceRequired='Unity',
+        schedule = '8am-3pm', salary=20000, ubication='Seville', description='Work in code', images='https://www.linuxadictos.com/wp-content/uploads/unity-logo.jpg')
+        jobOffer2, created = JobOffer.objects.get_or_create(business=business2, position='Developer',experienceRequired='None',
+        schedule = '8am-3pm', salary=20000, ubication='Seville', description='Good ofert', images='https://www.linuxadictos.com/wp-content/uploads/unity-logo.jpg')
+        jobOffer3, created = JobOffer.objects.get_or_create(business=business3, position='Art Designer',experienceRequired='Knows how to use Unity art software library',
+        schedule = '8am-3pm', salary=20000, ubication='Seville', description='Create new art', images='http://www.funcage.com/blog/wp-content/uploads/2013/11/Random-Photoshopped-Pictures-006.jpg')
 
         t=(tag,)
         p=(url1,)
         at=(url3,)
         thread1= Thread()
         thread1.business=business1
-        thread1.title='title1'
-        thread1.description='description1'
+        thread1.title='Unity software'
+        thread1.description='Here some software'
         thread1.save()
         thread1.tags.set(t)    
         thread1.pics.set(p)  
@@ -166,8 +166,8 @@ class Command(BaseCommand):
 
         thread2= Thread()
         thread2.business=business1
-        thread2.title='title2'
-        thread2.description='description2'
+        thread2.title='Pics library'
+        thread2.description='Here one example'
         thread2.save()
         thread2.tags.set(t)    
         thread2.pics.set(p)  
@@ -176,8 +176,8 @@ class Command(BaseCommand):
 
         thread3= Thread()
         thread3.business=business1
-        thread3.title='title3'
-        thread3.description='description3'
+        thread3.title='RPGMAKER course'
+        thread3.description='we offert a free course'
         thread3.save()
         thread3.tags.set(t)    
         thread3.pics.set(p)  
@@ -193,8 +193,8 @@ class Command(BaseCommand):
         response1 = Response()
         response1.business=business1
         response1.thread=thread1
-        response1.title='title1'
-        response1.description='desctiption1'
+        response1.title='Its Free'
+        response1.description='We can get it online anyway'
         response1.save()
         response1.pics.set(p)
         response1.save()
@@ -202,8 +202,8 @@ class Command(BaseCommand):
         response2 = Response()
         response2.business=business2
         response2.thread=thread1
-        response2.title='title2'
-        response2.description='desctiption2'
+        response2.title='You cheat'
+        response2.description='Dont try to get easy money'
         response2.save()
         response2.pics.set(p)
         response2.save()
@@ -211,48 +211,48 @@ class Command(BaseCommand):
         response3 = Response()
         response3.business=business1
         response3.thread=thread2
-        response3.title='title3'
-        response3.description='desctiption3'
+        response3.title='This is too ramdon'
+        response3.description='Please delete it'
         response3.save()
         response3.pics.set(p)
         response3.save()
 
-        challenge1, created = Challenge.objects.get_or_create(business=business1, title="title", description="description", objectives="objectives")
+        challenge1, created = Challenge.objects.get_or_create(business=business1, title="Job offert Unity", description="Make a game in only 24h", objectives="A funcional game")
         freelancers1 = (freelancer1, freelancer2)
         challenge1.freelancers.set(freelancers1)
         challenge1.save
 
-        challenge2, created = Challenge.objects.get_or_create(business=business1, title="title", description="description", objectives="objectives")
+        challenge2, created = Challenge.objects.get_or_create(business=business1, title="Future art", description="The winner will get an all-paid vacation", objectives="Surprise us")
         freelancers2 = (freelancer1,)
         challenge2.freelancers.set(freelancers2)
         challenge1.save
 
-        challenge3, created = Challenge.objects.get_or_create(business=business2, title="title", description="description", objectives="objectives")
+        challenge3, created = Challenge.objects.get_or_create(business=business2, title="Unreal antihack", description="Try to make a good antihack system with unreal engine", objectives="The best system will win")
         freelancers3 = (freelancer1, freelancer2, freelancer3)
         challenge3.freelancers.set(freelancers3)
         challenge1.save
 
 
-        event1, created = Event.objects.get_or_create(manager = manager1, location = "location", title="title",description="description", moment= "2019-12-12 00:00")
+        event1, created = Event.objects.get_or_create(manager = manager1, location = "Seville", title="AIMGAME-FEST",description="All you indies developers will be here", moment= "2019-12-12 00:00")
         freelancers1= (freelancer1,)
         businesses1 = (business1,business2)
         event1.freelancers.set(freelancers1)
         event1.companies.set(businesses1)
 
-        event1, created = Event.objects.get_or_create(manager = manager2, location = "location", title="title",description="description", moment= "2019-12-12 00:00")
+        event2, created = Event.objects.get_or_create(manager = manager2, location = "Seville", title="Game Camp",description="Want to create some games? you only need to come and have fun", moment= "2019-12-12 00:00")
         freelancers2= (freelancer1,freelancer2)
         businesses2 = (business1,)
-        event1.freelancers.set(freelancers2)
-        event1.companies.set(businesses2)
+        event2.freelancers.set(freelancers2)
+        event2.companies.set(businesses2)
 
-        event1, created = Event.objects.get_or_create(manager = manager3, location = "location", title="title",description="description", moment= "2019-12-12 00:00")
+        event3, created = Event.objects.get_or_create(manager = manager3, location = "Seville", title="AIM Game EXPO",description="One week of every news of our indies", moment= "2019-12-12 00:00")
         freelancers3= (freelancer1,)
         businesses3 = (business1,)
-        event1.freelancers.set(freelancers3)
-        event1.companies.set(businesses3)
+        event3.freelancers.set(freelancers3)
+        event3.companies.set(businesses3)
 
         chat1, created = Chat.objects.get_or_create(user1=user1, user2=user2)
-        message1, created = Message.objects.get_or_create(chat=chat1, sender=user1, text="uwu")
-        message2, created = Message.objects.get_or_create(chat=chat1, sender=user2, text="owo")
+        message1, created = Message.objects.get_or_create(chat=chat1, sender=user1, text="hello there")
+        message2, created = Message.objects.get_or_create(chat=chat1, sender=user2, text="General Kenobi")
 
         print("Database populated.")

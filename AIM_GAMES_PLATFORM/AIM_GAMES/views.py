@@ -219,11 +219,15 @@ def findByPrincipal(request):
             return business
         except:
             print('Principal is not a business.')
+        try:
+            manager = Manager.objects.select_related('profile').get(id=profile.manager.id)
+            return manager
+        except:
+            print('Principal is not a manager.')
+        
     return None
 
 def freelancerDetail(request, id):
-    if checkUser(request)!='freelancer' and checkUser(request)!='business' and checkUser(request)!='manager':
-        return handler500(request)
     userString = checkUser(request)
     if userString == 'none':
         return handler500(request)
@@ -234,10 +238,10 @@ def freelancerDetail(request, id):
             freelancer = get_object_or_404(Freelancer,pk=id)
             user = findByPrincipal(request)        
             if user.id != freelancer.id:
-                return redirect('/')
+                return handler500(request)
     else:
         if id=='-':
-            return redirect('/')
+            return handler500(request)
         else:
             freelancer = get_object_or_404(Freelancer,pk=id)
     
@@ -380,6 +384,8 @@ def linkCreate(request):
                 link.save()
                 print('link saved')
                 return redirect('/freelancer/detail/'+str(freelancer.id))
+            else:
+                return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add link'})
         else:
             form = LinkForm()
             return render(request,'freelancer/standardForm.html',{'form':form,'title':'Add link'})
@@ -677,12 +683,146 @@ def challengeCreate(request):
     else:
         return render(request, 'index.html')
 
+def challengeResponse_create(request, challengeId):
+    if checkUser(request) == 'freelancer':
+        if request.method=="POST":
+            form = ChallengeResponseForm(request.POST)
+            if form.is_valid():
+                obj = form.save(commit=False)
+                challenge = Challenge.objects.get(id=challengeId)
+                obj.freelancer= findByPrincipal(request)
+                print('todo bien')
+                obj.challenge = challenge
+                obj.save()
+                return redirect('/challenge/detail/' + str(challengeId))
+        else:
+            form = ChallengeResponseForm()
+        return render(request,'challenge/responseCreate.html',{'form':form})
+    else:
+        return handler500(request)
+
 def challengeDetail(request, challenge_id):
         challenge = get_object_or_404(Challenge, pk=challenge_id)
-        return render(request, 'challenge/challengeDetail.html', {'challenge': challenge})
+        responsesChallenge = challenge.challengeresponse_set.all()
+        return render(request, 'challenge/challengeDetail.html', {'challenge': challenge, 'responsesChallenge': responsesChallenge})
+
+def curriculumVerify(request, id):
+    userString = checkUser(request)
+    if userString!='manager':
+        return handler500(request)
+    curriculum = get_object_or_404(Curriculum, pk=id)
+    curriculum.verified = True
+    curriculum.save()
+    return redirect('/freelancer/detail/' + str(curriculum.freelancer.id))
+
+def curriculumListManager(request):
+    if checkUser(request)!='manager':
+        return handler500(request)
+    curriculums = Curriculum.objects.all()
+    aptitudes={}
+    for c in curriculums:
+        aptitudesList=Aptitude.objects.filter(curriculum=c.id)
+        aptitudes[c.id]=list(aptitudesList)
+    return render(request, 'curriculumList.html',{'curriculums':curriculums,'aptitudes':aptitudes})
+
 
 def handler404(request):
     return render(request, '404.html', status=404)
 
 def handler500(request):
     return render(request, '500.html', status=500)
+
+def termsAndConditions(request):
+    return render(request, "terms-and-conditions.html")
+
+def privacyPolicy(request):
+    return render(request, "privacy-policy.html")    
+
+def eventList(request):
+    if not request.user.is_authenticated:
+        return handler500(request)
+    if(request.GET.__contains__('search')):
+        search=request.GET.get('search')
+        q=Event.objects.filter( Q(location__icontains=search)|
+            Q(title__icontains=search)|
+            Q(description__icontains=search))
+    else:
+        q=Event.objects.all()
+    events= q
+    return render(request, 'event/eventList.html',{'events':events})
+
+def eventCreate(request):
+    if checkUser(request)=='manager':
+        manager = findByPrincipal(request)
+        if request.method == 'POST':
+            form = EventForm(request.POST)
+            if form.is_valid():                
+                obj = form.save(commit=False)
+                obj.manager = manager
+                obj.save()
+                print('Event saved')
+                return redirect('/event/list/')
+            else:
+                return render(request,'event/standardForm.html',{'form':form})
+        else:
+            form = EventForm()
+            return render(request,'event/standardForm.html',{'form':form})
+    else:
+        return handler500(request)
+
+def eventDetail(request, event_id):
+    event = get_object_or_404(Event, pk=event_id)
+    freelancers= event.freelancers.all()
+    companies= event.companies.all()
+    manager = findByPrincipal(request)
+    if checkUser(request)!='manager':
+        user = findByPrincipal(request)
+        if(user in freelancers or user in companies):
+            joining=True
+        else:
+            joining=False
+    else:
+        joining=False
+    return render(request, 'event/eventDetail.html', {'event': event,'freelancers':freelancers,'companies':companies, 'joining':joining})
+
+def eventEdit(request, event_id): 
+    if checkUser(request)!='manager':
+        return handler500(request)
+
+    instance = get_object_or_404(Event, id=event_id)
+    manager = findByPrincipal(request)
+
+    form = EventForm(request.POST or None, instance=instance)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.manager = manager
+        obj.save()
+        return redirect('/event/detail/'+str(event_id))
+    return render(request,'event/standardForm.html',{'form':form})
+
+def eventJoin(request, event_id): 
+    userRole=checkUser(request)
+    if userRole!='business' and userRole!='freelancer':
+        return handler500(request)
+    instance = get_object_or_404(Event, id=event_id)
+    user = findByPrincipal(request)
+
+    form = EventForm(instance=instance)
+    obj = form.save(commit=False)
+    if userRole=='freelancer':
+        obj.freelancers.add(user)
+    else:
+        obj.companies.add(user)
+    obj.save()
+    return redirect('/event/detail/'+str(event_id))
+
+def downloadData(request):
+    print("entre!")
+    datos=findByPrincipal(request).getData()
+    print(datos)
+
+    filename = "AIM-GAMES-PLATFORM_yourdata.txt"
+    content = str(datos)
+    response = HttpResponse(content, content_type='text/plain')
+    response['Content-Disposition'] = 'attachment; filename={0}'.format(filename)
+    return response

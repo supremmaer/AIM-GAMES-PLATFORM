@@ -4,12 +4,14 @@
 {% load cookielaw_tags %}
 <!DOCTYPE html>
 <html lang="es">
+<body>
     <head>
         {% block title %}<title>AIM Games Platform</title>{% endblock %}
         
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
         <link rel="stylesheet" href="{% static 'css/materialize.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <link rel="shortcut icon" href="{%  static 'icons/logo.ico' %}">
         <script src="{% static 'cookielaw/js/cookielaw.js'%}" type="text/javascript"></script>
         <link href="{% static 'cookielaw/css/cookielaw.css'%}" rel="stylesheet" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -37,19 +39,23 @@
        
     </head>
 
-    <body>
+    
         <nav>
             <div class="nav-wrapper">
                     <a href="/" class="brand-logo" id="logotipo" >AIM Games</a>
                     <a href="#" class="sidenav-trigger" data-target="slide_out"><i class="material-icons">menu</i></a>
                     <ul class="hide-on-med-and-down right">
                         <li class="active"><a href="/">{% trans "mainpage" %}</a></li>
+                        <li><a href="/terms-and-conditions" target="_self" class="collection-item">{% trans "terms-and-conditions" %}</a></li>
                         {% if request.session.currentUser == 'business' %}
                             <li><a href="/thread/business/list/" target="_self" class="collection-item">{% trans "threads" %}</a></li>
                             <li><a href="/curriculum/business/list/" target="_self" class="collection-item">{% trans "curriculums" %}</a></li>
                         {% endif %} 
                         {% if request.session.currentUser == 'freelancer' %}
                             <li><a href="/freelancer/mycurriculum/-" target="_self" class="collection-item">{% trans "My curriculum" %}</a></li>
+                        {% endif %}
+                        {% if request.session.currentUser == 'manager' %}
+                            <li><a href="/curriculum/manager/list" target="_self" class="collection-item">{% trans "curriculums" %}</a></li>
                         {% endif %}
                         {% if request.session.currentUser == 'business' or request.session.currentUser == 'freelancer' %}
                             <li><a href="/joboffer/user/list/" target="_self" class="collection-item">{% trans "joboffers" %}</a></li>
@@ -60,17 +66,20 @@
                         	<li><a href="/admin">{% trans "Admin Panel" %}</a></li>
                         {% endif %}
                         {% if request.user.is_authenticated %}
-                        <li><a href="{% url 'logout' %}">{% trans "Logout" %}</a></li>
+                            <li><a href="{% url 'logout' %}">{% trans "Logout" %}</a></li>
+                            <li><a href="/event/list/">{% trans "Events" %}</a></li>
                         {% else %}
                         <li><a href="/accounts/login/" target="_self" class="collection-item">{% trans "Log In" %}</a></li>
                         {% endif %}
                     </ul>
             </div>
         </nav>
-        <a href="/setlanguage/es-ES" target="_self"  class="waves-effect waves-light btn">Spanish</a>
-        <a href="/setlanguage/en-GB" target="_self"  class="waves-effect waves-light btn">English</a>
+    
+
+        </div>
             <ul class="sidenav" id="slide_out">
                 <li class="active"><a>{% trans "mainpage" %}</a></li>
+                <li><a href="/terms-and-conditions" target="_self" class="collection-item">{% trans "terms-and-conditions" %}</a></li>
 				{% if request.session.currentUser == 'business' %}
                 	<li><a href="/thread/business/list/" target="_self" class="collection-item">{% trans "threads" %}</a></li>
                     <li><a href="/curriculum/business/list/" target="_self" class="collection-item">{% trans "curriculums" %}</a></li>
@@ -80,23 +89,46 @@
                 {% endif %} 
                 {% if request.session.currentUser == 'business' or request.session.currentUser == 'freelancer' %}
                     <li><a href="/joboffer/user/list/" target="_self" class="collection-item">{% trans "joboffers" %}</a></li>
+                    <li><a href="/challenge/list/" target="_self" class="collection-item">{% trans "Challenges" %}</a></li>
+                {% endif %}
+                {% if request.session.currentUser == 'manager' %}
+                    <li><a href="/curriculum/manager/list" target="_self" class="collection-item">{% trans "curriculums" %}</a></li>
                 {% endif %}
                 {% if request.user.is_staff %}
                     <li><a href="/admin">{% trans "Admin Panel" %}</a></li>
                 {% endif %}
                 {% if request.user.is_authenticated %}
-                <li><a href="{% url 'logout' %}">{% trans "Logout" %}</a></li>
+                    <li><a href="{% url 'logout' %}">{% trans "Logout" %}</a></li>
+                    <li><a href="/event/list/">{% trans "Events" %}</a></li>
                 {% else %}
                 <li><a href="/accounts/login/" target="_self" class="collection-item">{% trans "Log In" %}</a></li>
                 {% endif %}
             </ul>
-
+            <main>
         {% block content %}<!-- default content text (typically empty) -->{% endblock %}
         {% cookielaw_banner %}
+            </main>
         <script>
             const slide_menu = document.querySelectorAll(".sidenav");
             M.Sidenav.init(slide_menu,{});
             M.AutoInit();
         </script>
+        <footer class="page-footer">
+            <div class="footer-copyright">
+                <div class="container row">
+                <div class="col s12 m6">
+                <a href="/setlanguage/es-ES" target="_self"  class="waves-effect waves-light btn">Spanish</a>
+                <a href="/setlanguage/en-GB" target="_self"  class="waves-effect waves-light btn">English</a>
+                </div>
+                <div class="col s12 m3">
+                © 2019 AIM-GAMES-PLATFORM
+                </div>
+                <div class="col s12 m3">
+
+                <a class="grey-text text-lighten-4 right"  onclick="window.open('userDownloadData')" >DownloadData</a>
+                </div></div>
+            </div>
+        </div>
+    </footer>
     </body>
 </html>

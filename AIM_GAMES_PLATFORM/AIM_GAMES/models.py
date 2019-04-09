@@ -232,8 +232,8 @@ class Thread(models.Model):
     def getData(self):
         data = "Title: " + self.title + "\n" + "Description: " + self.description + "\n" + "Tags: " + \
             str(list(self.tags.values('title'))) + "\n"+"Pics: " + \
-            str(list(self.pics.values('title'))) + "\n"+"AttachedFiles: " + \
-            str(list(self.attachedFiles.values('title')))
+            str(list(self.pics.values('uri'))) + "\n"+"AttachedFiles: " + \
+            str(list(self.attachedFiles.values('uri')))
         return data
 
 
@@ -265,7 +265,7 @@ class Response(models.Model):
     def getData(self):
         data = "Thread: " + str(self.thread) + "\n"+"Title: " + self.title + \
             "\n"+"Description: " + self.description + \
-            "\n"+"Pics: " + str(list(self.pics.values('title')))
+            "\n"+"Pics: " + str(list(self.pics.values('uri')))
         return data
 
 
@@ -285,6 +285,22 @@ class Challenge(models.Model):
             "Freelancers: " + str(list(self.freelancers.values("profile__name", "profile__surname"))) + "\n"
         return data
 
+class ChallengeResponse(models.Model):
+    freelancer = models.ForeignKey(
+        Freelancer, on_delete=models.CASCADE, verbose_name=_("freelancer"))
+    challenge = models.ForeignKey(
+        Challenge, on_delete=models.CASCADE, verbose_name=_("challenge"))
+    title = models.TextField(
+        max_length=100, blank=False, verbose_name=_("title"))
+    description = models.TextField(blank=False, verbose_name=_("description"))
+
+    def __str__(self):
+        return self.title
+
+    def getData(self):
+        data = "Challenge: " + str(self.challenge) + "\n"+"Title: " + self.title + "\n"+"Description: " + self.description
+        return data
+
 
 # Manager objects
 
@@ -294,7 +310,7 @@ class Event(models.Model):
         Manager, on_delete=models.CASCADE, verbose_name=_("manager"))
     location = models.TextField(blank=False, verbose_name=_("location"))
     title = models.TextField(max_length=150, blank=False,
-                             verbose_name=_("description"))
+                             verbose_name=_("title"))
     description = models.TextField(blank=False, verbose_name=_("description"))
     moment = models.DateTimeField(null=False)
     freelancers = models.ManyToManyField(

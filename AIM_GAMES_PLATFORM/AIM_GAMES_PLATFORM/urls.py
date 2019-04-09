@@ -64,6 +64,18 @@ urlpatterns = [
     path('challenge/list/', challengeList, name='challengeList'),
     path('business/challenge/create',challengeCreate),
     path('challenge/detail/<int:challenge_id>',challengeDetail),
+    path('freelancer/curriculum/verify/<int:id>',curriculumVerify),
+    path('curriculum/manager/list/', curriculumListManager),
     path('500/', handler500, name='500'),
     path('404/', handler404, name='404'),
+    path('terms-and-conditions', termsAndConditions),
+    path('privacy-policy', privacyPolicy),
+    path('event/list/',eventList,name='eventList'),
+    path('event/create/',eventCreate,name='eventCreate'),
+    path('event/detail/<int:event_id>',eventDetail,name='eventDetail'),
+    path('event/edit/<int:event_id>',eventEdit,name='eventEdit'),
+    path('event/join/<int:event_id>',eventJoin,name='eventJoin'),
+    path('userDownloadData',downloadData),
+    path('challengeResponse/create/<int:challengeId>', challengeResponse_create, name="responseCreate"),
+
 ]

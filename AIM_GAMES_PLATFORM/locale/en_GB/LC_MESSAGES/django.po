@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-04 18:45+0200\n"
+"POT-Creation-Date: 2019-04-09 01:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\AIM_GAMES\forms.py:26 .\AIM_GAMES\forms.py:58
+#: .\AIM_GAMES\forms.py:26 .\AIM_GAMES\forms.py:60
 msgid "Profile not valid"
 msgstr "Profile not valid"
 
@@ -26,78 +26,80 @@ msgstr "Profile not valid"
 msgid "profession"
 msgstr "Profession"
 
-#: .\AIM_GAMES\forms.py:73
+#: .\AIM_GAMES\forms.py:75
 msgid "Name"
 msgstr "Name"
 
-#: .\AIM_GAMES\forms.py:74
+#: .\AIM_GAMES\forms.py:76
 msgid "Surname"
 msgstr "Surname"
 
-#: .\AIM_GAMES\forms.py:75
+#: .\AIM_GAMES\forms.py:77
 msgid "Email"
 msgstr "Email"
 
-#: .\AIM_GAMES\forms.py:76
+#: .\AIM_GAMES\forms.py:78
 msgid "City"
 msgstr "City"
 
-#: .\AIM_GAMES\forms.py:77 .\AIM_GAMES\models.py:50
+#: .\AIM_GAMES\forms.py:79 .\AIM_GAMES\models.py:50
 msgid "Postal Code"
 msgstr "Postal Code"
 
-#: .\AIM_GAMES\forms.py:78 .\AIM_GAMES\models.py:52
+#: .\AIM_GAMES\forms.py:80 .\AIM_GAMES\models.py:52
 msgid "IDCard Number"
 msgstr "IDCard Number"
 
-#: .\AIM_GAMES\forms.py:79 .\AIM_GAMES\models.py:54
+#: .\AIM_GAMES\forms.py:81 .\AIM_GAMES\models.py:54
 msgid "Date of birth"
 msgstr "Date of birth"
 
-#: .\AIM_GAMES\forms.py:80
+#: .\AIM_GAMES\forms.py:82
 msgid "Phone Number"
 msgstr "Phone Number"
 
-#: .\AIM_GAMES\forms.py:81
+#: .\AIM_GAMES\forms.py:83
 msgid "Photo URL:"
 msgstr "Photo URL"
 
-#: .\AIM_GAMES\forms.py:100
+#: .\AIM_GAMES\forms.py:102
 msgid "Phone Number must be a number"
 msgstr "Phone Number must be a number"
 
-#: .\AIM_GAMES\forms.py:110
+#: .\AIM_GAMES\forms.py:112
 msgid "You must be over 18 to sign up"
 msgstr "You must be over 18 to sign up"
 
-#: .\AIM_GAMES\forms.py:116
+#: .\AIM_GAMES\forms.py:118
 msgid "User not valid"
 msgstr "User not valid"
 
-#: .\AIM_GAMES\forms.py:133
+#: .\AIM_GAMES\forms.py:135
 msgid "Title"
 msgstr "Title"
 
-#: .\AIM_GAMES\forms.py:134 .\templates\challenge\challengeDetail.html:16
+#: .\AIM_GAMES\forms.py:136 .\templates\challenge\challengeDetail.html:16
 #: .\templates\thread\threadDetail.html:30
 msgid "Description"
 msgstr "Description"
 
-#: .\AIM_GAMES\forms.py:135 .\templates\thread\threadDetail.html:34
+#: .\AIM_GAMES\forms.py:137 .\templates\thread\threadDetail.html:34
 msgid "Tags"
 msgstr "Tags"
 
-#: .\AIM_GAMES\forms.py:136
+#: .\AIM_GAMES\forms.py:138
 msgid "Image URLs"
 msgstr "Image URLs"
 
-#: .\AIM_GAMES\forms.py:137
+#: .\AIM_GAMES\forms.py:139
 msgid "Attachment URLs"
 msgstr "Attachment URLs"
 
 #: .\AIM_GAMES\models.py:14 .\AIM_GAMES\models.py:22 .\AIM_GAMES\models.py:221
 #: .\AIM_GAMES\models.py:258 .\AIM_GAMES\models.py:276
+#: .\AIM_GAMES\models.py:294 .\AIM_GAMES\models.py:313
 #: .\templates\challenge\challengeList.html:19
+#: .\templates\event\eventList.html:20
 #, fuzzy
 #| msgid "Title"
 msgid "title"
@@ -109,8 +111,8 @@ msgstr "Title"
 msgid "uri"
 msgstr "URL"
 
-#: .\AIM_GAMES\models.py:43 .\AIM_GAMES\models.py:309 .\AIM_GAMES\models.py:311
-#: .\AIM_GAMES\models.py:318
+#: .\AIM_GAMES\models.py:43 .\AIM_GAMES\models.py:325 .\AIM_GAMES\models.py:327
+#: .\AIM_GAMES\models.py:334
 msgid "user"
 msgstr "User"
 
@@ -154,7 +156,7 @@ msgstr "Profile"
 msgid "lastPayment"
 msgstr "Last payment"
 
-#: .\AIM_GAMES\models.py:104
+#: .\AIM_GAMES\models.py:104 .\AIM_GAMES\models.py:290
 #, fuzzy
 #| msgid "freelancerDetails"
 msgid "freelancer"
@@ -177,7 +179,7 @@ msgid "center"
 msgstr "Center"
 
 #: .\AIM_GAMES\models.py:114 .\AIM_GAMES\models.py:132
-#: .\templates\freelancer\detail.html:30 .\templates\freelancer\detail.html:202
+#: .\templates\freelancer\detail.html:61
 msgid "formation"
 msgstr "Formation"
 
@@ -207,7 +209,7 @@ msgstr "Graphic engine experiences"
 
 #: .\AIM_GAMES\models.py:163
 msgid "embedCode"
-msgstr "Embed code"
+msgstr "Iframe source"
 
 #: .\AIM_GAMES\models.py:174
 #, fuzzy
@@ -233,29 +235,28 @@ msgstr "Sign up as company"
 msgid "position"
 msgstr "Description"
 
-#: .\AIM_GAMES\models.py:199 .\templates\jobOfferDetail.html:22
+#: .\AIM_GAMES\models.py:199 .\templates\jobOfferDetail.html:20
 msgid "experienceRequired"
 msgstr "Experience required"
 
-#: .\AIM_GAMES\models.py:201 .\templates\jobOfferDetail.html:30
-#: .\templates\jobOfferList.html:21
+#: .\AIM_GAMES\models.py:201 .\templates\jobOfferDetail.html:23
+#: .\templates\jobOfferList.html:20
 msgid "schedule"
 msgstr "Schedule"
 
-#: .\AIM_GAMES\models.py:202 .\templates\jobOfferDetail.html:38
-#: .\templates\jobOfferList.html:20
+#: .\AIM_GAMES\models.py:202 .\templates\jobOfferDetail.html:26
+#: .\templates\jobOfferList.html:19
 msgid "salary"
 msgstr "Salary"
 
-#: .\AIM_GAMES\models.py:204 .\templates\jobOfferDetail.html:14
-#: .\templates\jobOfferDetail.html:46
+#: .\AIM_GAMES\models.py:204 .\templates\jobOfferDetail.html:29
 msgid "ubication"
 msgstr "Ubication"
 
 #: .\AIM_GAMES\models.py:206 .\AIM_GAMES\models.py:222
 #: .\AIM_GAMES\models.py:259 .\AIM_GAMES\models.py:277
-#: .\AIM_GAMES\models.py:297 .\AIM_GAMES\models.py:298
-#: .\templates\jobOfferDetail.html:54
+#: .\AIM_GAMES\models.py:295 .\AIM_GAMES\models.py:314
+#: .\templates\event\eventDetail.html:13 .\templates\jobOfferDetail.html:32
 msgid "description"
 msgstr "Description"
 
@@ -291,34 +292,42 @@ msgstr "Threads"
 msgid "objectives"
 msgstr ""
 
-#: .\AIM_GAMES\models.py:280 .\AIM_GAMES\models.py:301
+#: .\AIM_GAMES\models.py:280 .\AIM_GAMES\models.py:317
+#: .\templates\event\eventDetail.html:31
 #, fuzzy
 #| msgid "freelancerDetails"
 msgid "freelancers"
 msgstr "Freelancer details"
 
-#: .\AIM_GAMES\models.py:294
+#: .\AIM_GAMES\models.py:292
+#, fuzzy
+#| msgid "newChallenge"
+msgid "challenge"
+msgstr "Challenges"
+
+#: .\AIM_GAMES\models.py:310
 msgid "manager"
 msgstr ""
 
-#: .\AIM_GAMES\models.py:295
+#: .\AIM_GAMES\models.py:311 .\templates\event\eventDetail.html:18
+#: .\templates\event\eventList.html:21
 #, fuzzy
 #| msgid "valoration"
 msgid "location"
-msgstr "Valoration"
+msgstr "Location"
 
-#: .\AIM_GAMES\models.py:302
+#: .\AIM_GAMES\models.py:318 .\templates\event\eventDetail.html:41
 #, fuzzy
 #| msgid "company"
 msgid "companies"
 msgstr "Company"
 
-#: .\AIM_GAMES\models.py:316
+#: .\AIM_GAMES\models.py:332
 msgid "chat"
 msgstr ""
 
 #: .\templates\accounts\login.html:19 .\templates\accounts\login.html:49
-#: .\templates\base_generic.html:65 .\templates\base_generic.html:90
+#: .\templates\base_generic.html:72 .\templates\base_generic.html:104
 msgid "Log In"
 msgstr "Log In"
 
@@ -330,8 +339,8 @@ msgstr ""
 msgid ", please logout before login again"
 msgstr ""
 
-#: .\templates\accounts\login.html:22 .\templates\base_generic.html:63
-#: .\templates\base_generic.html:88
+#: .\templates\accounts\login.html:22 .\templates\base_generic.html:69
+#: .\templates\base_generic.html:101
 msgid "Logout"
 msgstr "Logout"
 
@@ -359,38 +368,52 @@ msgstr "Sign up"
 msgid "signupBusiness"
 msgstr "Sign up as company"
 
-#: .\templates\base_generic.html:46 .\templates\base_generic.html:73
+#: .\templates\accounts\signup.html:87
+msgid "acceptTerms"
+msgstr "I accept "
+
+#: .\templates\accounts\signup.html:87 .\templates\base_generic.html:49
+#: .\templates\base_generic.html:82
+msgid "terms-and-conditions"
+msgstr "Terms and Conditions"
+
+#: .\templates\base_generic.html:48 .\templates\base_generic.html:81
 msgid "mainpage"
 msgstr "Main page"
 
-#: .\templates\base_generic.html:48 .\templates\base_generic.html:75
+#: .\templates\base_generic.html:51 .\templates\base_generic.html:84
 #: .\templates\thread\threadList.html:9
 msgid "threads"
 msgstr "Threads"
 
-#: .\templates\base_generic.html:49 .\templates\base_generic.html:76
+#: .\templates\base_generic.html:52 .\templates\base_generic.html:58
+#: .\templates\base_generic.html:85 .\templates\base_generic.html:95
 #: .\templates\curriculumList.html:8
 msgid "curriculums"
 msgstr "Curriculums"
 
-#: .\templates\base_generic.html:52 .\templates\base_generic.html:79
+#: .\templates\base_generic.html:55 .\templates\base_generic.html:88
 msgid "My curriculum"
 msgstr "Curriculums"
 
-#: .\templates\base_generic.html:55 .\templates\base_generic.html:82
-#: .\templates\jobOfferList.html:8
+#: .\templates\base_generic.html:61 .\templates\base_generic.html:91
+#: .\templates\jobOfferList.html:7
 msgid "joboffers"
 msgstr "Job offers"
 
-#: .\templates\base_generic.html:56
+#: .\templates\base_generic.html:62 .\templates\base_generic.html:92
 #, fuzzy
 #| msgid "newChallenge"
 msgid "Challenges"
 msgstr "Challenges"
 
-#: .\templates\base_generic.html:60 .\templates\base_generic.html:85
+#: .\templates\base_generic.html:66 .\templates\base_generic.html:98
 msgid "Admin Panel"
 msgstr ""
+
+#: .\templates\base_generic.html:70 .\templates\base_generic.html:102
+msgid "Events"
+msgstr "Events"
 
 #: .\templates\challenge\challengeDetail.html:7
 msgid "Challenge details"
@@ -407,6 +430,18 @@ msgstr "Sign up as company"
 msgid "Objectives"
 msgstr "Objectives"
 
+#: .\templates\challenge\challengeDetail.html:25
+msgid "createAResponseForThisChallenge"
+msgstr "Create a response for this challenge"
+
+#: .\templates\challenge\challengeDetail.html:30
+msgid "responsesChallenge"
+msgstr "Responses fot his challenge"
+
+#: .\templates\challenge\challengeDetail.html:35
+msgid "freelancerResponse"
+msgstr "Response from freelancer"
+
 #: .\templates\challenge\challengeList.html:7
 msgid "challengesList"
 msgstr "Challenge List"
@@ -419,19 +454,30 @@ msgstr "Search"
 msgid "close"
 msgstr "Close"
 
-#: .\templates\challenge\challengeList.html:18 .\templates\jobOfferList.html:19
+#: .\templates\challenge\challengeList.html:18 .\templates\jobOfferList.html:18
 #: .\templates\thread\threadList.html:10 .\templates\thread\threadList.html:22
 msgid "company"
 msgstr "Company"
 
 #: .\templates\challenge\challengeList.html:25
-#: .\templates\curriculumList.html:36 .\templates\jobOfferList.html:27
+#: .\templates\curriculumList.html:36 .\templates\event\eventList.html:28
+#: .\templates\jobOfferList.html:26
 msgid "view"
 msgstr "View"
 
 #: .\templates\challenge\challengeList.html:33
 msgid "newChallenge"
 msgstr "Create a new Challenge"
+
+#: .\templates\challenge\responseCreate.html:5
+#: .\templates\thread\responseCreate.html:5
+msgid "newResponse"
+msgstr "New response"
+
+#: .\templates\challenge\responseCreate.html:8
+#: .\templates\thread\responseCreate.html:8
+msgid "save"
+msgstr "Save"
 
 #: .\templates\cookielaw\banner.html:8
 msgid "Cookies disclaimer"
@@ -450,82 +496,115 @@ msgstr ""
 msgid "Agreed"
 msgstr ""
 
-#: .\templates\curriculumList.html:20 .\templates\freelancer\detail.html:107
-#: .\templates\freelancer\detail.html:240
+#: .\templates\curriculumList.html:20 .\templates\freelancer\detail.html:136
 msgid "aptitudes"
 msgstr "Aptitudes"
 
-#: .\templates\freelancer\detail.html:7
-msgid "freelancerDetails"
-msgstr "Freelancer details"
+#: .\templates\event\eventDetail.html:23 .\templates\event\eventList.html:22
+msgid "moment"
+msgstr "Date"
 
-#: .\templates\freelancer\detail.html:13
-msgid "links"
-msgstr "Links"
+#: .\templates\event\eventDetail.html:28
+msgid "assistants"
+msgstr "Assistants"
 
-#: .\templates\freelancer\detail.html:17 .\templates\freelancer\detail.html:50
-#: .\templates\freelancer\detail.html:88 .\templates\freelancer\detail.html:111
-#: .\templates\freelancer\detail.html:142
-#: .\templates\freelancer\detail.html:190
-#: .\templates\freelancer\detail.html:210
-#: .\templates\freelancer\detail.html:229
-#: .\templates\freelancer\detail.html:244
+#: .\templates\event\eventDetail.html:55
+msgid "Join"
+msgstr "Join"
+
+#: .\templates\event\eventDetail.html:61 .\templates\freelancer\detail.html:47
+#: .\templates\freelancer\detail.html:81 .\templates\freelancer\detail.html:118
+#: .\templates\freelancer\detail.html:144
+#: .\templates\freelancer\detail.html:172
 msgid "Edit"
 msgstr "Edit"
 
-#: .\templates\freelancer\detail.html:18 .\templates\freelancer\detail.html:51
-#: .\templates\freelancer\detail.html:89 .\templates\freelancer\detail.html:112
-#: .\templates\freelancer\detail.html:143
-#: .\templates\freelancer\detail.html:168
-#: .\templates\freelancer\detail.html:179
-#: .\templates\freelancer\detail.html:191
-#: .\templates\freelancer\detail.html:211
-#: .\templates\freelancer\detail.html:230
-#: .\templates\freelancer\detail.html:245
+#: .\templates\event\eventList.html:9
+msgid "events"
+msgstr "Organized events"
+
+#: .\templates\event\eventList.html:35
+msgid "newEvent"
+msgstr "New event"
+
+#: .\templates\event\standardForm.html:7
+#, fuzzy
+#| msgid "Events"
+msgid "Event"
+msgstr "Events"
+
+#: .\templates\event\standardForm.html:32 .\templates\thread\form.html:35
+msgid "Submit"
+msgstr "Submit"
+
+#: .\templates\freelancer\detail.html:12
+msgid "warninghtml5"
+msgstr "You are about to load content outside of AIMGAME's plataform, are you sure you want to continue?"
+
+#: .\templates\freelancer\detail.html:22
+msgid "freelancerDetails"
+msgstr "Freelancer details"
+
+#: .\templates\freelancer\detail.html:31
+msgid "verify"
+msgstr "Verify curriculum"
+
+#: .\templates\freelancer\detail.html:34
+msgid "Verified curriculum"
+msgstr "Verified curriculum"
+
+#: .\templates\freelancer\detail.html:37
+msgid "links"
+msgstr "Links"
+
+#: .\templates\freelancer\detail.html:48 .\templates\freelancer\detail.html:82
+#: .\templates\freelancer\detail.html:119
+#: .\templates\freelancer\detail.html:145
+#: .\templates\freelancer\detail.html:173
+#: .\templates\freelancer\detail.html:207
 msgid "Delete"
 msgstr "Delete"
 
-#: .\templates\freelancer\detail.html:24
+#: .\templates\freelancer\detail.html:56
 msgid "Add link"
 msgstr "Add link"
 
-#: .\templates\freelancer\detail.html:61 .\templates\freelancer\detail.html:216
+#: .\templates\freelancer\detail.html:92
 msgid "addFormation"
 msgstr "Add formation"
 
-#: .\templates\freelancer\detail.html:67 .\templates\freelancer\detail.html:221
+#: .\templates\freelancer\detail.html:97
 #, fuzzy
 #| msgid "profession"
 msgid "professionalExperience"
 msgstr "Professional experience"
 
-#: .\templates\freelancer\detail.html:99 .\templates\freelancer\detail.html:235
+#: .\templates\freelancer\detail.html:129
 msgid "addProfessionalExperience"
 msgstr "Add professional experience"
 
-#: .\templates\freelancer\detail.html:118
-#: .\templates\freelancer\detail.html:250
-msgid "addAptitude"
-msgstr "Add aptitude"
-
-#: .\templates\freelancer\detail.html:124
-#: .\templates\freelancer\detail.html:129
-#: .\templates\freelancer\detail.html:185
-msgid "graphicEngineExperiences"
-msgstr "Graphic engine experiences"
-
-#: .\templates\freelancer\detail.html:152
-#: .\templates\freelancer\detail.html:196
+#: .\templates\freelancer\detail.html:153
+#: .\templates\freelancer\detail.html:182
 msgid "addGraphicEngineExperience"
 msgstr "Add graphic engine experience"
 
-#: .\templates\freelancer\detail.html:158
-#: .\templates\freelancer\detail.html:174
+#: .\templates\freelancer\detail.html:159
+msgid "graphicEngineExperiences"
+msgstr "Graphic engine experiences"
+
+#: .\templates\freelancer\detail.html:189
 msgid "HTML5Showcase"
 msgstr "HTML5 Showcase"
 
-#: .\templates\freelancer\detail.html:167
-#: .\templates\freelancer\detail.html:178
+#: .\templates\freelancer\detail.html:195
+msgid "mostrar"
+msgstr "Show HTML5 Showcase"
+
+#: .\templates\freelancer\detail.html:201
+msgid "Game not fully compatible? Try it out at "
+msgstr ""
+
+#: .\templates\freelancer\detail.html:206
 msgid "editHTML5Showcase"
 msgstr "Edit HTML5 Showcase"
 
@@ -549,13 +628,17 @@ msgstr ""
 msgid "Useful links"
 msgstr "Useful links"
 
-#: .\templates\jobOfferDetail.html:71 .\templates\jobOfferDetail.html:72
+#: .\templates\jobOfferDetail.html:17
+msgid "positioDisplay"
+msgstr "Position"
+
+#: .\templates\jobOfferDetail.html:54 .\templates\jobOfferDetail.html:55
 #, fuzzy
 #| msgid "contactus"
 msgid "Contact"
 msgstr "Contact us"
 
-#: .\templates\jobOfferList.html:35
+#: .\templates\jobOfferList.html:34
 msgid "newOffer"
 msgstr "Create offer"
 
@@ -576,18 +659,6 @@ msgstr "Payment process has finished correctly"
 #| msgid "threads"
 msgid "Create Thread"
 msgstr "Threads"
-
-#: .\templates\thread\form.html:35
-msgid "Submit"
-msgstr "Submit"
-
-#: .\templates\thread\responseCreate.html:5
-msgid "newResponse"
-msgstr "New response"
-
-#: .\templates\thread\responseCreate.html:8
-msgid "save"
-msgstr "Save"
 
 #: .\templates\thread\threadDetail.html:21
 #, fuzzy
@@ -631,6 +702,9 @@ msgstr "New response"
 #| msgid "threads"
 msgid "New thread"
 msgstr "Threads"
+
+#~ msgid "addAptitude"
+#~ msgstr "Add aptitude"
 
 #, fuzzy
 #~| msgid "joboffers"

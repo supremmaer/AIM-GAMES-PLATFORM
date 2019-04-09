@@ -25,3 +25,17 @@ img{
 .fix-secondary-content{
     margin-left: 10px;
 }
+
+.labelxd{
+    text-align: left;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
