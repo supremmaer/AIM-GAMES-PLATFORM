@@ -1,22 +1,23 @@
 {% extends "base_generic.html" %}
 {% load i18n %}
 {% block content %}
+
 <body>
     <div class="container">
         <div class="col s12">  
             <h3>{% trans "challengesList" %}</h3>      
             <form action="/challenge/list/">
                 <div class="input-field">
-                <input placeholder="Compañía o título" id="search" name="search" type="search" >
                 <label class="label-icon" for="search"><i class="material-icons">{% trans "search" %}</i></label>
+                <input placeholder="Compañía o título" id="search" name="search" type="search" style="padding-left:2em">
                 <i class="material-icons">{% trans "close" %}</i>
                 </div>
             </form>
         </div>
         <div class="col s12">
             <div class="row collection">
-                <div class="col s3"><h5>{% trans "company" %}</h5></div>
-                <div class="col s3"><h5>{% trans "title" %}</h5></div>
+                <div class="col s4"><h5>{% trans "company" %}</h5></div>
+                <div class="col s4"><h5>{% trans "title" %}</h5></div>
             </div>
             <div class="collection">
                 {% for challenge in challenges %}

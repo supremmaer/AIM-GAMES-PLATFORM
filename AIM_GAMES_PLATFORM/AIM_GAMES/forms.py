@@ -276,3 +276,9 @@ class EventForm(ModelForm):
     class Meta:
         model = Event
         exclude = ['manager', 'freelancers','companies']
+
+class MessageForm(ModelForm):
+
+    class Meta:
+        model = Message
+        exclude = ['sender', 'timestamp', 'readed']

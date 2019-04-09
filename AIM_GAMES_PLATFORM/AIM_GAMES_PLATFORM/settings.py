@@ -60,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'AIM_GAMES.middleware.customMiddleware.GetLanguage',
+    'AIM_GAMES.middleware.customMiddleware.CountUnreadedMessages',
 ]
 
 LANGUAGES = [
