@@ -130,7 +130,9 @@
                 </div>
                 <div class="col s12 m3">
                 {% if request.session.currentUser == 'business' or request.session.currentUser == 'freelancer' %}
-                    <a class="grey-text text-lighten-4 right"  onclick="window.open('userDownloadData')" >DownloadData</a>
+                    <a class="grey-text text-lighten-4 right"  onclick="window.open('userDownloadData')" >DownloadData</a><br>
+                    <a class="grey-text text-lighten-4 right"  href="/deleteUser" >DeleteAllyourData</a>
+
                 {% endif %}
 
                 </div></div>

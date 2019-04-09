@@ -76,6 +76,7 @@ urlpatterns = [
     path('event/edit/<int:event_id>',eventEdit,name='eventEdit'),
     path('event/join/<int:event_id>',eventJoin,name='eventJoin'),
     path('userDownloadData',downloadData),
+    path('deleteUser',deleteUser),
     path('challengeResponse/create/<int:challengeId>', challengeResponse_create, name="responseCreate"),
     path('message/list/',message_list),
     path('message/show/<int:id>',message_show),
