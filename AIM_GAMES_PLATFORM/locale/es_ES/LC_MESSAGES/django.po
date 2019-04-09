@@ -229,12 +229,6 @@ msgstr "URL"
 msgid "business"
 msgstr "Registrarse como empresa"
 
-#: .\AIM_GAMES\models.py:198
-#, fuzzy
-#| msgid "Description"
-msgid "position"
-msgstr "Posición"
-
 #: .\AIM_GAMES\models.py:200 .\templates\jobOfferDetail.html:20
 msgid "experienceRequired"
 msgstr "Experiencia requerida"
@@ -261,8 +255,6 @@ msgid "description"
 msgstr "Descripción"
 
 #: .\AIM_GAMES\models.py:208
-#, fuzzy
-#| msgid "Image URLs"
 msgid "images"
 msgstr "URLs de imágenes"
 
@@ -760,3 +752,9 @@ msgstr "Descargar todos tus datos"
 
 #~ msgid "contactus"
 #~ msgstr "Contáctanos"
+
+msgid "position"
+msgstr "Posición"
+
+msgid "Edit Job Offer"
+msgstr "Editar oferta de trabajo"
