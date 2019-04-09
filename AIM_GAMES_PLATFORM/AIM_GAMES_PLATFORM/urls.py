@@ -56,6 +56,7 @@ urlpatterns = [
     path('business/joboffer/create',jobOfferCreate),
     path('business/joboffer/edit/<int:id>',jobOfferEdit),
     path('business/joboffer/delete/<int:id>',jobOfferDelete),
+    path('business/thread/delete/<int:id>',threadDelete),
     path('freelancer/html5showcase/delete/<int:id>',html5Delete),
     path('freelancer/link/delete/<int:id>',linkDelete),
     path('freelancer/graphicEngineExperience/delete/<int:id>',graphicEngineExperienceDelete),

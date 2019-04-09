@@ -190,6 +190,10 @@ def threadDetail(request, thread_id):
     thread = get_object_or_404(Thread, pk=thread_id)
     responses = thread.response_set.all()
     pics = thread.pics
+    if checkUser(request)=='business':
+        business = findByPrincipal(request)
+        if business.id == thread.business.id:
+            return render(request, 'thread/threadDetail.html', {'thread': thread, 'responses': responses,'pics':pics,'owner':True})
     return render(request, 'thread/threadDetail.html', {'thread': thread, 'responses': responses,'pics':pics})
 
 def jobOfferDetail(request, id):
@@ -200,7 +204,7 @@ def jobOfferDetail(request, id):
         
         if checkUser(request)=='business':
             business = findByPrincipal(request)
-            if business.id == jobOffer.id:
+            if business.id == jobOffer.business.id:
                 return render(request, 'jobOfferDetail.html', {'jobOffer': jobOffer, 'pics' : pics,'owner':True})        
         return render(request, 'jobOfferDetail.html', {'jobOffer': jobOffer, 'pics' : pics})
 
@@ -901,6 +905,13 @@ def message_create(request):
     else:
         form = MessageForm()
         return render(request,'message/create.html',{'form':form,'title':'Create Message'})
- 
 
-
+def threadDelete(request, id): 
+    if checkUser(request)!='business':
+        return handler500(request)
+    instance = get_object_or_404(Thread, id=id)
+    business = findByPrincipal(request)
+    if instance.business.id != business.id:
+        return redirect('/thread/business/list/')
+    instance.delete()
+    return redirect('/thread/business/list/')
