@@ -826,3 +826,42 @@ def downloadData(request):
     response = HttpResponse(content, content_type='text/plain')
     response['Content-Disposition'] = 'attachment; filename={0}'.format(filename)
     return response
+
+def message_list(request):
+    if not request.user.is_authenticated:
+        return handler500(request)
+    user = request.user
+    messages = Message.objects.filter(recipient=user).order_by('readed', '-timestamp')
+    return render(request, 'message/list.html', {'messages': messages})
+
+def message_show(request, id):
+    message = get_object_or_404(Message, id=id)
+    user = request.user 
+    if not (user == message.sender or user == message.recipient):
+        return handler500(request)
+    if message.readed is False:
+        count = int(request.session["message_count"])
+        if count>0:
+            count = count - 1
+            request.session["message_count"] = count
+        message.readed = True
+        message.save()
+    return render(request, 'message/show.html', {'message': message})
+
+def message_create(request):
+    if request.method == 'POST':
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.sender = request.user
+            obj.save()
+            print('Message saved')
+            return redirect('/message/list/')
+        else:
+            return render(request,'message/create.html',{'form':form,'title':'Create Message'})
+    else:
+        form = MessageForm()
+        return render(request,'message/create.html',{'form':form,'title':'Create Message'})
+ 
+
+
