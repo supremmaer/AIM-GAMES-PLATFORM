@@ -159,7 +159,6 @@ class ThreadForm(ModelForm):
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'validate'
 
-
     def clean(self):
         print('clean: ThreadForm')
         val = URLValidator()

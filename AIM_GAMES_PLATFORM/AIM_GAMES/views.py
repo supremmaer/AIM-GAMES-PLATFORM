@@ -151,6 +151,40 @@ class BusinessCreate(CreateView):
         return context
 
 
+class ThreadUpdate(UpdateView):
+
+    images = ""
+    files = ""
+    initial = {'images' : images, 'files' : files}
+    model = Thread
+    form_class = ThreadForm
+    template_name = 'thread/form.html'
+    success_url = '/accounts/login'
+
+    def get_initial(self):
+        initial = super(ThreadUpdate, self).get_initial()
+        thread = self.get_object()
+        for pic in thread.pics.all():
+            initial['images'] += pic.uri+" "
+        for attachedFile in thread.attachedFiles.all():
+            initial['files'] += attachedFile.uri+" "
+
+        return initial
+
+    def form_valid(self, form):
+        # This method is called when valid form data has been POSTed.
+        # It should return an HttpResponse.
+        if checkUser(self.request) != 'business':
+            return handler500(self.request)
+        print('ThreadUpdate: form_valid')
+
+        prof = Profile.objects.filter(user__pk=self.request.user.id)
+        buss = Business.objects.filter(profile__pk=prof[0].id)
+        thread = form.save(buss)
+
+        return threadDetail(self.request, thread.id)
+
+
 class ThreadCreate(CreateView):
     form_class = ThreadForm
     template_name = 'thread/form.html'
