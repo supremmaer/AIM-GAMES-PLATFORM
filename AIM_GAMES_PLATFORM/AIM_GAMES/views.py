@@ -184,6 +184,12 @@ class ThreadUpdate(UpdateView):
 
         return threadDetail(self.request, thread.id)
 
+    def dispatch(self, request, *args, **kwargs):
+        if checkUser(self.request) == 'business' and self.get_object().business.id == self.request.user.profile.business.id:
+            return super(ThreadUpdate, self).dispatch(request, *args, **kwargs)
+        else:
+            return handler500(request)
+
 
 class ThreadCreate(CreateView):
     form_class = ThreadForm
