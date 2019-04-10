@@ -108,7 +108,7 @@ msgstr "Attachment URLs"
 #: .\AIM_GAMES\forms.py:196
 msgid ""
 "Please, enter valid URLS separated by comas in the images and files field"
-msgstr ""
+msgstr "Please, enter valid URLS separated by spaces in the images and files field"
 
 #: .\AIM_GAMES\forms.py:280
 msgid "Please, enter a valid URL"
