@@ -6,6 +6,7 @@ from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 from datetime import datetime,timedelta
+import re
 
 
 class BusinessForm(ModelForm):
@@ -192,7 +193,7 @@ class ThreadForm(ModelForm):
             for url in urls:
                 val(url)
         except ValidationError:
-            raise ValidationError("Please, enter valid URLS separated by comas in the images and files field")
+            raise ValidationError(_("Please, enter valid URLS separated by comas in the images and files field"))
 
     def save(self,business):
         print('save: ProfileForm')
@@ -267,10 +268,18 @@ class FormationForm(ModelForm):
         exclude = ['curriculum']
 
 class html5showcaseForm(ModelForm):
-
     class Meta:
         model = HTML5Showcase
         exclude = ['curriculum']
+
+    def clean_embedCode(self):
+        data = self.cleaned_data['embedCode']
+        regex = re.compile('https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+')
+        result = regex.match(data)
+        if not result:
+            raise ValidationError(_("Please, enter a valid URL"))
+        return data
+
 
 class JobOfferForm(ModelForm):
 

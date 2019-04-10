@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-10 23:04+0200\n"
+"POT-Creation-Date: 2019-04-10 23:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,92 +18,101 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\AIM_GAMES\forms.py:26 .\AIM_GAMES\forms.py:60
+#: .\AIM_GAMES\forms.py:27 .\AIM_GAMES\forms.py:61
 msgid "Profile not valid"
 msgstr "Profile not valid"
 
-#: .\AIM_GAMES\forms.py:39 .\AIM_GAMES\models.py:70
+#: .\AIM_GAMES\forms.py:40 .\AIM_GAMES\models.py:70
 msgid "profession"
 msgstr "Profession"
 
-#: .\AIM_GAMES\forms.py:75
+#: .\AIM_GAMES\forms.py:76
 msgid "Name"
 msgstr "Name"
 
-#: .\AIM_GAMES\forms.py:76
+#: .\AIM_GAMES\forms.py:77
 msgid "Surname"
 msgstr "Surname"
 
-#: .\AIM_GAMES\forms.py:77
+#: .\AIM_GAMES\forms.py:78
 msgid "Email"
 msgstr "Email"
 
-#: .\AIM_GAMES\forms.py:78
+#: .\AIM_GAMES\forms.py:79
 msgid "City"
 msgstr "City"
 
-#: .\AIM_GAMES\forms.py:79 .\AIM_GAMES\models.py:51
+#: .\AIM_GAMES\forms.py:80 .\AIM_GAMES\models.py:51
 msgid "Postal Code"
 msgstr "Postal Code"
 
-#: .\AIM_GAMES\forms.py:80 .\AIM_GAMES\models.py:53
+#: .\AIM_GAMES\forms.py:81 .\AIM_GAMES\models.py:53
 msgid "IDCard Number"
 msgstr "IDCard Number"
 
-#: .\AIM_GAMES\forms.py:81 .\AIM_GAMES\models.py:55
+#: .\AIM_GAMES\forms.py:82 .\AIM_GAMES\models.py:55
 msgid "Date of birth"
 msgstr "Date of birth"
 
-#: .\AIM_GAMES\forms.py:82
+#: .\AIM_GAMES\forms.py:83
 msgid "Phone Number"
 msgstr "Phone Number"
 
-#: .\AIM_GAMES\forms.py:83
+#: .\AIM_GAMES\forms.py:84
 msgid "Photo URL:"
 msgstr "Photo URL"
 
-#: .\AIM_GAMES\forms.py:102
+#: .\AIM_GAMES\forms.py:103
 msgid "Phone Number must be a number"
 msgstr "Phone Number must be a 9 digits number"
 
-#: .\AIM_GAMES\forms.py:108
+#: .\AIM_GAMES\forms.py:109
 msgid "validatePostal"
 msgstr "Postal Code must be a number"
 
-#: .\AIM_GAMES\forms.py:123
+#: .\AIM_GAMES\forms.py:124
 #, fuzzy
 #| msgid "IDCard Number"
 msgid "ID Card Number not valid"
 msgstr "Invalid IDCard Number"
 
-#: .\AIM_GAMES\forms.py:133
+#: .\AIM_GAMES\forms.py:134
 msgid "You must be over 18 to sign up"
 msgstr "You must be over 18 to sign up"
 
-#: .\AIM_GAMES\forms.py:139
+#: .\AIM_GAMES\forms.py:140
 msgid "User not valid"
 msgstr "User not valid"
 
-#: .\AIM_GAMES\forms.py:156
+#: .\AIM_GAMES\forms.py:157
 msgid "Title"
 msgstr "Title"
 
-#: .\AIM_GAMES\forms.py:157 .\templates\challenge\challengeDetail.html:18
+#: .\AIM_GAMES\forms.py:158 .\templates\challenge\challengeDetail.html:18
 #: .\templates\thread\threadDetail.html:34
 msgid "Description"
 msgstr "Description"
 
-#: .\AIM_GAMES\forms.py:158 .\templates\thread\threadDetail.html:38
+#: .\AIM_GAMES\forms.py:159 .\templates\thread\threadDetail.html:38
 msgid "Tags"
 msgstr "Tags"
 
-#: .\AIM_GAMES\forms.py:159
+#: .\AIM_GAMES\forms.py:160
 msgid "Image URLs"
 msgstr "Image URLs"
 
-#: .\AIM_GAMES\forms.py:160
+#: .\AIM_GAMES\forms.py:161
 msgid "Attachment URLs"
 msgstr "Attachment URLs"
+
+#: .\AIM_GAMES\forms.py:196
+msgid ""
+"Please, enter valid URLS separated by comas in the images and files field"
+msgstr ""
+
+#: .\AIM_GAMES\forms.py:280
+msgid "Please, enter a valid URL"
+msgstr "Please, enter a valid URL (starting with http/https)"
 
 #: .\AIM_GAMES\models.py:15 .\AIM_GAMES\models.py:23 .\AIM_GAMES\models.py:222
 #: .\AIM_GAMES\models.py:259 .\AIM_GAMES\models.py:277
