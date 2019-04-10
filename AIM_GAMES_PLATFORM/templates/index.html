@@ -3,6 +3,17 @@
 {% load i18n %}
 {% load static %}
 
+    <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var options = {fullWidth:true, indicators:true}
+        var elems = document.querySelectorAll('.carousel');
+        var instances = M.Carousel.init(elems, options);
+    });
+
+
+    </script>
+
 <div class="row center-align">
     <div class="col m12 l6 offset-l3 center">
         <p><img src="{% static "images/logo_aim.png" %}" alt="My image"></p>
