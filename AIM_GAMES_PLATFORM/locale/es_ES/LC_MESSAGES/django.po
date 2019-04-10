@@ -765,7 +765,7 @@ msgid "Edit Job Offer"
 msgstr "Editar oferta de trabajo"
 
 msgid "Finding the personnel to make your dreams happen"
-msgstr "Encontrando el personal para hacer realidad tus sueños"
+msgstr "Encontrando el personal para hacer realidad sus sueños"
 
 msgid "AIM Games is the reference platform for game-making resources, where you can find anything and anyone you need to make the videogame of your dreams."
 msgstr "AIM Games es la plataforma de referencia para recursos destinados a la creación de videojuegos, donde puede encontrar todos los assets y el personal necesario para hacer el juego de sus sueños"
