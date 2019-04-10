@@ -631,12 +631,6 @@ msgstr "Modificar expositor de HTML5"
 msgid "AIM Games"
 msgstr "AIM Games"
 
-#: .\templates\index.html:9
-msgid ""
-"AIM Games is the reference platform for game-making resources, where you can "
-"find anything and anyone you need to make the videogame of your dreams."
-msgstr ""
-
 #: .\templates\index.html:10
 msgid ""
 "Please note that this is a work in progress page and only the core "
@@ -764,5 +758,41 @@ msgstr "Nuevo hilo"
 #~ msgid "contactus"
 #~ msgstr "Contáctanos"
 
-#~ msgid "Edit Job Offer"
-#~ msgstr "Editar oferta de trabajo"
+msgid "position"
+msgstr "Posición"
+
+msgid "Edit Job Offer"
+msgstr "Editar oferta de trabajo"
+
+msgid "Finding the personnel to make your dreams happen"
+msgstr "Encontrando el personal para hacer realidad tus sueños"
+
+msgid "AIM Games is the reference platform for game-making resources, where you can find anything and anyone you need to make the videogame of your dreams."
+msgstr "AIM Games es la plataforma de referencia para recursos destinados a la creación de videojuegos, donde puede encontrar todos los assets y el personal necesario para hacer el juego de sus sueños"
+
+msgid "What is our association?"
+msgstr "¿Qué es nuestra asociación?"
+
+msgid "Getting studios and developers close together"
+msgstr "Acercando a estudios y desarrolladores"
+
+msgid "Participate in the meetup and development events we and our associates organize, and get to know personally the movers and shakers of the Spanish game-making scene."
+msgstr "Participe en los meetups y eventos de desarrollo que nosotros y nuestros asociados organizamos, y conozca personalmente a la crema y nata de la escena española de la creación de videojuegos."
+
+msgid "Our members are all already members of the game making industry, and will help your company find the personnel it needs to shine. If you are, on the other hand, a person interested in finding a job in the games industry, we will help you find a company where you can put your skills to use."
+msgstr "Nuestros miembros son ya parte de la industria del videojuego, y ayudaremos a su estudio a encontrar el personal que necesita para brillar. Si, por otra parte, es usted una persona interesada en encontrar trabajo en la industria, le ayudaremos a encontrar una empresa en la que pueda poner sus habilidades en uso."
+
+msgid "Many times, when developing, we struggle to find the resources we need to create our best work. For this purpose, AIM Games offers a great collection of 3D and 2D assets, code, animations, advice, tutorials and many more things to the companies that register onto our platform."
+msgstr "Muchas veces cuando desarrollamos nos cuesta encontrar los recursos que necesitamos para llevar a cabo nuestra idea. Por esto, AIM Games ofrece una gran colección de gráficos 3D y 2D, animaciones, código, consejos, tutoriales y muchas otras cosas a las empresas que se registren en nuestra plataforma."
+
+msgid "We also organize game jams where our members make games with a theme in a short time. If you think your company could be interested in some talent, we can offer you privileged access to the jam's code repository so you can assess if the jammers fit the bill for your projects!"
+msgstr "También organizamos game jams donde nuestros socios hacen juegos sobre un tema en un tiempo limitado. Si cree que su empresa estaría interesada en contratar, le podemos ofrecer acceso privilegiado al repositorio de código de la jam para que pueda valorar si los participantes encajan en sus proyectos."
+
+msgid "Discerning talent, one step easier"
+msgstr "Discernir talento, un paso más sencillo"
+
+msgid "Getting you the assets you need"
+msgstr "Consiguiendo los assets que necesita"
+
+msgid "Besides the help our extensive associate base can offer your company, we give you the possibility to post challenges on our platform to check out the specific abilities of the candidates in the actual area you are interested in checking."
+msgstr "Aparte de la ayuda que puedan ofrecerle nuestros socios y asociados, le damos la posibilidad de colgar retos en nuestra plataforma para comprobar las habilidades específicas de sus candidatos en las áreas que prefiera comprobar."
