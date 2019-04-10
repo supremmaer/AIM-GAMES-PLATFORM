@@ -2,38 +2,38 @@
 {% extends "base_generic.html" %}
 {% load i18n %}
 {% block content %}
-<div class="card  lighten-2">  
+<div class="container">
+  <div class="section">  
     <div class="row">
-      <h1>{% trans "Challenge details" %}:</h1>
+      <h3>{% trans "Challenge details" %}:</h3>
       <div class="col m6 s12">  
-        <h4>{{challenge.title}}</h4>
+        <h5>{{challenge.title}}</h5>
       </div>
       <div class="col m6 s12">
-        <h4>{% trans "Business" %}: {{ challenge.business }}</h4>
+        <h5>{% trans "Business" %}: {{ challenge.business }}</h5>
       </div>
     </div>
-    <div class="card #ffebee red lighten-5"> 
-      <span class="card-title">{% trans "Description" %}:</span>
-      {{ challenge.description }}
-    </div>  
-    <div class="card #ffebee red lighten-5"> 
-        <span class="card-title">{% trans "Objectives" %}:</span>
-        {{ challenge.objectives }}
-      </div>
+    <div>
+    <div class="divider"></div>
+    <p><b>{% trans "Description" %}:</b> {{ challenge.description }}</p> 
+    <p><b>{% trans "Objectives" %}:</b> {{ challenge.objectives }}</p>
 
-      {% if request.session.currentUser == 'freelancer'%}
-      <a class="waves-effect waves-teal btn-flat" href="/challengeResponse/create/{{challenge.id}}">{% trans "createAResponseForThisChallenge" %}<i class="material-icons right">send</i></a>
-      {% endif %}
-</div>
-
-<div class="row">
-  <h4 class ="col  #ffebee red lighten-5 m1.5"  >{% trans "responsesChallenge" %}:</h4>
+    {% if request.session.currentUser == 'freelancer'%}
+      <a class="btn waves-effect waves-red" href="/challengeResponse/create/{{challenge.id}}">{% trans "createAResponseForThisChallenge" %}<i class="material-icons right">send</i></a>
+    {% endif %}
+    </div>
   </div>
-  {% for response in responsesChallenge %}
-  <div class="card #ffebee red lighten-5">
-      <b>{{ response.title }}</b><p>{{response.description}}</p>
-      <p>{% trans "freelancerResponse" %}: {{response.freelancer}} </p>
-      <br>
-  </div>
-  {% endfor %}  
+  <div class="divider"></div>
+  <div class="row">
+    <h4 class ="col m1.5"  >{% trans "responsesChallenge" %}:</h4>
+    </div>
+    {% for response in responsesChallenge %}
+    <div>
+        <b>{{ response.title }}</b><p>{{response.description}}</p>
+        <p>{% trans "freelancerResponse" %}: {{response.freelancer}} </p>
+        <br>
+    </div>
+    <div class="divider"></div>
+    {% endfor %}
+</div>  
 {% endblock %}

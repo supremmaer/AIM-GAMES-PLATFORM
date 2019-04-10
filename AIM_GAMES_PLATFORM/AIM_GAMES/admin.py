@@ -22,6 +22,7 @@ admin.site.register(Manager)
 admin.site.register(Message)
 admin.site.register(Event)
 admin.site.register(Challenge)
+admin.site.register(ChallengeResponse)
 
 
 # Register your models here.

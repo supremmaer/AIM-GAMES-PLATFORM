@@ -892,6 +892,30 @@ def eventJoin(request, event_id):
     obj.save()
     return redirect('/event/detail/'+str(event_id))
 
+def eventDisjoin(request, event_id): 
+    userRole=checkUser(request)
+    if userRole!='business' and userRole!='freelancer':
+        return handler500(request)
+    instance = get_object_or_404(Event, id=event_id)
+    user = findByPrincipal(request)
+
+    form = EventForm(instance=instance)
+    obj = form.save(commit=False)
+    if userRole=='freelancer':
+        obj.freelancers.remove(user)
+    else:
+        obj.companies.remove(user)
+    obj.save()
+    return redirect('/event/detail/'+str(event_id))
+
+def eventDelete(request, event_id):
+    if checkUser(request)!='manager':
+        return handler500(request) 
+    instance = get_object_or_404(Event, id=event_id)
+    manager = findByPrincipal(request)
+    instance.delete()
+    return redirect('/event/list/')
+
 def downloadData(request):
     print("entre!")
     datos=findByPrincipal(request).getData()

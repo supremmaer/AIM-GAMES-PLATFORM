@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-09 11:02+0200\n"
+"POT-Creation-Date: 2019-04-10 20:35+0200\n"
 "PO-Revision-Date: 2019-03-29 13:19+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -79,12 +79,12 @@ msgstr "Perfil no válido"
 msgid "Title"
 msgstr "Título"
 
-#: .\AIM_GAMES\forms.py:136 .\templates\challenge\challengeDetail.html:16
-#: .\templates\thread\threadDetail.html:30
+#: .\AIM_GAMES\forms.py:136 .\templates\challenge\challengeDetail.html:18
+#: .\templates\thread\threadDetail.html:34
 msgid "Description"
 msgstr "Descripción"
 
-#: .\AIM_GAMES\forms.py:137 .\templates\thread\threadDetail.html:34
+#: .\AIM_GAMES\forms.py:137 .\templates\thread\threadDetail.html:38
 msgid "Tags"
 msgstr "Etiquetas"
 
@@ -99,7 +99,7 @@ msgstr "URLs de archivos adjuntos"
 #: .\AIM_GAMES\models.py:15 .\AIM_GAMES\models.py:23 .\AIM_GAMES\models.py:222
 #: .\AIM_GAMES\models.py:259 .\AIM_GAMES\models.py:277
 #: .\AIM_GAMES\models.py:295 .\AIM_GAMES\models.py:314
-#: .\templates\challenge\challengeList.html:19
+#: .\templates\challenge\challengeList.html:20
 #: .\templates\event\eventList.html:20
 #, fuzzy
 #| msgid "Title"
@@ -223,11 +223,15 @@ msgstr "URL"
 
 #: .\AIM_GAMES\models.py:196 .\AIM_GAMES\models.py:220
 #: .\AIM_GAMES\models.py:247 .\AIM_GAMES\models.py:255
-#: .\AIM_GAMES\models.py:275 .\templates\thread\threadDetail.html:64
+#: .\AIM_GAMES\models.py:275 .\templates\thread\threadDetail.html:75
 #, fuzzy
 #| msgid "signupBusiness"
 msgid "business"
 msgstr "Registrarse como empresa"
+
+#: .\AIM_GAMES\models.py:198
+msgid "position"
+msgstr "Posición"
 
 #: .\AIM_GAMES\models.py:200 .\templates\jobOfferDetail.html:20
 msgid "experienceRequired"
@@ -337,7 +341,7 @@ msgstr "Sesión iniciada como"
 msgid ", please logout before login again"
 msgstr ", por favor cierra sesión antes de volver a iniciarla"
 
-#: .\templates\accounts\login.html:22 .\templates\base_generic.html:69
+#: .\templates\accounts\login.html:22 .\templates\base_generic.html:75
 #: .\templates\base_generic.html:106
 msgid "Logout"
 msgstr "Cerrar sesión"
@@ -409,40 +413,48 @@ msgstr "Retos"
 msgid "Admin Panel"
 msgstr "Panel de Administración"
 
-#: .\templates\base_generic.html:70 .\templates\base_generic.html:107
+#: .\templates\base_generic.html:69 .\templates\base_generic.html:107
 msgid "Events"
 msgstr "Eventos"
 
-#: .\templates\base_generic.html:71
+#: .\templates\base_generic.html:70
 msgid "Messages"
 msgstr "Mensajes"
 
-#: .\templates\challenge\challengeDetail.html:7
+#: .\templates\base_generic.html:133
+msgid "DownloadData"
+msgstr "Descargar todos tus datos"
+
+#: .\templates\base_generic.html:134
+msgid "DeleteAllyourData"
+msgstr "Borra tu cuenta para siempre"
+
+#: .\templates\challenge\challengeDetail.html:8
 msgid "Challenge details"
 msgstr "Detalles del reto"
 
-#: .\templates\challenge\challengeDetail.html:12
-#: .\templates\thread\threadDetail.html:26
+#: .\templates\challenge\challengeDetail.html:13
+#: .\templates\thread\threadDetail.html:30
 msgid "Business"
 msgstr "Empresa"
 
-#: .\templates\challenge\challengeDetail.html:20
+#: .\templates\challenge\challengeDetail.html:19
 msgid "Objectives"
 msgstr "Objetivos"
 
-#: .\templates\challenge\challengeDetail.html:25
+#: .\templates\challenge\challengeDetail.html:22
 msgid "createAResponseForThisChallenge"
 msgstr "Crear una respuesta para este reto"
 
-#: .\templates\challenge\challengeDetail.html:30
+#: .\templates\challenge\challengeDetail.html:28
 msgid "responsesChallenge"
 msgstr "Respuestas a este reto"
 
-#: .\templates\challenge\challengeDetail.html:35
+#: .\templates\challenge\challengeDetail.html:33
 msgid "freelancerResponse"
 msgstr "Respuesta del freelancer"
 
-#: .\templates\challenge\challengeList.html:7
+#: .\templates\challenge\challengeList.html:8
 msgid "challengesList"
 msgstr "Lista de retos"
 
@@ -450,35 +462,36 @@ msgstr "Lista de retos"
 msgid "search"
 msgstr "Buscar"
 
-#: .\templates\challenge\challengeList.html:12
+#: .\templates\challenge\challengeList.html:13
 msgid "close"
 msgstr "Cerrar"
 
-#: .\templates\challenge\challengeList.html:18 .\templates\jobOfferList.html:18
+#: .\templates\challenge\challengeList.html:19 .\templates\jobOfferList.html:18
 #: .\templates\thread\threadList.html:10 .\templates\thread\threadList.html:22
 msgid "company"
 msgstr "Empresa"
 
-#: .\templates\challenge\challengeList.html:25
+#: .\templates\challenge\challengeList.html:26
 #: .\templates\curriculumList.html:36 .\templates\event\eventList.html:28
-#: .\templates\jobOfferList.html:26 .\templates\message\list.html:23
+#: .\templates\jobOfferList.html:29 .\templates\message\list.html:23
 #: .\templates\message\list.html:31
 msgid "view"
 msgstr "Ver"
 
-#: .\templates\challenge\challengeList.html:33
+#: .\templates\challenge\challengeList.html:34
 msgid "newChallenge"
 msgstr "Crear un nueo reto"
 
-#: .\templates\challenge\responseCreate.html:5
+#: .\templates\challenge\responseCreate.html:7
 #: .\templates\thread\responseCreate.html:5
 msgid "newResponse"
 msgstr "Nueva respuesta"
 
-#: .\templates\challenge\responseCreate.html:8
-#: .\templates\thread\responseCreate.html:8
-msgid "save"
-msgstr "Guardar"
+#: .\templates\challenge\responseCreate.html:32
+#: .\templates\event\standardForm.html:32 .\templates\message\create.html:32
+#: .\templates\thread\form.html:35
+msgid "Submit"
+msgstr "Enviar"
 
 #: .\templates\cookielaw\banner.html:8
 msgid "Cookies disclaimer"
@@ -514,12 +527,26 @@ msgstr "Asistentes"
 msgid "Join"
 msgstr "Unirse"
 
-#: .\templates\event\eventDetail.html:61 .\templates\freelancer\detail.html:47
+#: .\templates\event\eventDetail.html:59
+msgid "Disjoin"
+msgstr "Cancelar asistencia"
+
+#: .\templates\event\eventDetail.html:67 .\templates\freelancer\detail.html:47
 #: .\templates\freelancer\detail.html:81 .\templates\freelancer\detail.html:118
 #: .\templates\freelancer\detail.html:144
-#: .\templates\freelancer\detail.html:172
+#: .\templates\freelancer\detail.html:172 .\templates\jobOfferDetail.html:35
+#: .\templates\thread\threadDetail.html:60
 msgid "Edit"
 msgstr "Editar"
+
+#: .\templates\event\eventDetail.html:68 .\templates\freelancer\detail.html:48
+#: .\templates\freelancer\detail.html:82 .\templates\freelancer\detail.html:119
+#: .\templates\freelancer\detail.html:145
+#: .\templates\freelancer\detail.html:173
+#: .\templates\freelancer\detail.html:207 .\templates\jobOfferDetail.html:36
+#: .\templates\thread\threadDetail.html:61
+msgid "Delete"
+msgstr "Eliminar"
 
 #: .\templates\event\eventList.html:9
 msgid "events"
@@ -534,11 +561,6 @@ msgstr "Nuevo evento"
 #| msgid "Events"
 msgid "Event"
 msgstr "Eventos"
-
-#: .\templates\event\standardForm.html:32 .\templates\message\create.html:32
-#: .\templates\thread\form.html:35
-msgid "Submit"
-msgstr "Enviar"
 
 #: .\templates\freelancer\detail.html:12
 msgid "warninghtml5"
@@ -561,14 +583,6 @@ msgstr "Curriculum verificado"
 #: .\templates\freelancer\detail.html:37
 msgid "links"
 msgstr "Enlaces"
-
-#: .\templates\freelancer\detail.html:48 .\templates\freelancer\detail.html:82
-#: .\templates\freelancer\detail.html:119
-#: .\templates\freelancer\detail.html:145
-#: .\templates\freelancer\detail.html:173
-#: .\templates\freelancer\detail.html:207
-msgid "Delete"
-msgstr "Eliminar"
 
 #: .\templates\freelancer\detail.html:56
 msgid "Add link"
@@ -637,11 +651,11 @@ msgstr "Enlaces de utilidad"
 msgid "positioDisplay"
 msgstr "Posición"
 
-#: .\templates\jobOfferDetail.html:54 .\templates\jobOfferDetail.html:55
+#: .\templates\jobOfferDetail.html:58 .\templates\jobOfferDetail.html:59
 msgid "Contact"
 msgstr "Contacto"
 
-#: .\templates\jobOfferList.html:34
+#: .\templates\jobOfferList.html:38
 msgid "newOffer"
 msgstr "Crear oferta"
 
@@ -677,32 +691,32 @@ msgstr "El proceso de pago se ha realizado correctamente"
 msgid "Create Thread"
 msgstr "Crear hilo"
 
-#: .\templates\thread\threadDetail.html:21
+#: .\templates\thread\responseCreate.html:8
+msgid "save"
+msgstr "Guardar"
+
+#: .\templates\thread\threadDetail.html:24
 msgid "Thread details"
 msgstr "Detalles del hilo"
 
-#: .\templates\thread\threadDetail.html:39
+#: .\templates\thread\threadDetail.html:43
 msgid "Attached files"
 msgstr "Archivos adjuntos"
 
-#: .\templates\thread\threadDetail.html:41
+#: .\templates\thread\threadDetail.html:45
 msgid "Attached file"
 msgstr "Archivo adjunto"
 
-#: .\templates\thread\threadDetail.html:46
-msgid "valoration"
-msgstr "Valoración"
-
-#: .\templates\thread\threadDetail.html:48
-#: .\templates\thread\threadDetail.html:65
+#: .\templates\thread\threadDetail.html:53
+#: .\templates\thread\threadDetail.html:76
 msgid "pictures"
 msgstr "Imágenes"
 
-#: .\templates\thread\threadDetail.html:55
+#: .\templates\thread\threadDetail.html:64
 msgid "createAResponseForThisThread"
 msgstr "Crear una respuesta para este hilo"
 
-#: .\templates\thread\threadDetail.html:59
+#: .\templates\thread\threadDetail.html:68
 #, fuzzy
 #| msgid "newResponse"
 msgid "responses"
@@ -712,11 +726,8 @@ msgstr "Nueva respuesta"
 msgid "New thread"
 msgstr "Nuevo hilo"
 
-msgid "DeleteAllyourData"
-msgstr "Borra tu cuenta para siempre"
-
-msgid "DownloadData"
-msgstr "Descargar todos tus datos"
+#~ msgid "valoration"
+#~ msgstr "Valoración"
 
 #~ msgid "addAptitude"
 #~ msgstr "Añadir aptitud"
@@ -753,8 +764,5 @@ msgstr "Descargar todos tus datos"
 #~ msgid "contactus"
 #~ msgstr "Contáctanos"
 
-msgid "position"
-msgstr "Posición"
-
-msgid "Edit Job Offer"
-msgstr "Editar oferta de trabajo"
+#~ msgid "Edit Job Offer"
+#~ msgstr "Editar oferta de trabajo"
