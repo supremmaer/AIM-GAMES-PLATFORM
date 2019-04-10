@@ -98,8 +98,29 @@ class ProfileForm(ModelForm):
     def clean_phoneNumber(self):
         print('clean: ProfileForm: PhoneNumber')
         data = self.cleaned_data['phoneNumber']
-        if not data.isdigit():
+        if not data.isdigit() or len(data) != 9:
             raise ValidationError(_("Phone Number must be a number"))
+        return data
+
+    def clean_postalCode(self):
+        data = self.cleaned_data['postalCode']
+        if not data.isdigit():
+            raise ValidationError(_("validatePostal"))
+        return data
+
+    def clean_idCardNumber(self):
+        data = self.cleaned_data['idCardNumber']
+        word = 'TRWAGMYFPDXBNJZSQVHLCKE'
+        numbers = "1234567890"
+        validate = False
+        if (len(data) == 9):
+            chara = data[8].upper()
+            dni = data[:8]
+            if (len(dni) == len([n for n in dni if n in numbers])):
+                if word[int(dni) % 23] == chara:
+                    validate = True
+        if not validate:
+            raise ValidationError(_("ID Card Number not valid"))
         return data
 
     def clean_dateOfBirth(self):
