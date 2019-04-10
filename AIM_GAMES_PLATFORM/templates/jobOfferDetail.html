@@ -31,6 +31,10 @@
 
           <h5 class="bold">{% trans "description"%}</h5>
           <p class="card-text col l11 offset-l1 s12 ">{{jobOffer.description}}</p>
+          {% if owner %}
+          <p class="card-text col l2 offset-l5 s12"><a href="/business/joboffer/edit/{{jobOffer.id}}" class="btn waves-effect waves-red">{% trans "Edit" %}</a></p>
+          <p class="card-text col l2 offset-l5 s12"><a href="/business/joboffer/delete/{{jobOffer.id}}" class="btn waves-effect waves-red">{% trans "Delete" %}</a></p>
+          {% endif %}
         </div>
       </div>
     </div>

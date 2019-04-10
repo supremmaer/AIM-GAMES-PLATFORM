@@ -55,6 +55,10 @@
                       <a class="carousel-item" href="{{pic.uri}}"><img src="{{pic.uri}}" class="img-responsive"></a>
                     {% endfor %}  
                   </div>
+                  {% if owner %}
+          <p ><a href="/business/thread/edit/{{thread.id}}" class="btn waves-effect waves-red">{% trans "Edit" %}</a></p>
+          <p ><a href="/business/thread/delete/{{thread.id}}" class="btn waves-effect waves-red">{% trans "Delete" %}</a></p>
+          {% endif %}    
         </div>    
     <a class="waves-effect waves-teal btn-flat" href="/response/create/{{thread.id}}">{% trans "createAResponseForThisThread" %}     <i class="material-icons right">send</i>
     </a>

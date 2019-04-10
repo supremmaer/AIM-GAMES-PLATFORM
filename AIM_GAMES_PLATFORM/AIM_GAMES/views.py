@@ -151,6 +151,46 @@ class BusinessCreate(CreateView):
         return context
 
 
+class ThreadUpdate(UpdateView):
+
+    images = ""
+    files = ""
+    initial = {'images' : images, 'files' : files}
+    model = Thread
+    form_class = ThreadForm
+    template_name = 'thread/form.html'
+    success_url = '/accounts/login'
+
+    def get_initial(self):
+        initial = super(ThreadUpdate, self).get_initial()
+        thread = self.get_object()
+        for pic in thread.pics.all():
+            initial['images'] += pic.uri+" "
+        for attachedFile in thread.attachedFiles.all():
+            initial['files'] += attachedFile.uri+" "
+
+        return initial
+
+    def form_valid(self, form):
+        # This method is called when valid form data has been POSTed.
+        # It should return an HttpResponse.
+        if checkUser(self.request) != 'business':
+            return handler500(self.request)
+        print('ThreadUpdate: form_valid')
+
+        prof = Profile.objects.filter(user__pk=self.request.user.id)
+        buss = Business.objects.filter(profile__pk=prof[0].id)
+        thread = form.save(buss)
+
+        return threadDetail(self.request, thread.id)
+
+    def dispatch(self, request, *args, **kwargs):
+        if checkUser(self.request) == 'business' and self.get_object().business.id == self.request.user.profile.business.id:
+            return super(ThreadUpdate, self).dispatch(request, *args, **kwargs)
+        else:
+            return handler500(request)
+
+
 class ThreadCreate(CreateView):
     form_class = ThreadForm
     template_name = 'thread/form.html'
@@ -190,6 +230,10 @@ def threadDetail(request, thread_id):
     thread = get_object_or_404(Thread, pk=thread_id)
     responses = thread.response_set.all()
     pics = thread.pics
+    if checkUser(request)=='business':
+        business = findByPrincipal(request)
+        if business.id == thread.business.id:
+            return render(request, 'thread/threadDetail.html', {'thread': thread, 'responses': responses,'pics':pics,'owner':True})
     return render(request, 'thread/threadDetail.html', {'thread': thread, 'responses': responses,'pics':pics})
 
 def jobOfferDetail(request, id):
@@ -198,6 +242,10 @@ def jobOfferDetail(request, id):
         for pic in pics:
             pic.strip()
         
+        if checkUser(request)=='business':
+            business = findByPrincipal(request)
+            if business.id == jobOffer.business.id:
+                return render(request, 'jobOfferDetail.html', {'jobOffer': jobOffer, 'pics' : pics,'owner':True})        
         return render(request, 'jobOfferDetail.html', {'jobOffer': jobOffer, 'pics' : pics})
 
 def findByPrincipal(request):
@@ -484,6 +532,34 @@ def jobOfferCreate(request):
         else:
             form = JobOfferForm()
             return render(request,'business/standardForm.html',{'form':form,'title':'Add Job Offer'})
+    else:
+        return handler500(request)
+
+def jobOfferEdit(request,id):
+    if checkUser(request)=='business':
+        business = findByPrincipal(request)
+        instance = get_object_or_404(JobOffer, id=id)
+        if instance.business.id != business.id:
+            return handler500(request)
+        form = JobOfferForm(request.POST or None, instance=instance)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.business = business
+            obj.save()
+            return redirect('/jobOffer/detail/'+ str(id))
+        else:
+            return render(request,'business/standardForm.html',{'form':form,'title':'Edit Job Offer'})
+    else:
+        return handler500(request)
+
+def jobOfferDelete(request,id):
+    if checkUser(request)=='business':
+        business = findByPrincipal(request)
+        instance = get_object_or_404(JobOffer, id=id)
+        if instance.business.id != business.id:
+            return handler500(request)
+        instance.delete()
+        return redirect('/joboffer/user/list/')
     else:
         return handler500(request)
 
@@ -826,3 +902,56 @@ def downloadData(request):
     response = HttpResponse(content, content_type='text/plain')
     response['Content-Disposition'] = 'attachment; filename={0}'.format(filename)
     return response
+
+def deleteUser(request):
+    user=request.user
+    user.delete()
+    auth.logout(request)
+    return redirect('/')    
+
+
+def message_list(request):
+    if not request.user.is_authenticated:
+        return handler500(request)
+    user = request.user
+    messages = Message.objects.filter(recipient=user).order_by('readed', '-timestamp')
+    return render(request, 'message/list.html', {'messages': messages})
+
+def message_show(request, id):
+    message = get_object_or_404(Message, id=id)
+    user = request.user 
+    if not (user == message.sender or user == message.recipient):
+        return handler500(request)
+    if message.readed is False:
+        count = int(request.session["message_count"])
+        if count>0:
+            count = count - 1
+            request.session["message_count"] = count
+        message.readed = True
+        message.save()
+    return render(request, 'message/show.html', {'message': message})
+
+def message_create(request):
+    if request.method == 'POST':
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.sender = request.user
+            obj.save()
+            print('Message saved')
+            return redirect('/message/list/')
+        else:
+            return render(request,'message/create.html',{'form':form,'title':'Create Message'})
+    else:
+        form = MessageForm()
+        return render(request,'message/create.html',{'form':form,'title':'Create Message'})
+
+def threadDelete(request, id): 
+    if checkUser(request)!='business':
+        return handler500(request)
+    instance = get_object_or_404(Thread, id=id)
+    business = findByPrincipal(request)
+    if instance.business.id != business.id:
+        return redirect('/thread/business/list/')
+    instance.delete()
+    return redirect('/thread/business/list/')

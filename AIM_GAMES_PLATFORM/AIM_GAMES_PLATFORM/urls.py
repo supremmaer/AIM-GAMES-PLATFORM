@@ -54,6 +54,10 @@ urlpatterns = [
     path('freelancer/professionalExperience/edit/<int:id>',professionalExperienceEdit),
     path('freelancer/formation/edit/<int:id>',formationEdit),
     path('business/joboffer/create',jobOfferCreate),
+    path('business/joboffer/edit/<int:id>',jobOfferEdit),
+    path('business/joboffer/delete/<int:id>',jobOfferDelete),
+    path('business/thread/delete/<int:id>',threadDelete),
+    path('business/thread/edit/<int:pk>',ThreadUpdate.as_view(),name='threadUpdate'),
     path('freelancer/html5showcase/delete/<int:id>',html5Delete),
     path('freelancer/link/delete/<int:id>',linkDelete),
     path('freelancer/graphicEngineExperience/delete/<int:id>',graphicEngineExperienceDelete),
@@ -76,6 +80,10 @@ urlpatterns = [
     path('event/edit/<int:event_id>',eventEdit,name='eventEdit'),
     path('event/join/<int:event_id>',eventJoin,name='eventJoin'),
     path('userDownloadData',downloadData),
+    path('deleteUser',deleteUser),
     path('challengeResponse/create/<int:challengeId>', challengeResponse_create, name="responseCreate"),
+    path('message/list/',message_list),
+    path('message/show/<int:id>',message_show),
+    path('message/create/', message_create)
 
 ]

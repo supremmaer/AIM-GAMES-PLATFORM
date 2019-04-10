@@ -159,7 +159,6 @@ class ThreadForm(ModelForm):
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'validate'
 
-
     def clean(self):
         print('clean: ThreadForm')
         val = URLValidator()
@@ -276,3 +275,9 @@ class EventForm(ModelForm):
     class Meta:
         model = Event
         exclude = ['manager', 'freelancers','companies']
+
+class MessageForm(ModelForm):
+
+    class Meta:
+        model = Message
+        exclude = ['sender', 'timestamp', 'readed']
