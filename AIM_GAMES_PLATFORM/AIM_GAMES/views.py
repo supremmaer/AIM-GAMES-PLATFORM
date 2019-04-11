@@ -814,6 +814,12 @@ def termsAndConditions(request):
 def privacyPolicy(request):
     return render(request, "privacy-policy.html")    
 
+def terminosYCondiciones(request):
+    return render(request, "terminos-y-condiciones.html")
+
+def politicaPrivacidad(request):
+    return render(request, "politica-privacidad.html")   
+
 def eventList(request):
     if not request.user.is_authenticated:
         return handler500(request)

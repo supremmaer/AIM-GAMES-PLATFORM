@@ -127,7 +127,12 @@
                 <div class="col s12 m3">
                 © 2019 AIM-GAMES-PLATFORM<br/>
                 V2.0<br/>  
-                <a href="/terms-and-conditions" class="grey-text ">{% trans "terms-and-conditions" %}</a>
+                {% if request.session.language == 'en-GB' %}
+                    <a href="/terms-and-conditions" class="grey-text ">{% trans "terms-and-conditions" %}</a>
+                {% endif %}
+                {% if request.session.language == 'es-ES' %}
+                    <a href="/terminos-y-condiciones" class="grey-text ">{% trans "terms-and-conditions" %}</a>
+                {% endif %}
                 </div>
                 <div class="col s12 m3">
                 {% if request.session.currentUser == 'business' or request.session.currentUser == 'freelancer' %}
