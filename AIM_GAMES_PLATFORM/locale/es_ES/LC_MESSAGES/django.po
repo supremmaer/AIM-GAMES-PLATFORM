@@ -70,8 +70,6 @@ msgid "validatePostal"
 msgstr "El Código Postal debe ser un número"
 
 #: .\AIM_GAMES\forms.py:124
-#, fuzzy
-#| msgid "IDCard Number"
 msgid "ID Card Number not valid"
 msgstr "DNI Inválido"
 
@@ -422,8 +420,6 @@ msgstr "Mi curriculum"
 msgid "joboffers"
 msgstr "Ofertas de trabajo"
 
-#: .\templates\base_generic.html:62 .\templates\base_generic.html:97
-#, fuzzy
 #| msgid "newChallenge"
 msgid "Challenges"
 msgstr "Retos"
