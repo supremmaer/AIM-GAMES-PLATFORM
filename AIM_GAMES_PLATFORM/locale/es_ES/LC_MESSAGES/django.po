@@ -70,8 +70,6 @@ msgid "validatePostal"
 msgstr "El Código Postal debe ser un número"
 
 #: .\AIM_GAMES\forms.py:124
-#, fuzzy
-#| msgid "IDCard Number"
 msgid "ID Card Number not valid"
 msgstr "DNI Inválido"
 
