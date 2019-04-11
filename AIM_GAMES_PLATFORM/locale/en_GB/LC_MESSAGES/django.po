@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-10 20:35+0200\n"
+"POT-Creation-Date: 2019-04-10 23:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,82 +18,101 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\AIM_GAMES\forms.py:26 .\AIM_GAMES\forms.py:60
+#: .\AIM_GAMES\forms.py:27 .\AIM_GAMES\forms.py:61
 msgid "Profile not valid"
 msgstr "Profile not valid"
 
-#: .\AIM_GAMES\forms.py:39 .\AIM_GAMES\models.py:70
+#: .\AIM_GAMES\forms.py:40 .\AIM_GAMES\models.py:70
 msgid "profession"
 msgstr "Profession"
 
-#: .\AIM_GAMES\forms.py:75
+#: .\AIM_GAMES\forms.py:76
 msgid "Name"
 msgstr "Name"
 
-#: .\AIM_GAMES\forms.py:76
+#: .\AIM_GAMES\forms.py:77
 msgid "Surname"
 msgstr "Surname"
 
-#: .\AIM_GAMES\forms.py:77
+#: .\AIM_GAMES\forms.py:78
 msgid "Email"
 msgstr "Email"
 
-#: .\AIM_GAMES\forms.py:78
+#: .\AIM_GAMES\forms.py:79
 msgid "City"
 msgstr "City"
 
-#: .\AIM_GAMES\forms.py:79 .\AIM_GAMES\models.py:51
+#: .\AIM_GAMES\forms.py:80 .\AIM_GAMES\models.py:51
 msgid "Postal Code"
 msgstr "Postal Code"
 
-#: .\AIM_GAMES\forms.py:80 .\AIM_GAMES\models.py:53
+#: .\AIM_GAMES\forms.py:81 .\AIM_GAMES\models.py:53
 msgid "IDCard Number"
 msgstr "IDCard Number"
 
-#: .\AIM_GAMES\forms.py:81 .\AIM_GAMES\models.py:55
+#: .\AIM_GAMES\forms.py:82 .\AIM_GAMES\models.py:55
 msgid "Date of birth"
 msgstr "Date of birth"
 
-#: .\AIM_GAMES\forms.py:82
+#: .\AIM_GAMES\forms.py:83
 msgid "Phone Number"
 msgstr "Phone Number"
 
-#: .\AIM_GAMES\forms.py:83
+#: .\AIM_GAMES\forms.py:84
 msgid "Photo URL:"
 msgstr "Photo URL"
 
-#: .\AIM_GAMES\forms.py:102
+#: .\AIM_GAMES\forms.py:103
 msgid "Phone Number must be a number"
-msgstr "Phone Number must be a number"
+msgstr "Phone Number must be a 9 digits number"
 
-#: .\AIM_GAMES\forms.py:112
+#: .\AIM_GAMES\forms.py:109
+msgid "validatePostal"
+msgstr "Postal Code must be a number"
+
+#: .\AIM_GAMES\forms.py:124
+#, fuzzy
+#| msgid "IDCard Number"
+msgid "ID Card Number not valid"
+msgstr "Invalid IDCard Number"
+
+#: .\AIM_GAMES\forms.py:134
 msgid "You must be over 18 to sign up"
 msgstr "You must be over 18 to sign up"
 
-#: .\AIM_GAMES\forms.py:118
+#: .\AIM_GAMES\forms.py:140
 msgid "User not valid"
 msgstr "User not valid"
 
-#: .\AIM_GAMES\forms.py:135
+#: .\AIM_GAMES\forms.py:157
 msgid "Title"
 msgstr "Title"
 
-#: .\AIM_GAMES\forms.py:136 .\templates\challenge\challengeDetail.html:18
+#: .\AIM_GAMES\forms.py:158 .\templates\challenge\challengeDetail.html:18
 #: .\templates\thread\threadDetail.html:34
 msgid "Description"
 msgstr "Description"
 
-#: .\AIM_GAMES\forms.py:137 .\templates\thread\threadDetail.html:38
+#: .\AIM_GAMES\forms.py:159 .\templates\thread\threadDetail.html:38
 msgid "Tags"
 msgstr "Tags"
 
-#: .\AIM_GAMES\forms.py:138
+#: .\AIM_GAMES\forms.py:160
 msgid "Image URLs"
 msgstr "Image URLs"
 
-#: .\AIM_GAMES\forms.py:139
+#: .\AIM_GAMES\forms.py:161
 msgid "Attachment URLs"
 msgstr "Attachment URLs"
+
+#: .\AIM_GAMES\forms.py:196
+msgid ""
+"Please, enter valid URLS separated by comas in the images and files field"
+msgstr "Please, enter valid URLS separated by spaces in the images and files field"
+
+#: .\AIM_GAMES\forms.py:280
+msgid "Please, enter a valid URL"
+msgstr "Please, enter a valid URL (starting with http/https)"
 
 #: .\AIM_GAMES\models.py:15 .\AIM_GAMES\models.py:23 .\AIM_GAMES\models.py:222
 #: .\AIM_GAMES\models.py:259 .\AIM_GAMES\models.py:277
@@ -327,37 +346,37 @@ msgstr "Send"
 msgid "recipient"
 msgstr "Recipient"
 
-#: .\templates\accounts\login.html:19 .\templates\accounts\login.html:49
+#: .\templates\accounts\login.html:20 .\templates\accounts\login.html:50
 #: .\templates\base_generic.html:77 .\templates\base_generic.html:109
 msgid "Log In"
 msgstr "Log In"
 
-#: .\templates\accounts\login.html:21
+#: .\templates\accounts\login.html:22
 msgid "Loged as"
 msgstr "Loged as"
 
-#: .\templates\accounts\login.html:21
+#: .\templates\accounts\login.html:22
 msgid ", please logout before login again"
 msgstr ", please logout befor login again"
 
-#: .\templates\accounts\login.html:22 .\templates\base_generic.html:75
+#: .\templates\accounts\login.html:23 .\templates\base_generic.html:75
 #: .\templates\base_generic.html:106
 msgid "Logout"
 msgstr "Logout"
 
-#: .\templates\accounts\login.html:37
+#: .\templates\accounts\login.html:38
 msgid "Username"
 msgstr "Username"
 
-#: .\templates\accounts\login.html:42
+#: .\templates\accounts\login.html:43
 msgid "Password"
 msgstr "Password"
 
-#: .\templates\accounts\login.html:55
+#: .\templates\accounts\login.html:56
 msgid "Sign up"
 msgstr "Sign up"
 
-#: .\templates\accounts\login.html:62
+#: .\templates\accounts\login.html:63
 msgid "Sign up as Business"
 msgstr "Sign up as Business"
 
@@ -420,11 +439,11 @@ msgstr "Events"
 msgid "Messages"
 msgstr "Messages"
 
-#: .\templates\base_generic.html:133
+#: .\templates\base_generic.html:134
 msgid "DownloadData"
 msgstr "Download all your data"
 
-#: .\templates\base_generic.html:134
+#: .\templates\base_generic.html:135
 msgid "DeleteAllyourData"
 msgstr "Delete your account forever"
 
@@ -627,25 +646,70 @@ msgstr "Game not fully compatible? Try it out at "
 msgid "editHTML5Showcase"
 msgstr "Edit HTML5 Showcase"
 
-#: .\templates\index.html:7
-msgid "AIM Games"
-msgstr "AIM Games"
-
-#: .\templates\index.html:9
+#: .\templates\index.html:21
 msgid ""
 "AIM Games is the reference platform for game-making resources, where you can "
 "find anything and anyone you need to make the videogame of your dreams."
 msgstr ""
 
-#: .\templates\index.html:10
-msgid ""
-"Please note that this is a work in progress page and only the core "
-"functionality is available. More is to come in short time."
+#: .\templates\index.html:28
+msgid "What is our association?"
 msgstr ""
 
-#: .\templates\index.html:16
-msgid "Useful links"
-msgstr "Useful links"
+#: .\templates\index.html:35
+msgid "Finding the personnel to make your dreams happen"
+msgstr ""
+
+#: .\templates\index.html:39
+msgid ""
+"Our members are all already members of the game making industry, and will "
+"help your company find the personnel it needs to shine. If you are, on the "
+"other hand, a person interested in finding a job in the games industry, we "
+"will help you find a company where you can put your skills to use."
+msgstr ""
+
+#: .\templates\index.html:49
+msgid "Getting studios and developers close together"
+msgstr ""
+
+#: .\templates\index.html:53
+msgid ""
+"Participate in the meetup and development events we and our associates "
+"organize, and get to know personally the movers and shakers of the Spanish "
+"game-making scene."
+msgstr ""
+
+#: .\templates\index.html:54
+msgid ""
+"We also organize game jams where our members make games with a theme in a "
+"short time. If you think your company could be interested in some talent, we "
+"can offer you privileged access to the jam's code repository so you can "
+"assess if the jammers fit the bill for your projects!"
+msgstr ""
+
+#: .\templates\index.html:73
+msgid "Getting you the assets you need"
+msgstr ""
+
+#: .\templates\index.html:77
+msgid ""
+"Many times, when developing, we struggle to find the resources we need to "
+"create our best work. For this purpose, AIM Games offers a great collection "
+"of 3D and 2D assets, code, animations, advice, tutorials and many more "
+"things to the companies that register onto our platform."
+msgstr ""
+
+#: .\templates\index.html:90
+msgid "Discerning talent, one step easier"
+msgstr ""
+
+#: .\templates\index.html:94
+msgid ""
+"Besides the help our extensive associate base can offer your company, we "
+"give you the possibility to post challenges on our platform to check out the "
+"specific abilities of the candidates in the actual area you are interested "
+"in checking."
+msgstr ""
 
 #: .\templates\jobOfferDetail.html:17
 msgid "positioDisplay"
@@ -737,6 +801,12 @@ msgstr "New response"
 #| msgid "threads"
 msgid "New thread"
 msgstr "Threads"
+
+#~ msgid "AIM Games"
+#~ msgstr "AIM Games"
+
+#~ msgid "Useful links"
+#~ msgstr "Useful links"
 
 #~ msgid "valoration"
 #~ msgstr "Valoration"

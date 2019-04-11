@@ -45,7 +45,7 @@ class Profile(models.Model):
     name = models.TextField(verbose_name=_("name"), max_length=30, blank=False)
     surname = models.TextField(verbose_name=_(
         "surname"), max_length=50, blank=False)
-    email = models.EmailField(verbose_name=_("email"), blank=False)
+    email = models.EmailField(verbose_name=_("email"), blank=False, unique=True)
     city = models.TextField(verbose_name=_("city"), max_length=30, blank=False)
     postalCode = models.TextField(verbose_name=_(
         "Postal Code"), max_length=16, blank=False)
