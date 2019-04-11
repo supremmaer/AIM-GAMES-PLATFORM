@@ -420,8 +420,6 @@ msgstr "Mi curriculum"
 msgid "joboffers"
 msgstr "Ofertas de trabajo"
 
-#: .\templates\base_generic.html:62 .\templates\base_generic.html:97
-#, fuzzy
 #| msgid "newChallenge"
 msgid "Challenges"
 msgstr "Retos"
