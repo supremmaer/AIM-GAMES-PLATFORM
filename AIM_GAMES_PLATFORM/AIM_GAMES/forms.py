@@ -164,7 +164,6 @@ class ThreadForm(ModelForm):
         model = Thread
         exclude = ('business', 'pics', 'attachedFiles')
 
-
     def clean_images(self):
         """Split the tags string on whitespace and return a list"""
         print('clean: ThreadForm: Images')
@@ -194,6 +193,7 @@ class ThreadForm(ModelForm):
                 val(url)
         except ValidationError:
             raise ValidationError(_("Please, enter valid URLS separated by comas in the images and files field"))
+        return self.cleaned_data
 
     def save(self,business):
         print('save: ProfileForm')
@@ -221,6 +221,7 @@ class ThreadForm(ModelForm):
 
         obj.business = business[0]
         obj.save()
+        self.save_m2m()
         obj.attachedFiles.set(attached_files)
         obj.pics.set(pics)
         return obj
