@@ -22,8 +22,10 @@
                             {% if 'Date' in field.html_name %}
                                 <div class="labelxd">{{ field.label_tag }}</div>
                                 <input id="{{ field.id_for_label }}" type="date" class="validate" name="{{ field.html_name }}">
+                            {% elif 'graphicEngine' in field.html_name %}
+                                {{field}}
                             {% else %}
-                                {{ field.label_tag }}
+                                {{field.label_tag }}
                                 {{field}}
                             {% endif %}
                             

@@ -228,6 +228,7 @@ class GraphicEngineExperienceForm(ModelForm):
         exclude = ['curriculum']
 
 class AptitudeForm(ModelForm):
+    aptitude = CharField(widget=Textarea(attrs={'class': 'materialize-textarea'}), label=_('Aptitudes'),)
 
     class Meta:
         model = Aptitude
@@ -235,17 +236,23 @@ class AptitudeForm(ModelForm):
 
 class ProfessionalExperienceForm(ModelForm):
     """ startDate = DateField(widget=SelectDateWidget()) """
+    center = CharField(widget=Textarea(attrs={'class': 'materialize-textarea'}), label=_('Center'),)
+    formation = CharField(widget=Textarea(attrs={'class': 'materialize-textarea'}), label=_('Formation'),)
+
     class Meta:
         model = ProfessionalExperience
         exclude = ['curriculum']
 
 class FormationForm(ModelForm):
+    center = CharField(widget=Textarea(attrs={'class': 'materialize-textarea'}), label=_('Center'),)
+    formation = CharField(widget=Textarea(attrs={'class': 'materialize-textarea'}), label=_('Formation'),)
 
     class Meta:
         model = Formation
         exclude = ['curriculum']
 
 class html5showcaseForm(ModelForm):
+    embedCode = CharField(widget=Textarea(attrs={'class': 'materialize-textarea'}), label=_('embedCode'),)
 
     class Meta:
         model = HTML5Showcase
@@ -271,6 +278,9 @@ class ChallengeResponseForm(ModelForm):
         exclude = ('freelancer','challenge')
 
 class EventForm(ModelForm):
+    location = CharField(widget=Textarea(attrs={'class': 'materialize-textarea'}), label=_('location'),)
+    title = CharField(widget=Textarea(attrs={'class': 'materialize-textarea'}), label=_('title'),)
+    description = CharField(widget=Textarea(attrs={'class': 'materialize-textarea'}), label=_('description'),)
 
     class Meta:
         model = Event

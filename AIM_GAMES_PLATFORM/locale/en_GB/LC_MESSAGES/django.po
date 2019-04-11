@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-10 20:35+0200\n"
+"POT-Creation-Date: 2019-04-11 21:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,15 +95,51 @@ msgstr "Image URLs"
 msgid "Attachment URLs"
 msgstr "Attachment URLs"
 
-#: .\AIM_GAMES\models.py:15 .\AIM_GAMES\models.py:23 .\AIM_GAMES\models.py:222
-#: .\AIM_GAMES\models.py:259 .\AIM_GAMES\models.py:277
-#: .\AIM_GAMES\models.py:295 .\AIM_GAMES\models.py:314
-#: .\templates\challenge\challengeList.html:20
+#: .\AIM_GAMES\forms.py:231
+#, fuzzy
+#| msgid "aptitudes"
+msgid "Aptitudes"
+msgstr "Aptitudes"
+
+#: .\AIM_GAMES\forms.py:239 .\AIM_GAMES\forms.py:247
+#, fuzzy
+#| msgid "center"
+msgid "Center"
+msgstr "Center"
+
+#: .\AIM_GAMES\forms.py:240 .\AIM_GAMES\forms.py:248
+#, fuzzy
+#| msgid "formation"
+msgid "Formation"
+msgstr "Formation"
+
+#: .\AIM_GAMES\forms.py:255 .\AIM_GAMES\models.py:164
+msgid "embedCode"
+msgstr "Iframe source"
+
+#: .\AIM_GAMES\forms.py:281 .\AIM_GAMES\models.py:312
+#: .\templates\event\eventDetail.html:18 .\templates\event\eventList.html:21
+#, fuzzy
+#| msgid "valoration"
+msgid "location"
+msgstr "Location"
+
+#: .\AIM_GAMES\forms.py:282 .\AIM_GAMES\models.py:15 .\AIM_GAMES\models.py:23
+#: .\AIM_GAMES\models.py:222 .\AIM_GAMES\models.py:259
+#: .\AIM_GAMES\models.py:277 .\AIM_GAMES\models.py:295
+#: .\AIM_GAMES\models.py:314 .\templates\challenge\challengeList.html:20
 #: .\templates\event\eventList.html:20
 #, fuzzy
 #| msgid "Title"
 msgid "title"
 msgstr "Title"
+
+#: .\AIM_GAMES\forms.py:283 .\AIM_GAMES\models.py:207 .\AIM_GAMES\models.py:223
+#: .\AIM_GAMES\models.py:260 .\AIM_GAMES\models.py:278
+#: .\AIM_GAMES\models.py:296 .\AIM_GAMES\models.py:315
+#: .\templates\event\eventDetail.html:13 .\templates\jobOfferDetail.html:32
+msgid "description"
+msgstr "Description"
 
 #: .\AIM_GAMES\models.py:33
 #, fuzzy
@@ -206,10 +242,6 @@ msgstr "Graphic engine experiences"
 msgid "graphicExperience"
 msgstr "Graphic engine experiences"
 
-#: .\AIM_GAMES\models.py:164
-msgid "embedCode"
-msgstr "Iframe source"
-
 #: .\AIM_GAMES\models.py:175
 #, fuzzy
 #| msgid "aptitudes"
@@ -249,13 +281,6 @@ msgstr "Salary"
 #: .\AIM_GAMES\models.py:205 .\templates\jobOfferDetail.html:29
 msgid "ubication"
 msgstr "Ubication"
-
-#: .\AIM_GAMES\models.py:207 .\AIM_GAMES\models.py:223
-#: .\AIM_GAMES\models.py:260 .\AIM_GAMES\models.py:278
-#: .\AIM_GAMES\models.py:296 .\AIM_GAMES\models.py:315
-#: .\templates\event\eventDetail.html:13 .\templates\jobOfferDetail.html:32
-msgid "description"
-msgstr "Description"
 
 #: .\AIM_GAMES\models.py:208
 msgid "images"
@@ -304,18 +329,11 @@ msgstr "Challenges"
 msgid "manager"
 msgstr "Manager"
 
-#: .\AIM_GAMES\models.py:312 .\templates\event\eventDetail.html:18
-#: .\templates\event\eventList.html:21
-#, fuzzy
-#| msgid "valoration"
-msgid "location"
-msgstr "Location"
-
 #: .\AIM_GAMES\models.py:319 .\templates\event\eventDetail.html:41
 #, fuzzy
 #| msgid "company"
 msgid "companies"
-msgstr "Company"
+msgstr "Companies"
 
 #: .\AIM_GAMES\models.py:325 .\templates\message\list.html:12
 #, fuzzy
@@ -327,37 +345,122 @@ msgstr "Send"
 msgid "recipient"
 msgstr "Recipient"
 
-#: .\templates\accounts\login.html:19 .\templates\accounts\login.html:49
+#: .\AIM_GAMES\views.py:451 .\AIM_GAMES\views.py:454
+#: .\templates\freelancer\detail.html:56
+msgid "Add link"
+msgstr "Add link"
+
+#: .\AIM_GAMES\views.py:470 .\AIM_GAMES\views.py:473
+#, fuzzy
+#| msgid "aptitudes"
+msgid "Add aptitude"
+msgstr "Add aptitudes"
+
+#: .\AIM_GAMES\views.py:489 .\AIM_GAMES\views.py:492
+#, fuzzy
+#| msgid "addGraphicEngineExperience"
+msgid "Add graphic engine experience"
+msgstr "Add graphic engine experience"
+
+#: .\AIM_GAMES\views.py:508 .\AIM_GAMES\views.py:511
+#, fuzzy
+#| msgid "profession"
+msgid "Add professional experience"
+msgstr "Add professional experience"
+
+#: .\AIM_GAMES\views.py:527 .\AIM_GAMES\views.py:530
+#, fuzzy
+#| msgid "formation"
+msgid "Add formation"
+msgstr "Add formation"
+
+#: .\AIM_GAMES\views.py:546 .\AIM_GAMES\views.py:549
+msgid "Add Job Offer"
+msgstr "Add job offer"
+
+#: .\AIM_GAMES\views.py:566
+msgid "Edit Job Offer"
+msgstr "Edit job offer"
+
+#: .\AIM_GAMES\views.py:596
+#, fuzzy
+#| msgid "editHTML5Showcase"
+msgid "Edit HTML5Showcase"
+msgstr "Edit HTML5 Showcase"
+
+#: .\AIM_GAMES\views.py:613
+#, fuzzy
+#| msgid "formation"
+msgid "Edit Formation"
+msgstr "Edit formation"
+
+#: .\AIM_GAMES\views.py:630
+#, fuzzy
+#| msgid "addProfessionalExperience"
+msgid "Edit ProfessionalExperience"
+msgstr "Edit professional experience"
+
+#: .\AIM_GAMES\views.py:647
+#, fuzzy
+#| msgid "addAptitude"
+msgid "Edit Aptitude"
+msgstr "Edit aptitude"
+
+#: .\AIM_GAMES\views.py:664
+#, fuzzy
+#| msgid "addGraphicEngineExperience"
+msgid "Edit Graphic Engine Experience"
+msgstr "Edit graphic engine experience"
+
+#: .\AIM_GAMES\views.py:681
+#, fuzzy
+#| msgid "Edit"
+msgid "Edit Link"
+msgstr "Edit link"
+
+#: .\AIM_GAMES\views.py:770 .\AIM_GAMES\views.py:773
+#, fuzzy
+#| msgid "newChallenge"
+msgid "Add Challenge"
+msgstr "Add challenge"
+
+#: .\AIM_GAMES\views.py:983 .\AIM_GAMES\views.py:986
+#, fuzzy
+#| msgid "Message"
+msgid "Create Message"
+msgstr "Create message"
+
+#: .\templates\accounts\login.html:20 .\templates\accounts\login.html:50
 #: .\templates\base_generic.html:77 .\templates\base_generic.html:109
 msgid "Log In"
 msgstr "Log In"
 
-#: .\templates\accounts\login.html:21
+#: .\templates\accounts\login.html:22
 msgid "Loged as"
 msgstr "Loged as"
 
-#: .\templates\accounts\login.html:21
+#: .\templates\accounts\login.html:22
 msgid ", please logout before login again"
 msgstr ", please logout befor login again"
 
-#: .\templates\accounts\login.html:22 .\templates\base_generic.html:75
+#: .\templates\accounts\login.html:23 .\templates\base_generic.html:75
 #: .\templates\base_generic.html:106
 msgid "Logout"
 msgstr "Logout"
 
-#: .\templates\accounts\login.html:37
+#: .\templates\accounts\login.html:38
 msgid "Username"
 msgstr "Username"
 
-#: .\templates\accounts\login.html:42
+#: .\templates\accounts\login.html:43
 msgid "Password"
 msgstr "Password"
 
-#: .\templates\accounts\login.html:55
+#: .\templates\accounts\login.html:56
 msgid "Sign up"
 msgstr "Sign up"
 
-#: .\templates\accounts\login.html:62
+#: .\templates\accounts\login.html:63
 msgid "Sign up as Business"
 msgstr "Sign up as Business"
 
@@ -420,11 +523,11 @@ msgstr "Events"
 msgid "Messages"
 msgstr "Messages"
 
-#: .\templates\base_generic.html:133
+#: .\templates\base_generic.html:134
 msgid "DownloadData"
 msgstr "Download all your data"
 
-#: .\templates\base_generic.html:134
+#: .\templates\base_generic.html:135
 msgid "DeleteAllyourData"
 msgstr "Delete your account forever"
 
@@ -584,10 +687,6 @@ msgstr "Verified curriculum"
 msgid "links"
 msgstr "Links"
 
-#: .\templates\freelancer\detail.html:56
-msgid "Add link"
-msgstr "Add link"
-
 #: .\templates\freelancer\detail.html:92
 msgid "addFormation"
 msgstr "Add formation"
@@ -627,25 +726,70 @@ msgstr "Game not fully compatible? Try it out at "
 msgid "editHTML5Showcase"
 msgstr "Edit HTML5 Showcase"
 
-#: .\templates\index.html:7
-msgid "AIM Games"
-msgstr "AIM Games"
-
-#: .\templates\index.html:9
+#: .\templates\index.html:21
 msgid ""
 "AIM Games is the reference platform for game-making resources, where you can "
 "find anything and anyone you need to make the videogame of your dreams."
 msgstr ""
 
-#: .\templates\index.html:10
-msgid ""
-"Please note that this is a work in progress page and only the core "
-"functionality is available. More is to come in short time."
+#: .\templates\index.html:28
+msgid "What is our association?"
 msgstr ""
 
-#: .\templates\index.html:16
-msgid "Useful links"
-msgstr "Useful links"
+#: .\templates\index.html:35
+msgid "Finding the personnel to make your dreams happen"
+msgstr ""
+
+#: .\templates\index.html:39
+msgid ""
+"Our members are all already members of the game making industry, and will "
+"help your company find the personnel it needs to shine. If you are, on the "
+"other hand, a person interested in finding a job in the games industry, we "
+"will help you find a company where you can put your skills to use."
+msgstr ""
+
+#: .\templates\index.html:49
+msgid "Getting studios and developers close together"
+msgstr ""
+
+#: .\templates\index.html:53
+msgid ""
+"Participate in the meetup and development events we and our associates "
+"organize, and get to know personally the movers and shakers of the Spanish "
+"game-making scene."
+msgstr ""
+
+#: .\templates\index.html:54
+msgid ""
+"We also organize game jams where our members make games with a theme in a "
+"short time. If you think your company could be interested in some talent, we "
+"can offer you privileged access to the jam's code repository so you can "
+"assess if the jammers fit the bill for your projects!"
+msgstr ""
+
+#: .\templates\index.html:73
+msgid "Getting you the assets you need"
+msgstr ""
+
+#: .\templates\index.html:77
+msgid ""
+"Many times, when developing, we struggle to find the resources we need to "
+"create our best work. For this purpose, AIM Games offers a great collection "
+"of 3D and 2D assets, code, animations, advice, tutorials and many more "
+"things to the companies that register onto our platform."
+msgstr ""
+
+#: .\templates\index.html:90
+msgid "Discerning talent, one step easier"
+msgstr ""
+
+#: .\templates\index.html:94
+msgid ""
+"Besides the help our extensive associate base can offer your company, we "
+"give you the possibility to post challenges on our platform to check out the "
+"specific abilities of the candidates in the actual area you are interested "
+"in checking."
+msgstr ""
 
 #: .\templates\jobOfferDetail.html:17
 msgid "positioDisplay"
@@ -693,7 +837,7 @@ msgstr "Payment process has finished correctly"
 #, fuzzy
 #| msgid "threads"
 msgid "Create Thread"
-msgstr "Threads"
+msgstr "Create thread"
 
 #: .\templates\thread\responseCreate.html:8
 msgid "save"
@@ -703,7 +847,7 @@ msgstr "Save"
 #, fuzzy
 #| msgid "threads"
 msgid "Thread details"
-msgstr "Threads"
+msgstr "Thread detail"
 
 #: .\templates\thread\threadDetail.html:43
 #, fuzzy
@@ -738,11 +882,14 @@ msgstr "New response"
 msgid "New thread"
 msgstr "Threads"
 
+#~ msgid "AIM Games"
+#~ msgstr "AIM Games"
+
+#~ msgid "Useful links"
+#~ msgstr "Useful links"
+
 #~ msgid "valoration"
 #~ msgstr "Valoration"
-
-#~ msgid "addAptitude"
-#~ msgstr "Add aptitude"
 
 #, fuzzy
 #~| msgid "joboffers"

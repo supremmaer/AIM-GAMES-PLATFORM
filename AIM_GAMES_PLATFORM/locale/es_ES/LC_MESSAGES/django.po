@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-10 20:35+0200\n"
+"POT-Creation-Date: 2019-04-11 21:53+0200\n"
 "PO-Revision-Date: 2019-03-29 13:19+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -96,15 +96,51 @@ msgstr "URLs de imágenes"
 msgid "Attachment URLs"
 msgstr "URLs de archivos adjuntos"
 
-#: .\AIM_GAMES\models.py:15 .\AIM_GAMES\models.py:23 .\AIM_GAMES\models.py:222
-#: .\AIM_GAMES\models.py:259 .\AIM_GAMES\models.py:277
-#: .\AIM_GAMES\models.py:295 .\AIM_GAMES\models.py:314
-#: .\templates\challenge\challengeList.html:20
+#: .\AIM_GAMES\forms.py:231
+#, fuzzy
+#| msgid "aptitudes"
+msgid "Aptitudes"
+msgstr "Aptitudes"
+
+#: .\AIM_GAMES\forms.py:239 .\AIM_GAMES\forms.py:247
+#, fuzzy
+#| msgid "center"
+msgid "Center"
+msgstr "Centro"
+
+#: .\AIM_GAMES\forms.py:240 .\AIM_GAMES\forms.py:248
+#, fuzzy
+#| msgid "formation"
+msgid "Formation"
+msgstr "Formación"
+
+#: .\AIM_GAMES\forms.py:255 .\AIM_GAMES\models.py:164
+msgid "embedCode"
+msgstr "Fuente para iframe"
+
+#: .\AIM_GAMES\forms.py:281 .\AIM_GAMES\models.py:312
+#: .\templates\event\eventDetail.html:18 .\templates\event\eventList.html:21
+#, fuzzy
+#| msgid "valoration"
+msgid "location"
+msgstr "Lugar"
+
+#: .\AIM_GAMES\forms.py:282 .\AIM_GAMES\models.py:15 .\AIM_GAMES\models.py:23
+#: .\AIM_GAMES\models.py:222 .\AIM_GAMES\models.py:259
+#: .\AIM_GAMES\models.py:277 .\AIM_GAMES\models.py:295
+#: .\AIM_GAMES\models.py:314 .\templates\challenge\challengeList.html:20
 #: .\templates\event\eventList.html:20
 #, fuzzy
 #| msgid "Title"
 msgid "title"
 msgstr "Título"
+
+#: .\AIM_GAMES\forms.py:283 .\AIM_GAMES\models.py:207 .\AIM_GAMES\models.py:223
+#: .\AIM_GAMES\models.py:260 .\AIM_GAMES\models.py:278
+#: .\AIM_GAMES\models.py:296 .\AIM_GAMES\models.py:315
+#: .\templates\event\eventDetail.html:13 .\templates\jobOfferDetail.html:32
+msgid "description"
+msgstr "Descripción"
 
 #: .\AIM_GAMES\models.py:33
 #, fuzzy
@@ -207,10 +243,6 @@ msgstr "Experiencias con motores gráficos"
 msgid "graphicExperience"
 msgstr "Experiencias con motores gráficos"
 
-#: .\AIM_GAMES\models.py:164
-msgid "embedCode"
-msgstr "Fuente para iframe"
-
 #: .\AIM_GAMES\models.py:175
 #, fuzzy
 #| msgid "aptitudes"
@@ -251,32 +283,25 @@ msgstr "Sueldo"
 msgid "ubication"
 msgstr "Ubicación"
 
-#: .\AIM_GAMES\models.py:207 .\AIM_GAMES\models.py:223
-#: .\AIM_GAMES\models.py:260 .\AIM_GAMES\models.py:278
-#: .\AIM_GAMES\models.py:296 .\AIM_GAMES\models.py:315
-#: .\templates\event\eventDetail.html:13 .\templates\jobOfferDetail.html:32
-msgid "description"
-msgstr "Descripción"
-
 #: .\AIM_GAMES\models.py:208
 msgid "images"
 msgstr "URLs de imágenes"
 
 #: .\AIM_GAMES\models.py:224
 msgid "tags"
-msgstr "Tags"
+msgstr "Etiquetas"
 
 #: .\AIM_GAMES\models.py:226 .\AIM_GAMES\models.py:261
 msgid "pics"
-msgstr "Pics"
+msgstr "Imágenes"
 
 #: .\AIM_GAMES\models.py:228
 msgid "attachedFiles"
-msgstr "Attached files"
+msgstr "Archivos adjuntos"
 
 #: .\AIM_GAMES\models.py:242
 msgid "score"
-msgstr "Score"
+msgstr "Puntuación"
 
 #: .\AIM_GAMES\models.py:245 .\AIM_GAMES\models.py:257
 #, fuzzy
@@ -305,13 +330,6 @@ msgstr "Retos"
 msgid "manager"
 msgstr "Manager"
 
-#: .\AIM_GAMES\models.py:312 .\templates\event\eventDetail.html:18
-#: .\templates\event\eventList.html:21
-#, fuzzy
-#| msgid "valoration"
-msgid "location"
-msgstr "Lugar"
-
 #: .\AIM_GAMES\models.py:319 .\templates\event\eventDetail.html:41
 #, fuzzy
 #| msgid "company"
@@ -328,37 +346,124 @@ msgstr "Enviar"
 msgid "recipient"
 msgstr "Destinatario"
 
-#: .\templates\accounts\login.html:19 .\templates\accounts\login.html:49
+#: .\AIM_GAMES\views.py:451 .\AIM_GAMES\views.py:454
+#: .\templates\freelancer\detail.html:56
+msgid "Add link"
+msgstr "Añadir enlace"
+
+#: .\AIM_GAMES\views.py:470 .\AIM_GAMES\views.py:473
+#, fuzzy
+#| msgid "aptitudes"
+msgid "Add aptitude"
+msgstr "Añadir aptitud"
+
+#: .\AIM_GAMES\views.py:489 .\AIM_GAMES\views.py:492
+#, fuzzy
+#| msgid "addGraphicEngineExperience"
+msgid "Add graphic engine experience"
+msgstr "Añadir experiencia con motores gráficos"
+
+#: .\AIM_GAMES\views.py:508 .\AIM_GAMES\views.py:511
+#, fuzzy
+#| msgid "profession"
+msgid "Add professional experience"
+msgstr "Añadir experiencia profesional"
+
+#: .\AIM_GAMES\views.py:527 .\AIM_GAMES\views.py:530
+#, fuzzy
+#| msgid "formation"
+msgid "Add formation"
+msgstr "Añadir formación"
+
+#: .\AIM_GAMES\views.py:546 .\AIM_GAMES\views.py:549
+#, fuzzy
+#| msgid "Edit Job Offer"
+msgid "Add Job Offer"
+msgstr "Añadir oferta de trabajo"
+
+#: .\AIM_GAMES\views.py:566
+msgid "Edit Job Offer"
+msgstr "Modificar oferta de trabajo"
+
+#: .\AIM_GAMES\views.py:596
+#, fuzzy
+#| msgid "editHTML5Showcase"
+msgid "Edit HTML5Showcase"
+msgstr "Modificar expositor de HTML5"
+
+#: .\AIM_GAMES\views.py:613
+#, fuzzy
+#| msgid "formation"
+msgid "Edit Formation"
+msgstr "Modificar formación"
+
+#: .\AIM_GAMES\views.py:630
+#, fuzzy
+#| msgid "addProfessionalExperience"
+msgid "Edit ProfessionalExperience"
+msgstr "Modificar experiencia profesional"
+
+#: .\AIM_GAMES\views.py:647
+#, fuzzy
+#| msgid "addAptitude"
+msgid "Edit Aptitude"
+msgstr "Modificar aptitud"
+
+#: .\AIM_GAMES\views.py:664
+#, fuzzy
+#| msgid "addGraphicEngineExperience"
+msgid "Edit Graphic Engine Experience"
+msgstr "Modificar experiencia con motores gráficos"
+
+#: .\AIM_GAMES\views.py:681
+#, fuzzy
+#| msgid "Edit"
+msgid "Edit Link"
+msgstr "Modificar enlaces"
+
+#: .\AIM_GAMES\views.py:770 .\AIM_GAMES\views.py:773
+#, fuzzy
+#| msgid "newChallenge"
+msgid "Add Challenge"
+msgstr "Añadir reto"
+
+#: .\AIM_GAMES\views.py:983 .\AIM_GAMES\views.py:986
+#, fuzzy
+#| msgid "Message"
+msgid "Create Message"
+msgstr "Crear mensaje"
+
+#: .\templates\accounts\login.html:20 .\templates\accounts\login.html:50
 #: .\templates\base_generic.html:77 .\templates\base_generic.html:109
 msgid "Log In"
 msgstr "Iniciar Sesión"
 
-#: .\templates\accounts\login.html:21
+#: .\templates\accounts\login.html:22
 msgid "Loged as"
 msgstr "Sesión iniciada como"
 
-#: .\templates\accounts\login.html:21
+#: .\templates\accounts\login.html:22
 msgid ", please logout before login again"
 msgstr ", por favor cierra sesión antes de volver a iniciarla"
 
-#: .\templates\accounts\login.html:22 .\templates\base_generic.html:75
+#: .\templates\accounts\login.html:23 .\templates\base_generic.html:75
 #: .\templates\base_generic.html:106
 msgid "Logout"
 msgstr "Cerrar sesión"
 
-#: .\templates\accounts\login.html:37
+#: .\templates\accounts\login.html:38
 msgid "Username"
 msgstr "Usuario"
 
-#: .\templates\accounts\login.html:42
+#: .\templates\accounts\login.html:43
 msgid "Password"
 msgstr "Contraseña"
 
-#: .\templates\accounts\login.html:55
+#: .\templates\accounts\login.html:56
 msgid "Sign up"
 msgstr "Registrarse"
 
-#: .\templates\accounts\login.html:62
+#: .\templates\accounts\login.html:63
 msgid "Sign up as Business"
 msgstr "Registrarse (Empresa)"
 
@@ -421,11 +526,11 @@ msgstr "Eventos"
 msgid "Messages"
 msgstr "Mensajes"
 
-#: .\templates\base_generic.html:133
+#: .\templates\base_generic.html:134
 msgid "DownloadData"
 msgstr "Descargar todos tus datos"
 
-#: .\templates\base_generic.html:134
+#: .\templates\base_generic.html:135
 msgid "DeleteAllyourData"
 msgstr "Borra tu cuenta para siempre"
 
@@ -480,7 +585,7 @@ msgstr "Ver"
 
 #: .\templates\challenge\challengeList.html:34
 msgid "newChallenge"
-msgstr "Crear un nueo reto"
+msgstr "Crear un nuevo reto"
 
 #: .\templates\challenge\responseCreate.html:7
 #: .\templates\thread\responseCreate.html:5
@@ -584,10 +689,6 @@ msgstr "Curriculum verificado"
 msgid "links"
 msgstr "Enlaces"
 
-#: .\templates\freelancer\detail.html:56
-msgid "Add link"
-msgstr "Añadir enlace"
-
 #: .\templates\freelancer\detail.html:92
 msgid "addFormation"
 msgstr "Añadir formación"
@@ -596,7 +697,7 @@ msgstr "Añadir formación"
 #, fuzzy
 #| msgid "profession"
 msgid "professionalExperience"
-msgstr "Profesión"
+msgstr "Experiencia profesional"
 
 #: .\templates\freelancer\detail.html:129
 msgid "addProfessionalExperience"
@@ -627,19 +728,95 @@ msgstr "¿El juego no es completamente compatible? Pruébalo en "
 msgid "editHTML5Showcase"
 msgstr "Modificar expositor de HTML5"
 
-#: .\templates\index.html:7
-msgid "AIM Games"
-msgstr "AIM Games"
-
-#: .\templates\index.html:10
+#: .\templates\index.html:21
 msgid ""
-"Please note that this is a work in progress page and only the core "
-"functionality is available. More is to come in short time."
+"AIM Games is the reference platform for game-making resources, where you can "
+"find anything and anyone you need to make the videogame of your dreams."
 msgstr ""
+"AIM Games es la plataforma de referencia para recursos destinados a la "
+"creación de videojuegos, donde puede encontrar todos los assets y el "
+"personal necesario para hacer el juego de sus sueños"
 
-#: .\templates\index.html:16
-msgid "Useful links"
-msgstr "Enlaces de utilidad"
+#: .\templates\index.html:28
+msgid "What is our association?"
+msgstr "¿Qué es nuestra asociación?"
+
+#: .\templates\index.html:35
+msgid "Finding the personnel to make your dreams happen"
+msgstr "Encontrando el personal para hacer realidad tus sueños"
+
+#: .\templates\index.html:39
+msgid ""
+"Our members are all already members of the game making industry, and will "
+"help your company find the personnel it needs to shine. If you are, on the "
+"other hand, a person interested in finding a job in the games industry, we "
+"will help you find a company where you can put your skills to use."
+msgstr ""
+"Nuestros miembros son ya parte de la industria del videojuego, y ayudaremos "
+"a su estudio a encontrar el personal que necesita para brillar. Si, por otra "
+"parte, es usted una persona interesada en encontrar trabajo en la industria, "
+"le ayudaremos a encontrar una empresa en la que pueda poner sus habilidades "
+"en uso."
+
+#: .\templates\index.html:49
+msgid "Getting studios and developers close together"
+msgstr "Acercando a estudios y desarrolladores"
+
+#: .\templates\index.html:53
+msgid ""
+"Participate in the meetup and development events we and our associates "
+"organize, and get to know personally the movers and shakers of the Spanish "
+"game-making scene."
+msgstr ""
+"Participe en los meetups y eventos de desarrollo que nosotros y nuestros "
+"asociados organizamos, y conozca personalmente a la crema y nata de la "
+"escena española de la creación de videojuegos."
+
+#: .\templates\index.html:54
+msgid ""
+"We also organize game jams where our members make games with a theme in a "
+"short time. If you think your company could be interested in some talent, we "
+"can offer you privileged access to the jam's code repository so you can "
+"assess if the jammers fit the bill for your projects!"
+msgstr ""
+"También organizamos game jams donde nuestros socios hacen juegos sobre un "
+"tema en un tiempo limitado. Si cree que su empresa estaría interesada en "
+"contratar, le podemos ofrecer acceso privilegiado al repositorio de código "
+"de la jam para que pueda valorar si los participantes encajan en sus "
+"proyectos."
+
+#: .\templates\index.html:73
+msgid "Getting you the assets you need"
+msgstr "Consiguiendo los assets que necesita"
+
+#: .\templates\index.html:77
+msgid ""
+"Many times, when developing, we struggle to find the resources we need to "
+"create our best work. For this purpose, AIM Games offers a great collection "
+"of 3D and 2D assets, code, animations, advice, tutorials and many more "
+"things to the companies that register onto our platform."
+msgstr ""
+"Muchas veces cuando desarrollamos nos cuesta encontrar los recursos que "
+"necesitamos para llevar a cabo nuestra idea. Por esto, AIM Games ofrece una "
+"gran colección de gráficos 3D y 2D, animaciones, código, consejos, "
+"tutoriales y muchas otras cosas a las empresas que se registren en nuestra "
+"plataforma."
+
+#: .\templates\index.html:90
+msgid "Discerning talent, one step easier"
+msgstr "Discernir talento, un paso más sencillo"
+
+#: .\templates\index.html:94
+msgid ""
+"Besides the help our extensive associate base can offer your company, we "
+"give you the possibility to post challenges on our platform to check out the "
+"specific abilities of the candidates in the actual area you are interested "
+"in checking."
+msgstr ""
+"Aparte de la ayuda que puedan ofrecerle nuestros socios y asociados, le "
+"damos la posibilidad de colgar retos en nuestra plataforma para comprobar "
+"las habilidades específicas de sus candidatos en las áreas que prefiera "
+"comprobar."
 
 #: .\templates\jobOfferDetail.html:17
 msgid "positioDisplay"
@@ -720,11 +897,14 @@ msgstr "Nueva respuesta"
 msgid "New thread"
 msgstr "Nuevo hilo"
 
+#~ msgid "AIM Games"
+#~ msgstr "AIM Games"
+
+#~ msgid "Useful links"
+#~ msgstr "Enlaces de utilidad"
+
 #~ msgid "valoration"
 #~ msgstr "Valoración"
-
-#~ msgid "addAptitude"
-#~ msgstr "Añadir aptitud"
 
 #, fuzzy
 #~| msgid "joboffers"
@@ -757,42 +937,3 @@ msgstr "Nuevo hilo"
 
 #~ msgid "contactus"
 #~ msgstr "Contáctanos"
-
-msgid "position"
-msgstr "Posición"
-
-msgid "Edit Job Offer"
-msgstr "Editar oferta de trabajo"
-
-msgid "Finding the personnel to make your dreams happen"
-msgstr "Encontrando el personal para hacer realidad tus sueños"
-
-msgid "AIM Games is the reference platform for game-making resources, where you can find anything and anyone you need to make the videogame of your dreams."
-msgstr "AIM Games es la plataforma de referencia para recursos destinados a la creación de videojuegos, donde puede encontrar todos los assets y el personal necesario para hacer el juego de sus sueños"
-
-msgid "What is our association?"
-msgstr "¿Qué es nuestra asociación?"
-
-msgid "Getting studios and developers close together"
-msgstr "Acercando a estudios y desarrolladores"
-
-msgid "Participate in the meetup and development events we and our associates organize, and get to know personally the movers and shakers of the Spanish game-making scene."
-msgstr "Participe en los meetups y eventos de desarrollo que nosotros y nuestros asociados organizamos, y conozca personalmente a la crema y nata de la escena española de la creación de videojuegos."
-
-msgid "Our members are all already members of the game making industry, and will help your company find the personnel it needs to shine. If you are, on the other hand, a person interested in finding a job in the games industry, we will help you find a company where you can put your skills to use."
-msgstr "Nuestros miembros son ya parte de la industria del videojuego, y ayudaremos a su estudio a encontrar el personal que necesita para brillar. Si, por otra parte, es usted una persona interesada en encontrar trabajo en la industria, le ayudaremos a encontrar una empresa en la que pueda poner sus habilidades en uso."
-
-msgid "Many times, when developing, we struggle to find the resources we need to create our best work. For this purpose, AIM Games offers a great collection of 3D and 2D assets, code, animations, advice, tutorials and many more things to the companies that register onto our platform."
-msgstr "Muchas veces cuando desarrollamos nos cuesta encontrar los recursos que necesitamos para llevar a cabo nuestra idea. Por esto, AIM Games ofrece una gran colección de gráficos 3D y 2D, animaciones, código, consejos, tutoriales y muchas otras cosas a las empresas que se registren en nuestra plataforma."
-
-msgid "We also organize game jams where our members make games with a theme in a short time. If you think your company could be interested in some talent, we can offer you privileged access to the jam's code repository so you can assess if the jammers fit the bill for your projects!"
-msgstr "También organizamos game jams donde nuestros socios hacen juegos sobre un tema en un tiempo limitado. Si cree que su empresa estaría interesada en contratar, le podemos ofrecer acceso privilegiado al repositorio de código de la jam para que pueda valorar si los participantes encajan en sus proyectos."
-
-msgid "Discerning talent, one step easier"
-msgstr "Discernir talento, un paso más sencillo"
-
-msgid "Getting you the assets you need"
-msgstr "Consiguiendo los assets que necesita"
-
-msgid "Besides the help our extensive associate base can offer your company, we give you the possibility to post challenges on our platform to check out the specific abilities of the candidates in the actual area you are interested in checking."
-msgstr "Aparte de la ayuda que puedan ofrecerle nuestros socios y asociados, le damos la posibilidad de colgar retos en nuestra plataforma para comprobar las habilidades específicas de sus candidatos en las áreas que prefiera comprobar."

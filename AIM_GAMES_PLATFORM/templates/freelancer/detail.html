@@ -19,8 +19,8 @@
 </script>
   
   
-    <h1>{% trans "freelancerDetails" %}</h1>    
-    <h3>{{ freelancer.profile.name }}</h3> 
+    <h3>{% trans "freelancerDetails" %}</h3>    
+    <h5>{{ freelancer.profile.name }}</h5> 
     <div class="row">
       <div class="col s12 m12 l8 offset-l2">
 
@@ -131,7 +131,7 @@
         {% endif %}
 
 
-        <div class="col s12 m10 l10 offset-l1 offset-m1">
+        <div class="col s12 m12 l12">
           <ul class="collapsible with-header">
               <div class="collapsible-header"><h5>{% trans "aptitudes" %}</h5></div>
               {% for aptitude in aptitudes %}
@@ -154,7 +154,7 @@
         {% endif %}
         </div>
 
-        <div class="col s12 m10 l10 offset-l1 offset-m1">
+        <div class="col s12 m12 l12">
             <ul class="collapsible with-header">
                 <div class="collapsible-header"><h5>{% trans "graphicEngineExperiences" %}</h5></div>
             {% for exp in graphicEngineExperiences %}
@@ -185,12 +185,12 @@
 
       </div>
 
-        <div class="col s12 m12 l12 offset-m1">
+        <div class="col s12 m12 l12">
           <b>{% trans "HTML5Showcase" %}:</b>
 
         </div>
 
-        <div class="col s12 m10 l10 offset-l1 offset-m1">
+        <div class="col s12 m12 l12">
           <a href="#!" onclick="toggle_showcase();" class="btn waves-effect waves-red">
             {% trans "mostrar" %}</a>
           <blockquote id="bq" style="display:none">
@@ -202,7 +202,7 @@
           </blockquote>
         </div>
         {% if request.session.currentUser == 'freelancer' %}
-        <div class="col s12 m12 l12 offset-m1">
+        <div class="col s12 m12 l12">
               <a href="/freelancer/html5showcase/edit/{{HTML5Showcase.id}}" class="btn waves-effect waves-red">{% trans "editHTML5Showcase" %}</a>
               <a href="/freelancer/html5showcase/delete/{{HTML5Showcase.id}}" class="btn waves-effect waves-red">{% trans "Delete" %}</a>
           </div>
