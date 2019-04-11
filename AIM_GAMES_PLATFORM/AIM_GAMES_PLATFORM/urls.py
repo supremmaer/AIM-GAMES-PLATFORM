@@ -27,6 +27,7 @@ urlpatterns = [
     path('pagar_paypal', pagarPaypal, name='pagarPaypal' ),
     path('payment_done', payment_done, name='payment_done'),
     path('payment_canceled', payment_canceled, name='payment_canceled'),
+    path('paypal_ipn/<int:businessId>', paypal_ipn,name='paypal_ipn'),
     path('login_redir',login_redir),
     path('accounts/login/', auth_views.LoginView.as_view(template_name='accounts/login.html')),
     path("logout/", auth_views.LogoutView.as_view(),{'next_page': settings.LOGOUT_REDIRECT_URL}, name="logout"),
@@ -73,7 +74,9 @@ urlpatterns = [
     path('500/', handler500, name='500'),
     path('404/', handler404, name='404'),
     path('terms-and-conditions', termsAndConditions),
+    path('terminos-y-condiciones', terminosYCondiciones),
     path('privacy-policy', privacyPolicy),
+    path('politica-privacidad', politicaPrivacidad),
     path('event/list/',eventList,name='eventList'),
     path('event/create/',eventCreate,name='eventCreate'),
     path('event/detail/<int:event_id>',eventDetail,name='eventDetail'),
@@ -86,6 +89,7 @@ urlpatterns = [
     path('challengeResponse/create/<int:challengeId>', challengeResponse_create, name="responseCreate"),
     path('message/list/',message_list),
     path('message/show/<int:id>',message_show),
-    path('message/create/', message_create)
+    path('message/create/', message_create),
+    path('message/reply/<int:msgid>', message_reply),
 
 ]

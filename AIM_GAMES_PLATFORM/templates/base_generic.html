@@ -46,7 +46,6 @@
                     <a href="#" class="sidenav-trigger" data-target="slide_out"><i class="material-icons">menu</i></a>
                     <ul class="hide-on-med-and-down right">
                         <li class="active"><a href="/">{% trans "mainpage" %}</a></li>
-                        <li><a href="/terms-and-conditions" target="_self" class="collection-item">{% trans "terms-and-conditions" %}</a></li>
                         {% if request.session.currentUser == 'business' %}
                             <li><a href="/thread/business/list/" target="_self" class="collection-item">{% trans "threads" %}</a></li>
                             <li><a href="/curriculum/business/list/" target="_self" class="collection-item">{% trans "curriculums" %}</a></li>
@@ -127,11 +126,17 @@
                 </div>
                 <div class="col s12 m3">
                 © 2019 AIM-GAMES-PLATFORM<br/>
-                V2.0
+                V2.0<br/>  
+                {% if request.session.language == 'en-GB' %}
+                    <a href="/terms-and-conditions" class="grey-text ">{% trans "terms-and-conditions" %}</a>
+                {% endif %}
+                {% if request.session.language == 'es-ES' %}
+                    <a href="/terminos-y-condiciones" class="grey-text ">{% trans "terms-and-conditions" %}</a>
+                {% endif %}
                 </div>
                 <div class="col s12 m3">
                 {% if request.session.currentUser == 'business' or request.session.currentUser == 'freelancer' %}
-                    <a class="grey-text text-lighten-4 right"  onclick="window.open('userDownloadData')" >{% trans "DownloadData" %}</a><br>
+                    <a class="grey-text text-lighten-4 right"  onclick="window.open('/userDownloadData')" >{% trans "DownloadData" %}</a><br>
                     <a class="grey-text text-lighten-4 right"  href="/deleteUser" >{% trans "DeleteAllyourData" %}</a>
 
                 {% endif %}

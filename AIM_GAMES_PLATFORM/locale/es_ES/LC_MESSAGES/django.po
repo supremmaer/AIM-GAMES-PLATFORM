@@ -17,82 +17,90 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.2.1\n"
 
-#: .\AIM_GAMES\forms.py:26 .\AIM_GAMES\forms.py:60
+#: .\AIM_GAMES\forms.py:27 .\AIM_GAMES\forms.py:61
 msgid "Profile not valid"
 msgstr "Perfil no válido"
 
-#: .\AIM_GAMES\forms.py:39 .\AIM_GAMES\models.py:70
+#: .\AIM_GAMES\forms.py:40 .\AIM_GAMES\models.py:70
 msgid "profession"
 msgstr "Profesión"
 
-#: .\AIM_GAMES\forms.py:75
+#: .\AIM_GAMES\forms.py:76
 msgid "Name"
 msgstr "Nombre"
 
-#: .\AIM_GAMES\forms.py:76
+#: .\AIM_GAMES\forms.py:77
 msgid "Surname"
 msgstr "Apellido"
 
-#: .\AIM_GAMES\forms.py:77
+#: .\AIM_GAMES\forms.py:78
 msgid "Email"
 msgstr "Correo Electrónico"
 
-#: .\AIM_GAMES\forms.py:78
+#: .\AIM_GAMES\forms.py:79
 msgid "City"
 msgstr "Ciudad"
 
-#: .\AIM_GAMES\forms.py:79 .\AIM_GAMES\models.py:51
+#: .\AIM_GAMES\forms.py:80 .\AIM_GAMES\models.py:51
 msgid "Postal Code"
 msgstr "Código Postal"
 
-#: .\AIM_GAMES\forms.py:80 .\AIM_GAMES\models.py:53
+#: .\AIM_GAMES\forms.py:81 .\AIM_GAMES\models.py:53
 msgid "IDCard Number"
 msgstr "DNI"
 
-#: .\AIM_GAMES\forms.py:81 .\AIM_GAMES\models.py:55
+#: .\AIM_GAMES\forms.py:82 .\AIM_GAMES\models.py:55
 msgid "Date of birth"
 msgstr "Día de nacimiento"
 
-#: .\AIM_GAMES\forms.py:82
+#: .\AIM_GAMES\forms.py:83
 msgid "Phone Number"
 msgstr "Número de Teléfono"
 
-#: .\AIM_GAMES\forms.py:83
+#: .\AIM_GAMES\forms.py:84
 msgid "Photo URL:"
 msgstr "Foto URL"
 
-#: .\AIM_GAMES\forms.py:102
+#: .\AIM_GAMES\forms.py:103
 msgid "Phone Number must be a number"
-msgstr "El número de teléfono debe ser un número"
+msgstr "El número de teléfono debe ser un número de nueve dígitos"
 
-#: .\AIM_GAMES\forms.py:112
+#: .\AIM_GAMES\forms.py:109
+msgid "validatePostal"
+msgstr "El Código Postal debe ser un número de 5 cifras"
+
+#: .\AIM_GAMES\forms.py:124
+msgid "ID Card Number not valid"
+msgstr "DNI Inválido"
+
+#: .\AIM_GAMES\forms.py:134
 msgid "You must be over 18 to sign up"
 msgstr "Debes ser mayor de 18 años para registrarte"
 
-#: .\AIM_GAMES\forms.py:118
+#: .\AIM_GAMES\forms.py:140
 #, fuzzy
 #| msgid "Profile not valid"
 msgid "User not valid"
 msgstr "Perfil no válido"
 
-#: .\AIM_GAMES\forms.py:135
+#: .\AIM_GAMES\forms.py:157
 msgid "Title"
 msgstr "Título"
 
-#: .\AIM_GAMES\forms.py:136 .\templates\challenge\challengeDetail.html:18
+#: .\AIM_GAMES\forms.py:158 .\templates\challenge\challengeDetail.html:18
 #: .\templates\thread\threadDetail.html:34
 msgid "Description"
 msgstr "Descripción"
 
-#: .\AIM_GAMES\forms.py:137 .\templates\thread\threadDetail.html:38
+#: .\AIM_GAMES\forms.py:159 .\templates\thread\threadDetail.html:38
 msgid "Tags"
 msgstr "Etiquetas"
 
-#: .\AIM_GAMES\forms.py:138
+#: .\AIM_GAMES\forms.py:160
 msgid "Image URLs"
 msgstr "URLs de imágenes"
 
-#: .\AIM_GAMES\forms.py:139
+#: .\AIM_GAMES\forms.py:161
 msgid "Attachment URLs"
 msgstr "URLs de archivos adjuntos"
 
@@ -124,6 +132,17 @@ msgstr "Fuente para iframe"
 #| msgid "valoration"
 msgid "location"
 msgstr "Lugar"
+
+#: .\AIM_GAMES\forms.py:196
+msgid ""
+"Please, enter valid URLS separated by comas in the images and files field"
+msgstr ""
+"Por favor, introduzca URLS validas separadas por espacios en los campos de "
+"imágenes y archivos"
+
+#: .\AIM_GAMES\forms.py:280
+msgid "Please, enter a valid URL"
+msgstr "Por favor, introduzca una URL válida (Comenzando por http/https)"
 
 #: .\AIM_GAMES\forms.py:282 .\AIM_GAMES\models.py:15 .\AIM_GAMES\models.py:23
 #: .\AIM_GAMES\models.py:222 .\AIM_GAMES\models.py:259
@@ -446,8 +465,8 @@ msgstr "Sesión iniciada como"
 msgid ", please logout before login again"
 msgstr ", por favor cierra sesión antes de volver a iniciarla"
 
-#: .\templates\accounts\login.html:23 .\templates\base_generic.html:75
-#: .\templates\base_generic.html:106
+#: .\templates\accounts\login.html:23 .\templates\base_generic.html:74
+#: .\templates\base_generic.html:105
 msgid "Logout"
 msgstr "Cerrar sesión"
 
@@ -479,58 +498,56 @@ msgstr "Registrarse como empresa"
 msgid "acceptTerms"
 msgstr "Acepto los "
 
-#: .\templates\accounts\signup.html:87 .\templates\base_generic.html:49
-#: .\templates\base_generic.html:87
+#: .\templates\accounts\signup.html:87 .\templates\base_generic.html:86
+#: .\templates\base_generic.html:131 .\templates\base_generic.html:134
 msgid "terms-and-conditions"
 msgstr "Términos y Condiciones"
 
-#: .\templates\base_generic.html:48 .\templates\base_generic.html:86
+#: .\templates\base_generic.html:48 .\templates\base_generic.html:85
 msgid "mainpage"
 msgstr "Página principal"
 
-#: .\templates\base_generic.html:51 .\templates\base_generic.html:89
+#: .\templates\base_generic.html:50 .\templates\base_generic.html:88
 #: .\templates\thread\threadList.html:9
 msgid "threads"
 msgstr "Hilos"
 
-#: .\templates\base_generic.html:52 .\templates\base_generic.html:58
-#: .\templates\base_generic.html:90 .\templates\base_generic.html:100
+#: .\templates\base_generic.html:51 .\templates\base_generic.html:57
+#: .\templates\base_generic.html:89 .\templates\base_generic.html:99
 #: .\templates\curriculumList.html:8
 msgid "curriculums"
 msgstr "Curriculums"
 
-#: .\templates\base_generic.html:55 .\templates\base_generic.html:93
+#: .\templates\base_generic.html:54 .\templates\base_generic.html:92
 msgid "My curriculum"
 msgstr "Mi curriculum"
 
-#: .\templates\base_generic.html:61 .\templates\base_generic.html:96
+#: .\templates\base_generic.html:60 .\templates\base_generic.html:95
 #: .\templates\jobOfferList.html:7
 msgid "joboffers"
 msgstr "Ofertas de trabajo"
 
-#: .\templates\base_generic.html:62 .\templates\base_generic.html:97
-#, fuzzy
-#| msgid "newChallenge"
+#: .\templates\base_generic.html:61 .\templates\base_generic.html:96
 msgid "Challenges"
 msgstr "Retos"
 
-#: .\templates\base_generic.html:66 .\templates\base_generic.html:103
+#: .\templates\base_generic.html:65 .\templates\base_generic.html:102
 msgid "Admin Panel"
 msgstr "Panel de Administración"
 
-#: .\templates\base_generic.html:69 .\templates\base_generic.html:107
+#: .\templates\base_generic.html:68 .\templates\base_generic.html:106
 msgid "Events"
 msgstr "Eventos"
 
-#: .\templates\base_generic.html:70
+#: .\templates\base_generic.html:69
 msgid "Messages"
 msgstr "Mensajes"
 
-#: .\templates\base_generic.html:134
+#: .\templates\base_generic.html:139
 msgid "DownloadData"
 msgstr "Descargar todos tus datos"
 
-#: .\templates\base_generic.html:135
+#: .\templates\base_generic.html:140
 msgid "DeleteAllyourData"
 msgstr "Borra tu cuenta para siempre"
 
@@ -846,6 +863,10 @@ msgstr "Asunto"
 msgid "newmessage"
 msgstr "Nuevo mensaje"
 
+#: .\templates\message\show.html:17
+msgid "reply"
+msgstr "Responder"
+
 #: .\templates\pagarPaypal.html:15
 msgid "paymentprocess"
 msgstr "El proceso de pago se iniciara, pulse el boton para pagar"
@@ -937,3 +958,6 @@ msgstr "Nuevo hilo"
 
 #~ msgid "contactus"
 #~ msgstr "Contáctanos"
+
+#~ msgid "Edit Job Offer"
+#~ msgstr "Editar oferta de trabajo"

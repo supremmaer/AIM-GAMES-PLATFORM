@@ -6,6 +6,7 @@ from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 from datetime import datetime,timedelta
+import re
 
 
 class BusinessForm(ModelForm):
@@ -80,7 +81,7 @@ class ProfileForm(ModelForm):
     idCardNumber = CharField(widget=TextInput(), label=_("IDCard Number"))
     dateOfBirth = DateField(widget=DateInput(), label=_("Date of birth"))
     phoneNumber = CharField(widget=NumberInput(), label=_("Phone Number"))
-    photo = URLField(widget=URLInput(), label=_("Photo URL:"))
+    photo = URLField(widget=URLInput(), label=_("Photo URL:"), required=False)
 
     class Meta:
         model = Profile
@@ -98,8 +99,29 @@ class ProfileForm(ModelForm):
     def clean_phoneNumber(self):
         print('clean: ProfileForm: PhoneNumber')
         data = self.cleaned_data['phoneNumber']
-        if not data.isdigit():
+        if not data.isdigit() or len(data) != 9:
             raise ValidationError(_("Phone Number must be a number"))
+        return data
+
+    def clean_postalCode(self):
+        data = self.cleaned_data['postalCode']
+        if not data.isdigit() or not data.__len__() == 5:
+            raise ValidationError(_("validatePostal"))
+        return data
+
+    def clean_idCardNumber(self):
+        data = self.cleaned_data['idCardNumber']
+        word = 'TRWAGMYFPDXBNJZSQVHLCKE'
+        numbers = "1234567890"
+        validate = False
+        if (len(data) == 9):
+            chara = data[8].upper()
+            dni = data[:8]
+            if (len(dni) == len([n for n in dni if n in numbers])):
+                if word[int(dni) % 23] == chara:
+                    validate = True
+        if not validate:
+            raise ValidationError(_("ID Card Number not valid"))
         return data
 
     def clean_dateOfBirth(self):
@@ -142,7 +164,6 @@ class ThreadForm(ModelForm):
         model = Thread
         exclude = ('business', 'pics', 'attachedFiles')
 
-
     def clean_images(self):
         """Split the tags string on whitespace and return a list"""
         print('clean: ThreadForm: Images')
@@ -171,7 +192,8 @@ class ThreadForm(ModelForm):
             for url in urls:
                 val(url)
         except ValidationError:
-            raise ValidationError("Please, enter valid URLS separated by comas in the images and files field")
+            raise ValidationError(_("Please, enter valid URLS separated by comas in the images and files field"))
+        return self.cleaned_data
 
     def save(self,business):
         print('save: ProfileForm')
@@ -199,6 +221,7 @@ class ThreadForm(ModelForm):
 
         obj.business = business[0]
         obj.save()
+        self.save_m2m()
         obj.attachedFiles.set(attached_files)
         obj.pics.set(pics)
         return obj
@@ -258,6 +281,15 @@ class html5showcaseForm(ModelForm):
         model = HTML5Showcase
         exclude = ['curriculum']
 
+    def clean_embedCode(self):
+        data = self.cleaned_data['embedCode']
+        regex = re.compile('https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+')
+        result = regex.match(data)
+        if not result:
+            raise ValidationError(_("Please, enter a valid URL"))
+        return data
+
+
 class JobOfferForm(ModelForm):
 
     class Meta:
@@ -291,3 +323,9 @@ class MessageForm(ModelForm):
     class Meta:
         model = Message
         exclude = ['sender', 'timestamp', 'readed']
+
+class ReplyForm(ModelForm):
+
+    class Meta:
+        model = Message
+        exclude = ['sender','recipient', 'subject', 'timestamp', 'readed']
