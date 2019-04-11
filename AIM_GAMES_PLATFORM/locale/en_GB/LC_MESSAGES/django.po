@@ -68,7 +68,7 @@ msgstr "Phone Number must be a 9 digits number"
 
 #: .\AIM_GAMES\forms.py:109
 msgid "validatePostal"
-msgstr "Postal Code must be a number"
+msgstr "Postal Code must be a 5 digits number"
 
 #: .\AIM_GAMES\forms.py:124
 #, fuzzy
@@ -816,8 +816,8 @@ msgstr "Threads"
 #~ msgid "valoration"
 #~ msgstr "Valoration"
 
-#~ msgid "addAptitude"
-#~ msgstr "Add aptitude"
+msgid "addAptitude"
+msgstr "Add aptitude"
 
 #, fuzzy
 #~| msgid "joboffers"

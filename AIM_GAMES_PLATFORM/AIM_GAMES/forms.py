@@ -81,7 +81,7 @@ class ProfileForm(ModelForm):
     idCardNumber = CharField(widget=TextInput(), label=_("IDCard Number"))
     dateOfBirth = DateField(widget=DateInput(), label=_("Date of birth"))
     phoneNumber = CharField(widget=NumberInput(), label=_("Phone Number"))
-    photo = URLField(widget=URLInput(), label=_("Photo URL:"))
+    photo = URLField(widget=URLInput(), label=_("Photo URL:"), required=False)
 
     class Meta:
         model = Profile
@@ -105,7 +105,7 @@ class ProfileForm(ModelForm):
 
     def clean_postalCode(self):
         data = self.cleaned_data['postalCode']
-        if not data.isdigit():
+        if not data.isdigit() or not data.__len__() == 5:
             raise ValidationError(_("validatePostal"))
         return data
 
@@ -164,7 +164,6 @@ class ThreadForm(ModelForm):
         model = Thread
         exclude = ('business', 'pics', 'attachedFiles')
 
-
     def clean_images(self):
         """Split the tags string on whitespace and return a list"""
         print('clean: ThreadForm: Images')
@@ -194,6 +193,7 @@ class ThreadForm(ModelForm):
                 val(url)
         except ValidationError:
             raise ValidationError(_("Please, enter valid URLS separated by comas in the images and files field"))
+        return self.cleaned_data
 
     def save(self,business):
         print('save: ProfileForm')
@@ -221,6 +221,7 @@ class ThreadForm(ModelForm):
 
         obj.business = business[0]
         obj.save()
+        self.save_m2m()
         obj.attachedFiles.set(attached_files)
         obj.pics.set(pics)
         return obj
