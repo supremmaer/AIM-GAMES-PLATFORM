@@ -151,6 +151,46 @@ class BusinessCreate(CreateView):
         return context
 
 
+class ThreadUpdate(UpdateView):
+
+    images = ""
+    files = ""
+    initial = {'images' : images, 'files' : files}
+    model = Thread
+    form_class = ThreadForm
+    template_name = 'thread/form.html'
+    success_url = '/accounts/login'
+
+    def get_initial(self):
+        initial = super(ThreadUpdate, self).get_initial()
+        thread = self.get_object()
+        for pic in thread.pics.all():
+            initial['images'] += pic.uri+" "
+        for attachedFile in thread.attachedFiles.all():
+            initial['files'] += attachedFile.uri+" "
+
+        return initial
+
+    def form_valid(self, form):
+        # This method is called when valid form data has been POSTed.
+        # It should return an HttpResponse.
+        if checkUser(self.request) != 'business':
+            return handler500(self.request)
+        print('ThreadUpdate: form_valid')
+
+        prof = Profile.objects.filter(user__pk=self.request.user.id)
+        buss = Business.objects.filter(profile__pk=prof[0].id)
+        thread = form.save(buss)
+
+        return threadDetail(self.request, thread.id)
+
+    def dispatch(self, request, *args, **kwargs):
+        if checkUser(self.request) == 'business' and self.get_object().business.id == self.request.user.profile.business.id:
+            return super(ThreadUpdate, self).dispatch(request, *args, **kwargs)
+        else:
+            return handler500(request)
+
+
 class ThreadCreate(CreateView):
     form_class = ThreadForm
     template_name = 'thread/form.html'
@@ -190,6 +230,10 @@ def threadDetail(request, thread_id):
     thread = get_object_or_404(Thread, pk=thread_id)
     responses = thread.response_set.all()
     pics = thread.pics
+    if checkUser(request)=='business':
+        business = findByPrincipal(request)
+        if business.id == thread.business.id:
+            return render(request, 'thread/threadDetail.html', {'thread': thread, 'responses': responses,'pics':pics,'owner':True})
     return render(request, 'thread/threadDetail.html', {'thread': thread, 'responses': responses,'pics':pics})
 
 def jobOfferDetail(request, id):
@@ -198,6 +242,10 @@ def jobOfferDetail(request, id):
         for pic in pics:
             pic.strip()
         
+        if checkUser(request)=='business':
+            business = findByPrincipal(request)
+            if business.id == jobOffer.business.id:
+                return render(request, 'jobOfferDetail.html', {'jobOffer': jobOffer, 'pics' : pics,'owner':True})        
         return render(request, 'jobOfferDetail.html', {'jobOffer': jobOffer, 'pics' : pics})
 
 def findByPrincipal(request):
@@ -484,6 +532,34 @@ def jobOfferCreate(request):
         else:
             form = JobOfferForm()
             return render(request,'business/standardForm.html',{'form':form,'title':'Add Job Offer'})
+    else:
+        return handler500(request)
+
+def jobOfferEdit(request,id):
+    if checkUser(request)=='business':
+        business = findByPrincipal(request)
+        instance = get_object_or_404(JobOffer, id=id)
+        if instance.business.id != business.id:
+            return handler500(request)
+        form = JobOfferForm(request.POST or None, instance=instance)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.business = business
+            obj.save()
+            return redirect('/jobOffer/detail/'+ str(id))
+        else:
+            return render(request,'business/standardForm.html',{'form':form,'title':'Edit Job Offer'})
+    else:
+        return handler500(request)
+
+def jobOfferDelete(request,id):
+    if checkUser(request)=='business':
+        business = findByPrincipal(request)
+        instance = get_object_or_404(JobOffer, id=id)
+        if instance.business.id != business.id:
+            return handler500(request)
+        instance.delete()
+        return redirect('/joboffer/user/list/')
     else:
         return handler500(request)
 
@@ -816,6 +892,30 @@ def eventJoin(request, event_id):
     obj.save()
     return redirect('/event/detail/'+str(event_id))
 
+def eventDisjoin(request, event_id): 
+    userRole=checkUser(request)
+    if userRole!='business' and userRole!='freelancer':
+        return handler500(request)
+    instance = get_object_or_404(Event, id=event_id)
+    user = findByPrincipal(request)
+
+    form = EventForm(instance=instance)
+    obj = form.save(commit=False)
+    if userRole=='freelancer':
+        obj.freelancers.remove(user)
+    else:
+        obj.companies.remove(user)
+    obj.save()
+    return redirect('/event/detail/'+str(event_id))
+
+def eventDelete(request, event_id):
+    if checkUser(request)!='manager':
+        return handler500(request) 
+    instance = get_object_or_404(Event, id=event_id)
+    manager = findByPrincipal(request)
+    instance.delete()
+    return redirect('/event/list/')
+
 def downloadData(request):
     print("entre!")
     datos=findByPrincipal(request).getData()
@@ -869,6 +969,13 @@ def message_create(request):
     else:
         form = MessageForm()
         return render(request,'message/create.html',{'form':form,'title':'Create Message'})
- 
 
-
+def threadDelete(request, id): 
+    if checkUser(request)!='business':
+        return handler500(request)
+    instance = get_object_or_404(Thread, id=id)
+    business = findByPrincipal(request)
+    if instance.business.id != business.id:
+        return redirect('/thread/business/list/')
+    instance.delete()
+    return redirect('/thread/business/list/')

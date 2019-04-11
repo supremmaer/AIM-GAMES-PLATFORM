@@ -25,11 +25,11 @@ class Command(BaseCommand):
         graphicEngine3 = GraphicEngine(title='RPG Maker')
         graphicEngine3.save()
 
-        url1 = URL(uri='http://www.funcage.com/blog/wp-content/uploads/2013/11/Random-Photoshopped-Pictures-006.jpg')
+        url1 = URL(uri='https://cdn02.nintendo-europe.com/media/images/10_share_images/games_15/wiiu_14/SI_WiiU_TheLegendOfZeldaBreathOfTheWild.jpg')
         url1.save()
-        url2 = URL(uri='https://404store.com/2017/08/15/4949794-random-image.jpg')
+        url2 = URL(uri='http://conceptartworld.com/wp-content/uploads/2015/10/1_Assassins_Creed_Syndicate_Concept_Art_FA_env_BankOfEngland_Courtyard_001b.jpg')
         url2.save()
-        url3 = URL(uri='https://vignette.wikia.nocookie.net/blogclan-2/images/b/b9/Random-image-15.jpg/revision/latest?cb=20160706220047')
+        url3 = URL(uri='https://www.iamag.co/wp-content/uploads/2016/04/starcraft2-ca-collection18-563x247.jpg')
         url3.save()
         url4 = URL(uri='https://vignette.wikia.nocookie.net/rpg-maker-wiki/images/7/78/RPGMakerlogo.png/revision/latest?cb=20190109034832')
         url4.save()
@@ -132,9 +132,9 @@ class Command(BaseCommand):
         graphicEngineExperience3, created = GraphicEngineExperience.objects.get_or_create(curriculum=curriculum3, 
             graphicEngine=graphicEngine3, graphicExperience=75)
 
-        html5Showcase1, created = HTML5Showcase.objects.get_or_create(curriculum=curriculum1, embedCode='html5Showcase code')
-        html5Showcase2, created = HTML5Showcase.objects.get_or_create(curriculum=curriculum2, embedCode='html5Showcase2 code')
-        html5Showcase3, created = HTML5Showcase.objects.get_or_create(curriculum=curriculum3, embedCode='html5Showcase3 code')
+        html5Showcase1, created = HTML5Showcase.objects.get_or_create(curriculum=curriculum1, embedCode='https://www.gameflare.com/embed/cartoon-strike/')
+        html5Showcase2, created = HTML5Showcase.objects.get_or_create(curriculum=curriculum2, embedCode='https://www.gameflare.com/embed/cartoon-strike/')
+        html5Showcase3, created = HTML5Showcase.objects.get_or_create(curriculum=curriculum3, embedCode='https://www.gameflare.com/embed/cartoon-strike/')
 
         Aptitude1, created = Aptitude.objects.get_or_create(curriculum=curriculum1, aptitude='Imaginative')
         Aptitude2, created = Aptitude.objects.get_or_create(curriculum=curriculum2, aptitude='perfectionist')
@@ -211,18 +211,18 @@ class Command(BaseCommand):
         response3 = Response()
         response3.business=business1
         response3.thread=thread2
-        response3.title='This is too ramdon'
+        response3.title='This is too random'
         response3.description='Please delete it'
         response3.save()
         response3.pics.set(p)
         response3.save()
 
-        challenge1, created = Challenge.objects.get_or_create(business=business1, title="Job offert Unity", description="Make a game in only 24h", objectives="A funcional game")
+        challenge1, created = Challenge.objects.get_or_create(business=business1, title="Job offer for Unity", description="Make a game in only 24h", objectives="A functional game")
         freelancers1 = (freelancer1, freelancer2)
         challenge1.freelancers.set(freelancers1)
         challenge1.save
 
-        challenge2, created = Challenge.objects.get_or_create(business=business1, title="Future art", description="The winner will get an all-paid vacation", objectives="Surprise us")
+        challenge2, created = Challenge.objects.get_or_create(business=business1, title="Concept art", description="The winner will get an all-paid vacation", objectives="Surprise us")
         freelancers2 = (freelancer1,)
         challenge2.freelancers.set(freelancers2)
         challenge1.save
@@ -233,7 +233,7 @@ class Command(BaseCommand):
         challenge1.save
 
 
-        event1, created = Event.objects.get_or_create(manager = manager1, location = "Seville", title="AIMGAME-FEST",description="All you indies developers will be here", moment= "2019-12-12 00:00")
+        event1, created = Event.objects.get_or_create(manager = manager1, location = "Seville", title="AIMGAME-FEST",description="All you indie developers will be here", moment= "2019-12-12 00:00")
         freelancers1= (freelancer1,)
         businesses1 = (business1,business2)
         event1.freelancers.set(freelancers1)
@@ -245,13 +245,13 @@ class Command(BaseCommand):
         event2.freelancers.set(freelancers2)
         event2.companies.set(businesses2)
 
-        event3, created = Event.objects.get_or_create(manager = manager3, location = "Seville", title="AIM Game EXPO",description="One week of every news of our indies", moment= "2019-12-12 00:00")
+        event3, created = Event.objects.get_or_create(manager = manager3, location = "Seville", title="AIM Game EXPO",description="One full week to explore all the Andalusian indie scene has to offer", moment= "2019-12-12 00:00")
         freelancers3= (freelancer1,)
         businesses3 = (business1,)
         event3.freelancers.set(freelancers3)
         event3.companies.set(businesses3)
         
-        message1, created = Message.objects.get_or_create(sender=user1, recipient=user2, subject="uwu" ,text="sad")
-        message1, created = Message.objects.get_or_create(sender=user2, recipient=user1, subject="owo" ,text="sand dunes")
+        message1, created = Message.objects.get_or_create(sender=user1, recipient=user2, subject="You alright?" ,text="I thought I may as well check in on you, you haven't posted new stuff in a while")
+        message1, created = Message.objects.get_or_create(sender=user2, recipient=user1, subject="Yes, don't worry" ,text="We're alright, just working on some secret stuff")
 
         print("Database populated.")

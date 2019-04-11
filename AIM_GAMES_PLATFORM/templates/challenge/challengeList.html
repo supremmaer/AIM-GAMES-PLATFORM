@@ -23,7 +23,7 @@
                 {% for challenge in challenges %}
                 <div class="collection-item">
                     <div class="row">
-                        <div class="col s3">{{ challenge.business.profile.name }}</div><div class="col s3">{{ challenge.title}}</div><div class="col s2 offset-s1"><a href="/challenge/detail/{{challenge.id}}" class="btn waves-effect waves-red">{% trans "view" %}</a></div>
+                        <div class="col s4">{{ challenge.business.profile.name }}</div><div class="col s4">{{ challenge.title}}</div><div class="col s3 offset-s1"><a href="/challenge/detail/{{challenge.id}}" class="btn waves-effect waves-red">{% trans "view" %}</a></div>
                     </div>
                 </div>
                 {% endfor %}

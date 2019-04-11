@@ -1,10 +1,49 @@
-{% extends 'base_generic.html' %}
+{% extends "base_generic.html" %}
+{% block content %}
 {% load i18n %}
 
-{% block content %}
-    <h1>{% trans "newResponse" %}</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">{% trans "save" %}</button>
-    </form>
+<div class="row">
+    <div class="col s12 l6 m10 offset-m1 offset-l3">
+        <h3>{% trans "newResponse" %}</h3> 
+        {% for error in form.non_field_errors %}
+        <div class="red-text">
+            <strong>{{ error|escape }}</strong>
+        </div>
+        {% endfor %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="card">
+                <div class="card-content center">
+                    <div class="row">
+                        {% for field in form.visible_fields %}
+                        <span class="red-text">{{ field.errors }}</span>
+                        <div class="input-field col s12">
+                            {% if 'moment' in field.html_name %}
+                                <div class="labelxd">{{ field.label_tag }}</div>
+                                <input id="{{ field.id_for_label }}" type="date" class="validate" name="{{ field.html_name }}">
+                            {% else %}
+                                {{ field.label_tag }}
+                                {{field}}
+                            {% endif %}
+                            
+                        </div>
+                        {% endfor %}
+                        <button class="btn waves-effect waves-light" type="submit" name="action">{% trans "Submit" %}
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+<script>
+M.AutoInit();
+</script>
+
+</body>
 {% endblock %}
