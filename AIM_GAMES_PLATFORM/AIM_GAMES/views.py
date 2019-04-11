@@ -43,7 +43,7 @@ def pagarPaypal(request):
         'amount': '71',
         'item_name': 'Subscripcion AIM-GAMES',
         'currency_code': 'EUR',
-        'notify_url': 'http://{}{}'.format(host, reverse('paypal_ipn/' + str(businessId))),
+        'notify_url': 'http://{}{}{}'.format(host, 'paypal_ipn/',str(businessId)),
         'return_url': 'http://{}{}'.format(host, reverse('payment_done')),
         'cancel_return': 'http://{}{}'.format(host, reverse('payment_canceled')),
         }
