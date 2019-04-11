@@ -17,6 +17,7 @@ class Command(BaseCommand):
         tag2 = Tag(title='Game engine')
         tag2.save()
         tag3 = Tag.objects.get_or_create(title='Software library')
+        tag4 = Tag.objects.get_or_create(title='Course')
 
         graphicEngine1 = GraphicEngine(title='Unreal Engine')
         graphicEngine1.save()
@@ -152,7 +153,7 @@ class Command(BaseCommand):
         schedule = '8am-3pm', salary=20000, ubication='Seville', description='Create new art', images='http://www.funcage.com/blog/wp-content/uploads/2013/11/Random-Photoshopped-Pictures-006.jpg')
 
         t=(tag,)
-        p=(url1,)
+        p=(url1,url2)
         at=(url3,)
         thread1= Thread()
         thread1.business=business1
@@ -160,14 +161,14 @@ class Command(BaseCommand):
         thread1.description='Here some software'
         thread1.save()
         thread1.tags.set(t)    
-        thread1.pics.set(p)  
+        thread1.pics.set((url5,))
         thread1.attachedFiles.set(at)
         thread1.save()
 
         thread2= Thread()
         thread2.business=business1
         thread2.title='Pics library'
-        thread2.description='Here one example'
+        thread2.description='Here is one example'
         thread2.save()
         thread2.tags.set(t)    
         thread2.pics.set(p)  
@@ -177,10 +178,10 @@ class Command(BaseCommand):
         thread3= Thread()
         thread3.business=business1
         thread3.title='RPGMAKER course'
-        thread3.description='we offert a free course'
+        thread3.description='we offer a free course'
         thread3.save()
         thread3.tags.set(t)    
-        thread3.pics.set(p)  
+        thread3.pics.set((url4,))
         thread3.attachedFiles.set(at)
         thread3.save()
 
