@@ -3,7 +3,7 @@ from django.conf import settings
 from django.urls import reverse
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import render, get_list_or_404
-from paypal.standard.forms import PayPalPaymentsForm
+from paypal.standard.forms import PayPalPaymentsForm,PayPalSharedSecretEncryptedPaymentsForm
 from django.shortcuts import redirect
 from django.views.generic import FormView, CreateView, UpdateView
 from .models import Freelancer, Business, Thread, Response, Link, JobOffer, Curriculum, Profile, Aptitude
@@ -13,9 +13,8 @@ from datetime import datetime, timezone
 from django.contrib import auth
 from django.contrib import sessions
 from django.contrib.auth.models import Group
-from django.http import Http404
-from django.http import HttpResponse
-
+from django.http import Http404,HttpResponse,JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 from django.utils.translation import gettext as _
 from django.utils import translation
@@ -40,14 +39,21 @@ def pagarPaypal(request):
         'amount': '71',
         'item_name': 'Subscripcion AIM-GAMES',
         'currency_code': 'EUR',
-        'notify_url': 'http://{}{}'.format(host, reverse('paypal-ipn')),
+        'notify_url': 'https://dbda170f.ngrok.io/paypal_ipn',
         'return_url': 'http://{}{}'.format(host, reverse('payment_done')),
         'cancel_return': 'http://{}{}'.format(host, reverse('payment_canceled')),
         }
     form = PayPalPaymentsForm(initial=paypal_dict)
     return render(request, 'pagarPaypal.html', {'form':form})
 
-    
+@csrf_exempt
+def paypal_ipn(request):
+    print("pay as fuck")
+    print(request.POST)
+    bus = findByPrincipal(request)
+    print(bus)
+    return JsonResponse({'ok': 'hoooh!'})
+
 def payment_done(request):
     # esto es como el controlador/servicios
     buss_id = request.session.get('buss')
