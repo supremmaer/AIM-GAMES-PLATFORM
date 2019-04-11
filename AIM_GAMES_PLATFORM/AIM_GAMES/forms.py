@@ -311,3 +311,9 @@ class MessageForm(ModelForm):
     class Meta:
         model = Message
         exclude = ['sender', 'timestamp', 'readed']
+
+class ReplyForm(ModelForm):
+
+    class Meta:
+        model = Message
+        exclude = ['sender','recipient', 'subject', 'timestamp', 'readed']

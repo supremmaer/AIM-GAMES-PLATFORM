@@ -10,9 +10,10 @@
           </div>
           <div class="divider"></div>
           <div class="section">
-              <p class="flow-text">{{message.text}}</p>  
+              <p class="flow-text">{{message.text}}</p>
           </div>
         </div>
     </div>
+  <div href="/message/reply/{{message.id}}" class="btn waves-effect waves-red center-align">{% trans "reply" %}</div>
 </body>
 {% endblock %}

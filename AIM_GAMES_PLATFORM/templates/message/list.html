@@ -25,10 +25,10 @@
         {% endif %}
         {% if message.readed == False %}
         <tr>
-            <td bgcolor="#FF0022">{{message.timestamp}}</td>
-            <td bgcolor="#FF0022">{{message.subject}}</td>
-            <td bgcolor="#FF0022">{{message.sender}}</td>
-            <td bgcolor="#FF0022"><a href="/message/show/{{message.id}}" class="btn waves-effect waves-red">{% trans "view" %}</a></td>
+            <td bgcolor="#FFFF33">{{message.timestamp}}</td>
+            <td bgcolor="#FFFF33">{{message.subject}}</td>
+            <td bgcolor="#FFFF33">{{message.sender}}</td>
+            <td bgcolor="#FFFF33"><a href="/message/show/{{message.id}}" class="btn waves-effect waves-red">{% trans "view" %}</a></td>
         </tr>
         {% endif %}
          

@@ -15,6 +15,7 @@ from django.contrib import sessions
 from django.contrib.auth.models import Group
 from django.http import Http404,HttpResponse,JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponseRedirect
 
 from django.utils.translation import gettext as _
 from django.utils import translation
@@ -30,7 +31,7 @@ def index(request):
 
 def setlanguage(request, language):
     request.session['language'] = language
-    return redirect('/')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def pagarPaypal(request):
     host = request.get_host()
@@ -986,6 +987,26 @@ def message_create(request):
     else:
         form = MessageForm()
         return render(request,'message/create.html',{'form':form,'title':'Create Message'})
+
+def message_reply(request, msgid):
+    if request.method == 'POST':
+        form = ReplyForm(request.POST)
+        if form.is_valid():
+            message = get_object_or_404(Message, id=msgid)
+            obj = form.save(commit=False)
+            obj.sender = request.user
+            recipient = message.sender
+            subject = message.subject
+            obj.recipient = recipient
+            obj.subject = "RE: " + subject
+            obj.save()
+            print('Message saved')
+            return redirect('/message/list/')
+        else:
+            return render(request,'message/create.html',{'form':form,'title':'Response Message'})
+    else:
+        form = ReplyForm()
+        return render(request,'message/create.html',{'form':form,'title':'Response Message'})
 
 def threadDelete(request, id): 
     if checkUser(request)!='business':
