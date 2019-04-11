@@ -27,7 +27,7 @@ urlpatterns = [
     path('pagar_paypal', pagarPaypal, name='pagarPaypal' ),
     path('payment_done', payment_done, name='payment_done'),
     path('payment_canceled', payment_canceled, name='payment_canceled'),
-    path('paypal_ipn', paypal_ipn,name='paypal_ipn'),
+    path('paypal_ipn/<int:businessId>', paypal_ipn,name='paypal_ipn'),
     path('login_redir',login_redir),
     path('accounts/login/', auth_views.LoginView.as_view(template_name='accounts/login.html')),
     path("logout/", auth_views.LogoutView.as_view(),{'next_page': settings.LOGOUT_REDIRECT_URL}, name="logout"),

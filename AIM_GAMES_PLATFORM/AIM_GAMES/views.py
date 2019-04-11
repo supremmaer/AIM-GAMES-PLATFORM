@@ -34,12 +34,16 @@ def setlanguage(request, language):
 
 def pagarPaypal(request):
     host = request.get_host()
+    businessId = request.session['buss']
+    print(businessId)
+    #local notify url
+    #'notify_url': 'https://dbda170f.ngrok.io/paypal_ipn/'+str(businessId),
     paypal_dict = {
         'business': settings.PAYPAL_RECEIVER_EMAIL,
         'amount': '71',
         'item_name': 'Subscripcion AIM-GAMES',
         'currency_code': 'EUR',
-        'notify_url': 'https://dbda170f.ngrok.io/paypal_ipn',
+        'notify_url': 'http://{}{}'.format(host, reverse('paypal_ipn/' + str(businessId))),
         'return_url': 'http://{}{}'.format(host, reverse('payment_done')),
         'cancel_return': 'http://{}{}'.format(host, reverse('payment_canceled')),
         }
@@ -47,17 +51,15 @@ def pagarPaypal(request):
     return render(request, 'pagarPaypal.html', {'form':form})
 
 @csrf_exempt
-def paypal_ipn(request):
-    print("pay as fuck")
+def paypal_ipn(request,businessId):
+    print("ipn recieved")
     print(request.POST)
-    bus = findByPrincipal(request)
-    print(bus)
+    updatedNumber = Business.objects.filter(id=businessId).update(lastPayment=datetime.now())
+    print(updatedNumber)
     return JsonResponse({'ok': 'hoooh!'})
 
 def payment_done(request):
     # esto es como el controlador/servicios
-    buss_id = request.session.get('buss')
-    Business.objects.filter(id=buss_id).update(lastPayment=datetime.now())
     return render(request, 'payment_done.html')
 
 
@@ -76,11 +78,13 @@ def login_redir(request):
             if not buss[0].lastPayment is None:
                 if (buss[0].lastPayment- datetime.now(timezone.utc)).total_seconds() > 31556952:
                     auth.logout(request)
+                    request.session['buss'] = buss[0].id
                     res = pagarPaypal(request)
                 else:
                     res = redirect('index')
             else:
                 auth.logout(request)
+                request.session['buss'] = buss[0].id
                 res = pagarPaypal(request)
         else:
             res = redirect('index')
