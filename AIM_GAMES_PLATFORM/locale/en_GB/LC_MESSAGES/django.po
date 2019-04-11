@@ -811,8 +811,8 @@ msgstr "Threads"
 #~ msgid "valoration"
 #~ msgstr "Valoration"
 
-#~ msgid "addAptitude"
-#~ msgstr "Add aptitude"
+msgid "addAptitude"
+msgstr "Add aptitude"
 
 #, fuzzy
 #~| msgid "joboffers"

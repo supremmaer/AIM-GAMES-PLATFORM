@@ -820,8 +820,8 @@ msgstr "Nuevo hilo"
 #~ msgid "valoration"
 #~ msgstr "Valoración"
 
-#~ msgid "addAptitude"
-#~ msgstr "Añadir aptitud"
+msgid "addAptitude"
+msgstr "Añadir aptitud"
 
 #, fuzzy
 #~| msgid "joboffers"
