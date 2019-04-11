@@ -84,7 +84,14 @@
                             {% if 'term' in field.html_name %}
                                 <p><label>
                                     <input id="{{ field.id_for_label }}" required name="{{ field.html_name }}" type="checkbox" class="filled-in"/>
-                                    <span>{% trans "acceptTerms" %} <a  target="_blank" href="/terms-and-conditions">{% trans "terms-and-conditions" %}</a></span>
+                                    <span>{% trans "acceptTerms" %} 
+                                        {% if request.session.language == 'en-GB' %}
+                                            <a href="/terms-and-conditions" class="blue-text ">{% trans "terms-and-conditions" %}</a>
+                                        {% endif %}
+                                        {% if request.session.language == 'es-ES' %}
+                                            <a href="/terminos-y-condiciones" class="blue-text ">{% trans "terms-and-conditions" %}</a>
+                                        {% endif %}
+                                    </span>
                                 </label></p>
                             {% endif %}
 

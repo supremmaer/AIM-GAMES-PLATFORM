@@ -67,7 +67,7 @@ msgstr "El número de teléfono debe ser un número de nueve dígitos"
 
 #: .\AIM_GAMES\forms.py:109
 msgid "validatePostal"
-msgstr "El Código Postal debe ser un número"
+msgstr "El Código Postal debe ser un número de 5 cifras"
 
 #: .\AIM_GAMES\forms.py:124
 msgid "ID Card Number not valid"

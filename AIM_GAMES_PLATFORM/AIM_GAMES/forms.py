@@ -81,7 +81,7 @@ class ProfileForm(ModelForm):
     idCardNumber = CharField(widget=TextInput(), label=_("IDCard Number"))
     dateOfBirth = DateField(widget=DateInput(), label=_("Date of birth"))
     phoneNumber = CharField(widget=NumberInput(), label=_("Phone Number"))
-    photo = URLField(widget=URLInput(), label=_("Photo URL:"))
+    photo = URLField(widget=URLInput(), label=_("Photo URL:"), required=False)
 
     class Meta:
         model = Profile
@@ -105,7 +105,7 @@ class ProfileForm(ModelForm):
 
     def clean_postalCode(self):
         data = self.cleaned_data['postalCode']
-        if not data.isdigit():
+        if not data.isdigit() or not data.__len__() == 5:
             raise ValidationError(_("validatePostal"))
         return data
 
