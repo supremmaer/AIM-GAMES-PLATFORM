@@ -857,3 +857,6 @@ msgstr "Nuevo hilo"
 
 #~ msgid "Edit Job Offer"
 #~ msgstr "Editar oferta de trabajo"
+
+msgid "different links"
+msgstr "Aqui estan los enlaces a las distintas versiones de nuestra aplicación"

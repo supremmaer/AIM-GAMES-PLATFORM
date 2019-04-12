@@ -832,3 +832,6 @@ msgstr "Threads"
 
 #~ msgid "aboutus"
 #~ msgstr "About us"
+
+msgid "different links"
+msgstr "Here are the links to de different versions of our application"
