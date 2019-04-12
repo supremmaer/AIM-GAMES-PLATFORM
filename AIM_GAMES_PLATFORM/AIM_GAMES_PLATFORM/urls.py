@@ -25,5 +25,6 @@ urlpatterns = [
     path('', index, name='index'),
     path('500/', handler500, name='500'),
     path('404/', handler404, name='404'),
+    path('setlanguage/<str:language>', setlanguage),
 
 ]
